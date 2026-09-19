@@ -63,6 +63,9 @@ DEFAULTS: dict[str, Any] = {
     "extra_max_per_class": None,
     "use_real_train": True,  # False → train ONLY on extra_train_index (intermediate pretraining stage)
     "init_from": None,  # path to a previous run's best.pt; loads all shape-compatible tensors (backbone transfer)
+    "kd_teachers": None,  # list of best.pt paths; soft-target knowledge distillation from their averaged softmax
+    "kd_alpha": 0.7,  # weight of the KD term (rest = hard-label loss)
+    "kd_T": 4.0,  # distillation temperature
     # model
     "model": "resnet18",
     "pretrained": True,
@@ -395,6 +398,22 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
     else:
         criterion = build_loss(cfg, torch.from_numpy(class_counts))
     criterion = criterion.to(device)
+    teachers = []
+    if cfg["kd_teachers"]:
+        for tp in cfg["kd_teachers"]:
+            tck = torch.load(tp, map_location=device, weights_only=False)
+            tcfg = merge_cfg(tck["cfg"])
+            t_in = 3 if tcfg["channel_mode"] in ("gray3", "onoff") else 1
+            tm = build_model(tcfg["model"], num_classes=NUM_CLASSES, pretrained=False, in_chans=t_in,
+                             img_size=int(tcfg["img_size"]), mode="full", geometry=bool(tcfg["geometry"]),
+                             drop_rate=0.0).to(device)
+            tm.load_state_dict(tck["state_dict"]); tm.eval()
+            for prm in tm.parameters():
+                prm.requires_grad = False
+            assert tcfg["img_size"] == cfg["img_size"] and tcfg["channel_mode"] == cfg["channel_mode"], \
+                "KD teachers must share img_size and channel_mode with the student (same input tensors)"
+            teachers.append(tm)
+        print(f"[{cfg['exp_id']}] KD from {len(teachers)} teacher(s), alpha={cfg['kd_alpha']}, T={cfg['kd_T']}")
 
     # ---- optimiser / schedule
     groups = param_groups(model, lr=float(cfg["lr"]), weight_decay=float(cfg["weight_decay"]), llrd=cfg["llrd"])
@@ -429,6 +448,13 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
             with torch.autocast(device_type="cuda", enabled=use_amp):
                 out = model(x, g)
                 loss = criterion(out, y_soft if mix is not None else y)
+                if teachers:
+                    with torch.no_grad():
+                        t_prob = torch.stack([torch.softmax(t(x, g).float() / float(cfg["kd_T"]), dim=1)
+                                              for t in teachers]).mean(0)
+                    log_s = torch.log_softmax(out.float() / float(cfg["kd_T"]), dim=1)
+                    kd = torch.nn.functional.kl_div(log_s, t_prob, reduction="batchmean") * float(cfg["kd_T"]) ** 2
+                    loss = (1 - float(cfg["kd_alpha"])) * loss + float(cfg["kd_alpha"]) * kd
             optimizer.zero_grad(set_to_none=True)
             scaler.scale(loss).backward()
             if cfg["grad_clip"]:

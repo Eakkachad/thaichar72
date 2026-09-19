@@ -57,3 +57,6 @@ latency_iters: 50
 save_last: true
 use_real_train: true    # false = train only on extra_train_index (stage-1 intermediate pretraining)
 init_from: null         # runs/<exp>/best.pt to initialise from (shape-compatible tensors only)
+kd_teachers: null       # e.g. [runs/F3_r18_randaug_synth_20/best.pt, runs/F4_effb0_randaug_synth_20/best.pt]
+kd_alpha: 0.7
+kd_T: 4.0
