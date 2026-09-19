@@ -19,19 +19,31 @@ dependencies = [
     "scipy>=1.18.1",
     "tabulate>=0.10.0",
     "timm>=1.0.29",
-    "torch>=2.14.0",
-    "torchvision>=0.29.0",
     "tqdm>=4.70.1",
 ]
+
+# ---- PyTorch backend is chosen with an extra:  uv sync --extra cpu   (laptop / Colab-less CPU)
+#                                                uv sync --extra cu126 (NVIDIA GPU, e.g. RTX 4060 on WSL2/Windows)
+[project.optional-dependencies]
+cpu = ["torch>=2.14.0", "torchvision>=0.29.0"]
+cu126 = ["torch>=2.14.0", "torchvision>=0.29.0"]
+
+[tool.uv]
+conflicts = [[{ extra = "cpu" }, { extra = "cu126" }]]
 
 [[tool.uv.index]]
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
 [tool.uv.sources]
-torch = [{ index = "pytorch-cpu" }]
-torchvision = [{ index = "pytorch-cpu" }]
+torch = [{ index = "pytorch-cpu", extra = "cpu" }, { index = "pytorch-cu126", extra = "cu126" }]
+torchvision = [{ index = "pytorch-cpu", extra = "cpu" }, { index = "pytorch-cu126", extra = "cu126" }]
 
 [build-system]
 requires = ["hatchling"]

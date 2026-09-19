@@ -2,24 +2,24 @@
 ThaiCharacter Dataset/
 data/
 *.zip
-# weights / large artifacts
-weights/
-*.pt
-*.pth
+# run artifacts: keep small results (metrics/log) in git, exclude tensors
+runs/**/*.pt
+runs/**/*.npy
+runs/**/*.pth
+# weights: only the final packaged files in weights/ are committed (<100 MB each)
 *.onnx
 *.safetensors
 *.ckpt
-runs/
 # python
 .venv/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+notebooks/*.executed.ipynb
+outputs/
+dist/
 # misc
 .DS_Store
 Thumbs.db
 *.log
 !tasks/DELEGATION-LOG.md
-dist/
-notebooks/*.executed.ipynb
-outputs/

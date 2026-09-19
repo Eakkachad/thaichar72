@@ -318,85 +318,62 @@ CANDIDATE_OPS: list[str] = [
 ]
 
 
-def get_transform(preset: str, seed: int | None = None) -> Callable[[np.ndarray], np.ndarray]:
-    """Return an augmentation callable for the given preset name.
+class PresetTransform:
+    """Picklable augmentation callable (works with DataLoader workers under fork AND spawn/Windows).
 
     Presets:
       - 'none': identity.
       - 'base': RandomAffine + MarginJitter.
       - 'morph': base + StrokeWidth + ResolutionJitter.
       - 'full': morph + Elastic + Speckle + GaussianBlur + RandomErasing + Rebinarize.
-      - 'randaug': RandAugment N=2, M in [0, 10] uniform magnitude.
+      - 'randaug': RandAugment N=2, magnitude M ~ U[0,1] (scaled per op).
       - 'trivial': TrivialAugment: one op with uniform random magnitude.
-
-    Every preset guarantees the output contains >= 1% ink pixels; if not, returns
-    the input unchanged.
+    Output always keeps >= 1% ink and >= 35% of the input ink mass, else the input is returned unchanged.
     """
-    if preset not in PRESETS:
-        raise ValueError(f"Unknown preset: {preset!r}. Expected one of {PRESETS}")
 
-    _state = {"rng": np.random.default_rng(seed)}
+    def __init__(self, preset: str, seed: int | None = None):
+        if preset not in PRESETS:
+            raise ValueError(f"Unknown preset: {preset!r}. Expected one of {PRESETS}")
+        self.preset = preset
+        self._rng = np.random.default_rng(seed)
+        if preset == "base":
+            self.ops = [RandomAffine(), MarginJitter()]
+        elif preset == "morph":
+            self.ops = [RandomAffine(), MarginJitter(), StrokeWidth(), ResolutionJitter()]
+        elif preset == "full":
+            self.ops = [RandomAffine(), MarginJitter(), StrokeWidth(), ResolutionJitter(), Elastic(), Speckle(),
+                        GaussianBlur(), RandomErasing(), Rebinarize()]
+        else:
+            self.ops = []
 
-    if preset == "none":
-        return lambda img: img.copy()
+    def reseed(self, new_seed: int | None) -> None:
+        """Re-seed the internal RNG (call per DataLoader worker to avoid duplicated draws)."""
+        self._rng = np.random.default_rng(new_seed)
 
-    # Pre-construct fixed pipeline for fixed presets
-    if preset == "base":
-        ops = [RandomAffine(), MarginJitter()]
-    elif preset == "morph":
-        ops = [RandomAffine(), MarginJitter(), StrokeWidth(), ResolutionJitter()]
-    elif preset == "full":
-        ops = [
-            RandomAffine(),
-            MarginJitter(),
-            StrokeWidth(),
-            ResolutionJitter(),
-            Elastic(),
-            Speckle(),
-            GaussianBlur(),
-            RandomErasing(),
-            Rebinarize(),
-        ]
-    else:
-        ops = []
-
-    def transform(img: np.ndarray) -> np.ndarray:
-        if preset == "none":
+    def __call__(self, img: np.ndarray) -> np.ndarray:
+        if self.preset == "none":
             return img.copy()
-        rng = _state["rng"]
-
+        rng = self._rng
         out = img.copy()
-
-        if preset in ("base", "morph", "full"):
-            for op in ops:
+        if self.preset in ("base", "morph", "full"):
+            for op in self.ops:
                 out = op(out, rng)
-        elif preset == "randaug":
-            # N=2 ops, random magnitude M in [0, 10]
+        elif self.preset == "randaug":
             chosen_ops = rng.choice(CANDIDATE_OPS, size=2, replace=True)
             mag = float(rng.uniform(0.0, 1.0))
             for op_name in chosen_ops:
-                op = _build_scaled_op(op_name, mag)
-                out = op(out, rng)
-        elif preset == "trivial":
-            # 1 op, uniform random magnitude
+                out = _build_scaled_op(op_name, mag)(out, rng)
+        elif self.preset == "trivial":
             chosen_op = str(rng.choice(CANDIDATE_OPS))
             mag = float(rng.uniform(0.0, 1.0))
-            op = _build_scaled_op(chosen_op, mag)
-            out = op(out, rng)
-
-        # Guarantee the glyph survived: >= 1% ink and >= 35% of the input's ink mass
-        # (thin 1-px strokes can be erased entirely by erosion/resolution jitter)
+            out = _build_scaled_op(chosen_op, mag)(out, rng)
         ink_frac = float(np.mean(out < 128))
         ink_in = float(np.mean(img < 128))
         if ink_frac < 0.01 or ink_frac < 0.35 * ink_in:
             return img.copy()
-
         return out
 
-    def reseed(new_seed: int | None) -> None:
-        """Re-seed the internal RNG (call per DataLoader worker to avoid duplicated draws)."""
-        _state["rng"] = np.random.default_rng(new_seed)
 
-    transform.reseed = reseed  # type: ignore[attr-defined]
-    transform.preset = preset  # type: ignore[attr-defined]
-    return transform
+def get_transform(preset: str, seed: int | None = None) -> PresetTransform:
+    """Return a picklable augmentation callable for the given preset name (see PresetTransform)."""
+    return PresetTransform(preset, seed)

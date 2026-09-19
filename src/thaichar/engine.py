@@ -311,7 +311,7 @@ def predict_tta(model: nn.Module, val_ds: ThaiGlyphDataset, cfg: dict, device: t
     for _, tf, margin in TTA_VIEWS:
         ds = ThaiGlyphDataset(val_ds.df, val_ds.cache, size=cfg["img_size"], channel_mode=cfg["channel_mode"],
                               transform=tf, margin=(margin if margin is not None else cfg["margin"]))
-        loader = DataLoader(ds, batch_size=256, shuffle=False, num_workers=cfg["num_workers"])
+        loader = DataLoader(ds, batch_size=256, shuffle=False, num_workers=0)  # closures not picklable under spawn
         logits, _ = predict(model, loader, device)
         p = torch.softmax(torch.from_numpy(logits), dim=1).numpy()
         probs = p if probs is None else probs + p
