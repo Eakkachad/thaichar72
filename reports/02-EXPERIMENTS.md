@@ -186,3 +186,18 @@ onoff/sampler บน doc) อยู่ในคิวถัดไป
 5. ImageNet init ยังสำคัญมากข้ามเอกสาร: scratch ร่วง 9 จุด balanced
 → recipe ตัวจริง: resnet18/effb0 full fine-tune @64, **TrivialAugment (หรือ morph) + synthetic fonts**, ไม่ใช้ geometry,
    20 epochs + EMA + TTA, เลือก τ/sampler ตาม metric ที่คาดว่าอาจารย์ใช้ (กำลังรัน F1–F10)
+
+### C (stage-2) — fine-tune ต่อบนข้อมูลจริง 6 epochs, aug=full, stratified val (เทียบฐาน B_full ที่ init จาก ImageNet ตรง ๆ)
+
+| init | stage-1 | top-1 | balanced | macro-F1 | minority |
+|---|---|---:|---:|---:|---:|
+| ImageNet (B_full) | – | 0.9780 | 0.9644 | 0.9617 | 0.9583 |
+| ImageNet + synthetic เป็น extra data (B6_synth_all) | – | 0.9769 | 0.9804 | 0.9743 | – |
+| **ImageNet → synthetic fonts (B6a_ft)** | 8 ep บน 21.6k synth | **0.9792** | **0.9843** | **0.9815** | **0.9750** |
+| ImageNet → ลายมือ public (C1_ft) | 4 ep บน 101k ext | 0.9781 | 0.9812 | 0.9790 | 0.9667 |
+| C1 init + synthetic fill 300 (C1B6_ft) | | 0.9682 | 0.9808 | 0.9690 | 0.9667 |
+
+ข้อสรุป C: **การ pretrain ด้วยฟอนต์สังเคราะห์แล้วค่อย fine-tune** ให้ผลดีกว่าการเทข้อมูลสังเคราะห์รวมกับข้อมูลจริง
+(+0.4 balanced, +0.7 macro-F1) และดีกว่า ImageNet ตรง ๆ +2.0 balanced ที่งบเท่ากัน — เป็น transfer แบบ 2 ชั้น
+(ImageNet → โดเมนตัวอักษรไทยสังเคราะห์ → ข้อมูลจริง) ที่ตรงกับหัวข้อ Transfer Learning ของโจทย์ที่สุด;
+ลายมือ public ก็ช่วย (+1.7) แม้ต่างโดเมน → ทั้งสองแนวเข้าสู่รอบตัวจริง 20 epochs (F11–F17)
