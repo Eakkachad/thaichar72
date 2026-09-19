@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="637.842758pt" height="316.8pt" viewBox="0 0 637.842758 316.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="635.1433pt" height="856.8pt" viewBox="0 0 635.1433 856.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-09-19T14:58:14.668185</dc:date>
+    <dc:date>2026-09-19T22:59:59.034558</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,42 +21,42 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M -0 316.8 
-L 637.842758 316.8 
-L 637.842758 0 
-L -0 0 
+   <path d="M 0 856.8 
+L 635.1433 856.8 
+L 635.1433 0 
+L 0 0 
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 135.145312 272.6 
-L 620.543196 272.6 
-L 620.543196 34.016 
-L 135.145312 34.016 
+    <path d="M 146.578125 812.6 
+L 624.369947 812.6 
+L 624.369947 34.016 
+L 146.578125 34.016 
 z
 " style="fill: #ffffff"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
-      <path d="M 138.470209 272.6 
-L 138.470209 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 149.805785 812.6 
+L 149.805785 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_2">
       <defs>
-       <path id="m728037fbea" d="M 0 0 
+       <path id="mdbc9447937" d="M 0 0 
 L 0 3.5 
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m728037fbea" x="138.470209" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="149.805785" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
       <!-- 0.800 -->
-      <g transform="translate(126.210053 290.28) scale(0.1 -0.1)">
+      <g transform="translate(137.545629 830.28) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Regular-1f1" d="M 1760 -64 
 Q 1024 -64 633 521 
@@ -140,18 +140,18 @@ z
     </g>
     <g id="xtick_2">
      <g id="line2d_3">
-      <path d="M 198.459258 272.6 
-L 198.459258 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 208.040455 812.6 
+L 208.040455 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m728037fbea" x="198.459258" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="208.040455" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
       <!-- 0.825 -->
-      <g transform="translate(186.199102 290.28) scale(0.1 -0.1)">
+      <g transform="translate(195.780299 830.28) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Regular-1f3" d="M 410 506 
 Q 870 838 1328 1302 
@@ -212,18 +212,18 @@ z
     </g>
     <g id="xtick_3">
      <g id="line2d_5">
-      <path d="M 258.448307 272.6 
-L 258.448307 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 266.275125 812.6 
+L 266.275125 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_6">
       <g>
-       <use xlink:href="#m728037fbea" x="258.448307" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="266.275125" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
       <!-- 0.850 -->
-      <g transform="translate(246.188151 290.28) scale(0.1 -0.1)">
+      <g transform="translate(254.014969 830.28) scale(0.1 -0.1)">
        <use xlink:href="#Sarabun-Regular-1f1"/>
        <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
        <use xlink:href="#Sarabun-Regular-1f9" transform="translate(80.203125 0)"/>
@@ -234,18 +234,18 @@ L 258.448307 34.016
     </g>
     <g id="xtick_4">
      <g id="line2d_7">
-      <path d="M 318.437356 272.6 
-L 318.437356 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 324.509795 812.6 
+L 324.509795 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_8">
       <g>
-       <use xlink:href="#m728037fbea" x="318.437356" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="324.509795" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
       <!-- 0.875 -->
-      <g transform="translate(306.1772 290.28) scale(0.1 -0.1)">
+      <g transform="translate(312.249638 830.28) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Regular-1f8" d="M 1190 0 
 Q 1210 774 1322 1417 
@@ -271,18 +271,18 @@ z
     </g>
     <g id="xtick_5">
      <g id="line2d_9">
-      <path d="M 378.426406 272.6 
-L 378.426406 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 382.744464 812.6 
+L 382.744464 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#m728037fbea" x="378.426406" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="382.744464" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
       <!-- 0.900 -->
-      <g transform="translate(366.166249 290.28) scale(0.1 -0.1)">
+      <g transform="translate(370.484308 830.28) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Regular-1fa" d="M 621 378 
 Q 1280 525 1795 944 
@@ -325,18 +325,18 @@ z
     </g>
     <g id="xtick_6">
      <g id="line2d_11">
-      <path d="M 438.415455 272.6 
-L 438.415455 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 440.979134 812.6 
+L 440.979134 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_12">
       <g>
-       <use xlink:href="#m728037fbea" x="438.415455" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="440.979134" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
       <!-- 0.925 -->
-      <g transform="translate(426.155298 290.28) scale(0.1 -0.1)">
+      <g transform="translate(428.718978 830.28) scale(0.1 -0.1)">
        <use xlink:href="#Sarabun-Regular-1f1"/>
        <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
        <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
@@ -347,18 +347,18 @@ L 438.415455 34.016
     </g>
     <g id="xtick_7">
      <g id="line2d_13">
-      <path d="M 498.404504 272.6 
-L 498.404504 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 499.213804 812.6 
+L 499.213804 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_14">
       <g>
-       <use xlink:href="#m728037fbea" x="498.404504" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="499.213804" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_7">
       <!-- 0.950 -->
-      <g transform="translate(486.144347 290.28) scale(0.1 -0.1)">
+      <g transform="translate(486.953648 830.28) scale(0.1 -0.1)">
        <use xlink:href="#Sarabun-Regular-1f1"/>
        <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
        <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
@@ -369,18 +369,18 @@ L 498.404504 34.016
     </g>
     <g id="xtick_8">
      <g id="line2d_15">
-      <path d="M 558.393553 272.6 
-L 558.393553 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 557.448474 812.6 
+L 557.448474 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_16">
       <g>
-       <use xlink:href="#m728037fbea" x="558.393553" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="557.448474" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_8">
       <!-- 0.975 -->
-      <g transform="translate(546.133396 290.28) scale(0.1 -0.1)">
+      <g transform="translate(545.188318 830.28) scale(0.1 -0.1)">
        <use xlink:href="#Sarabun-Regular-1f1"/>
        <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
        <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
@@ -391,18 +391,18 @@ L 558.393553 34.016
     </g>
     <g id="xtick_9">
      <g id="line2d_17">
-      <path d="M 618.382602 272.6 
-L 618.382602 34.016 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
+      <path d="M 615.683144 812.6 
+L 615.683144 34.016 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.5; stroke-width: 0.8"/>
      </g>
      <g id="line2d_18">
       <g>
-       <use xlink:href="#m728037fbea" x="618.382602" y="272.6" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#mdbc9447937" x="615.683144" y="812.6" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_9">
       <!-- 1.000 -->
-      <g transform="translate(606.122446 290.28) scale(0.1 -0.1)">
+      <g transform="translate(603.422987 830.28) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Regular-1f2" d="M 826 467 
 L 1594 467 
@@ -429,7 +429,7 @@ z
     </g>
     <g id="text_10">
      <!-- Balanced Accuracy -->
-     <g transform="translate(335.684098 307.28) scale(0.1 -0.1)">
+     <g transform="translate(343.31388 847.28) scale(0.1 -0.1)">
       <defs>
        <path id="Sarabun-Bold-1e" d="M 435 4480 
 L 1888 4480 
@@ -711,17 +711,17 @@ z
     <g id="ytick_1">
      <g id="line2d_19">
       <defs>
-       <path id="ma83c600001" d="M 0 0 
+       <path id="md1c388f1fe" d="M 0 0 
 L -3.5 0 
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#ma83c600001" x="135.145312" y="261.755273" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="777.209818" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_11">
       <!-- SmallCNN Scratch (A0) -->
-      <g transform="translate(24.404687 267.095273) scale(0.1 -0.1)">
+      <g transform="translate(35.8375 782.549818) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Bold-94" d="M 1754 -64 
 Q 1248 -64 841 141 
@@ -939,12 +939,12 @@ z
     <g id="ytick_2">
      <g id="line2d_20">
       <g>
-       <use xlink:href="#ma83c600001" x="135.145312" y="189.457091" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="712.864033" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_12">
       <!-- ResNet-18 Base Aug (A1) -->
-      <g transform="translate(16.167187 194.797091) scale(0.1 -0.1)">
+      <g transform="translate(27.6 718.204033) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Bold-8d" d="M 435 4480 
 L 2016 4480 
@@ -1134,12 +1134,12 @@ z
     <g id="ytick_3">
      <g id="line2d_21">
       <g>
-       <use xlink:href="#ma83c600001" x="135.145312" y="117.158909" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="648.518248" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_13">
-      <!-- EfficientNet-B0 Base (A3) -->
-      <g transform="translate(12.715625 122.498909) scale(0.1 -0.1)">
+      <!-- E5_geometry_resnet18_64 -->
+      <g transform="translate(21.76875 653.858248) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Bold-2b" d="M 435 4480 
 L 3411 4480 
@@ -1156,6 +1156,146 @@ L 435 0
 L 435 4480 
 z
 " transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-1f6" d="M 1709 -64 
+Q 1254 -64 851 128 
+Q 448 320 237 634 
+L 634 1216 
+Q 864 947 1133 806 
+Q 1402 666 1683 666 
+Q 2042 666 2250 899 
+Q 2458 1133 2458 1542 
+Q 2458 1920 2275 2137 
+Q 2093 2355 1773 2355 
+Q 1581 2355 1405 2243 
+Q 1229 2131 1139 1946 
+L 378 1946 
+L 595 4480 
+L 3238 4480 
+L 3238 3750 
+L 1408 3750 
+L 1325 2778 
+Q 1414 2886 1616 2960 
+Q 1818 3034 2016 3034 
+Q 2419 3034 2729 2851 
+Q 3040 2669 3209 2333 
+Q 3379 1997 3379 1555 
+Q 3379 1069 3171 704 
+Q 2963 339 2585 137 
+Q 2208 -64 1709 -64 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-243" d="M 0 -1427 
+L 2291 -1427 
+L 2291 -2042 
+L 0 -2042 
+L 0 -1427 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-144" d="M 1850 -64 
+Q 1075 -64 640 377 
+Q 205 819 205 1600 
+Q 205 2381 640 2822 
+Q 1075 3264 1850 3264 
+Q 2624 3264 3062 2822 
+Q 3501 2381 3501 1600 
+Q 3501 819 3062 377 
+Q 2624 -64 1850 -64 
+z
+M 1850 544 
+Q 2240 544 2464 825 
+Q 2688 1107 2688 1600 
+Q 2688 2093 2464 2374 
+Q 2240 2656 1850 2656 
+Q 1459 2656 1238 2374 
+Q 1018 2093 1018 1600 
+Q 1018 1107 1238 825 
+Q 1459 544 1850 544 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-1f7" d="M 1843 -64 
+Q 1363 -64 998 150 
+Q 634 365 435 758 
+Q 237 1152 237 1664 
+Q 237 2394 605 3040 
+Q 973 3686 1603 4099 
+Q 2234 4512 2995 4576 
+L 3085 3885 
+Q 2579 3802 2160 3542 
+Q 1741 3283 1504 2874 
+Q 1683 2963 1888 2963 
+Q 2586 2963 2986 2553 
+Q 3386 2144 3386 1446 
+Q 3386 998 3194 656 
+Q 3002 314 2653 125 
+Q 2304 -64 1843 -64 
+z
+M 1837 672 
+Q 2131 672 2307 886 
+Q 2483 1101 2483 1453 
+Q 2483 1805 2307 2016 
+Q 2131 2227 1837 2227 
+Q 1542 2227 1363 2016 
+Q 1184 1805 1184 1453 
+Q 1184 1094 1363 883 
+Q 1542 672 1837 672 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-1f5" d="M 2099 698 
+L 122 698 
+L 122 1338 
+L 2042 4480 
+L 3021 4480 
+L 3021 1427 
+L 3494 1427 
+L 3494 698 
+L 3021 698 
+L 3021 0 
+L 2099 0 
+L 2099 698 
+z
+M 2099 1427 
+L 2099 3232 
+L 986 1427 
+L 2099 1427 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-2b"/>
+       <use xlink:href="#Sarabun-Bold-1f6" transform="translate(57.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(113.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-10f" transform="translate(149.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(204.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-144" transform="translate(259.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-138" transform="translate(317 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(401.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(455.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(497.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-198" transform="translate(537.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(588 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(623.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(663.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(719.703125 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(763.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(820.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(874.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(916.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(972.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(1029.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(1065.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(1121.59375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="584.172463" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- EfficientNet-B0 Base (A3) -->
+      <g transform="translate(24.148438 589.512463) scale(0.1 -0.1)">
+       <defs>
         <path id="Sarabun-Bold-10e" d="M 595 2643 
 L 70 2643 
 L 70 3200 
@@ -1297,15 +1437,47 @@ z
       </g>
      </g>
     </g>
-    <g id="ytick_4">
-     <g id="line2d_22">
+    <g id="ytick_5">
+     <g id="line2d_23">
       <g>
-       <use xlink:href="#ma83c600001" x="135.145312" y="44.860727" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="519.826678" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_14">
+     <g id="text_15">
+      <!-- E6_onoff_resnet18_64 -->
+      <g transform="translate(40.878125 525.166678) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Bold-2b"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(57.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(113.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-144" transform="translate(149.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(207.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-144" transform="translate(263.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-10e" transform="translate(321.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-10e" transform="translate(359.203125 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(396.90625 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(432.703125 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(472.40625 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(528.609375 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(572.703125 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(629 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(683.203125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(725.203125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(781.703125 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(838.203125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(874 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(930.5 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="455.480893" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
       <!-- ResNet-18 Full Aug (B_full) -->
-      <g transform="translate(7.2 50.200727) scale(0.1 -0.1)">
+      <g transform="translate(18.632812 460.820893) scale(0.1 -0.1)">
        <defs>
         <path id="Sarabun-Bold-3d" d="M 435 4480 
 L 3443 4480 
@@ -1318,13 +1490,6 @@ L 1357 1811
 L 1357 0 
 L 435 0 
 L 435 4480 
-z
-" transform="scale(0.015625)"/>
-        <path id="Sarabun-Bold-243" d="M 0 -1427 
-L 2291 -1427 
-L 2291 -2042 
-L 0 -2042 
-L 0 -1427 
 z
 " transform="scale(0.015625)"/>
        </defs>
@@ -1358,50 +1523,387 @@ z
       </g>
      </g>
     </g>
+    <g id="ytick_7">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="391.135107" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <!-- B_randaug_resnet18_64 -->
+      <g transform="translate(34.009375 396.475107) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Bold-1e"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(60.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(96.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-d3" transform="translate(136.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(189 0)"/>
+       <use xlink:href="#Sarabun-Bold-f5" transform="translate(245.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-d3" transform="translate(301.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-179" transform="translate(354 0)"/>
+       <use xlink:href="#Sarabun-Bold-10f" transform="translate(410.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(465.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(501.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(541.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(597.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(641.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(697.6875 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(751.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(793.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(850.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(906.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(942.6875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(999.1875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="326.789322" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <!-- B6_synth_all_resnet18_64 -->
+      <g transform="translate(25.43125 332.129322) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Bold-1e"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(60.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(117.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(152.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-198" transform="translate(196.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(247.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(303.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-116" transform="translate(345.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(402.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-d3" transform="translate(438.28125 0)"/>
+       <use xlink:href="#Sarabun-Bold-12f" transform="translate(491.1875 0)"/>
+       <use xlink:href="#Sarabun-Bold-12f" transform="translate(521.28125 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(551.375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(587.171875 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(626.875 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(683.078125 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(727.171875 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(783.46875 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(837.671875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(879.671875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(936.171875 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(992.671875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(1028.46875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(1084.96875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="262.443537" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <!-- B_none_resnet18_64 -->
+      <g transform="translate(48.459375 267.783537) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Bold-1e"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(60.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(96.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-144" transform="translate(152.6875 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(210.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(266.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(321.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(356.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(396.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(452.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(496.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(553.1875 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(607.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(649.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(705.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(762.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(798.1875 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(854.6875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="198.097752" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <!-- B_trivial_resnet18_64 -->
+      <g transform="translate(43.720312 203.437752) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Bold-191" d="M 3296 3200 
+L 2042 0 
+L 1338 0 
+L 83 3200 
+L 928 3200 
+L 1690 998 
+L 2451 3200 
+L 3296 3200 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-1e"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(60.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(96.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(138.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-11b" transform="translate(178.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-191" transform="translate(205.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-11b" transform="translate(258.1875 0)"/>
+       <use xlink:href="#Sarabun-Bold-d3" transform="translate(285.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-12f" transform="translate(338.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(368.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(404.28125 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(443.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(500.1875 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(544.28125 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(600.578125 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(654.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(696.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(753.28125 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(809.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(845.578125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(902.078125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="133.751967" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <!-- B_morph_resnet18_64 -->
+      <g transform="translate(41.389062 139.091967) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Bold-15e" d="M 339 2349 
+Q 339 2867 314 3200 
+L 1082 3200 
+Q 1101 3008 1101 2778 
+L 1114 2778 
+Q 1274 3008 1530 3136 
+Q 1786 3264 2099 3264 
+Q 2707 3264 3059 2816 
+Q 3411 2368 3411 1594 
+Q 3411 819 3056 377 
+Q 2701 -64 2074 -64 
+Q 1766 -64 1529 38 
+Q 1293 141 1178 326 
+L 1158 326 
+L 1158 -1549 
+L 339 -1549 
+L 339 2349 
+z
+M 1894 544 
+Q 2234 544 2413 822 
+Q 2592 1101 2592 1619 
+Q 2592 2637 1907 2637 
+Q 1574 2637 1366 2441 
+Q 1158 2246 1158 1926 
+L 1158 1267 
+Q 1158 960 1369 752 
+Q 1581 544 1894 544 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-1e"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(60.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-138" transform="translate(96.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-144" transform="translate(180.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(238.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(278.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-116" transform="translate(335.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(391.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(427.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(467.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(523.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(567.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(623.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(678.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(720.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(776.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(833.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(868.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(925.390625 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#md1c388f1fe" x="146.578125" y="69.406182" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <!-- D3_sampler_sqrt_resnet18_64 -->
+      <g transform="translate(7.2 74.746182) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Bold-25" d="M 435 4480 
+L 2035 4480 
+Q 3872 4480 3872 2323 
+Q 3872 1491 3667 982 
+Q 3462 474 3024 237 
+Q 2586 0 1862 0 
+L 435 0 
+L 435 4480 
+z
+M 1958 736 
+Q 2323 736 2540 896 
+Q 2758 1056 2857 1401 
+Q 2957 1747 2957 2323 
+Q 2957 3085 2739 3414 
+Q 2522 3744 2016 3744 
+L 1357 3744 
+L 1357 736 
+L 1958 736 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-160" d="M 2458 358 
+L 2438 358 
+Q 2310 160 2067 48 
+Q 1824 -64 1523 -64 
+Q 909 -64 557 381 
+Q 205 826 205 1600 
+Q 205 2381 557 2822 
+Q 909 3264 1536 3264 
+Q 1856 3264 2105 3142 
+Q 2355 3021 2496 2803 
+L 2509 2803 
+Q 2509 3046 2528 3200 
+L 3302 3200 
+Q 3270 2739 3270 2349 
+L 3270 -1549 
+L 2458 -1549 
+L 2458 358 
+z
+M 1722 544 
+Q 2035 544 2246 752 
+Q 2458 960 2458 1267 
+L 2458 1926 
+Q 2458 2240 2250 2438 
+Q 2042 2637 1709 2637 
+Q 1370 2637 1194 2381 
+Q 1018 2125 1018 1619 
+Q 1018 1101 1200 822 
+Q 1382 544 1722 544 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-25"/>
+       <use xlink:href="#Sarabun-Bold-1f4" transform="translate(64.203125 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(120.703125 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(156.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-d3" transform="translate(200.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-138" transform="translate(253.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(338.09375 0)"/>
+       <use xlink:href="#Sarabun-Bold-12f" transform="translate(394.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(421.6875 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(475.890625 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(515.59375 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(551.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-160" transform="translate(595.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(651.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(691.6875 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(733.6875 0)"/>
+       <use xlink:href="#Sarabun-Bold-161" transform="translate(769.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(809.1875 0)"/>
+       <use xlink:href="#Sarabun-Bold-168" transform="translate(865.390625 0)"/>
+       <use xlink:href="#Sarabun-Bold-13a" transform="translate(909.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-fb" transform="translate(965.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-171" transform="translate(1019.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f2" transform="translate(1061.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(1118.484375 0)"/>
+       <use xlink:href="#Sarabun-Bold-243" transform="translate(1174.984375 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(1210.78125 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(1267.28125 0)"/>
+      </g>
+     </g>
+    </g>
    </g>
-   <g id="line2d_23">
-    <path d="M 423.709969 261.755273 
-L 207.132171 261.755273 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   <g id="line2d_31">
+    <path d="M 426.703711 777.209818 
+L 216.459729 777.209818 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
    </g>
-   <g id="line2d_24">
-    <path d="M 568.876192 189.457091 
-L 465.108178 189.457091 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   <g id="line2d_32">
+    <path d="M 567.624548 712.864033 
+L 466.89123 712.864033 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
    </g>
-   <g id="line2d_25">
-    <path d="M 572.551957 117.158909 
-L 508.899754 117.158909 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   <g id="line2d_33">
+    <path d="M 543.455417 648.518248 
+L 478.153 648.518248 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
    </g>
-   <g id="line2d_26">
-    <path d="M 532.917799 44.860727 
-L 525.056029 44.860727 
-" clip-path="url(#pb2932f0520)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   <g id="line2d_34">
+    <path d="M 571.192816 584.172463 
+L 509.40212 584.172463 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_35">
+    <path d="M 527.196666 519.826678 
+L 523.154443 519.826678 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_36">
+    <path d="M 532.717758 455.480893 
+L 525.085906 455.480893 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_37">
+    <path d="M 574.804335 391.135107 
+L 545.701747 391.135107 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_38">
+    <path d="M 570.125503 326.789322 
+L 558.474748 326.789322 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_39">
+    <path d="M 572.52979 262.443537 
+L 560.031151 262.443537 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_40">
+    <path d="M 575.320224 198.097752 
+L 565.35697 198.097752 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_41">
+    <path d="M 544.350925 133.751967 
+L 565.875525 133.751967 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_42">
+    <path d="M 577.782212 69.406182 
+L 572.790161 69.406182 
+" clip-path="url(#p5719abb459)" style="fill: none; stroke: #999999; stroke-width: 2.8; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
-    <path d="M 135.145312 272.6 
-L 135.145312 34.016 
+    <path d="M 146.578125 812.6 
+L 146.578125 34.016 
 " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_4">
-    <path d="M 620.543196 272.6 
-L 620.543196 34.016 
+    <path d="M 624.369947 812.6 
+L 624.369947 34.016 
 " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_5">
-    <path d="M 135.145313 272.6 
-L 620.543196 272.6 
+    <path d="M 146.578125 812.6 
+L 624.369947 812.6 
 " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_6">
-    <path d="M 135.145313 34.016 
-L 620.543196 34.016 
+    <path d="M 146.578125 34.016 
+L 624.369947 34.016 
 " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m3cba090ef9" d="M 0 4.873397 
+     <path id="m2d50b68945" d="M 0 4.873397 
 C 1.29244 4.873397 2.532119 4.359905 3.446012 3.446012 
 C 4.359905 2.532119 4.873397 1.29244 4.873397 0 
 C 4.873397 -1.29244 4.359905 -2.532119 3.446012 -3.446012 
@@ -1413,26 +1915,26 @@ C -2.532119 4.359905 -1.29244 4.873397 0 4.873397
 z
 " style="stroke: #2b5c8f"/>
     </defs>
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#m3cba090ef9" x="423.709969" y="261.755273" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="426.703711" y="777.209818" style="fill: #2b5c8f; stroke: #2b5c8f"/>
     </g>
    </g>
    <g id="PathCollection_2">
     <defs>
-     <path id="mad003cd38e" d="M -0 6.892024 
+     <path id="m03ac596c2b" d="M -0 6.892024 
 L 6.892024 0 
 L 0 -6.892024 
 L -6.892024 -0 
 z
 " style="stroke: #d95f02"/>
     </defs>
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#mad003cd38e" x="207.132171" y="261.755273" style="fill: #d95f02; stroke: #d95f02"/>
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="216.459729" y="777.209818" style="fill: #d95f02; stroke: #d95f02"/>
     </g>
    </g>
-   <g id="text_15">
+   <g id="text_23">
     <!-- 0.9189 -->
-    <g style="fill: #2b5c8f" transform="translate(411.246219 246.8856) scale(0.08 -0.08)">
+    <g style="fill: #2b5c8f" transform="translate(414.239961 763.771577) scale(0.08 -0.08)">
      <defs>
       <path id="Sarabun-Bold-223" d="M 934 -58 
 Q 698 -58 544 96 
@@ -1483,9 +1985,9 @@ z
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_16">
+   <g id="text_24">
     <!-- 0.8286 -->
-    <g style="fill: #d95f02" transform="translate(194.668421 283.312945) scale(0.08 -0.08)">
+    <g style="fill: #d95f02" transform="translate(203.995979 797.33606) scale(0.08 -0.08)">
      <defs>
       <path id="Sarabun-Bold-1f3" d="M 358 666 
 Q 787 966 1228 1385 
@@ -1508,34 +2010,6 @@ L 358 0
 L 358 666 
 z
 " transform="scale(0.015625)"/>
-      <path id="Sarabun-Bold-1f7" d="M 1843 -64 
-Q 1363 -64 998 150 
-Q 634 365 435 758 
-Q 237 1152 237 1664 
-Q 237 2394 605 3040 
-Q 973 3686 1603 4099 
-Q 2234 4512 2995 4576 
-L 3085 3885 
-Q 2579 3802 2160 3542 
-Q 1741 3283 1504 2874 
-Q 1683 2963 1888 2963 
-Q 2586 2963 2986 2553 
-Q 3386 2144 3386 1446 
-Q 3386 998 3194 656 
-Q 3002 314 2653 125 
-Q 2304 -64 1843 -64 
-z
-M 1837 672 
-Q 2131 672 2307 886 
-Q 2483 1101 2483 1453 
-Q 2483 1805 2307 2016 
-Q 2131 2227 1837 2227 
-Q 1542 2227 1363 2016 
-Q 1184 1805 1184 1453 
-Q 1184 1094 1363 883 
-Q 1542 672 1837 672 
-z
-" transform="scale(0.015625)"/>
      </defs>
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
@@ -1545,40 +2019,9 @@ z
      <use xlink:href="#Sarabun-Bold-1f7" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_17">
+   <g id="text_25">
     <!-- -9.03 pp -->
-    <g style="fill: #d73027" transform="translate(299.743219 248.130298) scale(0.085 -0.085)">
-     <defs>
-      <path id="Sarabun-Bold-15e" d="M 339 2349 
-Q 339 2867 314 3200 
-L 1082 3200 
-Q 1101 3008 1101 2778 
-L 1114 2778 
-Q 1274 3008 1530 3136 
-Q 1786 3264 2099 3264 
-Q 2707 3264 3059 2816 
-Q 3411 2368 3411 1594 
-Q 3411 819 3056 377 
-Q 2701 -64 2074 -64 
-Q 1766 -64 1529 38 
-Q 1293 141 1178 326 
-L 1158 326 
-L 1158 -1549 
-L 339 -1549 
-L 339 2349 
-z
-M 1894 544 
-Q 2234 544 2413 822 
-Q 2592 1101 2592 1619 
-Q 2592 2637 1907 2637 
-Q 1574 2637 1366 2441 
-Q 1158 2246 1158 1926 
-L 1158 1267 
-Q 1158 960 1369 752 
-Q 1581 544 1894 544 
-z
-" transform="scale(0.015625)"/>
-     </defs>
+    <g style="fill: #d73027" transform="translate(305.903868 764.857227) scale(0.085 -0.085)">
      <use xlink:href="#Sarabun-Bold-23c"/>
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(34 0)"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
@@ -1590,18 +2033,18 @@ z
     </g>
    </g>
    <g id="PathCollection_3">
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#m3cba090ef9" x="568.876192" y="189.457091" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="567.624548" y="712.864033" style="fill: #2b5c8f; stroke: #2b5c8f"/>
     </g>
    </g>
    <g id="PathCollection_4">
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#mad003cd38e" x="465.108178" y="189.457091" style="fill: #d95f02; stroke: #d95f02"/>
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="466.89123" y="712.864033" style="fill: #d95f02; stroke: #d95f02"/>
     </g>
    </g>
-   <g id="text_18">
+   <g id="text_26">
     <!-- 0.9794 -->
-    <g style="fill: #2b5c8f" transform="translate(556.412442 174.587418) scale(0.08 -0.08)">
+    <g style="fill: #2b5c8f" transform="translate(555.160798 699.425792) scale(0.08 -0.08)">
      <defs>
       <path id="Sarabun-Bold-1f8" d="M 1088 0 
 Q 1126 1171 1382 2070 
@@ -1615,25 +2058,6 @@ Q 2010 1158 2010 0
 L 1088 0 
 z
 " transform="scale(0.015625)"/>
-      <path id="Sarabun-Bold-1f5" d="M 2099 698 
-L 122 698 
-L 122 1338 
-L 2042 4480 
-L 3021 4480 
-L 3021 1427 
-L 3494 1427 
-L 3494 698 
-L 3021 698 
-L 3021 0 
-L 2099 0 
-L 2099 698 
-z
-M 2099 1427 
-L 2099 3232 
-L 986 1427 
-L 2099 1427 
-z
-" transform="scale(0.015625)"/>
      </defs>
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
@@ -1643,9 +2067,9 @@ z
      <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_19">
+   <g id="text_27">
     <!-- 0.9361 -->
-    <g style="fill: #d95f02" transform="translate(452.644428 211.014764) scale(0.08 -0.08)">
+    <g style="fill: #d95f02" transform="translate(454.42748 732.990274) scale(0.08 -0.08)">
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
@@ -1654,9 +2078,9 @@ z
      <use xlink:href="#Sarabun-Bold-1f2" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_20">
+   <g id="text_28">
     <!-- -4.32 pp -->
-    <g style="fill: #d73027" transform="translate(501.314334 175.832116) scale(0.085 -0.085)">
+    <g style="fill: #d73027" transform="translate(501.580037 700.511442) scale(0.085 -0.085)">
      <use xlink:href="#Sarabun-Bold-23c"/>
      <use xlink:href="#Sarabun-Bold-1f5" transform="translate(34 0)"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
@@ -1668,18 +2092,63 @@ z
     </g>
    </g>
    <g id="PathCollection_5">
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#m3cba090ef9" x="572.551957" y="117.158909" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="543.455417" y="648.518248" style="fill: #2b5c8f; stroke: #2b5c8f"/>
     </g>
    </g>
    <g id="PathCollection_6">
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#mad003cd38e" x="508.899754" y="117.158909" style="fill: #d95f02; stroke: #d95f02"/>
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="478.153" y="648.518248" style="fill: #d95f02; stroke: #d95f02"/>
     </g>
    </g>
-   <g id="text_21">
+   <g id="text_29">
+    <!-- 0.9690 -->
+    <g style="fill: #2b5c8f" transform="translate(530.991667 635.080007) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_30">
+    <!-- 0.9410 -->
+    <g style="fill: #d95f02" transform="translate(465.68925 668.644489) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_31">
+    <!-- -2.80 pp -->
+    <g style="fill: #d73027" transform="translate(495.126357 636.165657) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_7">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="571.192816" y="584.172463" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_8">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="509.40212" y="584.172463" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_32">
     <!-- 0.9809 -->
-    <g style="fill: #2b5c8f" transform="translate(560.088207 102.289236) scale(0.08 -0.08)">
+    <g style="fill: #2b5c8f" transform="translate(558.729066 570.734221) scale(0.08 -0.08)">
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
@@ -1688,39 +2157,9 @@ z
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_22">
+   <g id="text_33">
     <!-- 0.9544 -->
-    <g style="fill: #d95f02" transform="translate(496.436004 138.716582) scale(0.08 -0.08)">
-     <defs>
-      <path id="Sarabun-Bold-1f6" d="M 1709 -64 
-Q 1254 -64 851 128 
-Q 448 320 237 634 
-L 634 1216 
-Q 864 947 1133 806 
-Q 1402 666 1683 666 
-Q 2042 666 2250 899 
-Q 2458 1133 2458 1542 
-Q 2458 1920 2275 2137 
-Q 2093 2355 1773 2355 
-Q 1581 2355 1405 2243 
-Q 1229 2131 1139 1946 
-L 378 1946 
-L 595 4480 
-L 3238 4480 
-L 3238 3750 
-L 1408 3750 
-L 1325 2778 
-Q 1414 2886 1616 2960 
-Q 1818 3034 2016 3034 
-Q 2419 3034 2729 2851 
-Q 3040 2669 3209 2333 
-Q 3379 1997 3379 1555 
-Q 3379 1069 3171 704 
-Q 2963 339 2585 137 
-Q 2208 -64 1709 -64 
-z
-" transform="scale(0.015625)"/>
-     </defs>
+    <g style="fill: #d95f02" transform="translate(496.93837 604.298704) scale(0.08 -0.08)">
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
@@ -1729,9 +2168,9 @@ z
      <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_23">
+   <g id="text_34">
     <!-- -2.65 pp -->
-    <g style="fill: #d73027" transform="translate(525.048004 103.533934) scale(0.085 -0.085)">
+    <g style="fill: #d73027" transform="translate(524.619617 571.819872) scale(0.085 -0.085)">
      <use xlink:href="#Sarabun-Bold-23c"/>
      <use xlink:href="#Sarabun-Bold-1f3" transform="translate(34 0)"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
@@ -1742,19 +2181,64 @@ z
      <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
     </g>
    </g>
-   <g id="PathCollection_7">
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#m3cba090ef9" x="532.917799" y="44.860727" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+   <g id="PathCollection_9">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="527.196666" y="519.826678" style="fill: #2b5c8f; stroke: #2b5c8f"/>
     </g>
    </g>
-   <g id="PathCollection_8">
-    <g clip-path="url(#pb2932f0520)">
-     <use xlink:href="#mad003cd38e" x="525.056029" y="44.860727" style="fill: #d95f02; stroke: #d95f02"/>
+   <g id="PathCollection_10">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="523.154443" y="519.826678" style="fill: #d95f02; stroke: #d95f02"/>
     </g>
    </g>
-   <g id="text_24">
+   <g id="text_35">
+    <!-- 0.9620 -->
+    <g style="fill: #2b5c8f" transform="translate(514.732916 506.388436) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_36">
+    <!-- 0.9603 -->
+    <g style="fill: #d95f02" transform="translate(510.690693 539.952919) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f4" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_37">
+    <!-- -0.17 pp -->
+    <g style="fill: #d73027" transform="translate(509.497703 507.474086) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_11">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="532.717758" y="455.480893" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_12">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="525.085906" y="455.480893" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_38">
     <!-- 0.9644 -->
-    <g style="fill: #2b5c8f" transform="translate(520.454049 29.991055) scale(0.08 -0.08)">
+    <g style="fill: #2b5c8f" transform="translate(520.254008 442.042651) scale(0.08 -0.08)">
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
@@ -1763,9 +2247,9 @@ z
      <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_25">
+   <g id="text_39">
     <!-- 0.9611 -->
-    <g style="fill: #d95f02" transform="translate(512.592279 66.4184) scale(0.08 -0.08)">
+    <g style="fill: #d95f02" transform="translate(512.622156 475.607134) scale(0.08 -0.08)">
      <use xlink:href="#Sarabun-Bold-1f1"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
      <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
@@ -1774,9 +2258,9 @@ z
      <use xlink:href="#Sarabun-Bold-1f2" transform="translate(255.09375 0)"/>
     </g>
    </g>
-   <g id="text_26">
+   <g id="text_40">
     <!-- -0.33 pp -->
-    <g style="fill: #d73027" transform="translate(513.309062 31.235753) scale(0.085 -0.085)">
+    <g style="fill: #d73027" transform="translate(513.223981 443.128301) scale(0.085 -0.085)">
      <use xlink:href="#Sarabun-Bold-23c"/>
      <use xlink:href="#Sarabun-Bold-1f1" transform="translate(34 0)"/>
      <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
@@ -1787,9 +2271,296 @@ z
      <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
     </g>
    </g>
-   <g id="text_27">
+   <g id="PathCollection_13">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="574.804335" y="391.135107" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_14">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="545.701747" y="391.135107" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_41">
+    <!-- 0.9825 -->
+    <g style="fill: #2b5c8f" transform="translate(562.340585 377.696866) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_42">
+    <!-- 0.9700 -->
+    <g style="fill: #d95f02" transform="translate(533.237997 411.261349) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_43">
+    <!-- -1.25 pp -->
+    <g style="fill: #d73027" transform="translate(544.575189 378.782516) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_15">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="570.125503" y="326.789322" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_16">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="558.474748" y="326.789322" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_44">
+    <!-- 0.9804 -->
+    <g style="fill: #2b5c8f" transform="translate(557.661753 313.351081) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_45">
+    <!-- 0.9754 -->
+    <g style="fill: #d95f02" transform="translate(546.010998 346.915564) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_46">
+    <!-- -0.50 pp -->
+    <g style="fill: #d73027" transform="translate(548.622274 314.436731) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_17">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="572.52979" y="262.443537" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_18">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="560.031151" y="262.443537" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_47">
+    <!-- 0.9815 -->
+    <g style="fill: #2b5c8f" transform="translate(560.06604 249.005296) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_48">
+    <!-- 0.9761 -->
+    <g style="fill: #d95f02" transform="translate(547.567401 282.569779) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_49">
+    <!-- -0.54 pp -->
+    <g style="fill: #d73027" transform="translate(550.602619 250.090946) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_19">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="575.320224" y="198.097752" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_20">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="565.35697" y="198.097752" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_50">
+    <!-- 0.9827 -->
+    <g style="fill: #2b5c8f" transform="translate(562.856474 184.659511) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_51">
+    <!-- 0.9784 -->
+    <g style="fill: #d95f02" transform="translate(552.89322 218.223993) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_52">
+    <!-- -0.43 pp -->
+    <g style="fill: #d73027" transform="translate(554.660746 185.745161) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f4" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_21">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="544.350925" y="133.751967" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_22">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="565.875525" y="133.751967" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_53">
+    <!-- 0.9694 -->
+    <g style="fill: #2b5c8f" transform="translate(531.887175 120.313726) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_54">
+    <!-- 0.9786 -->
+    <g style="fill: #d95f02" transform="translate(553.411775 153.878208) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_55">
+    <!-- +0.92 pp -->
+    <g style="fill: #1b9e77" transform="translate(538.25799 121.399376) scale(0.085 -0.085)">
+     <defs>
+      <path id="Sarabun-Bold-26c" d="M 1581 1370 
+L 301 1370 
+L 301 1984 
+L 1581 1984 
+L 1581 3354 
+L 2362 3354 
+L 2362 1984 
+L 3648 1984 
+L 3648 1370 
+L 2362 1370 
+L 2362 0 
+L 1581 0 
+L 1581 1370 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Sarabun-Bold-26c"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(61.703125 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(118.203125 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(147.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(203.796875 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(260.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(283.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(340.09375 0)"/>
+    </g>
+   </g>
+   <g id="PathCollection_23">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m2d50b68945" x="577.782212" y="69.406182" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="PathCollection_24">
+    <g clip-path="url(#p5719abb459)">
+     <use xlink:href="#m03ac596c2b" x="572.790161" y="69.406182" style="fill: #d95f02; stroke: #d95f02"/>
+    </g>
+   </g>
+   <g id="text_56">
+    <!-- 0.9837 -->
+    <g style="fill: #2b5c8f" transform="translate(565.318462 55.96794) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f4" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f8" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_57">
+    <!-- 0.9816 -->
+    <g style="fill: #d95f02" transform="translate(560.326411 89.532423) scale(0.08 -0.08)">
+     <use xlink:href="#Sarabun-Bold-1f1"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(56.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(85.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f9" transform="translate(142.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(198.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(255.09375 0)"/>
+    </g>
+   </g>
+   <g id="text_58">
+    <!-- -0.21 pp -->
+    <g style="fill: #d73027" transform="translate(559.608335 57.053591) scale(0.085 -0.085)">
+     <use xlink:href="#Sarabun-Bold-23c"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(34 0)"/>
+     <use xlink:href="#Sarabun-Bold-223" transform="translate(90.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f3" transform="translate(119.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(176.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(232.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(255.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(312.390625 0)"/>
+    </g>
+   </g>
+   <g id="text_59">
     <!-- Figure 7: Out-of-Distribution Generalization Gap (Stratified → Document-Disjoint) -->
-    <g transform="translate(156.739567 20.016) scale(0.12 -0.12)">
+    <g transform="translate(164.369349 20.016) scale(0.12 -0.12)">
      <defs>
       <path id="Sarabun-Bold-225" d="M 934 2074 
 Q 698 2074 544 2227 
@@ -1835,47 +2606,6 @@ Q 1702 3814 1411 3395
 Q 1120 2976 1120 2240 
 Q 1120 1504 1411 1085 
 Q 1702 666 2208 666 
-z
-" transform="scale(0.015625)"/>
-      <path id="Sarabun-Bold-144" d="M 1850 -64 
-Q 1075 -64 640 377 
-Q 205 819 205 1600 
-Q 205 2381 640 2822 
-Q 1075 3264 1850 3264 
-Q 2624 3264 3062 2822 
-Q 3501 2381 3501 1600 
-Q 3501 819 3062 377 
-Q 2624 -64 1850 -64 
-z
-M 1850 544 
-Q 2240 544 2464 825 
-Q 2688 1107 2688 1600 
-Q 2688 2093 2464 2374 
-Q 2240 2656 1850 2656 
-Q 1459 2656 1238 2374 
-Q 1018 2093 1018 1600 
-Q 1018 1107 1238 825 
-Q 1459 544 1850 544 
-z
-" transform="scale(0.015625)"/>
-      <path id="Sarabun-Bold-25" d="M 435 4480 
-L 2035 4480 
-Q 3872 4480 3872 2323 
-Q 3872 1491 3667 982 
-Q 3462 474 3024 237 
-Q 2586 0 1862 0 
-L 435 0 
-L 435 4480 
-z
-M 1958 736 
-Q 2323 736 2540 896 
-Q 2758 1056 2857 1401 
-Q 2957 1747 2957 2323 
-Q 2957 3085 2739 3414 
-Q 2522 3744 2016 3744 
-L 1357 3744 
-L 1357 736 
-L 1958 736 
 z
 " transform="scale(0.015625)"/>
       <path id="Sarabun-Bold-ee" d="M 2048 -64 
@@ -2066,26 +2796,26 @@ z
    </g>
    <g id="legend_1">
     <g id="patch_7">
-     <path d="M 487.693352 268.1 
-L 614.243196 268.1 
-Q 616.043196 268.1 616.043196 266.3 
-L 616.043196 233.772875 
-Q 616.043196 231.972875 614.243196 231.972875 
-L 487.693352 231.972875 
-Q 485.893352 231.972875 485.893352 233.772875 
-L 485.893352 266.3 
-Q 485.893352 268.1 487.693352 268.1 
+     <path d="M 491.520104 808.1 
+L 618.069947 808.1 
+Q 619.869947 808.1 619.869947 806.3 
+L 619.869947 773.772875 
+Q 619.869947 771.972875 618.069947 771.972875 
+L 491.520104 771.972875 
+Q 489.720104 771.972875 489.720104 773.772875 
+L 489.720104 806.3 
+Q 489.720104 808.1 491.520104 808.1 
 z
 " style="fill: #ffffff; opacity: 0.95; stroke: #cccccc; stroke-linejoin: miter"/>
     </g>
-    <g id="PathCollection_9">
+    <g id="PathCollection_25">
      <g>
-      <use xlink:href="#m3cba090ef9" x="498.493352" y="242.822375" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+      <use xlink:href="#m2d50b68945" x="502.320104" y="782.822375" style="fill: #2b5c8f; stroke: #2b5c8f"/>
      </g>
     </g>
-    <g id="text_28">
+    <g id="text_60">
      <!-- Stratified (_T4) -->
-     <g transform="translate(514.693352 245.184875) scale(0.09 -0.09)">
+     <g transform="translate(518.520104 785.184875) scale(0.09 -0.09)">
       <defs>
        <path id="Sarabun-Regular-94" d="M 1670 -64 
 Q 1235 -64 854 121 
@@ -2388,14 +3118,14 @@ z
       <use xlink:href="#Sarabun-Regular-235" transform="translate(600.90625 0)"/>
      </g>
     </g>
-    <g id="PathCollection_10">
+    <g id="PathCollection_26">
      <g>
-      <use xlink:href="#mad003cd38e" x="498.493352" y="259.535937" style="fill: #d95f02; stroke: #d95f02"/>
+      <use xlink:href="#m03ac596c2b" x="502.320104" y="799.535938" style="fill: #d95f02; stroke: #d95f02"/>
      </g>
     </g>
-    <g id="text_29">
+    <g id="text_61">
      <!-- Document-Disjoint (_doc) -->
-     <g transform="translate(514.693352 261.898437) scale(0.09 -0.09)">
+     <g transform="translate(518.520104 801.898438) scale(0.09 -0.09)">
       <defs>
        <path id="Sarabun-Regular-25" d="M 518 4480 
 L 1939 4480 
@@ -2626,8 +3356,8 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pb2932f0520">
-   <rect x="135.145312" y="34.016" width="485.397884" height="238.584"/>
+  <clipPath id="p5719abb459">
+   <rect x="146.578125" y="34.016" width="477.791822" height="778.584"/>
   </clipPath>
  </defs>
 </svg>
