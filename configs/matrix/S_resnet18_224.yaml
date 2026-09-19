@@ -1,0 +1,13 @@
+model: resnet18
+mode: full
+img_size: 224
+epochs: 6
+batch_size: 64
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+subset_frac: 1.0
+exp_id: S_resnet18_224
+aug: full

@@ -1,0 +1,14 @@
+model: resnet18
+mode: full
+img_size: 64
+epochs: 6
+batch_size: 128
+loss: cb_focal
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+subset_frac: 1.0
+exp_id: D2_cbfocal_resnet18_64
+aug: full
+cb_beta: 0.999

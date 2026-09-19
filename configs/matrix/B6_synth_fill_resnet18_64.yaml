@@ -1,0 +1,17 @@
+model: resnet18
+mode: full
+img_size: 64
+epochs: 6
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+subset_frac: 1.0
+exp_id: B6_synth_fill_resnet18_64
+aug: full
+extra_train_index: data/synth/index.csv
+extra_train_cache: data/synth/glyphs_synth.npz
+extra_mode: fill
+extra_fill_to: 300

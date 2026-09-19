@@ -1,0 +1,14 @@
+model: resnet18
+mode: full
+img_size: 64
+epochs: 6
+batch_size: 128
+loss: weighted_ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+subset_frac: 1.0
+exp_id: D1_wce_inv_resnet18_64
+aug: full
+ce_weight_power: 1.0
