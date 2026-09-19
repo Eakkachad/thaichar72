@@ -27,7 +27,7 @@ PY
   echo "$out" | tail -14
   if echo "$out" | grep -q "not found\|appears to be lost"; then echo "!!! SESSION LOST at $exp — aborting loop"; exit 2; fi
   mkdir -p "runs/$exp"
-  for f in metrics.json log.csv best.pt; do
+  for f in metrics.json log.csv best.pt val_logits.npy val_labels.npy; do
     timeout 300 colab --auth=oauth2 download -s "$SESSION" "/content/thaichar/runs/$exp/$f" "runs/$exp/$f" 2>&1 | tail -1
   done
   echo "=== $(date +%H:%M:%S) DONE $exp ==="

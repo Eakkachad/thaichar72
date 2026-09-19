@@ -39,6 +39,7 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "nbformat>=5.11.1",
     "pytest>=9.1.1",
 ]
 
