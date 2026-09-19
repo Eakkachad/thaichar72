@@ -158,3 +158,31 @@ ON/OFF encoding ที่ได้แรงบันดาลใจจาก fly
 ชนะ base ทั้ง top-1 (+0.9) และ balanced (+2.5) และเกือบไม่เสียคะแนนจาก strat→doc เลย (−0.3) ขณะที่ base เสีย 4.3 จุด
 → สำหรับโจทย์ที่อาจารย์เน้น generalize ต้องเลือก recipe จากคอลัมน์ doc; ตารางเต็ม (none/randaug/trivial/synth/geometry/
 onoff/sampler บน doc) อยู่ในคิวถัดไป
+
+### G (ฉบับเต็ม) — ทุก recipe ที่รันทั้ง 2 split (resnet18 @64, 6 epochs) เรียงตาม doc balanced
+
+| recipe | aug | strat top-1 | strat bal | **doc top-1** | **doc bal** | doc minority | gap bal (จุด) |
+|---|---|---:|---:|---:|---:|---:|---:|
+| D3 sampler sqrt-inv (cap 5) | full | 0.9721 | 0.9837 | 0.9670 | **0.9816** | **0.9915** | −0.2 |
+| B_morph | morph | 0.9785 | 0.9694 | 0.9729 | 0.9786 | 0.9744 | **+0.9** |
+| B_trivial | trivial | 0.9805 | 0.9827 | **0.9790** | 0.9784 | 0.9658 | −0.4 |
+| B_none | none | **0.9848** | 0.9815 | 0.9780 | 0.9761 | 0.9829 | −0.5 |
+| B6_synth_all | full + synth | 0.9769 | 0.9804 | 0.9670 | 0.9754 | 0.9487 | −0.5 |
+| B_randaug | randaug | 0.9821 | 0.9825 | 0.9780 | 0.9700 | 0.9487 | −1.2 |
+| E6_onoff | full | 0.9756 | 0.9620 | 0.9722 | 0.9603 | 0.9316 | −0.2 |
+| A3 effb0 | base | 0.9769 | 0.9809 | 0.9625 | 0.9544 | 0.9582 | −2.7 |
+| **E5_geometry** | full | 0.9775 | 0.9690 | 0.9731 | **0.9410** | 0.8974 | **−2.8** |
+| A1 resnet18 | base | 0.9753 | 0.9794 | 0.9634 | 0.9361 | 0.9433 | −4.3 |
+| A0 SmallCNN | base | 0.9742 | 0.9189 | 0.9564 | 0.8286 | 0.8299 | −9.0 |
+
+ข้อสรุป G (สำคัญที่สุดของงานนี้):
+1. **ตัวการที่ทำให้ generalization แย่คือ preset `base` (affine + margin jitter)** ไม่ใช่ augmentation โดยรวม: none/trivial/morph
+   เสียแค่ 0.4–0.5 จุดข้ามเอกสาร (morph ดีขึ้นด้วยซ้ำ) แต่ base เสีย 4.3 → การหมุน/เฉือน/ขยับขอบสุ่มทำลาย cue ขนาด-ตำแหน่ง
+   ที่กลิฟพิมพ์ใช้จริง ในขณะที่ dilate/erode/res-jitter (morph) จำลองสิ่งที่เปลี่ยนจริงข้ามเอกสาร (ความหนาเส้น, DPI)
+2. **geometry side-channel ล้มเหลวข้ามเอกสาร** (94.1, −2.8): ความกว้าง/สูงสัมบูรณ์เป็นพิกเซลผูกกับ DPI/ขนาดฟอนต์ของเอกสาร
+   → ช่วยใน in-distribution แต่เป็น shortcut ที่ไม่ generalize — **ตัดออกจาก recipe สุดท้าย** (บทเรียนตรงข้ามกับสมมติฐาน E5)
+3. **sampler sqrt-inverse ให้ doc balanced สูงสุด 98.16 และ minority 99.2%** แต่เสีย top-1 ~1 จุด — เหมาะถ้าอาจารย์วัด balanced/macro
+4. สำหรับ **plain accuracy** บนเอกสารใหม่: trivial 97.90 ≈ none 97.80 ≈ randaug 97.80 > morph 97.29 > full 97.26
+5. ImageNet init ยังสำคัญมากข้ามเอกสาร: scratch ร่วง 9 จุด balanced
+→ recipe ตัวจริง: resnet18/effb0 full fine-tune @64, **TrivialAugment (หรือ morph) + synthetic fonts**, ไม่ใช้ geometry,
+   20 epochs + EMA + TTA, เลือก τ/sampler ตาม metric ที่คาดว่าอาจารย์ใช้ (กำลังรัน F1–F10)
