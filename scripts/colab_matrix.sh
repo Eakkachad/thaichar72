@@ -8,6 +8,12 @@ while [ "$1" != "--" ]; do SETS+=("$1"); shift; done; shift
 SCRATCH=$(mktemp -d)
 for cfgpath in "$@"; do
   name=$(basename "$cfgpath" .yaml); exp="${name}${SUFFIX}"
+  if [ -f "runs/$exp/metrics.json" ]; then echo "=== skip $exp (done) ==="; continue; fi
+  # stage-2 configs: make sure the init checkpoint exists on the VM (re-upload after a session loss)
+  init=$(grep -E '^init_from:' "$cfgpath" | awk '{print $2}')
+  if [ -n "$init" ] && [ "$init" != "null" ] && [ -f "$init" ]; then
+    echo "uploading $init"; timeout 600 colab --auth=oauth2 upload -s "$SESSION" "$init" "/content/thaichar/$init" 2>&1 | tail -1
+  fi
   setargs=""; for s in "${SETS[@]}"; do setargs="$setargs, \"--set\", \"$s\""; done
   cat > "$SCRATCH/run_$exp.py" <<PY
 import os, sys, subprocess, time
