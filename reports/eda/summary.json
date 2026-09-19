@@ -1,0 +1,39 @@
+{
+  "total_files": 62707,
+  "total_ok": 62707,
+  "corrupted_files": [],
+  "non_jpg_skipped": [],
+  "n_classes": 72,
+  "imbalance_ratio_max_min": 5025.0,
+  "gini_class_sizes": 0.6716,
+  "top10_share_pct": 54.17,
+  "classes_with_n_lt_50": 23,
+  "classes_with_n_lt_10": 4,
+  "classes_with_n_lt_5": 4,
+  "median_width": 16.0,
+  "median_height": 19.0,
+  "overall_mid_grey_frac": 0.0,
+  "group_counts": {
+    "per_prefix": {
+      "be": 32656,
+      "bc": 21571,
+      "bl": 8317,
+      "ce": 163
+    },
+    "distinct_doc_ids": 20,
+    "distinct_groups": 52
+  },
+  "duplicate_summary": {
+    "n_duplicate_md5_groups": 1174,
+    "n_redundant_files": 2579,
+    "n_cross_class_groups": 11,
+    "n_unique_after_dedup": 60128,
+    "n_copy_of_files": 6
+  },
+  "per_category_totals": {
+    "consonant": 45177,
+    "digit": 282,
+    "tone_mark": 2501,
+    "vowel": 14747
+  }
+}
