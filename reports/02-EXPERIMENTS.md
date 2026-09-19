@@ -103,3 +103,31 @@ re-scoring า/ๅ ด้วยความสูง, และเช็คว�
    และเป็นทางเดียวที่ทำให้ ฃ/ฑ เรียนได้จริง
 
 *ค่า top-1 ที่ τ=0.75 ประมาณจาก tau sweep ของ D0 (`runs/D0_ce_ls_resnet18_64_T4/metrics.json`)
+
+## E. เทคนิคเสริม — resnet18 full @64, aug=full (ฐาน D0 = 97.80 / 96.44), 6 epochs, stratified val
+
+| exp | เทคนิค | top-1 | balanced | macro-F1 | minority | หมายเหตุ |
+|---|---|---:|---:|---:|---:|---|
+| D0 | ฐาน (EMA on) | 0.9780 | 0.9644 | 0.9617 | 0.9583 | |
+| E1_noema | ปิด EMA | 0.9780 | 0.9636 | 0.9609 | 0.9500 | EMA แทบไม่มีผลที่ 6 epochs |
+| E1_llrd | layer-wise LR decay 0.8 | 0.9762 | 0.9557 | 0.9542 | 0.9167 | **แย่ลง** — ชั้นต้นของ ImageNet ต้องปรับตัวมาก (สอดคล้อง frozen/partial แพ้) |
+| E5_geometry | geometry side-channel [log w, log h, log w/h, ink%] | 0.9775 | **0.9690** | 0.9655 | 0.9667 | +0.5 balanced, top-1 เท่าเดิม |
+| E6_onoff | 3-channel ON/OFF (ink / distance-transform / edges) | 0.9756 | 0.9620 | 0.9609 | 0.9500 | ไม่ช่วย (−0.2) บน in-distribution val |
+| E6_onoff+geo | ทั้งสองอย่าง | 0.9775 | 0.9626 | 0.9615 | 0.9500 | |
+| E3 ensemble | soft-vote resnet18+effb0+smallcnn (A) | 0.9778 | 0.9815 | 0.9790 | 0.9667 | +0.1–0.25 เหนือตัวเดี่ยวที่ดีสุด — โมเดลผิดที่จุดเดียวกัน (า/ๅ) |
+| E4 logit-adj | τ sweep บนทุกตัว | | | | | ช่วย 0.5–2 จุด balanced เมื่อโมเดลยังไม่ balanced; ไม่ช่วยตัวที่ดีอยู่แล้ว |
+
+ข้อสรุป E: เทคนิค "ฟรี" ที่คุ้มคือ geometry side-channel และ logit adjustment; ensemble ให้กำไรน้อยเพราะ error ไม่อิสระ;
+ON/OFF encoding ที่ได้แรงบันดาลใจจาก fly visual system ไม่ช่วยในเงื่อนไขนี้ — จะทดสอบซ้ำบน doc-disjoint (ที่ต้องการความทนทานมากกว่า) ก่อนตัดสิน
+
+## C. Transfer source อื่นนอกจาก ImageNet (stage-1 → zero-shot บน val จริง)
+
+| stage-1 | ข้อมูล | epochs | top-1 บน val จริง (ไม่เคยเห็นข้อมูลจริง) | balanced | minority |
+|---|---|---:|---:|---:|---:|
+| B6a_synth_pretrain | ImageNet → **ฟอนต์สังเคราะห์ 21,600 ภาพ / 26 ฟอนต์** | 8 | **0.9369** | 0.9188 | 0.9083 |
+| C1_ext_pretrain | ImageNet → **ลายมือ public 100,985 ภาพ** (ALICE-THI + Burapha-TH) | 4 | 0.9148 | 0.9112 | 0.9500 |
+
+ข้อค้นพบ: โมเดลที่เห็นแต่ตัวอักษรที่ render จากฟอนต์ (พร้อม degradation) รู้จำกลิฟสแกนจริงได้ **93.7%** โดยไม่เห็นข้อมูล
+ของอาจารย์เลย → synthetic pipeline ของเราใกล้โดเมนจริงมาก และเป็นหลักฐานว่าวิธีนี้จะช่วย generalisation ไปฟอนต์ใหม่
+ส่วนลายมือ public ต่างโดเมน (ลายมือ vs ตัวพิมพ์) แต่ยัง zero-shot ได้ 91.5% และช่วยคลาสหางเป็นพิเศษ (minority 95.0%)
+ผล stage-2 (fine-tune ต่อบนข้อมูลจริง) อยู่ในตารางถัดไปเมื่อรันเสร็จ
