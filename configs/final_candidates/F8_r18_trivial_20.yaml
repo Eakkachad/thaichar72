@@ -1,0 +1,15 @@
+exp_id: F8_r18_trivial_20
+img_size: 64
+epochs: 20
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+warmup_epochs: 1.0
+subset_frac: 1.0
+tta: true
+val_subset_frac: 0.5
+model: resnet18
+aug: trivial
