@@ -1,0 +1,90 @@
+{
+ "name": "thaichar72_resnet18_64_v1labels",
+ "file": "weights/thaichar72_resnet18_64_v1labels.pt",
+ "bytes": 44940683,
+ "md5": "9605c6f68698f5dea9201b3c034c051b",
+ "dtype": "fp32",
+ "model": "resnet18",
+ "img_size": 64,
+ "channel_mode": "gray3",
+ "geometry": false,
+ "aug": "randaug",
+ "init_from": "runs/B6a_synth_pretrain_resnet18_64/best.pt",
+ "epochs": 20,
+ "seed": 42,
+ "split_kind": "strat",
+ "val_metrics": {
+  "top1": 0.9838696266733183,
+  "top5": 0.999002244948865,
+  "balanced_acc": 0.9826982287139275,
+  "macro_f1": 0.9790719658522751,
+  "minority_acc": 0.9666666666666667
+ },
+ "tta": {
+  "top1": 0.982705579113661,
+  "top5": 0.9992516837116487,
+  "balanced_acc": 0.9824040257367658,
+  "macro_f1": 0.9800956640561785,
+  "minority_acc": 0.9666666666666667,
+  "tau_sweep": {
+   "0.0": {
+    "top1": 0.982705579113661,
+    "balanced_acc": 0.9824040257367658,
+    "macro_f1": 0.9800956640561785,
+    "minority_acc": 0.9666666666666667
+   },
+   "0.25": {
+    "top1": 0.9818741165710485,
+    "balanced_acc": 0.9858312303278433,
+    "macro_f1": 0.9820781587779952,
+    "minority_acc": 0.975
+   },
+   "0.5": {
+    "top1": 0.9803774839943461,
+    "balanced_acc": 0.98637571171834,
+    "macro_f1": 0.9810634483366191,
+    "minority_acc": 0.975
+   },
+   "0.75": {
+    "top1": 0.9760538787727613,
+    "balanced_acc": 0.9849204294846875,
+    "macro_f1": 0.9752259942211123,
+    "minority_acc": 0.975
+   }
+  }
+ },
+ "tau_sweep": {
+  "0.0": {
+   "top1": 0.9838696266733183,
+   "balanced_acc": 0.9826982287139275,
+   "macro_f1": 0.9790719658522751,
+   "minority_acc": 0.9666666666666667
+  },
+  "0.25": {
+   "top1": 0.9832044566392284,
+   "balanced_acc": 0.9829387195709401,
+   "macro_f1": 0.9787125851452995,
+   "minority_acc": 0.9666666666666667
+  },
+  "0.5": {
+   "top1": 0.9824561403508771,
+   "balanced_acc": 0.98334843669759,
+   "macro_f1": 0.9775177241026248,
+   "minority_acc": 0.9666666666666667
+  },
+  "0.75": {
+   "top1": 0.9793797289432111,
+   "balanced_acc": 0.9817792727499044,
+   "macro_f1": 0.9750667005514885,
+   "minority_acc": 0.9666666666666667
+  }
+ },
+ "params_total": 11213448,
+ "latency_ms_bs1_cpu": 6.649485500020091,
+ "device_trained": "cuda",
+ "load": "from thaichar.infer import load_checkpoint, predict_topk; model, cfg = load_checkpoint('weights/thaichar72_resnet18_64_v1labels.pt'); predict_topk(model, cfg, image_path, k=5)",
+ "caveats": [
+  "checkpoint selected by balanced_acc on the same validation split that is reported",
+  "tau_sweep is evaluated on the reported validation split (mildly optimistic)"
+ ]
+}
