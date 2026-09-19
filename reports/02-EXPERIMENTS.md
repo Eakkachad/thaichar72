@@ -229,6 +229,7 @@ C1 = public handwriting pretrain), **aug** และ **synthetic เป็น ex
 | **F16** | resnet18 | B6a synth | morph | – | – | 0.9820 | **0.9856** | **0.9830** | 0.9750 | 0.9802 / 0.9854 | 18/20 | 8.8 |
 | **F7** | resnet18 | ImageNet | morph | ✓ | – | 0.9809 | 0.9851 | 0.9813 | 0.9750 | 0.9791 / 0.9823 | 19/20 | 12.8 |
 | *F5 (neg. control)* | resnet18 | ImageNet | trivial | ✓ | geometry | 0.9854 | 0.9847 | 0.9827 | 0.9667 | 0.9821 / 0.9845 | 19/20 | 11.8 |
+| F18 (เพิ่มหลัง robustness gate) | resnet18 | B6a synth | full | – | – | 0.9802 | 0.9843 | 0.9812 | 0.9750 | 0.9797 / 0.9843 | 19/20 | 15.9* |
 | **F10** | efficientnet_b0 | ImageNet | trivial | ✓ | – | 0.9836 | 0.9842 | 0.9799 | 0.9750 | 0.9832 / **0.9852** | 20/20 | 24.1 |
 | F15 | resnet18 | B6a synth | trivial | ✓ | – | 0.9848 | 0.9840 | 0.9819 | 0.9667 | 0.9825 / 0.9809 | 20/20 | 11.7 |
 | F12 | resnet18 | C1 ext | trivial | – | – | 0.9854 | 0.9834 | 0.9804 | 0.9667 | 0.9845 / 0.9831 | 18/20 | 8.3 |
@@ -237,6 +238,7 @@ C1 = public handwriting pretrain), **aug** และ **synthetic เป็น ex
 | F14 | resnet18 | B6a synth | trivial | – | – | 0.9855 | 0.9829 | 0.9817 | 0.9667 | 0.9841 / 0.9826 | 20/20 | 8.3 |
 | F1 | resnet18 | ImageNet | none | – | – | **0.9859** | 0.9828 | 0.9817 | 0.9667 | 0.9790 / 0.9790 | 18/20 | 17.2 (T4) |
 | F8 | resnet18 | ImageNet | trivial | – | – | 0.9854 | 0.9828 | 0.9803 | 0.9667 | 0.9832 / 0.9830 | 18/20 | 8.4 |
+| **F19 (เพิ่มหลัง gate) — ผู้ชนะ** | resnet18 | B6a synth | randaug | – | – | 0.9839 | 0.9827 | 0.9791 | 0.9667 | 0.9827 / 0.9824 | 15/20 | 15.8* |
 | F17 | resnet18 | B6a synth | none | – | – | 0.9804 | 0.9825 | 0.9804 | 0.9667 | 0.9791 / 0.9769 | **3**/20 | 8.1 |
 | F2 | resnet18 | ImageNet | randaug | – | – | 0.9837 | 0.9818 | 0.9775 | 0.9667 | 0.9836 / 0.9830 | 20/20 | 27.5 (T4) |
 | F9 | resnet18 | ImageNet | trivial | ✓ | – | 0.9845 | 0.9814 | 0.9782 | 0.9583 | 0.9826 / 0.9809 | 19/20 | 11.9 |
@@ -262,3 +264,41 @@ C1 = public handwriting pretrain), **aug** และ **synthetic เป็น ex
 8. **negative controls**: F5 geometry ได้ 98.54/98.47 บน strat (อันดับ 3) *ตามคาด* เพราะ w/h เป็น shortcut ใน in-distribution — ต้องดูผล doc
    (§F-doc) ก่อนตัดสิน; F6 ON/OFF vs F3 (recipe เดียวกันไม่มี onoff): +0.28 bal / −0.18 top-1, best ep 13 → ไม่มีกำไรที่ชัดเจน ยืนยันผล E6
 → **top-3 เข้ารอบ doc-split** (raw strat balanced, ไม่รวม negative control): **F16, F7, F10** (+ F5 บน doc เป็นหลักฐานผลลบของ geometry ที่ 20 epochs)
+
+\* s/ep ที่มี * วัดขณะรัน 2 งานพร้อมกันบน GPU เดียว (ไม่เทียบกับแถวอื่น)
+
+### F-doc — document-disjoint + robustness gate ของผู้เข้ารอบ (RTX 4060, 2026-09-19 ค่ำ)
+
+กติกาเลือกผู้ชนะ (HANDOFF §3.3): (a) doc top-1 → (b) doc balanced → (c) strat top-1 **และ** robustness ไม่แย่กว่า F2:
+mean top-1 บนทุกแถว non-clean ของ `scripts/robustness.py --binarize` (val strat เต็ม, Otsu หลัง corruption, 10 corruption × 3–4 ระดับ)
+≥ 0.9038 − 0.005. รอบแรก (top-3 = F16/F7/F10) **ไม่มีตัวไหนผ่าน gate** จึงขยายไปกลุ่ม trivial/randaug (F8/F12/F14/F15/F2) และเพิ่ม
+F18/F19 (B6a init + full / randaug) ที่ออกแบบจากสาเหตุที่พบ — เรียงตาม doc top-1:
+
+| exp | recipe | strat top-1 / bal | **doc top-1** | **doc bal** | doc TTA top-1 / bal | robust mean | gate |
+|---|---|---:|---:|---:|---:|---:|:-:|
+| **F19** | B6a init + randaug | 0.9839 / 0.9827 | **0.9822** | 0.9807 | 0.9815 / 0.9809 | **0.9045** | ✅ |
+| F8 | trivial | 0.9854 / 0.9828 | 0.9821 | 0.9781 | 0.9809 / 0.9780 | 0.8892 | ❌ |
+| F14 | B6a init + trivial | 0.9855 / 0.9829 | 0.9819 | 0.9815 | 0.9811 / 0.9815 | 0.8931 | ❌ |
+| F12 | C1 init + trivial | 0.9854 / 0.9834 | 0.9816 | 0.9786 | 0.9803 / 0.9791 | 0.8956 | ❌ |
+| F2 (baseline ของ gate) | randaug | 0.9837 / 0.9818 | 0.9812 | 0.9816 | 0.9796 / 0.9817 | 0.9038 | ✅ |
+| F10 | effb0 trivial + synth | 0.9836 / 0.9842 | 0.9803 | **0.9837** | 0.9786 / 0.9827 | 0.8878 | ❌ |
+| F15 | B6a init + trivial + synth | 0.9848 / 0.9840 | 0.9801 | 0.9810 | 0.9784 / 0.9802 | 0.8893 | ❌ |
+| F18 | B6a init + full | 0.9802 / 0.9843 | 0.9784 | 0.9769 | 0.9762 / 0.9766 | 0.9063 | ✅ |
+| F16 | B6a init + morph | 0.9820 / 0.9856 | 0.9781 | 0.9816 | 0.9769 / 0.9828 | 0.8500 | ❌ |
+| F7 | morph + synth | 0.9809 / 0.9851 | 0.9771 | 0.9810 | 0.9774 / 0.9795 | 0.8525 | ❌ |
+| *F5 (geometry, neg. control)* | trivial + synth + geo | 0.9854 / 0.9847 | 0.9763 | 0.9803 | 0.9761 / 0.9798 | 0.8888 | ❌ |
+
+ตาราง per-corruption ทั้งหมด: `reports/robustness/<exp>_full_bin/{results.csv,summary.md,curves.png}`
+
+ข้อสรุป F-doc:
+1. **doc top-1 ของทุกตัวอยู่ในช่วง 97.6–98.2 (ต่างกัน ≤ 0.6 จุด ≈ 70 ภาพ)** และช่องว่าง strat→doc เหลือแค่ 0.2–0.5 จุด ทุก recipe →
+   ที่ 20 epochs กับ aug เบา/กลาง แทบไม่มีปัญหา generalise ข้ามเอกสารแล้ว ตัวตัดสินจริงจึงเป็น **robustness**
+2. **robustness แยกกลุ่มชัดตาม "โมเดลเคยเห็น noise ตอนเทรนหรือไม่"**: morph (F16/F7) ทน rotate/translate/blur/downscale *ดีที่สุด*
+   (เช่น rotate 20°: 0.953 vs 0.914 ของ F2) แต่พังที่ salt-pepper 0.2 (0.175) และ background noise (0.80) เพราะ preset `morph` ไม่มี noise op;
+   trivial (1 op/ภาพ) เห็น noise น้อยกว่า randaug (2 op/ภาพ) จึงต่ำกว่า gate 0.8–1.5 จุดทุกตัว; **randaug และ full เท่านั้นที่ผ่าน**
+3. **geometry (F5) แม้ที่ 20 epochs ก็ยังมีช่องว่าง strat→doc ด้าน top-1 กว้างสุด (−0.9 จุด) และ best epoch แค่ 4** → ยืนยันตัดออก
+4. **effb0 (F10) ให้ doc balanced สูงสุด 98.37** แต่ top-1 ต่ำกว่าและ robustness ต่ำ (−1.6) + ช้ากว่า 2.5× → เก็บไว้เป็น teacher/สมาชิก ensemble ที่หลากหลาย
+5. **B6a init + randaug (F19) = F2 ที่เปลี่ยน init**: ดีขึ้นทุกแกน (strat +0.02/+0.09, doc top-1 +0.10, robustness +0.07) และเป็นตัวเดียวที่
+   ทั้งนำ doc top-1 และผ่าน gate → **ผู้ชนะ**; F18 (full) ทนสุด (0.9063) แต่แพ้ doc 0.4 จุด
+→ **โมเดลสุดท้าย: F19_r18_b6ainit_randaug_20** (resnet18 @64, ImageNet → synthetic-font pretrain → real, RandAugment N=2 ไม่ flip,
+   CE+LS 0.1, AdamW cosine, EMA, 20 ep; TTA ปิด) — ขั้นถัดไป: label audit (§H), 3 seeds, ensemble/KD, export
