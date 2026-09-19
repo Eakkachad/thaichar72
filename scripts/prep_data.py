@@ -137,7 +137,7 @@ def _write_summary(df: pd.DataFrame, s42: pd.DataFrame) -> None:
     # Holdout doc ids (seed 42)
     strat_split = make_stratified_split(df, seed=42)
     doc_split = make_doc_split(df, seed=42)
-    holdout_docs = sorted(df.loc[doc_split == "val", "doc_id"].unique())
+    holdout_docs = sorted(int(x) for x in df.loc[doc_split == "val", "doc_id"].unique())
 
     lines = [
         "# Data Preparation Summary",
