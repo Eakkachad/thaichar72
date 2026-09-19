@@ -302,3 +302,23 @@ F18/F19 (B6a init + full / randaug) ที่ออกแบบจากสา�
    ทั้งนำ doc top-1 และผ่าน gate → **ผู้ชนะ**; F18 (full) ทนสุด (0.9063) แต่แพ้ doc 0.4 จุด
 → **โมเดลสุดท้าย: F19_r18_b6ainit_randaug_20** (resnet18 @64, ImageNet → synthetic-font pretrain → real, RandAugment N=2 ไม่ flip,
    CE+LS 0.1, AdamW cosine, EMA, 20 ep; TTA ปิด) — ขั้นถัดไป: label audit (§H), 3 seeds, ensemble/KD, export
+
+## H. Label audit จากแพ็กเกจ DataV2 ของทีม (2026-09-19 ค่ำ)
+
+ทีมส่ง `DataV2/datav2.zip` (+ CHANGELOG, split, EDA) ที่ (ก) ย้ายภาพที่ label ผิดไปคลาสที่ถูก (ตรวจด้วยตา), (ข) ทิ้งภาพ outlier,
+(ค) เพิ่มภาพ augmented ล่วงหน้า 1,822 ภาพให้คลาสเล็กครบ 100, (ง) split 80/20 ของตัวเอง ผลตรวจเทียบกับ index ของเรา (`scripts/make_split_v2.py`):
+
+| รายการ | ผลตรวจ | ใช้หรือไม่ |
+|---|---|---|
+| ย้าย label 629 ภาพ (unique filename) — า→ว **416**, า→ใ **107**, า→จ 21, ต→ด 17, ด→ต 12, า→ร 9, า→ๆ 9, ต→ค 6, อื่น ๆ ≤ 4 | montage `reports/analysis/datav2_montage_a_w.png`: ภาพที่ย้าย า→ว **เป็น ว จริงทุกภาพ** (ห่วงล่างชัด) และ า→ใ เป็น ใ จริง; โมเดล v1 (F2/F16) เห็นด้วยกับ label ใหม่ 95–100 % ในกลุ่มเล็ก (ด↔ต, ต→ค, า→จ) แต่ทาย า 85–93 % ในกลุ่ม า→ว เพราะ **เรียน label ผิดมา** (416 ภาพในคลาส า) | ✅ ใช้ |
+| ทิ้ง 175 ภาพ (174 จากคลาส า) | ขยะ/ตัวอื่นปน (ส, ญ, ๆ, noise) — ดู montage แถวล่าง | ✅ ใช้ |
+| augmented 1,822 ภาพ (`aug_*`) | **570 ภาพมีต้นฉบับอยู่คนละ split** ใน split ของ v2 → val ของ v2 รั่ว; pipeline เรามี on-the-fly aug + synthetic fonts อยู่แล้ว | ❌ ไม่ใช้ |
+| split 80/20 ของ v2 | ไม่มี dedup, ไม่มี document-disjoint | ❌ ไม่ใช้ — คง split_seed42 เดิม |
+
+→ สร้าง `data/splits/split_seed42_v2.csv` = แถว/strat/doc เดิมทุกประการ แต่แก้ label 629 แถว + ตัด 175 แถว (60,117 → 59,942; val strat 12,027 → 11,991
+มี 121 แถวถูกแก้ label; val doc 11,984 → 11,948 มี 150 แถวถูกแก้) รายการทั้งหมด: `reports/analysis/datav2_label_changes.csv`
+
+**นัยสำคัญ**: ~11 % ของคลาส า (คลาสใหญ่อันดับ 3) เป็น ว/ใ ที่ label ผิด → นี่คือที่มาของ error อันดับ 2 ของทุกโมเดลใน §A (ว→า 17.6 % ของ ว)
+และเป็นเพดาน top-1 ~98.4–98.6 บน val v1 ที่ทุก recipe ชนอยู่ การแก้ label จึงน่าจะให้ผลมากกว่าการเปลี่ยน recipe ใด ๆ ใน §F
+
+### H-1 ผล v1 vs v2 (F19 recipe เดิม, เปลี่ยนแค่ไฟล์ label) — (รอผลรัน)
