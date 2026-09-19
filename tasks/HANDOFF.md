@@ -21,6 +21,11 @@ Everything in §3 was run on the 4060 (`tasks/run_step1*.sh`; logs `tasks/logs/l
 - Extras DONE (`configs/extras/X1–X6`, 02-EXPERIMENTS §J): F19 recipe on effb0 0.9901/0.9886, convnext_tiny 0.9898/0.9869, mnv3-large 0.9893/0.9870,
   KD into mnv3-small 0.9900/0.9872 (1.6 M params, 3.4 ms) → exported as `weights/thaichar72_mnv3small_64_small.pt`; all pass the robustness gate;
   cross-architecture KD does not help. Not done: variance-across-splits (`_sp0`), doc-split KD.
+- **Moving to native Windows 11 (owner's plan)**: build the package with `bash tasks/make_handoff_tarball.sh` (repo + .git + dataset + data + weights
+  + 23 checkpoints; `.venv` excluded), extract with `tar -xzf` in PowerShell into e.g. `C:\work\Deep_CNN` (not OneDrive), then `uv sync` picks the cu126
+  wheels automatically; `python scripts/train.py` / `run_local_queue.py` work as-is (workers forced to 0 → ~2× slower per epoch than WSL);
+  the `tasks/run_*.sh` lane scripts are bash-only — run the `uv run python scripts/run_local_queue.py …` lines inside them one per line in PowerShell,
+  or keep using WSL for training. `git pull` first: the tarball's `.git` is exactly `origin/main` at build time.
 - Machine notes: 1 training lane uses ~35 % GPU / 2 GB (CPU-bound pipeline) → run 2–4 configs concurrently (`run_step1_3b_ext.sh` pattern);
   `agy` not installed (SELF rows in DELEGATION-LOG); WSL git uses the Windows Git Credential Manager (push works). Helper tools outside the repo:
   `/home/CNN/tools/{cmp,ftable,robmean,datav2_check}.py`.
@@ -136,7 +141,10 @@ expected 100,985 external glyphs):
   `.DS_Store`, and all `runs/*/best.pt` except the ids above; `tar -c -I pigz -f ~/Deep_CNN_handoff_<date>.tar.gz -T list`.
 
 ## 5. Deliverables checklist (owner's §2)
-- [ ] `notebooks/ThaiChar72_Colab.ipynb` runs on Colab (Train + Inference, config in one cell) — exists; needs final weights + Colab test
-- [ ] final weights in `weights/` with size + load instructions — script ready, waiting for the winner
-- [ ] `reports/FINAL-REPORT.md` complete (§9 pending) + figures — draft exists
+- [x] `notebooks/ThaiChar72_Colab.ipynb` (Train + Inference, config in one cell) — rebuilt for the final recipe, headless inference run passes
+      (99.03 %); **[ ] actual Colab run still to be done by the owner**
+- [x] final weights in `weights/` with size + load instructions (`*.card.json`, `weights/README.md`, FINAL-REPORT §9)
+- [x] `reports/FINAL-REPORT.md` complete (§9 final model, §10 error analysis, §11 application, §12 label audit) + figures
+- [x] `reports/02-EXPERIMENTS.md` covers every run incl. 3 seeds (mean ± std), §F/F-doc/H/I/J
+- [x] everything pushed to GitHub (`main` == `origin/main`)
 - [x] `uv` project (pyproject + lock; torch wheel auto-selected by platform markers)
