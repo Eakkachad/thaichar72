@@ -29,6 +29,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device", type=str, default="auto", help="Device (cpu, cuda, auto)")
     parser.add_argument("--batch-size", type=int, default=128, help="Batch size for evaluation")
     parser.add_argument("--num-workers", type=int, default=0, help="Dataloader workers")
+    parser.add_argument("--binarize", action="store_true", help="Apply Otsu binarisation after the corruption (simulates the deployed preprocess_image pipeline)")
     return parser.parse_args()
 
 
@@ -166,6 +167,14 @@ def write_summary(
     out_path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _otsu(canvas):
+    """Otsu threshold → {0,255} uint8, ink dark on white (border ring decides polarity)."""
+    import cv2, numpy as np
+    _, t = cv2.threshold(canvas.astype(np.uint8), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    border = np.concatenate([t[0, :], t[-1, :], t[:, 0], t[:, -1]])
+    return (255 - t) if border.mean() < 127.5 else t
+
+
 def main() -> None:
     args = parse_args()
     device = pick_device(args.device)
@@ -228,7 +237,7 @@ def main() -> None:
                 cache,
                 size=img_size,
                 channel_mode=channel_mode,
-                transform=lambda c, n=name, s=sev: apply_corruption(c, n, s),
+                transform=(lambda c, n=name, s=sev: _otsu(apply_corruption(c, n, s))) if args.binarize else (lambda c, n=name, s=sev: apply_corruption(c, n, s)),
                 margin=margin,
             )
             loader = DataLoader(corrupt_ds, batch_size=batch_size, shuffle=False, num_workers=args.num_workers)
