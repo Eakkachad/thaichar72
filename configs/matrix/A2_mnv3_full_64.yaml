@@ -1,0 +1,14 @@
+exp_id: A2_mnv3_full_64
+model: mobilenetv3_large_100
+mode: full
+img_size: 64
+subset_frac: 0.25
+epochs: 6
+batch_size: 128
+aug: base
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+pretrained: true

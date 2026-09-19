@@ -1,0 +1,9 @@
+model: resnet18
+img_size: 32
+subset_frac: 0.03
+epochs: 1
+batch_size: 64
+split_kind: strat
+aug: none
+threads: 8
+latency_iters: 20

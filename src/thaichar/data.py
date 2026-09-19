@@ -445,6 +445,12 @@ class ThaiGlyphDataset(Dataset):
 
         # Build path -> cache-index map
         self._cache_idx = {p: i for i, p in enumerate(cache.paths)}
+        # Pre-extract columns as arrays: pandas .iloc per item is ~1 ms, arrays are ~1 µs
+        self._rows_cache_idx = np.array([self._cache_idx[p] for p in self.df["path"].tolist()], dtype=np.int64)
+        self._labels = self.df["label"].to_numpy(dtype=np.int64)
+        self._heights = self.df["height"].to_numpy(dtype=np.int64)
+        self._widths = self.df["width"].to_numpy(dtype=np.int64)
+        self._ink = self.df["ink_frac"].to_numpy(dtype=np.float32)
 
     def __len__(self) -> int:
         return len(self.df)
@@ -452,9 +458,7 @@ class ThaiGlyphDataset(Dataset):
     def __getitem__(
         self, idx: int
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor] | tuple[torch.Tensor, torch.Tensor]:
-        row = self.df.iloc[idx]
-        cache_i = self._cache_idx[row["path"]]
-        img_u8 = self.cache[cache_i]  # HxW uint8
+        img_u8 = self.cache[int(self._rows_cache_idx[idx])]  # HxW uint8
 
         # 1. Pad to square canvas
         canvas = pad_to_square_canvas(img_u8, margin=self.margin)
@@ -470,11 +474,11 @@ class ThaiGlyphDataset(Dataset):
         img_encoded = encode_channels(square, self.channel_mode)
         x = torch.from_numpy(img_encoded)
 
-        y = torch.tensor(int(row["label"]), dtype=torch.int64)
+        y = torch.tensor(int(self._labels[idx]), dtype=torch.int64)
 
         if self.return_geometry:
             g = torch.from_numpy(
-                geometry_features(int(row["height"]), int(row["width"]), float(row["ink_frac"]))
+                geometry_features(int(self._heights[idx]), int(self._widths[idx]), float(self._ink[idx]))
             )
             return x, y, g
 

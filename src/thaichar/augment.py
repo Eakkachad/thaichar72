@@ -335,7 +335,7 @@ def get_transform(preset: str, seed: int | None = None) -> Callable[[np.ndarray]
     if preset not in PRESETS:
         raise ValueError(f"Unknown preset: {preset!r}. Expected one of {PRESETS}")
 
-    rng = np.random.default_rng(seed)
+    _state = {"rng": np.random.default_rng(seed)}
 
     if preset == "none":
         return lambda img: img.copy()
@@ -363,6 +363,7 @@ def get_transform(preset: str, seed: int | None = None) -> Callable[[np.ndarray]
     def transform(img: np.ndarray) -> np.ndarray:
         if preset == "none":
             return img.copy()
+        rng = _state["rng"]
 
         out = img.copy()
 
@@ -390,4 +391,10 @@ def get_transform(preset: str, seed: int | None = None) -> Callable[[np.ndarray]
 
         return out
 
+    def reseed(new_seed: int | None) -> None:
+        """Re-seed the internal RNG (call per DataLoader worker to avoid duplicated draws)."""
+        _state["rng"] = np.random.default_rng(new_seed)
+
+    transform.reseed = reseed  # type: ignore[attr-defined]
+    transform.preset = preset  # type: ignore[attr-defined]
     return transform

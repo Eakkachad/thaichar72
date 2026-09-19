@@ -1,0 +1,2 @@
+exp_id,model,img_size,mode,channel_mode,aug,loss,sampler,mixup,cutmix,extra,split_kind,subset_frac,epochs,seed,top1,balanced_acc,macro_f1,minority_acc,top5,tau_best,tau_best_bal,tta_top1,tta_bal,best_epoch,best_which,params_M,sec_per_epoch,latency_ms,device
+smoke,resnet18,32,full,gray3,none,ce,none,0.0,0.0,-,strat,0.03,1,42,0.24794213020703418,0.06452447326944298,0.050930840853117755,0.044261776794182736,0.5325517585432776,0.0,0.06452447326944298,,,1,raw,11.21,240.9,22.01,cpu

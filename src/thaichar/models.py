@@ -169,8 +169,13 @@ def build_model(
             drop_rate=drop_rate,
             **extra_kwargs,
         )
-        # Get feature dim
-        feat_dim = backbone.num_features
+        # Feature dim = what the pooled head actually emits (mobilenetv3/efficientnet return
+        # the conv_head width, not num_features), so measure it with a dry forward pass.
+        with torch.no_grad():
+            was_training = backbone.training
+            backbone.eval()
+            feat_dim = int(backbone(torch.zeros(1, in_chans, img_size, img_size)).shape[1])
+            backbone.train(was_training)
 
     head = GlyphHead(feat_dim, num_classes, geometry=geometry)
     model = GlyphModel(backbone, head, mode=mode)

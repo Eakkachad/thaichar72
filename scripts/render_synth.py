@@ -16,6 +16,12 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib import font_manager as _fm
+try:
+    _fm.fontManager.addfont('assets/fonts/Sarabun-Regular.ttf')
+    plt.rcParams['font.family'] = _fm.FontProperties(fname='assets/fonts/Sarabun-Regular.ttf').get_name()
+except Exception:  # noqa: BLE001
+    pass
 import numpy as np
 import pandas as pd
 from PIL import Image
