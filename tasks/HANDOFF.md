@@ -1,7 +1,30 @@
-# HANDOFF — state at 2026-09-19 evening (laptop, CPU-only) → continue on the RTX 4060 machine
+# HANDOFF — state at 2026-09-19 late evening (RTX 4060 / WSL2, `/home/CNN/Deep_CNN`) — §3 below is DONE except the Colab test
 
 Read `CLAUDE.md` first. This file says exactly where things stand and what to run next, in order.
 Owner-facing machine setup (Thai): `tasks/HANDOFF-OWNER-TH.md`. Repo: https://github.com/Eakkachad/thaichar72 (private).
+
+## −1. Status after the RTX 4060 session (2026-09-19 20:30–23:05) — read this first
+Everything in §3 was run on the 4060 (`tasks/run_step1*.sh`; logs `tasks/logs/local_queue/`). Results and interpretation:
+`reports/02-EXPERIMENTS.md` §G (confound fixed), §F, §F-doc, §H (label audit), §I (KD/deliverable); `reports/FINAL-REPORT.md` §9–§12.
+- **Winner**: F19 = resnet18 @64, ImageNet → synthetic-font pretrain (B6a) → real, RandAugment N=2, CE+LS, EMA, 20 ep. Chosen by §3.3
+  (doc top-1 0.9822, only randaug/full recipes pass the robustness gate; morph/trivial never see noise ops and collapse on salt-pepper).
+- **Label audit (DataV2 from teammates)**: 629 relabels (416 ว + 107 ใ filed under า, …) + 175 drops verified by eye → applied to our split as
+  `data/splits/split_seed42_v2.csv` (rebuild anywhere: `uv run python scripts/make_split_v2.py` replays `reports/analysis/datav2_label_changes.csv`).
+  Same recipe on v2: 0.9879 → 3 seeds 0.9890 ± 0.0008 (v1 ceiling was ~0.985). v1↔v2 cross-evaluation is symmetric ±0.9 pt (§H-1).
+- **Deliverable**: `weights/thaichar72_resnet18_64.pt` = K1, KD of the 3 F19_v2 seeds into one resnet18 (0.9903 / 0.9875 / F1 0.9869 on v2 val,
+  robust 0.9104 = best); `_fp16.pt` identical metrics; `_v1labels.pt` = F19 trained on the ORIGINAL labels (hedge: if the hidden test follows the
+  `be`-source label convention, v2 loses ~0.9 pt); `thaichar72_r18_synth_pretrain_init.pt` = stage-1 init for retraining. `configs/final.yaml` = F19 on v2.
+- **Notebook**: rebuilt (`scripts/build_notebook.py` now honours the recipe's split_file, rebuilds the v2 split on Colab from the change list, uses the
+  packaged stage-1 init); `run_notebook_local.py --mode inference` passes with 0 errors (99.03 % / 98.75 % printed). **NOT yet run on Colab** — owner:
+  upload repo + `weights/` (+ `data/cache/glyphs.npz`, `data/splits/split_seed42.csv` for inference mode) and run with MODE="inference".
+- **Open decision for the owner**: which weight to submit (v2 default vs v1 hedge) — see FINAL-REPORT §12; ask the teacher about ว/า labelling if possible.
+- Optional extras (not done): F19 recipe on effb0/convnext_tiny, KD into mobilenetv3 "small model", variance-across-splits (`_sp0`), doc-split KD.
+- Machine notes: 1 training lane uses ~35 % GPU / 2 GB (CPU-bound pipeline) → run 2–4 configs concurrently (`run_step1_3b_ext.sh` pattern);
+  `agy` not installed (SELF rows in DELEGATION-LOG); WSL git uses the Windows Git Credential Manager (push works). Helper tools outside the repo:
+  `/home/CNN/tools/{cmp,ftable,robmean,datav2_check}.py`.
+
+---
+*Everything below is the original hand-off written on the laptop; kept for the set-up commands and the reasoning behind §3.*
 
 ## 0. Why we moved
 Colab free tier: T4 sessions are pruned every ~1 h and the daily GPU quota ran out at 16:40 after ~50 runs.
