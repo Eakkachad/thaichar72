@@ -318,7 +318,8 @@ if round2_dir.exists():
 elif (PROJECT_DIR / "reports" / "eda" / "class_stats.csv").exists():
     stats_df = pd.read_csv(PROJECT_DIR / "reports" / "eda" / "class_stats.csv")
     for _, r in stats_df.iterrows():
-        cnt = int(r["count"])
+        # column is 'n_files' in actual EDA output; fall back gracefully
+        cnt = int(r.get("count", r.get("n_files", 0)))
         total_files += cnt
         class_count_rows.append({
             "code": r["code"],
@@ -559,12 +560,15 @@ class_counts_train = np.bincount(train_df["label"].values, minlength=72)
 train_priors = class_counts_train / class_counts_train.sum()
 log_priors = np.log(np.maximum(train_priors, 1e-12))
 
-# 3. Evaluate on Stratified Split and Doc-Disjoint Split
+# 3. Evaluate ONLY on the validation split the checkpoint was trained against.
+#    The stratified and document-disjoint partitions overlap (a strat-trained model has seen ~80% of the
+#    doc-val images), so evaluating a model on the *other* partition would report training accuracy.
+_trained_split = ckpt_cfg.get("split_kind", "strat")
+_split_table = {"strat": ("strat", "split", "Stratified Validation Split (80:20, seed 42)"),
+                "doc": ("doc", "doc_split", "Document-Disjoint Validation Split (4 held-out documents)")}
+print(f"Checkpoint was trained on split_kind='{_trained_split}' -> evaluating on that partition's val only.")
 eval_results = {}
-for split_key, col_name, split_name in [
-    ("strat", "split", "Stratified Validation Split"),
-    ("doc", "doc_split", "Document-Disjoint Split"),
-]:
+for split_key, col_name, split_name in [_split_table[_trained_split]]:
     val_subset = eval_splits_df[eval_splits_df[col_name] == "val"].reset_index(drop=True)
     val_ds = ThaiGlyphDataset(
         val_subset,
@@ -590,7 +594,7 @@ for split_key, col_name, split_name in [
         print(f"  tau={t_val:<4} -> Top-1: {s_m['top1']*100:.2f}%, Bal Acc: {s_m['balanced_acc']*100:.2f}%, Macro-F1: {s_m['macro_f1']*100:.2f}%")
 
 # 4. Confusion Matrix (Stratified Split)
-strat_m = eval_results["strat"]["metrics"]
+strat_m = eval_results[_trained_split]["metrics"]
 cm = np.array(strat_m["confusion"], dtype=float)
 row_sums = cm.sum(axis=1, keepdims=True)
 cm_norm = np.zeros_like(cm)
@@ -662,6 +666,16 @@ from PIL import Image
 from thaichar.infer import predict_topk, preprocess_image
 from thaichar.models import count_params
 
+# GlyphCache uses integer indices — build a path→index mapping once
+_cache_path_to_idx = {p: i for i, p in enumerate(cache_dict.paths)}
+
+def _get_glyph(path_str):
+    \"\"\"Look up a glyph canvas from the cache by path string.\"\"\"
+    idx = _cache_path_to_idx.get(path_str)
+    if idx is not None:
+        return cache_dict[idx]
+    return None
+
 # (a) 12 random val glyphs with true vs predicted
 strat_val_df = eval_splits_df[eval_splits_df["split"] == "val"].reset_index(drop=True)
 rng = np.random.default_rng(SEED)
@@ -670,10 +684,13 @@ sample_indices = rng.choice(len(strat_val_df), size=12, replace=False)
 fig, axes = plt.subplots(3, 4, figsize=(11, 9))
 for idx, ax in zip(sample_indices, axes.flatten()):
     row = strat_val_df.iloc[idx]
-    glyph_canvas = cache_dict[row["path"]]
+    glyph_canvas = _get_glyph(row["path"])
     true_char = row["char"]
     true_code = row["code"]
     
+    if glyph_canvas is None:
+        ax.axis("off")
+        continue
     preds = predict_topk(eval_model, ckpt_cfg, glyph_canvas, k=3)
     top_char, top_code, top_prob = preds[0]
     is_correct = (top_code == true_code)
@@ -689,6 +706,7 @@ val_demo_path = OUTPUT_DIR / "val_inference_12.png"
 plt.savefig(val_demo_path, dpi=150)
 plt.show()
 plt.close(fig)
+print(f"✓ Saved 12-glyph inference demo to {val_demo_path}")
 
 # (b) Uploaded files via google.colab.files.upload() guarded by try/except
 uploaded = {}
@@ -709,9 +727,10 @@ if uploaded:
             print(f"  {rank}. {char} ({code}): {prob*100:.2f}%")
 else:
     print("Using random validation sample as fallback image for demo.")
-    sample_img = cache_dict[strat_val_df.iloc[sample_indices[0]]["path"]]
-    preds = predict_topk(eval_model, ckpt_cfg, sample_img, k=5)
-    print(f"Fallback Predictions: {[(c, cd, f'{p*100:.1f}%') for c, cd, p in preds]}")
+    sample_img = _get_glyph(strat_val_df.iloc[sample_indices[0]]["path"])
+    if sample_img is not None:
+        preds = predict_topk(eval_model, ckpt_cfg, sample_img, k=5)
+        print(f"Fallback Predictions: {[(c, cd, f'{p*100:.1f}%') for c, cd, p in preds]}")
 
 # (c) Gradio / ipywidgets interface
 def classify_thai_char(img):
