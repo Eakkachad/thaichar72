@@ -149,15 +149,17 @@ ON/OFF encoding ที่ได้แรงบันดาลใจจาก fly
 
 | recipe | strat top-1 | strat balanced | **doc top-1** | **doc balanced** | ช่องว่าง balanced |
 |---|---:|---:|---:|---:|---:|
-| resnet18, aug=base (A1) | 0.9753 | 0.9794 | 0.9634 | 0.9361 | **−4.3** |
-| resnet18, aug=**full** (B_full) | 0.9780 | 0.9644 | **0.9726** | **0.9611** | **−0.3** |
-| efficientnet_b0, aug=base (A3) | 0.9769 | 0.9809 | 0.9625 | 0.9544 | −2.7 |
-| SmallCNN scratch (A0) | 0.9742 | 0.9189 | 0.9564 | 0.8286 | −9.0 |
+| resnet18, aug=base (A1, **doc ข้อมูลเต็ม** `A1_resnet18_full_64_doc_full`, RTX 4060) | 0.9753 | 0.9794 | 0.9728 | 0.9740 | −0.5 |
+| resnet18, aug=base (A1, doc `subset_frac=0.25` — จุดข้อมูลเดิมที่ทำให้เข้าใจผิด) | 0.9753 | 0.9794 | 0.9634 | 0.9361 | (−4.3 แต่เทียบไม่ได้) |
+| resnet18, aug=**full** (B_full) | 0.9780 | 0.9644 | 0.9726 | 0.9611 | **−0.3** |
+| efficientnet_b0, aug=base (A3, doc 25 %) | 0.9769 | 0.9809 | 0.9625 | 0.9544 | (−2.7, เทียบไม่ได้) |
+| SmallCNN scratch (A0, doc 25 %) | 0.9742 | 0.9189 | 0.9564 | 0.8286 | (−9.0, เทียบไม่ได้) |
 
-ข้อค้นพบสำคัญ: **ลำดับกลับด้าน** — บน stratified (เอกสารเดิม) aug หนักดูแย่กว่า แต่บนเอกสารที่ไม่เคยเห็น aug หนัก
-ชนะ base ทั้ง top-1 (+0.9) และ balanced (+2.5) และเกือบไม่เสียคะแนนจาก strat→doc เลย (−0.3) ขณะที่ base เสีย 4.3 จุด
-→ สำหรับโจทย์ที่อาจารย์เน้น generalize ต้องเลือก recipe จากคอลัมน์ doc; ตารางเต็ม (none/randaug/trivial/synth/geometry/
-onoff/sampler บน doc) อยู่ในคิวถัดไป
+ข้อค้นพบ (แก้ไข 2026-09-19 ค่ำ หลัง confound check บน RTX 4060): ตารางฉบับแรกสรุปว่า "ลำดับกลับด้าน — base เสีย 4.3 จุดข้ามเอกสาร"
+แต่แถว A0/A1/A3 บน doc ถูกรันด้วยข้อมูล train แค่ 25 % เมื่อรัน A1 (base) บน doc ด้วยข้อมูลเต็ม 48,133 ภาพ ได้ **97.28 / 97.40**
+→ ช่องว่าง strat→doc ของ base เหลือแค่ **−0.5 จุด** เท่ากับ none/trivial ดังนั้น "aug หนักชนะ base บนเอกสารใหม่" **ไม่เป็นจริง**:
+full (97.26 / 96.11) แพ้ base บน doc balanced ถึง 1.3 จุด ส่วนที่ยังจริงคือ (ก) doc val ยากกว่า strat val ทุก recipe ~0.3–0.5 จุด
+และ (ข) การเลือก recipe ต้องดูคอลัมน์ doc ประกอบ เพราะ geometry side-channel (ข้อมูลเต็ม) ยังพังข้ามเอกสารจริง (ดูตารางเต็มด้านล่าง)
 
 ### G (ฉบับเต็ม) — ทุก recipe ที่รันทั้ง 2 split (resnet18 @64, 6 epochs) เรียงตาม doc balanced
 
@@ -168,29 +170,38 @@ onoff/sampler บน doc) อยู่ในคิวถัดไป
 | B_trivial | trivial | 0.9805 | 0.9827 | **0.9790** | 0.9784 | 0.9658 | −0.4 |
 | B_none | none | **0.9848** | 0.9815 | 0.9780 | 0.9761 | 0.9829 | −0.5 |
 | B6_synth_all | full + synth | 0.9769 | 0.9804 | 0.9670 | 0.9754 | 0.9487 | −0.5 |
+| B6_synth_all | full + synth | 0.9769 | 0.9804 | 0.9670 | 0.9754 | 0.9487 | −0.5 |
+| **B6a_ft (init จาก synthetic pretrain)** | full | 0.9792 | 0.9843 | 0.9732 | 0.9759 | 0.9487 | −0.8 |
+| **A1 resnet18 (doc ข้อมูลเต็ม, 4060)** | base | 0.9753 | 0.9794 | 0.9728 | 0.9740 | 0.9487 | −0.5 |
 | B_randaug | randaug | 0.9821 | 0.9825 | 0.9780 | 0.9700 | 0.9487 | −1.2 |
+| B_full | full | 0.9780 | 0.9644 | 0.9726 | 0.9611 | 0.9487 | −0.3 |
 | E6_onoff | full | 0.9756 | 0.9620 | 0.9722 | 0.9603 | 0.9316 | −0.2 |
-| A3 effb0 | base | 0.9769 | 0.9809 | 0.9625 | 0.9544 | 0.9582 | −2.7 |
 | **E5_geometry** | full | 0.9775 | 0.9690 | 0.9731 | **0.9410** | 0.8974 | **−2.8** |
-| A1 resnet18 | base | 0.9753 | 0.9794 | 0.9634 | 0.9361 | 0.9433 | −4.3 |
-| A0 SmallCNN | base | 0.9742 | 0.9189 | 0.9564 | 0.8286 | 0.8299 | −9.0 |
+| *A3 effb0 (doc 25 % — เทียบไม่ได้)* | base | 0.9769 | 0.9809 | 0.9625 | 0.9544 | 0.9582 | (−2.7) |
+| *A1 resnet18 (doc 25 % — เทียบไม่ได้)* | base | 0.9753 | 0.9794 | 0.9634 | 0.9361 | 0.9433 | (−4.3) |
+| *A0 SmallCNN (doc 25 % — เทียบไม่ได้)* | base | 0.9742 | 0.9189 | 0.9564 | 0.8286 | 0.8299 | (−9.0) |
 
-> **แก้ไข/ข้อควรระวัง (2026-09-19 ค่ำ, จาก audit):** แถว A0/A1/A3 ในตารางนี้ (aug=base) ถูกรันบน doc split ด้วย `subset_frac=0.25`
-> (ข้อมูล train 12,034 ภาพ) ขณะที่แถว B_*/D3/E* ใช้ข้อมูลเต็ม 48,133 ภาพ → ข้อสรุปข้อ 1 ที่ว่า "`base` ทำ generalisation พัง"
-> **ยังไม่ยืนยัน** จนกว่าจะรัน A1 บน doc ด้วยข้อมูลเต็ม (อยู่ในคิวแรกของ HANDOFF §3.1) ส่วนแถวอื่นเทียบกันได้ตามปกติ
-> นอกจากนี้ `B_base_resnet18_64_T4` คือ config เดียวกับ `A1_resnet18_full_64_T4` (รันซ้ำ ได้ค่าเท่ากันทุกหลัก) — นับเป็นจุดข้อมูลเดียว
+> **Confound check (2026-09-19 ค่ำ, RTX 4060 — HANDOFF §3.1 ข้อ 1):** แถว A0/A1/A3 เดิม (aug=base) ถูกรันบน doc split ด้วย `subset_frac=0.25`
+> (12,034 ภาพ) ขณะที่แถวอื่นใช้ข้อมูลเต็ม 48,133 ภาพ → รัน `A1_resnet18_full_64_doc_full` (base, doc, ข้อมูลเต็ม, 6 ep) ใหม่:
+> **top-1 0.9728 / balanced 0.9740 / macro-F1 0.9610 / minority 0.9487** (best ep 5) → ช่องว่าง strat→doc ของ base = −0.5 จุด
+> ไม่ต่างจาก none/trivial → **ข้อสรุปเดิม "base ทำ generalisation พัง" ถูกยกเลิก**; ความต่าง 4.3 จุดมาจากปริมาณข้อมูล ไม่ใช่ preset
+> แถว A0/A3 doc 25 % ยังคงเทียบไม่ได้ (ไม่รันซ้ำเพราะไม่มีผลต่อการเลือก recipe) นอกจากนี้ `B_base_resnet18_64_T4` คือ config เดียวกับ
+> `A1_resnet18_full_64_T4` (รันซ้ำ ได้ค่าเท่ากันทุกหลัก) — นับเป็นจุดข้อมูลเดียว
+> รันเพิ่มพร้อมกัน: `B6a_ft_resnet18_64_doc` (init จาก synthetic pretrain, aug=full, doc) ได้ 0.9732 / 0.9759 → ดีกว่า B_full_doc
+> (init ImageNet ตรง ๆ, recipe เดียวกัน) **+1.5 จุด balanced** บนเอกสารใหม่ → ประโยชน์ของ synthetic pretraining ยืนยันได้ทั้ง 2 split
 
-ข้อสรุป G (สำคัญที่สุดของงานนี้):
-1. **ตัวการที่ทำให้ generalization แย่คือ preset `base` (affine + margin jitter)** ไม่ใช่ augmentation โดยรวม: none/trivial/morph
-   เสียแค่ 0.4–0.5 จุดข้ามเอกสาร (morph ดีขึ้นด้วยซ้ำ) แต่ base เสีย 4.3 → การหมุน/เฉือน/ขยับขอบสุ่มทำลาย cue ขนาด-ตำแหน่ง
-   ที่กลิฟพิมพ์ใช้จริง ในขณะที่ dilate/erode/res-jitter (morph) จำลองสิ่งที่เปลี่ยนจริงข้ามเอกสาร (ความหนาเส้น, DPI)
-2. **geometry side-channel ล้มเหลวข้ามเอกสาร** (94.1, −2.8): ความกว้าง/สูงสัมบูรณ์เป็นพิกเซลผูกกับ DPI/ขนาดฟอนต์ของเอกสาร
-   → ช่วยใน in-distribution แต่เป็น shortcut ที่ไม่ generalize — **ตัดออกจาก recipe สุดท้าย** (บทเรียนตรงข้ามกับสมมติฐาน E5)
+ข้อสรุป G (สำคัญที่สุดของงานนี้ — ฉบับแก้หลัง confound check):
+1. **ทุก preset เบา (none / base / trivial / morph) เสียเพียง 0.3–0.5 จุด balanced เมื่อข้ามเอกสาร** และ morph ดีขึ้นด้วยซ้ำ (+0.9)
+   สิ่งที่พังข้ามเอกสารจริงคือ **aug หนัก (`full`: −0.3 แต่ตั้งต้นต่ำ, doc bal 96.1)**, **randaug (−1.2)** และ **geometry side-channel (−2.8)**
+   → augmentation แบบ 1 op ต่อภาพ (trivial) หรือ morph คือจุดสมดุลที่ generalise ได้ดีที่สุดโดยไม่เสีย in-distribution
+2. **geometry side-channel ล้มเหลวข้ามเอกสาร** (94.1, −2.8; ข้อมูลเต็ม จึงไม่ใช่ confound): ความกว้าง/สูงสัมบูรณ์เป็นพิกเซลผูกกับ DPI/ขนาดฟอนต์
+   ของเอกสาร → ช่วยใน in-distribution แต่เป็น shortcut ที่ไม่ generalize — **ตัดออกจาก recipe สุดท้าย** (บทเรียนตรงข้ามกับสมมติฐาน E5)
 3. **sampler sqrt-inverse ให้ doc balanced สูงสุด 98.16 และ minority 99.2%** แต่เสีย top-1 ~1 จุด — เหมาะถ้าอาจารย์วัด balanced/macro
-4. สำหรับ **plain accuracy** บนเอกสารใหม่: trivial 97.90 ≈ none 97.80 ≈ randaug 97.80 > morph 97.29 > full 97.26
-5. ImageNet init ยังสำคัญมากข้ามเอกสาร: scratch ร่วง 9 จุด balanced
-→ recipe ตัวจริง: resnet18/effb0 full fine-tune @64, **TrivialAugment (หรือ morph) + synthetic fonts**, ไม่ใช้ geometry,
-   20 epochs + EMA + TTA, เลือก τ/sampler ตาม metric ที่คาดว่าอาจารย์ใช้ (กำลังรัน F1–F10)
+4. สำหรับ **plain accuracy** บนเอกสารใหม่: trivial 97.90 ≈ none 97.80 ≈ randaug 97.80 > B6a_ft 97.32 ≈ morph 97.29 ≈ base 97.28 ≈ full 97.26
+5. ImageNet init ยังสำคัญมากข้ามเอกสาร: scratch ร่วง 9 จุด balanced (แม้แถว A0 doc จะเป็นข้อมูล 25 % ช่องว่าง 9 จุดก็ใหญ่เกินจะอธิบายด้วยปริมาณข้อมูลอย่างเดียว)
+6. **synthetic-font pretraining ช่วยข้ามเอกสารด้วย**: B6a_ft doc 97.59 vs B_full doc 96.11 (+1.5 balanced, recipe เดียวกันต่างแค่ init)
+→ recipe ตัวจริง: resnet18/effb0 full fine-tune @64, **TrivialAugment (หรือ morph) + synthetic fonts (เป็น pretraining หรือ extra data)**,
+   ไม่ใช้ geometry, 20 epochs + EMA, TTA เป็นตัวเลือกเปิด/ปิดแยก, เลือก τ/sampler ตาม metric ที่คาดว่าอาจารย์ใช้ (รอบ F1–F17 ดูหัวข้อ F)
 
 ### C (stage-2) — fine-tune ต่อบนข้อมูลจริง 6 epochs, aug=full, stratified val (เทียบฐาน B_full ที่ init จาก ImageNet ตรง ๆ)
 
