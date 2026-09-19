@@ -1,0 +1,22 @@
+# data (read-only source, never committed)
+ThaiCharacter Dataset/
+data/
+*.zip
+# weights / large artifacts
+weights/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.ckpt
+runs/
+# python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# misc
+.DS_Store
+Thumbs.db
+*.log
+!tasks/DELEGATION-LOG.md
