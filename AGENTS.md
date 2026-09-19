@@ -3,7 +3,7 @@
 Project: **72-class Thai character/digit recognition (CNN + Transfer Learning + Data Augmentation)** — a graded
 course project (KMITL). Owner: eggchad (67070309@kmitl.ac.th). Language with the owner: **Thai** (code/docs in English
 are fine). Read this file first, then `tasks/HANDOFF.md` (exact state + what to do next), then
-`reports/02-EXPERIMENTS.md` (all results with interpretation).
+`reports/02-EXPERIMENTS.md` (all results with interpretation). `tasks/HANDOFF-OWNER-TH.md` is the owner's machine-setup guide.
 
 ## 1. Role split (owner's rule — follow it)
 - You are the **research lead / planner / reviewer**. Large code chunks are delegated to the Antigravity CLI
@@ -11,8 +11,8 @@ are fine). Read this file first, then `tasks/HANDOFF.md` (exact state + what to 
   `tasks/AGY-USAGE.md` and `tasks/DELEGATION-LOG.md`. Owner prefers `gemini-3.8-flash-high`, BUT in `--print` mode
   agy kills any long-running command it started in the background (all models) → use agy only for tasks whose
   commands finish in seconds (writing files, unit tests, plots). Run training/long jobs yourself.
-- If `agy` is unavailable (not installed on the new machine, quota, login) → tell the owner and continue writing the
-  code yourself only after they approve (they did approve this once on 2026-09-19).
+- On the RTX 4060 machine `agy` is probably NOT installed: the owner's standing approval (2026-09-19) applies —
+  write the code yourself, log the work as `SELF` rows in `tasks/DELEGATION-LOG.md`, and tell the owner.
 - Always: write a spec file `tasks/TASK-XX-<name>.md` before delegating, commit before delegating, run the
   acceptance commands yourself after, log the round in `tasks/DELEGATION-LOG.md`.
 - Summarise results to the owner after **every** experiment; be plain about failures.
@@ -53,11 +53,14 @@ weights/           packaged deliverable weights (scripts/export_weights.py)
 ## 4. Environment
 - `uv` manages everything; plain `uv sync` / `uv run` is enough. PyTorch wheels are chosen automatically by
   environment markers in `pyproject.toml`: native Windows or WSL2 → CUDA 12.6 wheels (RTX 4060 OK); other Linux → CPU
-  wheels. (A bare-metal Linux GPU box would need `uv pip install torch torchvision --index-url
-  https://download.pytorch.org/whl/cu126` after sync.) Python 3.12 (`.python-version`).
+  wheels. First `uv sync` on WSL2 downloads ≈ 4 GB (torch + nvidia-* + triton; ≈ 3 GB on native Windows) — keep
+  the project and `~/.cache/uv` on the same ext4 filesystem (never under `/mnt/c`), ≥ 10 GB free. If
+  `torch.__version__` ends in `+cpu` on a GPU box, `uname -r` lacks "microsoft" (WSL1/custom kernel): fix WSL2 rather
+  than hand-installing wheels (`uv run` re-syncs to the lock and would undo `uv pip install`; only `uv run --no-sync`
+  keeps a manual install). Python 3.12 (`.python-version`). Owner-facing setup guide: `tasks/HANDOFF-OWNER-TH.md`.
 - Linux / WSL2 preferred (bash scripts, `fork` workers). Native Windows works for `train.py` /
-  `run_local_queue.py` (workers auto-set to 0; the augmentation transform is picklable) but the `colab_*.sh`
-  scripts do not apply there.
+  `run_local_queue.py` (engine defaults `num_workers=0` on Windows; the augmentation transform is picklable; set
+  `PYTHONUTF8=1` for Thai console output) but the `colab_*.sh` scripts do not apply there.
 - Tests: `uv run pytest -q` (test_data, test_augment, test_synth, test_engine (~3 min CPU), test_external,
   test_error_analysis, test_infer, test_notebook, test_result_figures).
 - Train: `uv run python scripts/train.py --config configs/<x>.yaml [--exp-id NAME] [--set key=value ...]`
