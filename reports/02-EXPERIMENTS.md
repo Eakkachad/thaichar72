@@ -359,3 +359,24 @@ F18/F19 (B6a init + full / randaug) ที่ออกแบบจากสา�
 → **ส่งมอบ K1** เป็น `weights/thaichar72_resnet18_64.pt` (fp32 44.9 MB) + `_fp16.pt` (22.5 MB, ผลเท่ากันทุกหลัก) + `_v1labels.pt` (F19 v1, สำรอง) +
 `thaichar72_r18_synth_pretrain_init.pt` (stage-1 init สำหรับเทรนซ้ำ); `configs/final.yaml` = recipe F19 บน v2; notebook รันจบ 0 error ในโหมด inference
 (K1 บน v2 val และ doc val ตาม split ที่ระบุใน checkpoint) — รายละเอียดใน `reports/FINAL-REPORT.md` §9, §12
+
+## J. Extras — recipe ผู้ชนะบน backbone อื่น + "small model" (v2 split, randaug, 20 ep, ImageNet init เพราะ B6a init เป็น resnet18; `configs/extras/`)
+
+| exp | backbone | params | KD จาก 3 ครู F19_v2 | top-1 | balanced | macro-F1 | robust mean | latency CPU bs=1 |
+|---|---|---:|:-:|---:|---:|---:|---:|---:|
+| **K1 (ส่งมอบ)** | resnet18 (B6a init) | 11.2 M | ✓ | **0.9903** | 0.9875 | 0.9869 | **0.9104** | 6.8 ms |
+| X1 | efficientnet_b0 | 4.1 M | – | 0.9901 | **0.9886** | **0.9885** | 0.9095 | 6.4 ms |
+| X2 | efficientnet_b0 | 4.1 M | ✓ | 0.9897 | 0.9865 | 0.9834 | 0.9070 | – |
+| X3 | convnext_tiny | 27.9 M | – | 0.9898 | 0.9869 | 0.9841 | 0.9065 | – |
+| X6 | mobilenetv3_large_100 | 4.3 M | – | 0.9893 | 0.9870 | 0.9864 | 0.9063 | 4.3 ms |
+| X4 | mobilenetv3_large_100 | 4.3 M | ✓ | 0.9872 | 0.9840 | 0.9810 | 0.9043 | – |
+| **X5 (small model)** | mobilenetv3_small_100 | **1.6 M** | ✓ | 0.9900 | 0.9872 | 0.9858 | 0.9053 | **3.4 ms** |
+
+ข้อสรุป J:
+1. **ทุก backbone ที่ใช้ recipe ผู้ชนะ (randaug + label v2) มาอยู่ที่ 98.7–99.0 และผ่าน robustness gate ทั้งหมด** → ที่ 64 px ตัวอักษรไบนารี
+   backbone แทบไม่สำคัญ recipe (aug ที่มี noise, label ถูก, 20 epochs) สำคัญกว่า; convnext_tiny (28 M) ไม่ให้อะไรเพิ่มและช้ากว่า 3.5×
+2. **KD จากครู resnet18 ช่วยเฉพาะ student resnet18** (K1 +0.24 vs seed 42): บน effb0 และ mnv3-large KD ทำให้แย่ลง (−0.04 / −0.21 top-1,
+   best epoch เร็วขึ้น) — soft target ของครูต่างสถาปัตยกรรมขัดกับ inductive bias ของ student; ยกเว้น mnv3-**small** ที่เล็กมากจนได้ประโยชน์ (X5 0.9900)
+3. **Small model**: X5 = 1.6 M params (7× เล็กกว่า resnet18), 6.5 MB, 3.4 ms/ภาพ, แพ้ K1 แค่ 0.03 top-1 และ 0.5 จุด robustness →
+   ส่งมอบเป็น `weights/thaichar72_mnv3small_64_small.pt` สำหรับกรณีต้องการโมเดลเล็ก/เร็ว
+4. effb0 (X1) เป็นทางเลือกที่ balanced/macro-F1 สูงสุด (98.86 / 98.85) ด้วย 4.1 M params แต่ช้ากว่า resnet18 ต่อ epoch 2.5× และคะแนน top-1/robust ต่ำกว่า K1 เล็กน้อย

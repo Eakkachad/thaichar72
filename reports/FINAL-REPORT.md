@@ -130,6 +130,10 @@ Robustness (mean top-1 ทุก corruption, Otsu on): K1 **0.9104** > F19_v2 0.
 | `thaichar72_resnet18_64_fp16.pt` | เหมือนกันแบบ fp16 (ผลเท่ากันทุกหลัก 0.9903/0.9875) | 22.5 MB | fce6c261 |
 | `thaichar72_resnet18_64_v1labels.pt` | สำรอง: F19 เทรนด้วย label เดิม — ใช้ถ้าคาดว่า test set ใช้ label convention เดิมของแหล่ง `be` (§12) | 44.9 MB | 9605c6f6 |
 | `thaichar72_r18_synth_pretrain_init.pt` | stage-1 init (ImageNet→ฟอนต์สังเคราะห์) สำหรับเทรนซ้ำใน notebook | 44.9 MB | 3d667ccd |
+| `thaichar72_mnv3small_64_small.pt` | **small model**: MobileNetV3-small (1.6 M params) กลั่นจาก 3 ครู F19 — 0.9900 / 0.9872, robust 0.9053, 3.4 ms/ภาพ | 6.5 MB | ดู card |
+
+Backbone อื่นด้วย recipe เดียวกัน (02-EXPERIMENTS §J): effb0 0.9901 / 0.9886, convnext_tiny 0.9898 / 0.9869, mnv3-large 0.9893 / 0.9870 — ทุกตัว 98.7–99.0
+และผ่าน robustness gate → **recipe สำคัญกว่า backbone**; KD ข้ามสถาปัตยกรรมไม่ช่วย (ยกเว้น student เล็กมาก)
 
 ```python
 import sys; sys.path.insert(0, "src")

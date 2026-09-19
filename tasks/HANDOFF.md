@@ -18,7 +18,9 @@ Everything in §3 was run on the 4060 (`tasks/run_step1*.sh`; logs `tasks/logs/l
   packaged stage-1 init); `run_notebook_local.py --mode inference` passes with 0 errors (99.03 % / 98.75 % printed). **NOT yet run on Colab** — owner:
   upload repo + `weights/` (+ `data/cache/glyphs.npz`, `data/splits/split_seed42.csv` for inference mode) and run with MODE="inference".
 - **Open decision for the owner**: which weight to submit (v2 default vs v1 hedge) — see FINAL-REPORT §12; ask the teacher about ว/า labelling if possible.
-- Optional extras (not done): F19 recipe on effb0/convnext_tiny, KD into mobilenetv3 "small model", variance-across-splits (`_sp0`), doc-split KD.
+- Extras DONE (`configs/extras/X1–X6`, 02-EXPERIMENTS §J): F19 recipe on effb0 0.9901/0.9886, convnext_tiny 0.9898/0.9869, mnv3-large 0.9893/0.9870,
+  KD into mnv3-small 0.9900/0.9872 (1.6 M params, 3.4 ms) → exported as `weights/thaichar72_mnv3small_64_small.pt`; all pass the robustness gate;
+  cross-architecture KD does not help. Not done: variance-across-splits (`_sp0`), doc-split KD.
 - Machine notes: 1 training lane uses ~35 % GPU / 2 GB (CPU-bound pipeline) → run 2–4 configs concurrently (`run_step1_3b_ext.sh` pattern);
   `agy` not installed (SELF rows in DELEGATION-LOG); WSL git uses the Windows Git Credential Manager (push works). Helper tools outside the repo:
   `/home/CNN/tools/{cmp,ftable,robmean,datav2_check}.py`.
