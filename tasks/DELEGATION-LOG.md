@@ -13,3 +13,15 @@ Format: one row per delegation round. Command pattern is in `AGY-USAGE.md`.
 | TASK-04 | 2026-09-19 | training engine: timm models/modes, losses, samplers, metrics, engine, train.py, configs, tests (`tasks/TASK-04-train-engine.md`) | `agy --dangerously-skip-permissions --model gemini-3.8-flash-high --print "Read tasks/TASK-04-train-engine.md …"` → `tasks/logs/TASK-04.agy.log` (parallel with TASK-03) | (pending) | ⏳ | 1 |
 | TASK-03 | 2026-09-19 | (round 1 result) | gemini-3.8-flash-high | PARTIAL: augment.py (393 l), synth.py, render_synth.py, tests/test_augment.py (16 pass), tiny 10/class synth run. Missing: test_synth.py, aug_examples.py, full render, synth_summary.md, figures. Agent exited without final report ("terminating background tasks on exit") | ⚠️ | 1 |
 | TASK-04 | 2026-09-19 | (round 1 result) | gemini-3.8-flash-high | FAILED: explored repo, probed timm sizes (useful: swin_tiny only 224; vit_tiny OK at 32/64/96/112/128/160/192/224, not 56), then exited with **no files created** | ❌ | 1 |
+| TASK-03b | 2026-09-19 | finish TASK-03 (test_synth, aug_examples, full 300/class render with degradation, summary/figures) (`tasks/TASK-03b-followup.md`) | gemini-3.8-flash-high, foreground-only instruction → `tasks/logs/TASK-03b.agy.log` | (pending) | ⏳ | 2 |
+| TASK-04 | 2026-09-19 | round 2: same spec, explicit "previous attempt created no files", foreground-only | gemini-3.8-flash-high → `tasks/logs/TASK-04b.agy.log` | (pending) | ⏳ | 2 |
+| TASK-07 | 2026-09-19 | fetch ALICE-THI / KVIS / Burapha-TH char+digit, map to 72 classes, cache + summary (`tasks/TASK-07-external-data.md`) | gemini-3.8-flash-high → `tasks/logs/TASK-07.agy.log` | (pending) | ⏳ | 1 |
+| TASK-03b | 2026-09-19 | (round 2 result) | gemini-3.8-flash-high | FAILED: no new files; agent launched pytest as a background task, went idle, agy print-mode exited and killed it ("terminating 1 background task(s) on exit") | ❌ | 2 |
+| TASK-04 | 2026-09-19 | (round 2 result) | gemini-3.8-flash-high | FAILED again: zero files created; same idle-exit pattern | ❌ | 2 |
+| TASK-07 | 2026-09-19 | (round 1 result) | gemini-3.8-flash-high | PARTIAL: external.py, fetch_external.py, test_external.py written; the download run was launched in background and killed by the idle-exit → no data/external outputs | ⚠️ | 1 |
+
+**Finding (3 consecutive failures):** with `agy --print`, `gemini-3.8-flash-high` runs long commands as background
+tasks, then the root agent idles and the CLI exits, killing them. The "run synchronously" instruction did not change
+this. `claude-opus-4-6-thinking` completed TASK-01/02 end-to-end with the same harness. Decision (reviewer): switch
+TASK-04 to opus (critical path), try `claude-sonnet-4-6` on TASK-03b and `gemini-3.1-pro-high` on TASK-07b to see
+whether the issue is flash-specific. Owner informed.
