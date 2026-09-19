@@ -13,6 +13,11 @@ NAME="$(basename "$REPO")"
 OUT_DIR="${1:-$(dirname "$REPO")}"
 STAMP="$(date +%F)"
 OUT="$OUT_DIR/${NAME}_handoff_${STAMP}.tar.gz"
+if [ -e "$OUT" ]; then  # never clobber an earlier package (the 2026-09-19 laptop tarball was overwritten once this way)
+  STAMP="$(date +%F_%H%M)"
+  OUT="$OUT_DIR/${NAME}_handoff_${STAMP}.tar.gz"
+  echo "note: a package for today already exists -> writing $OUT instead" >&2
+fi
 cd "$(dirname "$REPO")"
 
 # checkpoints worth carrying (stage-1 inits, winner family, deliverable sources, references, extras)
