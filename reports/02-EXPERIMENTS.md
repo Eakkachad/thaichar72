@@ -217,3 +217,48 @@ full (97.26 / 96.11) แพ้ base บน doc balanced ถึง 1.3 จุด 
 (+0.4 balanced, +0.7 macro-F1) และดีกว่า ImageNet ตรง ๆ +2.0 balanced ที่งบเท่ากัน — เป็น transfer แบบ 2 ชั้น
 (ImageNet → โดเมนตัวอักษรไทยสังเคราะห์ → ข้อมูลจริง) ที่ตรงกับหัวข้อ Transfer Learning ของโจทย์ที่สุด;
 ลายมือ public ก็ช่วย (+1.7) แม้ต่างโดเมน → ทั้งสองแนวเข้าสู่รอบตัวจริง 20 epochs (F11–F17)
+
+## F. Final candidates — 20 epochs, resnet18/effb0 @64, CE+LS 0.1, EMA, stratified val seed 42 (RTX 4060, WSL2; F1–F4 บน T4)
+
+ทุกตัวใช้ recipe ฐานเดียวกัน (AdamW 1e-3, cosine, warmup 1 ep, batch 128, EMA) ต่างกันที่ **init** (ImageNet / B6a = synthetic-font pretrain /
+C1 = public handwriting pretrain), **aug** และ **synthetic เป็น extra data** ค่าที่รายงานคือ **raw** (ไม่ TTA) บน val เต็ม 12,027 ภาพ; TTA (8 มุมมอง)
+แยกไว้คอลัมน์ท้าย F5/F6 เป็น negative control ที่ตั้งใจรัน (geometry / ON-OFF) เรียงตาม balanced acc
+
+| exp | model | init | aug | synth | extra | top-1 | balanced | macro-F1 | minority | TTA top-1 / bal | best ep | s/ep (4060) |
+|---|---|---|---|:-:|---|---:|---:|---:|---:|---:|---:|---:|
+| **F16** | resnet18 | B6a synth | morph | – | – | 0.9820 | **0.9856** | **0.9830** | 0.9750 | 0.9802 / 0.9854 | 18/20 | 8.8 |
+| **F7** | resnet18 | ImageNet | morph | ✓ | – | 0.9809 | 0.9851 | 0.9813 | 0.9750 | 0.9791 / 0.9823 | 19/20 | 12.8 |
+| *F5 (neg. control)* | resnet18 | ImageNet | trivial | ✓ | geometry | 0.9854 | 0.9847 | 0.9827 | 0.9667 | 0.9821 / 0.9845 | 19/20 | 11.8 |
+| **F10** | efficientnet_b0 | ImageNet | trivial | ✓ | – | 0.9836 | 0.9842 | 0.9799 | 0.9750 | 0.9832 / **0.9852** | 20/20 | 24.1 |
+| F15 | resnet18 | B6a synth | trivial | ✓ | – | 0.9848 | 0.9840 | 0.9819 | 0.9667 | 0.9825 / 0.9809 | 20/20 | 11.7 |
+| F12 | resnet18 | C1 ext | trivial | – | – | 0.9854 | 0.9834 | 0.9804 | 0.9667 | 0.9845 / 0.9831 | 18/20 | 8.3 |
+| *F6 (neg. control)* | resnet18 | ImageNet | randaug | ✓ | onoff | 0.9827 | 0.9832 | 0.9763 | 0.9667 | 0.9810 / 0.9842 | 13/20 | 12.1 |
+| F11 | resnet18 | C1 ext | trivial | ✓ | – | 0.9847 | 0.9830 | 0.9784 | 0.9667 | 0.9825 / 0.9824 | 20/20 | 11.6 |
+| F14 | resnet18 | B6a synth | trivial | – | – | 0.9855 | 0.9829 | 0.9817 | 0.9667 | 0.9841 / 0.9826 | 20/20 | 8.3 |
+| F1 | resnet18 | ImageNet | none | – | – | **0.9859** | 0.9828 | 0.9817 | 0.9667 | 0.9790 / 0.9790 | 18/20 | 17.2 (T4) |
+| F8 | resnet18 | ImageNet | trivial | – | – | 0.9854 | 0.9828 | 0.9803 | 0.9667 | 0.9832 / 0.9830 | 18/20 | 8.4 |
+| F17 | resnet18 | B6a synth | none | – | – | 0.9804 | 0.9825 | 0.9804 | 0.9667 | 0.9791 / 0.9769 | **3**/20 | 8.1 |
+| F2 | resnet18 | ImageNet | randaug | – | – | 0.9837 | 0.9818 | 0.9775 | 0.9667 | 0.9836 / 0.9830 | 20/20 | 27.5 (T4) |
+| F9 | resnet18 | ImageNet | trivial | ✓ | – | 0.9845 | 0.9814 | 0.9782 | 0.9583 | 0.9826 / 0.9809 | 19/20 | 11.9 |
+| F3 | resnet18 | ImageNet | randaug | ✓ | – | 0.9845 | 0.9804 | 0.9774 | 0.9583 | 0.9825 / 0.9801 | 20/20 | 39.3 (T4) |
+| F13 | resnet18 | C1 ext | morph | ✓ | – | 0.9781 | 0.9777 | 0.9670 | 0.9583 | 0.9771 / 0.9777 | 14/20 | 12.4 |
+| F4 | efficientnet_b0 | ImageNet | randaug | ✓ | – | 0.9786 | 0.9775 | 0.9694 | 0.9583 | 0.9776 / 0.9775 | **4**/20 | 59.4 (T4) |
+
+ข้อสรุป F (บน stratified val):
+1. **เพดานของ in-distribution val ถึงแล้ว**: ทั้ง 17 ตัวอยู่ในช่วง top-1 97.81–98.59 / balanced 97.75–98.56 ส่วนกลุ่มบน 10 ตัวห่างกันไม่ถึง 0.3 จุด
+   ซึ่งเท่ากับ ~35 ภาพจาก 12,027 และเล็กกว่า label noise ของคู่ า/ๅ → **การจัดอันดับบน strat อย่างเดียวไม่มีความหมาย ต้องใช้ doc split ตัดสิน** (§F-doc ด้านล่าง)
+2. **morph ให้ balanced/macro-F1 สูงสุด (F16 98.56, F7 98.51) แต่เสีย top-1 ~0.4 จุด** เทียบกลุ่ม trivial/none (98.54–98.59): dilate/erode/res-jitter
+   ช่วยคลาสหางที่เส้นบาง/หนาผิดปกติ แต่ทำให้คู่ า/ๅ/ว (คลาสใหญ่) ผิดเพิ่ม
+3. **synthetic-font pretraining (B6a init) เป็นกลางถึงบวกเล็กน้อยเมื่อมี aug** (F14 vs F8: +0.01 bal; F15 vs F9: +0.26; F16 คือ recipe ที่ดีที่สุด)
+   แต่ **เป็นลบเมื่อไม่มี aug** (F17 vs F1: −0.55 top-1, best epoch = 3 แล้ว overfit) → init ที่ fit โดเมนแล้วต้องมี regulariser
+4. **public-handwriting init (C1) ให้ผลปนกัน**: trivial ≈ เท่า ImageNet (F12 vs F8 +0.06 bal), แต่ morph+synth แย่ลงชัด (F13 vs F7 −0.74 bal, best ep 14)
+   → ไม่เข้ารอบ; แนวคิด "โดเมนกลาง" ที่ได้ผลคือฟอนต์สังเคราะห์ (โดเมนตัวพิมพ์เดียวกัน) ไม่ใช่ลายมือ
+5. **synthetic เป็น extra data บน strat แทบไม่มีผล** (F9 vs F8 −0.14 bal, F15 vs F14 +0.11, F3 vs F2 −0.14) แต่เพิ่มเวลา/epoch ~40 % →
+   ถ้าจะใช้ synthetic ให้ใช้เป็น **pretraining** (F16) ไม่ใช่เท-รวม; ข้อยกเว้นคือ effb0 (F10) ที่ต้องการข้อมูลมากกว่าและได้ 98.42
+6. **effb0 (F10) เสถียรเมื่อใช้ trivial** (98.36/98.42, best ep 20) ต่างจาก F4 randaug ที่พังตั้งแต่ epoch 4 และ F10 เป็นตัวเดียวที่ **TTA ช่วย balanced ชัด (+0.10 → 98.52)**
+   แต่ช้ากว่า resnet18 ~2.5× ต่อ epoch
+7. **TTA (8 canvas views) ไม่คุ้มเป็นค่าเริ่มต้น**: ลด top-1 ทุกตัว (−0.1 ถึง −0.7 จุด; แรงสุดกับ none/morph) ช่วย balanced เฉพาะ F10/F6 →
+   ปิด TTA ใน deliverable; เปิดเฉพาะเมื่อผู้ชนะได้กำไรจริงบน doc split
+8. **negative controls**: F5 geometry ได้ 98.54/98.47 บน strat (อันดับ 3) *ตามคาด* เพราะ w/h เป็น shortcut ใน in-distribution — ต้องดูผล doc
+   (§F-doc) ก่อนตัดสิน; F6 ON/OFF vs F3 (recipe เดียวกันไม่มี onoff): +0.28 bal / −0.18 top-1, best ep 13 → ไม่มีกำไรที่ชัดเจน ยืนยันผล E6
+→ **top-3 เข้ารอบ doc-split** (raw strat balanced, ไม่รวม negative control): **F16, F7, F10** (+ F5 บน doc เป็นหลักฐานผลลบของ geometry ที่ 20 epochs)
