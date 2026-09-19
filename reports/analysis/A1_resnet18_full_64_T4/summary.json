@@ -1,0 +1,1502 @@
+{
+  "exp_id": "A1_resnet18_full_64_T4",
+  "top1": 0.97530556248441,
+  "balanced_acc": 0.9793685636598363,
+  "topk": 20,
+  "top_confused_directed": [
+    {
+      "true_idx": 33,
+      "pred_idx": 43,
+      "true_code": 199,
+      "pred_code": 210,
+      "true_char": "ว",
+      "pred_char": "า",
+      "count": 59,
+      "pct_of_true": 17.559523809523807,
+      "n_train": 1342,
+      "rank": 1
+    },
+    {
+      "true_idx": 43,
+      "pred_idx": 55,
+      "true_code": 210,
+      "pred_code": 229,
+      "true_char": "า",
+      "pred_char": "ๅ",
+      "count": 57,
+      "pct_of_true": 6.284454244762955,
+      "n_train": 3630,
+      "rank": 2
+    },
+    {
+      "true_idx": 55,
+      "pred_idx": 43,
+      "true_code": 229,
+      "pred_code": 210,
+      "true_char": "ๅ",
+      "pred_char": "า",
+      "count": 38,
+      "pct_of_true": 14.615384615384617,
+      "n_train": 1041,
+      "rank": 3
+    },
+    {
+      "true_idx": 43,
+      "pred_idx": 53,
+      "true_code": 210,
+      "pred_code": 227,
+      "true_char": "า",
+      "pred_char": "ใ",
+      "count": 28,
+      "pct_of_true": 3.0871003307607494,
+      "n_train": 3630,
+      "rank": 4
+    },
+    {
+      "true_idx": 42,
+      "pred_idx": 59,
+      "true_code": 209,
+      "pred_code": 233,
+      "true_char": "ั",
+      "pred_char": "้",
+      "count": 16,
+      "pct_of_true": 2.168021680216802,
+      "n_train": 2950,
+      "rank": 5
+    },
+    {
+      "true_idx": 43,
+      "pred_idx": 33,
+      "true_code": 210,
+      "pred_code": 199,
+      "true_char": "า",
+      "pred_char": "ว",
+      "count": 10,
+      "pct_of_true": 1.1025358324145533,
+      "n_train": 3630,
+      "rank": 6
+    },
+    {
+      "true_idx": 43,
+      "pred_idx": 5,
+      "true_code": 210,
+      "pred_code": 168,
+      "true_char": "า",
+      "pred_char": "จ",
+      "count": 6,
+      "pct_of_true": 0.6615214994487321,
+      "n_train": 3630,
+      "rank": 7
+    },
+    {
+      "true_idx": 15,
+      "pred_idx": 16,
+      "true_code": 180,
+      "pred_code": 181,
+      "true_char": "ด",
+      "pred_char": "ต",
+      "count": 5,
+      "pct_of_true": 1.240694789081886,
+      "n_train": 1613,
+      "rank": 8
+    },
+    {
+      "true_idx": 7,
+      "pred_idx": 8,
+      "true_code": 170,
+      "pred_code": 171,
+      "true_char": "ช",
+      "pred_char": "ซ",
+      "count": 4,
+      "pct_of_true": 1.9704433497536946,
+      "n_train": 810,
+      "rank": 9
+    },
+    {
+      "true_idx": 45,
+      "pred_idx": 47,
+      "true_code": 213,
+      "pred_code": 215,
+      "true_char": "ี",
+      "pred_char": "ื",
+      "count": 3,
+      "pct_of_true": 10.344827586206897,
+      "n_train": 114,
+      "rank": 10
+    },
+    {
+      "true_idx": 59,
+      "pred_idx": 42,
+      "true_code": 233,
+      "pred_code": 209,
+      "true_char": "้",
+      "pred_char": "ั",
+      "count": 3,
+      "pct_of_true": 1.5151515151515151,
+      "n_train": 792,
+      "rank": 11
+    },
+    {
+      "true_idx": 16,
+      "pred_idx": 3,
+      "true_code": 181,
+      "pred_code": 164,
+      "true_char": "ต",
+      "pred_char": "ค",
+      "count": 3,
+      "pct_of_true": 0.9036144578313252,
+      "n_train": 1328,
+      "rank": 12
+    },
+    {
+      "true_idx": 32,
+      "pred_idx": 36,
+      "true_code": 197,
+      "pred_code": 202,
+      "true_char": "ล",
+      "pred_char": "ส",
+      "count": 3,
+      "pct_of_true": 0.6880733944954129,
+      "n_train": 1744,
+      "rank": 13
+    },
+    {
+      "true_idx": 43,
+      "pred_idx": 56,
+      "true_code": 210,
+      "pred_code": 230,
+      "true_char": "า",
+      "pred_char": "ๆ",
+      "count": 3,
+      "pct_of_true": 0.33076074972436603,
+      "n_train": 3630,
+      "rank": 14
+    },
+    {
+      "true_idx": 70,
+      "pred_idx": 57,
+      "true_code": 248,
+      "pred_code": 231,
+      "true_char": "๘",
+      "pred_char": "็",
+      "count": 2,
+      "pct_of_true": 40.0,
+      "n_train": 22,
+      "rank": 15
+    },
+    {
+      "true_idx": 47,
+      "pred_idx": 45,
+      "true_code": 215,
+      "pred_code": 213,
+      "true_char": "ื",
+      "pred_char": "ี",
+      "count": 2,
+      "pct_of_true": 16.666666666666664,
+      "n_train": 48,
+      "rank": 16
+    },
+    {
+      "true_idx": 14,
+      "pred_idx": 9,
+      "true_code": 179,
+      "pred_code": 173,
+      "true_char": "ณ",
+      "pred_char": "ญ",
+      "count": 2,
+      "pct_of_true": 3.4482758620689653,
+      "n_train": 234,
+      "rank": 17
+    },
+    {
+      "true_idx": 7,
+      "pred_idx": 1,
+      "true_code": 170,
+      "pred_code": 162,
+      "true_char": "ช",
+      "pred_char": "ข",
+      "count": 2,
+      "pct_of_true": 0.9852216748768473,
+      "n_train": 810,
+      "rank": 18
+    },
+    {
+      "true_idx": 5,
+      "pred_idx": 1,
+      "true_code": 168,
+      "pred_code": 162,
+      "true_char": "จ",
+      "pred_char": "ข",
+      "count": 2,
+      "pct_of_true": 0.8368200836820083,
+      "n_train": 957,
+      "rank": 19
+    },
+    {
+      "true_idx": 1,
+      "pred_idx": 42,
+      "true_code": 162,
+      "pred_code": 209,
+      "true_char": "ข",
+      "pred_char": "ั",
+      "count": 2,
+      "pct_of_true": 0.7407407407407408,
+      "n_train": 1078,
+      "rank": 20
+    }
+  ],
+  "top_confused_symmetric": [
+    {
+      "code_a": 210,
+      "char_a": "า",
+      "code_b": 229,
+      "char_b": "ๅ",
+      "total_count": 95,
+      "count_a_to_b": 57,
+      "count_b_to_a": 38,
+      "n_train_a": 3630,
+      "n_train_b": 1041,
+      "rank": 1
+    },
+    {
+      "code_a": 199,
+      "char_a": "ว",
+      "code_b": 210,
+      "char_b": "า",
+      "total_count": 69,
+      "count_a_to_b": 59,
+      "count_b_to_a": 10,
+      "n_train_a": 1342,
+      "n_train_b": 3630,
+      "rank": 2
+    },
+    {
+      "code_a": 210,
+      "char_a": "า",
+      "code_b": 227,
+      "char_b": "ใ",
+      "total_count": 29,
+      "count_a_to_b": 28,
+      "count_b_to_a": 1,
+      "n_train_a": 3630,
+      "n_train_b": 864,
+      "rank": 3
+    },
+    {
+      "code_a": 209,
+      "char_a": "ั",
+      "code_b": 233,
+      "char_b": "้",
+      "total_count": 19,
+      "count_a_to_b": 16,
+      "count_b_to_a": 3,
+      "n_train_a": 2950,
+      "n_train_b": 792,
+      "rank": 4
+    },
+    {
+      "code_a": 180,
+      "char_a": "ด",
+      "code_b": 181,
+      "char_b": "ต",
+      "total_count": 7,
+      "count_a_to_b": 5,
+      "count_b_to_a": 2,
+      "n_train_a": 1613,
+      "n_train_b": 1328,
+      "rank": 5
+    },
+    {
+      "code_a": 168,
+      "char_a": "จ",
+      "code_b": 210,
+      "char_b": "า",
+      "total_count": 6,
+      "count_a_to_b": 0,
+      "count_b_to_a": 6,
+      "n_train_a": 957,
+      "n_train_b": 3630,
+      "rank": 6
+    },
+    {
+      "code_a": 213,
+      "char_a": "ี",
+      "code_b": 215,
+      "char_b": "ื",
+      "total_count": 5,
+      "count_a_to_b": 3,
+      "count_b_to_a": 2,
+      "n_train_a": 114,
+      "n_train_b": 48,
+      "rank": 7
+    },
+    {
+      "code_a": 170,
+      "char_a": "ช",
+      "code_b": 171,
+      "char_b": "ซ",
+      "total_count": 4,
+      "count_a_to_b": 4,
+      "count_b_to_a": 0,
+      "n_train_a": 810,
+      "n_train_b": 236,
+      "rank": 8
+    },
+    {
+      "code_a": 164,
+      "char_a": "ค",
+      "code_b": 181,
+      "char_b": "ต",
+      "total_count": 3,
+      "count_a_to_b": 0,
+      "count_b_to_a": 3,
+      "n_train_a": 1154,
+      "n_train_b": 1328,
+      "rank": 9
+    },
+    {
+      "code_a": 197,
+      "char_a": "ล",
+      "code_b": 202,
+      "char_b": "ส",
+      "total_count": 3,
+      "count_a_to_b": 3,
+      "count_b_to_a": 0,
+      "n_train_a": 1744,
+      "n_train_b": 1273,
+      "rank": 10
+    },
+    {
+      "code_a": 210,
+      "char_a": "า",
+      "code_b": 230,
+      "char_b": "ๆ",
+      "total_count": 3,
+      "count_a_to_b": 3,
+      "count_b_to_a": 0,
+      "n_train_a": 3630,
+      "n_train_b": 96,
+      "rank": 11
+    },
+    {
+      "code_a": 164,
+      "char_a": "ค",
+      "code_b": 180,
+      "char_b": "ด",
+      "total_count": 3,
+      "count_a_to_b": 2,
+      "count_b_to_a": 1,
+      "n_train_a": 1154,
+      "n_train_b": 1613,
+      "rank": 12
+    },
+    {
+      "code_a": 185,
+      "char_a": "น",
+      "code_b": 193,
+      "char_b": "ม",
+      "total_count": 3,
+      "count_a_to_b": 2,
+      "count_b_to_a": 1,
+      "n_train_a": 3854,
+      "n_train_b": 2624,
+      "rank": 13
+    },
+    {
+      "code_a": 195,
+      "char_a": "ร",
+      "code_b": 210,
+      "char_b": "า",
+      "total_count": 3,
+      "count_a_to_b": 1,
+      "count_b_to_a": 2,
+      "n_train_a": 3659,
+      "n_train_b": 3630,
+      "rank": 14
+    },
+    {
+      "code_a": 162,
+      "char_a": "ข",
+      "code_b": 168,
+      "char_b": "จ",
+      "total_count": 2,
+      "count_a_to_b": 0,
+      "count_b_to_a": 2,
+      "n_train_a": 1078,
+      "n_train_b": 957,
+      "rank": 15
+    },
+    {
+      "code_a": 162,
+      "char_a": "ข",
+      "code_b": 170,
+      "char_b": "ช",
+      "total_count": 2,
+      "count_a_to_b": 0,
+      "count_b_to_a": 2,
+      "n_train_a": 1078,
+      "n_train_b": 810,
+      "rank": 16
+    },
+    {
+      "code_a": 162,
+      "char_a": "ข",
+      "code_b": 209,
+      "char_b": "ั",
+      "total_count": 2,
+      "count_a_to_b": 2,
+      "count_b_to_a": 0,
+      "n_train_a": 1078,
+      "n_train_b": 2950,
+      "rank": 17
+    },
+    {
+      "code_a": 173,
+      "char_a": "ญ",
+      "code_b": 179,
+      "char_b": "ณ",
+      "total_count": 2,
+      "count_a_to_b": 0,
+      "count_b_to_a": 2,
+      "n_train_a": 90,
+      "n_train_b": 234,
+      "rank": 18
+    },
+    {
+      "code_a": 180,
+      "char_a": "ด",
+      "code_b": 205,
+      "char_b": "อ",
+      "total_count": 2,
+      "count_a_to_b": 0,
+      "count_b_to_a": 2,
+      "n_train_a": 1613,
+      "n_train_b": 2596,
+      "rank": 19
+    },
+    {
+      "code_a": 183,
+      "char_a": "ท",
+      "code_b": 190,
+      "char_b": "พ",
+      "total_count": 2,
+      "count_a_to_b": 2,
+      "count_b_to_a": 0,
+      "n_train_a": 1388,
+      "n_train_b": 583,
+      "rank": 20
+    }
+  ],
+  "worst_classes": [
+    {
+      "idx": 70,
+      "code": 248,
+      "char": "๘",
+      "category": "digit",
+      "recall": 0.6,
+      "n_val": 5,
+      "n_train": 22,
+      "top3_pred": [
+        {
+          "code": 248,
+          "char": "๘",
+          "count": 3
+        },
+        {
+          "code": 231,
+          "char": "็",
+          "count": 2
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "idx": 33,
+      "code": 199,
+      "char": "ว",
+      "category": "consonant",
+      "recall": 0.8184523809523809,
+      "n_val": 336,
+      "n_train": 1342,
+      "top3_pred": [
+        {
+          "code": 199,
+          "char": "ว",
+          "count": 275
+        },
+        {
+          "code": 210,
+          "char": "า",
+          "count": 59
+        },
+        {
+          "code": 195,
+          "char": "ร",
+          "count": 2
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "idx": 47,
+      "code": 215,
+      "char": "ื",
+      "category": "vowel",
+      "recall": 0.8333333333333334,
+      "n_val": 12,
+      "n_train": 48,
+      "top3_pred": [
+        {
+          "code": 215,
+          "char": "ื",
+          "count": 10
+        },
+        {
+          "code": 213,
+          "char": "ี",
+          "count": 2
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "idx": 55,
+      "code": 229,
+      "char": "ๅ",
+      "category": "vowel",
+      "recall": 0.8538461538461538,
+      "n_val": 260,
+      "n_train": 1041,
+      "top3_pred": [
+        {
+          "code": 229,
+          "char": "ๅ",
+          "count": 222
+        },
+        {
+          "code": 210,
+          "char": "า",
+          "count": 38
+        }
+      ],
+      "rank": 4
+    },
+    {
+      "idx": 43,
+      "code": 210,
+      "char": "า",
+      "category": "vowel",
+      "recall": 0.8776185226019846,
+      "n_val": 907,
+      "n_train": 3630,
+      "top3_pred": [
+        {
+          "code": 210,
+          "char": "า",
+          "count": 796
+        },
+        {
+          "code": 229,
+          "char": "ๅ",
+          "count": 57
+        },
+        {
+          "code": 227,
+          "char": "ใ",
+          "count": 28
+        }
+      ],
+      "rank": 5
+    },
+    {
+      "idx": 45,
+      "code": 213,
+      "char": "ี",
+      "category": "vowel",
+      "recall": 0.896551724137931,
+      "n_val": 29,
+      "n_train": 114,
+      "top3_pred": [
+        {
+          "code": 213,
+          "char": "ี",
+          "count": 26
+        },
+        {
+          "code": 215,
+          "char": "ื",
+          "count": 3
+        }
+      ],
+      "rank": 6
+    },
+    {
+      "idx": 49,
+      "code": 217,
+      "char": "ู",
+      "category": "vowel",
+      "recall": 0.9642857142857143,
+      "n_val": 28,
+      "n_train": 111,
+      "top3_pred": [
+        {
+          "code": 217,
+          "char": "ู",
+          "count": 27
+        },
+        {
+          "code": 209,
+          "char": "ั",
+          "count": 1
+        }
+      ],
+      "rank": 7
+    },
+    {
+      "idx": 14,
+      "code": 179,
+      "char": "ณ",
+      "category": "consonant",
+      "recall": 0.9655172413793104,
+      "n_val": 58,
+      "n_train": 234,
+      "top3_pred": [
+        {
+          "code": 179,
+          "char": "ณ",
+          "count": 56
+        },
+        {
+          "code": 173,
+          "char": "ญ",
+          "count": 2
+        }
+      ],
+      "rank": 8
+    },
+    {
+      "idx": 7,
+      "code": 170,
+      "char": "ช",
+      "category": "consonant",
+      "recall": 0.9704433497536946,
+      "n_val": 203,
+      "n_train": 810,
+      "top3_pred": [
+        {
+          "code": 170,
+          "char": "ช",
+          "count": 197
+        },
+        {
+          "code": 171,
+          "char": "ซ",
+          "count": 4
+        },
+        {
+          "code": 162,
+          "char": "ข",
+          "count": 2
+        }
+      ],
+      "rank": 9
+    },
+    {
+      "idx": 59,
+      "code": 233,
+      "char": "้",
+      "category": "tone_mark",
+      "recall": 0.9747474747474747,
+      "n_val": 198,
+      "n_train": 792,
+      "top3_pred": [
+        {
+          "code": 233,
+          "char": "้",
+          "count": 193
+        },
+        {
+          "code": 209,
+          "char": "ั",
+          "count": 3
+        },
+        {
+          "code": 167,
+          "char": "ง",
+          "count": 1
+        }
+      ],
+      "rank": 10
+    },
+    {
+      "idx": 42,
+      "code": 209,
+      "char": "ั",
+      "category": "vowel",
+      "recall": 0.978319783197832,
+      "n_val": 738,
+      "n_train": 2950,
+      "top3_pred": [
+        {
+          "code": 209,
+          "char": "ั",
+          "count": 722
+        },
+        {
+          "code": 233,
+          "char": "้",
+          "count": 16
+        }
+      ],
+      "rank": 11
+    },
+    {
+      "idx": 27,
+      "code": 192,
+      "char": "ภ",
+      "category": "consonant",
+      "recall": 0.9791666666666666,
+      "n_val": 48,
+      "n_train": 191,
+      "top3_pred": [
+        {
+          "code": 192,
+          "char": "ภ",
+          "count": 47
+        },
+        {
+          "code": 161,
+          "char": "ก",
+          "count": 1
+        }
+      ],
+      "rank": 12
+    },
+    {
+      "idx": 5,
+      "code": 168,
+      "char": "จ",
+      "category": "consonant",
+      "recall": 0.9832635983263598,
+      "n_val": 239,
+      "n_train": 957,
+      "top3_pred": [
+        {
+          "code": 168,
+          "char": "จ",
+          "count": 235
+        },
+        {
+          "code": 162,
+          "char": "ข",
+          "count": 2
+        },
+        {
+          "code": 169,
+          "char": "ฉ",
+          "count": 1
+        }
+      ],
+      "rank": 13
+    },
+    {
+      "idx": 58,
+      "code": 232,
+      "char": "่",
+      "category": "tone_mark",
+      "recall": 0.9841269841269841,
+      "n_val": 63,
+      "n_train": 252,
+      "top3_pred": [
+        {
+          "code": 232,
+          "char": "่",
+          "count": 62
+        },
+        {
+          "code": 236,
+          "char": "์",
+          "count": 1
+        }
+      ],
+      "rank": 14
+    },
+    {
+      "idx": 16,
+      "code": 181,
+      "char": "ต",
+      "category": "consonant",
+      "recall": 0.9849397590361446,
+      "n_val": 332,
+      "n_train": 1328,
+      "top3_pred": [
+        {
+          "code": 181,
+          "char": "ต",
+          "count": 327
+        },
+        {
+          "code": 164,
+          "char": "ค",
+          "count": 3
+        },
+        {
+          "code": 180,
+          "char": "ด",
+          "count": 2
+        }
+      ],
+      "rank": 15
+    }
+  ],
+  "per_class": [
+    {
+      "index": 0,
+      "code": 161,
+      "char": "ก",
+      "category": "consonant",
+      "recall": 0.9974160206718347,
+      "n_val": 387,
+      "n_train": 1547
+    },
+    {
+      "index": 1,
+      "code": 162,
+      "char": "ข",
+      "category": "consonant",
+      "recall": 0.9851851851851852,
+      "n_val": 270,
+      "n_train": 1078
+    },
+    {
+      "index": 2,
+      "code": 163,
+      "char": "ฃ",
+      "category": "consonant",
+      "recall": NaN,
+      "n_val": 0,
+      "n_train": 1
+    },
+    {
+      "index": 3,
+      "code": 164,
+      "char": "ค",
+      "category": "consonant",
+      "recall": 0.9895833333333334,
+      "n_val": 288,
+      "n_train": 1154
+    },
+    {
+      "index": 4,
+      "code": 167,
+      "char": "ง",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 214,
+      "n_train": 855
+    },
+    {
+      "index": 5,
+      "code": 168,
+      "char": "จ",
+      "category": "consonant",
+      "recall": 0.9832635983263598,
+      "n_val": 239,
+      "n_train": 957
+    },
+    {
+      "index": 6,
+      "code": 169,
+      "char": "ฉ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 9,
+      "n_train": 34
+    },
+    {
+      "index": 7,
+      "code": 170,
+      "char": "ช",
+      "category": "consonant",
+      "recall": 0.9704433497536946,
+      "n_val": 203,
+      "n_train": 810
+    },
+    {
+      "index": 8,
+      "code": 171,
+      "char": "ซ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 59,
+      "n_train": 236
+    },
+    {
+      "index": 9,
+      "code": 173,
+      "char": "ญ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 23,
+      "n_train": 90
+    },
+    {
+      "index": 10,
+      "code": 175,
+      "char": "ฏ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 6,
+      "n_train": 26
+    },
+    {
+      "index": 11,
+      "code": 176,
+      "char": "ฐ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 24,
+      "n_train": 94
+    },
+    {
+      "index": 12,
+      "code": 177,
+      "char": "ฑ",
+      "category": "consonant",
+      "recall": NaN,
+      "n_val": 0,
+      "n_train": 1
+    },
+    {
+      "index": 13,
+      "code": 178,
+      "char": "ฒ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 10,
+      "n_train": 38
+    },
+    {
+      "index": 14,
+      "code": 179,
+      "char": "ณ",
+      "category": "consonant",
+      "recall": 0.9655172413793104,
+      "n_val": 58,
+      "n_train": 234
+    },
+    {
+      "index": 15,
+      "code": 180,
+      "char": "ด",
+      "category": "consonant",
+      "recall": 0.9851116625310173,
+      "n_val": 403,
+      "n_train": 1613
+    },
+    {
+      "index": 16,
+      "code": 181,
+      "char": "ต",
+      "category": "consonant",
+      "recall": 0.9849397590361446,
+      "n_val": 332,
+      "n_train": 1328
+    },
+    {
+      "index": 17,
+      "code": 182,
+      "char": "ถ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 87,
+      "n_train": 348
+    },
+    {
+      "index": 18,
+      "code": 183,
+      "char": "ท",
+      "category": "consonant",
+      "recall": 0.9942363112391931,
+      "n_val": 347,
+      "n_train": 1388
+    },
+    {
+      "index": 19,
+      "code": 184,
+      "char": "ธ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 29,
+      "n_train": 114
+    },
+    {
+      "index": 20,
+      "code": 185,
+      "char": "น",
+      "category": "consonant",
+      "recall": 0.9968847352024922,
+      "n_val": 963,
+      "n_train": 3854
+    },
+    {
+      "index": 21,
+      "code": 186,
+      "char": "บ",
+      "category": "consonant",
+      "recall": 0.9917808219178083,
+      "n_val": 365,
+      "n_train": 1462
+    },
+    {
+      "index": 22,
+      "code": 187,
+      "char": "ป",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 223,
+      "n_train": 894
+    },
+    {
+      "index": 23,
+      "code": 188,
+      "char": "ผ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 69,
+      "n_train": 274
+    },
+    {
+      "index": 24,
+      "code": 189,
+      "char": "ฝ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 8,
+      "n_train": 31
+    },
+    {
+      "index": 25,
+      "code": 190,
+      "char": "พ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 146,
+      "n_train": 583
+    },
+    {
+      "index": 26,
+      "code": 191,
+      "char": "ฟ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 21,
+      "n_train": 82
+    },
+    {
+      "index": 27,
+      "code": 192,
+      "char": "ภ",
+      "category": "consonant",
+      "recall": 0.9791666666666666,
+      "n_val": 48,
+      "n_train": 191
+    },
+    {
+      "index": 28,
+      "code": 193,
+      "char": "ม",
+      "category": "consonant",
+      "recall": 0.9969512195121951,
+      "n_val": 656,
+      "n_train": 2624
+    },
+    {
+      "index": 29,
+      "code": 194,
+      "char": "ย",
+      "category": "consonant",
+      "recall": 0.9931350114416476,
+      "n_val": 437,
+      "n_train": 1748
+    },
+    {
+      "index": 30,
+      "code": 195,
+      "char": "ร",
+      "category": "consonant",
+      "recall": 0.9989071038251366,
+      "n_val": 915,
+      "n_train": 3659
+    },
+    {
+      "index": 31,
+      "code": 196,
+      "char": "ฤ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 3,
+      "n_train": 10
+    },
+    {
+      "index": 32,
+      "code": 197,
+      "char": "ล",
+      "category": "consonant",
+      "recall": 0.9885321100917431,
+      "n_val": 436,
+      "n_train": 1744
+    },
+    {
+      "index": 33,
+      "code": 199,
+      "char": "ว",
+      "category": "consonant",
+      "recall": 0.8184523809523809,
+      "n_val": 336,
+      "n_train": 1342
+    },
+    {
+      "index": 34,
+      "code": 200,
+      "char": "ศ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 19,
+      "n_train": 75
+    },
+    {
+      "index": 35,
+      "code": 201,
+      "char": "ษ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 53,
+      "n_train": 211
+    },
+    {
+      "index": 36,
+      "code": 202,
+      "char": "ส",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 318,
+      "n_train": 1273
+    },
+    {
+      "index": 37,
+      "code": 203,
+      "char": "ห",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 296,
+      "n_train": 1185
+    },
+    {
+      "index": 38,
+      "code": 204,
+      "char": "ฬ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 1,
+      "n_train": 2
+    },
+    {
+      "index": 39,
+      "code": 205,
+      "char": "อ",
+      "category": "consonant",
+      "recall": 0.9969183359013868,
+      "n_val": 649,
+      "n_train": 2596
+    },
+    {
+      "index": 40,
+      "code": 206,
+      "char": "ฮ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 2,
+      "n_train": 8
+    },
+    {
+      "index": 41,
+      "code": 207,
+      "char": "ฯ",
+      "category": "consonant",
+      "recall": 1.0,
+      "n_val": 4,
+      "n_train": 16
+    },
+    {
+      "index": 42,
+      "code": 209,
+      "char": "ั",
+      "category": "vowel",
+      "recall": 0.978319783197832,
+      "n_val": 738,
+      "n_train": 2950
+    },
+    {
+      "index": 43,
+      "code": 210,
+      "char": "า",
+      "category": "vowel",
+      "recall": 0.8776185226019846,
+      "n_val": 907,
+      "n_train": 3630
+    },
+    {
+      "index": 44,
+      "code": 212,
+      "char": "ิ",
+      "category": "vowel",
+      "recall": 1.0,
+      "n_val": 9,
+      "n_train": 38
+    },
+    {
+      "index": 45,
+      "code": 213,
+      "char": "ี",
+      "category": "vowel",
+      "recall": 0.896551724137931,
+      "n_val": 29,
+      "n_train": 114
+    },
+    {
+      "index": 46,
+      "code": 214,
+      "char": "ึ",
+      "category": "vowel",
+      "recall": 1.0,
+      "n_val": 3,
+      "n_train": 11
+    },
+    {
+      "index": 47,
+      "code": 215,
+      "char": "ื",
+      "category": "vowel",
+      "recall": 0.8333333333333334,
+      "n_val": 12,
+      "n_train": 48
+    },
+    {
+      "index": 48,
+      "code": 216,
+      "char": "ุ",
+      "category": "vowel",
+      "recall": 1.0,
+      "n_val": 31,
+      "n_train": 123
+    },
+    {
+      "index": 49,
+      "code": 217,
+      "char": "ู",
+      "category": "vowel",
+      "recall": 0.9642857142857143,
+      "n_val": 28,
+      "n_train": 111
+    },
+    {
+      "index": 50,
+      "code": 224,
+      "char": "เ",
+      "category": "vowel",
+      "recall": 1.0,
+      "n_val": 38,
+      "n_train": 151
+    },
+    {
+      "index": 51,
+      "code": 225,
+      "char": "แ",
+      "category": "vowel",
+      "recall": 1.0,
+      "n_val": 4,
+      "n_train": 17
+    },
+    {
+      "index": 52,
+      "code": 226,
+      "char": "โ",
+      "category": "vowel",
+      "recall": 1.0,
+      "n_val": 140,
+      "n_train": 558
+    },
+    {
+      "index": 53,
+      "code": 227,
+      "char": "ใ",
+      "category": "vowel",
+      "recall": 0.9907407407407407,
+      "n_val": 216,
+      "n_train": 864
+    },
+    {
+      "index": 54,
+      "code": 228,
+      "char": "ไ",
+      "category": "vowel",
+      "recall": 0.993103448275862,
+      "n_val": 145,
+      "n_train": 579
+    },
+    {
+      "index": 55,
+      "code": 229,
+      "char": "ๅ",
+      "category": "vowel",
+      "recall": 0.8538461538461538,
+      "n_val": 260,
+      "n_train": 1041
+    },
+    {
+      "index": 56,
+      "code": 230,
+      "char": "ๆ",
+      "category": "tone_mark",
+      "recall": 1.0,
+      "n_val": 24,
+      "n_train": 96
+    },
+    {
+      "index": 57,
+      "code": 231,
+      "char": "็",
+      "category": "tone_mark",
+      "recall": 1.0,
+      "n_val": 24,
+      "n_train": 94
+    },
+    {
+      "index": 58,
+      "code": 232,
+      "char": "่",
+      "category": "tone_mark",
+      "recall": 0.9841269841269841,
+      "n_val": 63,
+      "n_train": 252
+    },
+    {
+      "index": 59,
+      "code": 233,
+      "char": "้",
+      "category": "tone_mark",
+      "recall": 0.9747474747474747,
+      "n_val": 198,
+      "n_train": 792
+    },
+    {
+      "index": 60,
+      "code": 234,
+      "char": "๊",
+      "category": "tone_mark",
+      "recall": 1.0,
+      "n_val": 10,
+      "n_train": 39
+    },
+    {
+      "index": 61,
+      "code": 236,
+      "char": "์",
+      "category": "tone_mark",
+      "recall": 0.9927007299270073,
+      "n_val": 137,
+      "n_train": 547
+    },
+    {
+      "index": 62,
+      "code": 240,
+      "char": "๐",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 16,
+      "n_train": 65
+    },
+    {
+      "index": 63,
+      "code": 241,
+      "char": "๑",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 9,
+      "n_train": 37
+    },
+    {
+      "index": 64,
+      "code": 242,
+      "char": "๒",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 8,
+      "n_train": 31
+    },
+    {
+      "index": 65,
+      "code": 243,
+      "char": "๓",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 5,
+      "n_train": 18
+    },
+    {
+      "index": 66,
+      "code": 244,
+      "char": "๔",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 3,
+      "n_train": 13
+    },
+    {
+      "index": 67,
+      "code": 245,
+      "char": "๕",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 3,
+      "n_train": 14
+    },
+    {
+      "index": 68,
+      "code": 246,
+      "char": "๖",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 2,
+      "n_train": 10
+    },
+    {
+      "index": 69,
+      "code": 247,
+      "char": "๗",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 1,
+      "n_train": 3
+    },
+    {
+      "index": 70,
+      "code": 248,
+      "char": "๘",
+      "category": "digit",
+      "recall": 0.6,
+      "n_val": 5,
+      "n_train": 22
+    },
+    {
+      "index": 71,
+      "code": 249,
+      "char": "๙",
+      "category": "digit",
+      "recall": 1.0,
+      "n_val": 3,
+      "n_train": 12
+    }
+  ]
+}
