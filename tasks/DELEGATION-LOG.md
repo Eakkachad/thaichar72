@@ -31,3 +31,7 @@ whether the issue is flash-specific. Owner informed.
 | PROBE | 2026-09-19 | "reply PONG" | gemini-3.8-flash-high → PONG (quota OK); claude-sonnet-4-6 → `error: interrupted` (quota) | | | |
 
 **STOPPED 2026-09-19 ~10:50 — agy Claude quota exhausted (resets ≈ 15:05); Gemini models still have quota but cannot run long commands in print mode. Owner notified.**
+
+## 2026-09-19 11:00 — owner decision: reviewer writes the remaining TASK-03/04 code (agy quota), then returns to agy
+| SELF | 2026-09-19 | engine.py, train.py, collect_results.py, configs/*, tests/test_engine.py; aug per-worker reseed + ink guard; Dataset fast getitem; models.py feat_dim fix; EMA warmup; full synth render 300/class (68 s, 21,600 glyphs, 26 fonts); aug_examples.py figures; ran fetch_external (ALICE-THI 22,395 + Burapha-TH 78,590 = 100,985 glyphs, 71/72 classes; KVIS gated→skipped) | written/run by reviewer | pytest: test_data 14, test_augment 5, test_synth 9, test_engine 9, test_external 13 — all pass. CPU smoke OK. Colab T4 smoke: resnet18@64, 25% train, 2 ep → top1 0.954 in 11.6 s/epoch | ✅ | – |
+| COLAB | 2026-09-19 | `colab` CLI: OAuth done by owner; fixed dep (`uv tool install google-colab-cli --with "jupyter-kernel-client<1.0"`); session `thai-test` T4 15 GB; matrix A launched via `scripts/colab_matrix.sh` | | (running) | ⏳ | |
