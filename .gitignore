@@ -21,3 +21,5 @@ Thumbs.db
 *.log
 !tasks/DELEGATION-LOG.md
 dist/
+notebooks/*.executed.ipynb
+outputs/
