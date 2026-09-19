@@ -88,6 +88,7 @@ def create_montage(
     # Find a Thai font on system if available
     thai_font = None
     candidate_fonts = [
+        str(Path(__file__).resolve().parents[1] / "assets" / "fonts" / "Sarabun-Regular.ttf"),
         "/usr/share/fonts/google-noto-vf/NotoSansThai[wght].ttf",
         "/usr/share/fonts/google-noto-vf/NotoSerifThai[wght].ttf",
         "/usr/share/fonts/google-droid-sans-fonts/DroidSansThai.ttf",

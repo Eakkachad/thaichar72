@@ -6,6 +6,7 @@ before the logits were downloaded).   uv run python scripts/dump_val_logits.py -
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from pathlib import Path
@@ -37,7 +38,7 @@ def main() -> None:
         model, cfg = load_checkpoint(str(d / "best.pt"), device=str(device))
         cfg = merge_cfg(cfg)
         _, val_ds, _, _ = build_datasets(cfg)
-        loader = DataLoader(val_ds, batch_size=256, shuffle=False, num_workers=2)
+        loader = DataLoader(val_ds, batch_size=256, shuffle=False, num_workers=0 if os.name == "nt" else 2)
         model = model.to(device).to(memory_format=torch.channels_last)
         logits, y = predict(model, loader, device)
         np.save(d / "val_logits.npy", logits.astype(np.float16))

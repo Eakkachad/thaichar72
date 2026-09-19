@@ -1,85 +1,117 @@
-# HANDOFF — state at 2026-09-19 18:00 (laptop, CPU-only) → continue on the RTX 4060 machine
+# HANDOFF — state at 2026-09-19 evening (laptop, CPU-only) → continue on the RTX 4060 machine
 
 Read `CLAUDE.md` first. This file says exactly where things stand and what to run next, in order.
+Owner-facing machine setup (Thai): `tasks/HANDOFF-OWNER-TH.md`. Repo: https://github.com/Eakkachad/thaichar72 (private).
 
 ## 0. Why we moved
 Colab free tier: T4 sessions are pruned every ~1 h and the daily GPU quota ran out at 16:40 after ~50 runs.
-Everything below needs a GPU; on an RTX 4060 a 20-epoch resnet18@64 run should take ~5 min.
+Everything below needs a GPU; on an RTX 4060 a 20-epoch resnet18@64 run should take ~5 min (WSL2, `num_workers=4`).
 
-## 1. Set-up on the new machine (WSL2 Ubuntu recommended; native Windows also works)
+## 1. Set-up on the new machine
+Prerequisites (Windows side): NVIDIA driver ≥ 560 (CUDA 12.6) — `nvidia-smi` in PowerShell; WSL2 (`wsl --update`,
+`wsl -l -v` shows VERSION 2; `nvidia-smi` must also work inside Ubuntu via /usr/lib/wsl/lib — never apt-install NVIDIA
+drivers/toolkit inside WSL). Keep the project on the WSL ext4 disk (`~/work`), never under `/mnt/c`. ≥ 10 GB free.
 ```bash
-tar xzf Deep_CNN_handoff_*.tar.gz && cd Deep_CNN          # or: git clone <github url> && copy data/ + runs/ from the tarball
-curl -LsSf https://astral.sh/uv/install.sh | sh              # if uv is missing
-uv sync                                                      # picks CUDA 12.6 wheels on Windows/WSL2, CPU wheels on other Linux
-uv run python -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0))"
-uv run pytest -q tests/test_data.py tests/test_augment.py tests/test_infer.py      # ~1 min sanity
-uv run python scripts/run_local_queue.py --list-remaining                          # should list F5…F17
-git remote -v                                                # origin = GitHub (see CLAUDE.md §5); git pull first
+# WSL2 Ubuntu
+sudo apt update && sudo apt install -y git pigz curl
+curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH="$HOME/.local/bin:$PATH"     # or: source ~/.bashrc
+mkdir -p ~/work && cd ~/work && tar -I pigz -xf /mnt/c/Users/<you>/Downloads/Deep_CNN_handoff_2026-09-19.tar.gz
+cd Deep_CNN
+gh auth login            # or: git config --global credential.helper store  (private repo: pull AND push need a token)
+git pull                 # tarball .git may be a few commits behind origin/main — pull BEFORE syncing
+uv sync                  # ≈ 4 GB download on WSL2 (torch cu126 + nvidia-* + triton), ≈ 3 GB native Windows
+uv run python -c "import torch,platform;print(torch.__version__, platform.release(), torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else '-')"
+#   expect: 2.14.0+cu126 <kernel>-microsoft-standard-WSL2 True NVIDIA GeForce RTX 4060 ...
+#   '+cpu'  → uname -r lacks "microsoft" (WSL1/custom kernel): fix WSL2, do not hand-install wheels (uv run re-syncs)
+#   '+cu126' but False → Windows driver too old (< 560) or GPU not exposed to WSL
+curl -sI https://huggingface.co | head -1                                   # timm pretrained weights come from HF hub
+uv run python -c "import timm; [timm.create_model(m, pretrained=True) for m in ('resnet18','efficientnet_b0')]"   # pre-warm (~70 MB)
+uv run pytest -q tests/test_data.py tests/test_augment.py tests/test_infer.py   # ~1 min, offline
+uv run python scripts/train.py --config configs/smoke.yaml --exp-id smoke_gpu --set device=cuda --set out_root=/tmp/smoke_runs   # ~1 min; must say device cuda
+uv run python scripts/run_local_queue.py --list-remaining
 ```
-If `data/cache/glyphs.npz`, `data/splits/`, `data/synth/`, `data/external/` are missing, regenerate (≈15 min):
-`uv run python scripts/eda.py --data "ThaiCharacter Dataset/round2" --out reports/eda && uv run python scripts/prep_data.py
-&& uv run python scripts/render_synth.py --per-class 300 --seed 0 && uv run python scripts/fetch_external.py --sources alice kvis burapha --out data/external`
-(the dataset itself must be present at `ThaiCharacter Dataset/round2/<code>/*.jpg`; it is in the tarball).
+Native Windows instead of WSL2: `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`,
+extract with built-in `tar -xzf` (bsdtar) into `C:\work\Deep_CNN` (not Desktop/Documents = OneDrive), `setx PYTHONUTF8 1`,
+`setx HF_HUB_DISABLE_SYMLINKS_WARNING 1`, `git config --global core.autocrlf false`; run the same `uv ...` commands in
+PowerShell one per line (no `&&` in PS 5.1). Workers default to 0 on Windows → epochs slower than the estimate.
+If the data caches are missing (they are in the tarball), regenerate (≈ 15 min; kvis is gated and auto-skipped,
+expected 100,985 external glyphs):
+`uv run python scripts/eda.py --data "ThaiCharacter Dataset/round2" --out reports/eda` → `scripts/prep_data.py` →
+`scripts/render_synth.py --per-class 300 --seed 0` → `scripts/fetch_external.py --sources alice burapha --out data/external`.
 
-## 2. What is DONE (all numbers in reports/02-EXPERIMENTS.md; table reports/experiments.md)
-- Data: 62,707 → 60,117 after dedup; splits (strat + doc), caches, 21,600 synthetic glyphs (26 fonts), 100,985 external
-  handwritten glyphs (ALICE-THI + Burapha-TH). Engine, notebook (runs end-to-end on CPU in inference mode), robustness,
-  predict CLI, figures, README.
-- Studies at 64 px / 6 epochs: A (backbones & freeze modes), B (aug ladder), D (imbalance), E (tricks), S (input size),
-  C (stage-1/2 pretraining), G (stratified vs document-disjoint) — conclusions:
-  * full fine-tune only; ImageNet init +6 balanced vs scratch; effb0 ≈ resnet18 > mnv3; 64 px is the sweet spot.
-  * aug: **`base` (affine+margin) hurts cross-document generalisation (doc bal 93.6)**; none/trivial/morph ≈ 97.6–97.9
-    on doc; randaug 97.0; mixup/cutmix bad. Synthetic fonts as **pretraining** best (B6a_ft 97.92/98.43 at 6 ep).
-  * imbalance: sqrt-inverse loss/sampler → bal 98.4 but top-1 −0.5…−0.9; inverse weights collapse; logit-adjust τ is a free knob.
-  * geometry side-channel and ON/OFF channels: no gain; geometry FAILS cross-document (−2.8) → excluded.
-  * TTA (8 canvas views) helps aug-trained models slightly, hurts the no-aug model.
-- 20-epoch candidates finished so far (stratified val, seed 42):
+## 2. What is DONE (numbers: reports/02-EXPERIMENTS.md; table: reports/experiments.md; all 64 px unless noted)
+- Data: 62,707 → 60,117 after dedup; strat + doc splits; caches; 21,600 synthetic glyphs (26 fonts); 100,985 external
+  handwritten glyphs. Engine, notebook (runs on CPU in inference mode), robustness, predict CLI, figures, README.
+- 6-epoch studies A/B/D/E/S/C/G, conclusions:
+  * full fine-tune only (frozen/partial poor); ImageNet-pretrained resnet18 beats the 0.43 M SmallCNN from scratch by
+    +6 balanced; effb0 ≳ resnet18 ≳ mnv3 within 0.35 pt balanced, top-1 indistinguishable (97.5–97.7); 64 px is the sweet spot.
+  * aug on the stratified split at 6 ep: none 98.48/98.15 > randaug/trivial ≈ 98.2/98.25 > base 97.53/97.94 > morph > full;
+    mixup/cutmix bad (bal 94–95). Synthetic fonts as **pretraining** (B6a_ft 97.92/98.43) > synthetic as extra data (98.04).
+  * document-disjoint (full data): trivial 97.90/97.84, none 97.80/97.61, morph 97.29/97.86, randaug 97.80/97.00,
+    full 97.26/96.11, sampler-sqrt 96.70/98.16 (minority 99.2). **Caveat:** the doc runs of A0/A1/A3 (base aug) used only
+    25 % of the training data (`subset_frac 0.25`), so "base hurts generalisation" is NOT yet established — rerun below.
+  * imbalance: sqrt-inverse loss or sampler → bal 98.4 but top-1 −0.5…−0.9; inverse weights collapse; τ is a free knob.
+  * geometry side-channel: +0.5 bal in-distribution but −2.0 bal on doc vs B_full_doc → excluded. ON/OFF channels: no gain.
+  * TTA (8 canvas views) is neutral-to-negative on top-1 for all F runs (−0.01…−0.69 pt); only F2 gains +0.12 balanced.
+    → rank candidates on RAW `top1`/`balanced_acc` from metrics.json; TTA is an explicit on/off decision later.
+- 20-epoch candidates finished (stratified val, seed 42, raw):
   | exp | top-1 | balanced | TTA top-1 / bal |
   |---|---:|---:|---:|
-  | F1_r18_none_20 | 0.9859 | 0.9828 | 0.9790 / 0.9790 (worse) |
+  | F1_r18_none_20 | 0.9859 | 0.9828 | 0.9790 / 0.9790 |
   | F2_r18_randaug_20 | 0.9837 | 0.9818 | 0.9836 / 0.9830 |
   | F3_r18_randaug_synth_20 | 0.9845 | 0.9804 | 0.9825 / 0.9801 |
-  | F4_effb0_randaug_synth_20 | 0.9786 | 0.9775 | unstable (best epoch 4) |
-  Ensemble F1+F2 soft-vote: 0.9862 / 0.9829 (marginal — errors are shared: า↔ๅ, ว→า, ั↔้).
+  | F4_effb0_randaug_synth_20 | 0.9786 | 0.9775 | 0.9776 / 0.9775 (unstable, best epoch 4) |
+  Ensemble F1+F2 soft-vote 0.9862/0.9829 (marginal — shared errors า↔ๅ, ว→า, ั↔้). B_base_*_T4 ≡ A1_*_T4 (same config, rerun).
 
-## 3. What to RUN next (in this order; each 20-epoch run ≈ 5 min on a 4060)
-1. **Remaining final candidates** (13 configs, skip-done):
-   `uv run python scripts/run_local_queue.py configs/final_candidates/*.yaml`
-   Most promising by the 6-epoch evidence: F14 (synthetic-pretrain init + TrivialAugment), F15 (+synthetic extra),
-   F8/F9 (trivial ± synth), F16 (init + morph), F11/F12 (external-pretrain init). Needs the init checkpoints
-   `runs/B6a_synth_pretrain_resnet18_64/best.pt` and `runs/C1_ext_pretrain_resnet18_64/best.pt` (in the tarball).
-2. **Doc-disjoint check of the top-3** (by strat balanced acc, ties → prefer aug≠none):
-   `uv run python scripts/run_local_queue.py configs/final_candidates/<top3>.yaml --suffix _doc --set split_kind=doc`
-   Pick the FINAL recipe by: (a) doc top-1 first (grading is accuracy on unseen-ish data), (b) doc balanced, (c) strat
-   top-1; require robustness curve not worse than F2's (`scripts/robustness.py --binarize`).
-3. **3 seeds of the winner** (`--suffix _s0 --set seed=0 --set split_file=data/splits/split_seed0.csv`, same for seed 1)
-   → report mean ± std in FINAL-REPORT §9.
-4. **Boosts**: ensemble of the 3 seeds + best other backbone (`scripts/ensemble_eval.py --runs ...`); knowledge
-   distillation into one resnet18 (`kd_teachers: [runs/<winner>/best.pt, ...]`, `kd_alpha 0.7`, `kd_T 4`) — compare;
-   optional MobileNetV3 student for a "small model" story.
-5. **Package**: `uv run python scripts/export_weights.py --run runs/<winner> --name thaichar72_resnet18_64`
-   (+ `--half` variant), commit `weights/`. Run `scripts/robustness.py --ckpt runs/<winner>/best.pt --binarize`
-   (full val) and `scripts/error_analysis.py --run runs/<winner>`; regenerate `scripts/result_figures.py`.
-6. **Notebook**: set `FINAL_CONFIG`/`WEIGHTS_PATH` defaults in `scripts/build_notebook.py` to the winner, rebuild,
-   `uv run python scripts/run_notebook_local.py --mode inference --weights weights/thaichar72_resnet18_64.pt`,
-   then test on real Colab if possible (`colab exec -f notebooks/ThaiChar72_Colab.ipynb`, see tasks/COLAB-USAGE.md)
-   or at least open it in Colab with MODE="inference" and the weights in Drive.
-7. **Report**: fill `reports/FINAL-REPORT.md §9 "โมเดลสุดท้าย"` (recipe, strat/doc/TTA/3-seed numbers, ensemble/KD,
-   weight size + load snippet) and refresh `reports/02-EXPERIMENTS.md` with the F table. Slides come from
-   `reports/figures/results/` + `reports/eda/` + `reports/analysis/<winner>/` + `reports/robustness/<winner>/`.
-   Report in Thai to the owner after each step.
+## 3. What to RUN next (in order). Always `--set device=cuda --stop-on-error`; on WSL2 add `--set num_workers=4`.
+1. **Confound check (3 min)** — full-data doc run of the base-aug recipe:
+   `uv run python scripts/run_local_queue.py configs/matrix/A1_resnet18_full_64.yaml --suffix _doc_full --set split_kind=doc --set subset_frac=1.0 --set device=cuda --stop-on-error`
+   then re-derive §G in reports/02-EXPERIMENTS.md (compare with B_none/B_trivial/B_full `_doc` rows, all full data).
+   Also a 6-ep doc run of the synthetic-pretrain init: `configs/pretrain/B6a_ft_resnet18_64.yaml --suffix _doc --set split_kind=doc`.
+2. **Remaining final candidates** (F5–F17; F5 geometry and F6 onoff are deliberate negative controls — run them last):
+   `uv run python scripts/run_local_queue.py configs/final_candidates/F{7,8,9,10,11,12,13,14,15,16,17}_*.yaml --set device=cuda --stop-on-error`
+   then `configs/final_candidates/F{5,6}_*.yaml`. Needs `runs/B6a_synth_pretrain_resnet18_64/best.pt` and
+   `runs/C1_ext_pretrain_resnet18_64/best.pt` (shipped). If HF hub is unreachable, F11–F17 can use `--set pretrained=false`
+   (init_from overwrites every tensor anyway).
+3. **Doc-disjoint check of the top-3** (by raw strat balanced acc; ties → prefer aug ≠ none):
+   `uv run python scripts/run_local_queue.py configs/final_candidates/<top3>.yaml --suffix _doc --set split_kind=doc --set device=cuda --stop-on-error`
+   Winner rule: (a) doc top-1, (b) doc balanced, (c) strat top-1; and robustness not worse than F2:
+   `uv run python scripts/robustness.py --ckpt runs/<cand>/best.pt --binarize --out reports/robustness/<cand>_full_bin`
+   criterion = mean top-1 over all non-clean rows of results.csv ≥ F2's (`reports/robustness/F2_r18_randaug_20_full_bin/`,
+   committed from the laptop) − 0.5 pt.
+4. **3 seeds of the winner, SAME split** (so they can be ensembled): `--suffix _s0 --set seed=0` and `--suffix _s1 --set seed=1`
+   (keep `split_file=data/splits/split_seed42.csv`). Report mean ± std (top-1, balanced) in FINAL-REPORT §9.
+   Optional variance-across-splits study: `--suffix _sp0 --set split_file=data/splits/split_seed0.csv` (report only, not ensembled).
+5. **Boosts**: `uv run python scripts/ensemble_eval.py --runs <winner> <winner>_s0 <winner>_s1 [F10_effb0_trivial_synth_20] --all-subsets --out reports/analysis/ensemble_final.json`
+   (members must share split_seed42). Distillation: edit `configs/final_candidates/K1_r18_kd_20.yaml` (`kd_teachers` = winner
+   + one diverse 64-px gray3 teacher) and run it; compare with the winner. F4's best.pt was NOT shipped (unstable run);
+   use F10_effb0_trivial_synth_20 as the EfficientNet teacher once trained.
+6. **Package**: `uv run python scripts/export_weights.py --run runs/<winner> --name thaichar72_resnet18_64` and
+   `... --half --name thaichar72_resnet18_64_fp16` (export refuses to overwrite). Commit `weights/`. Then
+   `scripts/error_analysis.py --run runs/<winner>`, `scripts/result_figures.py`, `scripts/collect_results.py`.
+7. **Notebook**: copy the winner config to `configs/final.yaml`; `scripts/build_notebook.py` already prefers
+   `weights/thaichar72_resnet18_64.pt`; rebuild + `uv run python scripts/run_notebook_local.py --mode inference --weights weights/thaichar72_resnet18_64.pt`;
+   then test on Colab (upload notebook + weights to Drive, MODE="inference") — `tasks/COLAB-USAGE.md` if using the CLI.
+8. **Report**: fill `reports/FINAL-REPORT.md §9 "โมเดลสุดท้าย"` (recipe, strat/doc/TTA/3-seed numbers, ensemble/KD, weight
+   size + load snippet) and add the F table + confound re-derivation to `reports/02-EXPERIMENTS.md`. Slides: `reports/figures/results/`,
+   `reports/eda/`, `reports/analysis/<winner>/`, `reports/robustness/<winner>_full_bin/`. Report in Thai to the owner after each step.
 
-## 4. Known gaps / gotchas
-- `minority_acc` is NaN for runs that used `extra_train_*` before the fix (B6_synth_*); fixed in engine (uses real counts).
-- `colab_*.sh` runners assume the `colab` CLI + OAuth on the laptop; not needed on the GPU box.
-- `runs/*/best.pt` for most 6-epoch study runs were NOT copied (2 GB) — only the ones listed in the tarball manifest.
-  Their metrics/logits are present; retrain if a checkpoint is needed.
-- Windows native: `num_workers` forced to 0 by `run_local_queue.py`; if calling `train.py` directly add `--set num_workers=0`.
-- Fonts for plots: `assets/fonts/Sarabun-Regular.ttf` (matplotlib must register it, all scripts do).
-- Do not evaluate a strat-trained model on `doc_split=="val"` (overlap) — notebook and scripts already guard this.
+## 4. Shipped checkpoints & known gaps
+- Tarball checkpoints (`runs/<id>/best.pt`): B6a_synth_pretrain_resnet18_64 + C1_ext_pretrain_resnet18_64 (init for F11–F17),
+  F1/F2/F3 (ensemble/KD members), F4_effb0 (weak teacher), A1_resnet18_full_64_T4 (notebook default until the winner exists),
+  B_trivial_resnet18_64_T4 + D3_sampler_sqrt_resnet18_64_T4 (6-ep references for the doc/imbalance stories). Every other run
+  ships only metrics.json / log.csv / val_logits.npy — retrain if a checkpoint is needed.
+- `runs/B_full_resnet18_64_T4/` and `runs/F5_*/` are empty aborted-run dirs (safe to reuse; `B_full_resnet18_64_T4` ≡ `D0_ce_ls_resnet18_64_T4`).
+- `data/external/{alice,burapha,downloads}` raw files were dropped from the tarball (only `glyphs_external.npz` + `index.csv`
+  are read); re-fetch with `scripts/fetch_external.py --sources alice burapha` if needed.
+- `minority_acc` is NaN for B6_synth_* (pre-fix); engine now uses real counts. `val_subset_frac` only affects per-epoch
+  monitoring; final metrics are on the full val split.
+- Tarball recipe (laptop): file list = everything under Deep_CNN except `.venv/`, `ThaiCharacter Dataset/__MACOSX/`, `dist/`,
+  `outputs/`, `__pycache__/`, `.pytest_cache/`, `*.executed.ipynb`, `last.pt`, `data/external/{alice,burapha,downloads}`,
+  `.DS_Store`, and all `runs/*/best.pt` except the ids above; `tar -c -I pigz -f ~/Deep_CNN_handoff_<date>.tar.gz -T list`.
 
 ## 5. Deliverables checklist (owner's §2)
-- [ ] `notebooks/ThaiChar72_Colab.ipynb` runs on Colab (Train + Inference sections, config in one cell) — exists, needs final weights + Colab test
+- [ ] `notebooks/ThaiChar72_Colab.ipynb` runs on Colab (Train + Inference, config in one cell) — exists; needs final weights + Colab test
 - [ ] final weights in `weights/` with size + load instructions — script ready, waiting for the winner
 - [ ] `reports/FINAL-REPORT.md` complete (§9 pending) + figures — draft exists
 - [x] `uv` project (pyproject + lock; torch wheel auto-selected by platform markers)

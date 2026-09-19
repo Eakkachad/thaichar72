@@ -301,7 +301,7 @@ def _download_file(url: str, dest: Path, chunk_size: int = 1024 * 1024) -> None:
         for chunk in r.iter_content(chunk_size=chunk_size):
             if chunk:
                 f.write(chunk)
-    temp_path.rename(dest)
+    temp_path.replace(dest)  # atomic overwrite on POSIX and Windows
     logger.info("Downloaded %s (%.1f MB)", dest, dest.stat().st_size / (1024 * 1024))
 
 

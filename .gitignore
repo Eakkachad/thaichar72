@@ -1,6 +1,6 @@
 # data (read-only source, never committed)
 ThaiCharacter Dataset/
-data/
+/data/
 *.zip
 # run artifacts: keep small results (metrics/log) in git, exclude tensors
 runs/**/*.pt

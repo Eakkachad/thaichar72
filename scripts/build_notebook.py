@@ -220,7 +220,7 @@ if not FINAL_CONFIG.exists():
     FINAL_CONFIG = PROJECT_DIR / "configs" / "matrix" / "A1_resnet18_full_64.yaml"
 
 # 6. Weights path: checks pre-trained checkpoints in runs/ or weights/
-WEIGHTS_PATH = PROJECT_DIR / "runs" / "A1_resnet18_full_64_T4" / "best.pt"
+WEIGHTS_PATH = next((p for p in [PROJECT_DIR / "weights" / "thaichar72_resnet18_64.pt", PROJECT_DIR / "runs" / "A1_resnet18_full_64_T4" / "best.pt"] if p.exists()), PROJECT_DIR / "weights" / "thaichar72_resnet18_64.pt")
 if not WEIGHTS_PATH.exists():
     for candidate in [
         PROJECT_DIR / "weights" / "best.pt",

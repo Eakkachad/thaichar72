@@ -1,6 +1,6 @@
 # ThaiChar72 Google Colab Deliverable Notebook
 
-This directory contains the Google Colab deliverable notebook for the 72-class Thai handwritten character recognition project: [`ThaiChar72_Colab.ipynb`](file:///home/eggchad/eakject/research/Deep_Man/Deep_CNN/notebooks/ThaiChar72_Colab.ipynb).
+This directory contains the Google Colab deliverable notebook for the 72-class Thai handwritten character recognition project: [`ThaiChar72_Colab.ipynb`](file://ThaiChar72_Colab.ipynb).
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/)
 

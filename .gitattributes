@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.pt binary
+*.npz binary
+*.npy binary
+*.jpg binary
+*.png binary
+*.ttf binary
+*.tar.gz binary
+*.ipynb text eol=lf

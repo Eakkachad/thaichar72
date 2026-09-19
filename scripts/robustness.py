@@ -167,6 +167,17 @@ def write_summary(
     out_path.write_text("\n".join(lines), encoding="utf-8")
 
 
+class _CorruptTransform:
+    """Picklable canvas transform (DataLoader workers under spawn): corruption then optional Otsu binarisation."""
+
+    def __init__(self, name, severity, binarize):
+        self.name, self.severity, self.binarize = name, severity, binarize
+
+    def __call__(self, canvas):
+        out = apply_corruption(canvas, self.name, self.severity)
+        return _otsu(out) if self.binarize else out
+
+
 def _otsu(canvas):
     """Otsu threshold → {0,255} uint8, ink dark on white (border ring decides polarity)."""
     import cv2, numpy as np
@@ -237,7 +248,7 @@ def main() -> None:
                 cache,
                 size=img_size,
                 channel_mode=channel_mode,
-                transform=(lambda c, n=name, s=sev: _otsu(apply_corruption(c, n, s))) if args.binarize else (lambda c, n=name, s=sev: apply_corruption(c, n, s)),
+                transform=_CorruptTransform(name, sev, args.binarize),
                 margin=margin,
             )
             loader = DataLoader(corrupt_ds, batch_size=batch_size, shuffle=False, num_workers=args.num_workers)

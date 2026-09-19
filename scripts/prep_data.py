@@ -188,7 +188,7 @@ def _write_summary(df: pd.DataFrame, s42: pd.DataFrame) -> None:
     lines.append("")
 
     out_path = "reports/data/split_summary.md"
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
     print(f"  Wrote {out_path}")
 

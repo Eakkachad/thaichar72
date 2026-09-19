@@ -45,7 +45,7 @@ DEFAULTS: dict[str, Any] = {
     "seed": 42,
     "device": "auto",
     "threads": 4,
-    "num_workers": 2,
+    "num_workers": 0 if os.name == "nt" else 2,  # spawn-based workers are slower than in-process on Windows
     "channels_last": True,
     # data
     "split_file": "data/splits/split_seed42.csv",
@@ -363,6 +363,9 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
     if device.type == "cpu":
         torch.set_num_threads(int(cfg["threads"]))
     use_amp = bool(cfg["amp"]) and device.type == "cuda"
+    if device.type != "cuda":
+        print(f"[{cfg['exp_id']}] WARNING: training on CPU (device={cfg['device']}, cuda_available={torch.cuda.is_available()}, "
+              f"torch={torch.__version__}). Pass --set device=cuda to fail fast instead.", flush=True)
     t_start = time.time()
 
     # ---- data

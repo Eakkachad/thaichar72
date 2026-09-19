@@ -18,6 +18,8 @@ import argparse
 import json
 import subprocess
 import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # Thai glyphs on Windows consoles
 import time
 from pathlib import Path
 
@@ -132,7 +134,7 @@ def ensure_kernel(kernel_name: str, venv_python: str) -> None:
     import subprocess as sp
 
     result = sp.run(
-        ["jupyter", "kernelspec", "list", "--json"],
+        [sys.executable, "-m", "jupyter", "kernelspec", "list", "--json"],
         capture_output=True, text=True,
     )
     try:

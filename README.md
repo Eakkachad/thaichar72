@@ -91,7 +91,7 @@ uv run python scripts/train.py --config configs/matrix/A1_resnet18_full_64.yaml
 uv run python scripts/collect_results.py
 
 # 6. Single-image prediction
-uv run python scripts/predict.py --ckpt runs/A1_resnet18_full_64_T4/best.pt --img path/to/glyph.png
+uv run python scripts/predict.py --ckpt runs/<winner>/best.pt path/to/glyph.png --topk 5
 
 # 7. Corruption robustness sweep
 uv run python scripts/robustness.py --ckpt runs/A1_resnet18_full_64_T4/best.pt --limit 5

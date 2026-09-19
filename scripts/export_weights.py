@@ -37,6 +37,8 @@ def main() -> None:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     wpath = out / f"{args.name}.pt"
+    if wpath.exists():
+        raise SystemExit(f"refusing to overwrite existing deliverable {wpath}; choose another --name")
     torch.save({"state_dict": sd, "cfg": ckpt["cfg"], "class_codes": CLASS_CODES, "class_chars": CLASS_CHARS,
                 "epoch": ckpt.get("epoch"), "which": ckpt.get("which"), "source_run": str(run),
                 "val_metrics": {k: metrics[k] for k in ("top1", "top5", "balanced_acc", "macro_f1", "minority_acc")}},

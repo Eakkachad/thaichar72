@@ -299,7 +299,7 @@ def main():
         "n_unique_after_dedup": n_unique_after_dedup,
         "copy_of_files": copy_of_files,
     }
-    with open(os.path.join(out_dir, "duplicates.json"), "w") as f:
+    with open(os.path.join(out_dir, "duplicates.json"), "w", encoding="utf-8") as f:
         json.dump(duplicates, f, indent=2, ensure_ascii=False)
     print(f"Wrote duplicates.json ({len(md5_group_list)} duplicate groups)")
 
@@ -361,7 +361,7 @@ def main():
         },
         "per_category_totals": cat_totals,
     }
-    with open(os.path.join(out_dir, "summary.json"), "w") as f:
+    with open(os.path.join(out_dir, "summary.json"), "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
     print("Wrote summary.json")
 
@@ -586,7 +586,7 @@ across **{distinct_doc_ids}** unique document IDs.
 - ![Per-Group Counts](per_group_counts.png)
 """
 
-    with open(os.path.join(out_dir, "EDA.md"), "w") as f:
+    with open(os.path.join(out_dir, "EDA.md"), "w", encoding="utf-8") as f:
         f.write(eda_md)
     print("Wrote EDA.md")
 

@@ -1,62 +1,60 @@
-# Every key with its default (see thaichar/engine.py DEFAULTS). Copy and override what you need.
-exp_id: null            # defaults to the config file stem (train.py) or model_size_mode_seed
+# Every engine default (regenerated from thaichar.engine.DEFAULTS). Copy a section and override what you need.
+exp_id: null    # defaults to the config stem
 out_root: runs
 seed: 42
-device: auto            # auto | cpu | cuda
-threads: 8              # CPU threads
-num_workers: 0          # DataLoader workers (augmentation is cheap; 0–4)
-# ---- data
+device: auto    # auto | cpu | cuda  (use cuda on GPU boxes to fail fast)
+threads: 4
+num_workers: 2    # 0 on Windows, 2 elsewhere (WSL2/Linux: 4 is a good choice)
+channels_last: true
 split_file: data/splits/split_seed42.csv
-split_kind: strat       # strat (rubric 80:20 stratified) | doc (document-disjoint honesty split)
+split_kind: strat    # strat | doc
 cache: data/cache/glyphs.npz
-subset_frac: 1.0        # per-class subsample of TRAIN only (fast ranking runs)
-img_size: 64            # 32/64/96/128/224 (swin_tiny: 224 only; vit_tiny: 32/64/96/112/128/160/192/224)
-channel_mode: gray3     # gray3 (ImageNet-normalised grey×3) | gray1 | onoff (ink / stroke-thickness / edges)
-margin: 0.1             # white margin added around the tight crop before padding to square
-aug: none               # none | base | morph | full | randaug | trivial  (never flips)
-extra_train_index: null # e.g. data/synth/index.csv  (synthetic glyphs appended to TRAIN only)
-extra_train_cache: null # e.g. data/synth/glyphs_synth.npz
-extra_mode: all         # all | fill  (fill = only top classes up to extra_fill_to real+synthetic)
+subset_frac: 1.0
+img_size: 64
+channel_mode: gray3    # gray3 | gray1 | onoff
+margin: 0.1
+aug: none    # none | base | morph | full | randaug | trivial (never flips)
+extra_train_index: null
+extra_train_cache: null
+extra_mode: all    # all | fill
 extra_fill_to: 200
 extra_max_per_class: null
-# ---- model
-model: resnet18         # smallcnn | any timm name (resnet18/50, mobilenetv3_large_100, efficientnet_b0/b2, convnext_tiny, vit_tiny/small_patch16_224, swin_tiny_patch4_window7_224, deit_small_patch16_224)
+use_real_train: true
+init_from: null    # runs/<exp>/best.pt: loads all shape-compatible tensors
+kd_teachers: null    # list of best.pt paths (64 px, same channel_mode) for distillation
+kd_alpha: 0.7
+kd_T: 4.0
+model: resnet18
 pretrained: true
-mode: full              # full | partial | frozen
+mode: full    # full | partial | frozen
 partial_frac: 0.35
-geometry: false         # geometry side-channel [log w, log h, log w/h, ink%] into the head
+geometry: false
 drop_rate: 0.1
-# ---- optimisation
 epochs: 6
 batch_size: 128
 lr: 0.001
 weight_decay: 0.05
 warmup_epochs: 1.0
 min_lr_ratio: 0.01
-llrd: null              # e.g. 0.8 layer-wise LR decay
+llrd: null
 grad_clip: 1.0
 ema: true
 ema_decay: 0.999
-amp: true               # only used on cuda
-# ---- loss / imbalance
-loss: ce                # ce | weighted_ce | focal | cb_focal
+ema_eval: last    # last | every
+amp: true
+loss: ce    # ce | weighted_ce | focal | cb_focal
 label_smoothing: 0.1
 focal_gamma: 2.0
 ce_weight_power: 0.5
 cb_beta: 0.999
-sampler: none           # none | sqrt_inv | inv
+sampler: none    # none | sqrt_inv | inv
 sampler_cap: 10.0
-mixup: 0.0              # alpha; >0 enables (loss must be ce)
+mixup: 0.0
 cutmix: 0.0
 mix_prob: 1.0
-# ---- evaluation
 select_metric: balanced_acc
+val_subset_frac: 1.0    # per-epoch monitoring only; final metrics use the full val split
 taus: [0.0, 0.25, 0.5, 0.75]
 tta: false
 latency_iters: 50
 save_last: true
-use_real_train: true    # false = train only on extra_train_index (stage-1 intermediate pretraining)
-init_from: null         # runs/<exp>/best.pt to initialise from (shape-compatible tensors only)
-kd_teachers: null       # e.g. [runs/F3_r18_randaug_synth_20/best.pt, runs/F4_effb0_randaug_synth_20/best.pt]
-kd_alpha: 0.7
-kd_T: 4.0
