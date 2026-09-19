@@ -1,0 +1,14 @@
+# Stage 1: ImageNet → synthetic font glyphs (21,600, 72 classes, 26 fonts)
+exp_id: B6a_synth_pretrain_resnet18_64
+model: resnet18
+img_size: 64
+use_real_train: false
+extra_train_index: data/synth/index.csv
+extra_train_cache: data/synth/glyphs_synth.npz
+extra_mode: all
+aug: full
+epochs: 8
+batch_size: 256
+lr: 0.001
+label_smoothing: 0.1
+ema: true

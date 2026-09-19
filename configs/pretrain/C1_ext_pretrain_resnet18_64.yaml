@@ -1,0 +1,14 @@
+# Stage 1: ImageNet → external handwritten Thai (ALICE-THI + Burapha-TH, 100,985 glyphs, 71 classes)
+exp_id: C1_ext_pretrain_resnet18_64
+model: resnet18
+img_size: 64
+use_real_train: false
+extra_train_index: data/external/index.csv
+extra_train_cache: data/external/glyphs_external.npz
+extra_mode: all
+aug: morph
+epochs: 4
+batch_size: 256
+lr: 0.001
+label_smoothing: 0.1
+ema: true

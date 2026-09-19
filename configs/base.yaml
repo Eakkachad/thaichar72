@@ -55,3 +55,5 @@ taus: [0.0, 0.25, 0.5, 0.75]
 tta: false
 latency_iters: 50
 save_last: true
+use_real_train: true    # false = train only on extra_train_index (stage-1 intermediate pretraining)
+init_from: null         # runs/<exp>/best.pt to initialise from (shape-compatible tensors only)

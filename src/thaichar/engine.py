@@ -61,6 +61,8 @@ DEFAULTS: dict[str, Any] = {
     "extra_mode": "all",  # all | fill
     "extra_fill_to": 200,
     "extra_max_per_class": None,
+    "use_real_train": True,  # False → train ONLY on extra_train_index (intermediate pretraining stage)
+    "init_from": None,  # path to a previous run's best.pt; loads all shape-compatible tensors (backbone transfer)
     # model
     "model": "resnet18",
     "pretrained": True,
@@ -183,7 +185,8 @@ def build_datasets(cfg: dict[str, Any]) -> tuple[ThaiGlyphDataset, ThaiGlyphData
         extra_df = _select_extra(extra_df, counts_real, cfg, int(cfg["seed"]))
         n_extra = len(extra_df)
         keep = ["path", "label", "width", "height", "ink_frac"]
-        merged_df, multi = merge_sources([(train_df[keep], cache), (extra_df[keep], extra_cache)])
+        sources = [(train_df[keep], cache), (extra_df[keep], extra_cache)] if cfg["use_real_train"] else [(extra_df[keep], extra_cache)]
+        merged_df, multi = merge_sources(sources)
         train_ds = ThaiGlyphDataset(merged_df, multi, size=cfg["img_size"], channel_mode=cfg["channel_mode"],
                                     transform=transform, margin=cfg["margin"])
         class_counts = np.bincount(merged_df.label.values, minlength=NUM_CLASSES)
@@ -311,6 +314,16 @@ def predict_tta(model: nn.Module, val_ds: ThaiGlyphDataset, cfg: dict, device: t
     return np.log(probs / len(TTA_VIEWS) + 1e-9)  # log-probs behave like logits for argmax / tau
 
 
+def load_compatible(model: nn.Module, ckpt_path: str, device: torch.device) -> tuple[int, int]:
+    """Load every tensor whose name and shape match (head is skipped when its shape differs)."""
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
+    sd = ckpt["state_dict"] if "state_dict" in ckpt else ckpt
+    own = model.state_dict()
+    ok = {k: v for k, v in sd.items() if k in own and own[k].shape == v.shape}
+    model.load_state_dict(ok, strict=False)
+    return len(ok), len(sd) - len(ok)
+
+
 # ---------------------------------------------------------------------------
 # latency
 # ---------------------------------------------------------------------------
@@ -358,6 +371,9 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
     model = build_model(cfg["model"], num_classes=NUM_CLASSES, pretrained=bool(cfg["pretrained"]), in_chans=in_ch,
                         img_size=int(cfg["img_size"]), mode=cfg["mode"], geometry=bool(cfg["geometry"]),
                         drop_rate=float(cfg["drop_rate"]), partial_frac=float(cfg["partial_frac"])).to(device)
+    if cfg["init_from"]:
+        n_loaded, n_skipped = load_compatible(model, cfg["init_from"], device)
+        print(f"[{cfg['exp_id']}] init_from {cfg['init_from']}: loaded {n_loaded} tensors, skipped {n_skipped}")
     if cfg["channels_last"]:
         model = model.to(memory_format=torch.channels_last)
     n_total, n_trainable = count_params(model)
