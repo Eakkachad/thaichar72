@@ -25,3 +25,9 @@ tasks, then the root agent idles and the CLI exits, killing them. The "run synch
 this. `claude-opus-4-6-thinking` completed TASK-01/02 end-to-end with the same harness. Decision (reviewer): switch
 TASK-04 to opus (critical path), try `claude-sonnet-4-6` on TASK-03b and `gemini-3.1-pro-high` on TASK-07b to see
 whether the issue is flash-specific. Owner informed.
+| TASK-04 | 2026-09-19 | (round 3 result) | claude-opus-4-6-thinking | PARTIAL then **QUOTA**: wrote models.py (298 l), losses.py, metrics.py, samplers.py — all import, `build_model` smallcnn/resnet18 forward OK; then `error: Individual quota reached. Please upgrade your subscription… Resets in 4h13m`. engine.py / train.py / configs / tests / collect_results still missing | ⛔ quota | 3 |
+| TASK-03b | 2026-09-19 | (round 3 result) | claude-sonnet-4-6 | PARTIAL then **QUOTA**: wrote tests/test_synth.py (8/9 pass; the failing one just needs the full 300/class render), then same quota error. aug_examples.py, full render, summary/figures still missing | ⛔ quota | 3 |
+| TASK-07b | 2026-09-19 | (round 2 result) | gemini-3.1-pro-high | FAILED: same idle-exit bug as gemini flash — launched fetch in background, idled, exited. Gemini family in `agy --print` cannot run long commands | ❌ | 2 |
+| PROBE | 2026-09-19 | "reply PONG" | gemini-3.8-flash-high → PONG (quota OK); claude-sonnet-4-6 → `error: interrupted` (quota) | | | |
+
+**STOPPED 2026-09-19 ~10:50 — agy Claude quota exhausted (resets ≈ 15:05); Gemini models still have quota but cannot run long commands in print mode. Owner notified.**
