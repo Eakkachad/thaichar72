@@ -11,13 +11,16 @@ for cfgpath in "$@"; do
   if [ -f "runs/$exp/metrics.json" ]; then echo "=== skip $exp (done) ==="; continue; fi
   # stage-2 configs: make sure the init checkpoint exists on the VM (re-upload after a session loss)
   init=$(grep -E '^init_from:' "$cfgpath" | awk '{print $2}')
+  INIT_LINE=""
   if [ -n "$init" ] && [ "$init" != "null" ] && [ -f "$init" ]; then
-    echo "uploading $init"; timeout 600 colab --auth=oauth2 upload -s "$SESSION" "$init" "/content/thaichar/$init" 2>&1 | tail -1
+    echo "uploading $init"; timeout 600 colab --auth=oauth2 upload -s "$SESSION" "$init" "/content/init_upload.pt" 2>&1 | tail -1
+    INIT_LINE="os.makedirs(os.path.dirname('$init'), exist_ok=True); shutil.copy('/content/init_upload.pt', '$init') if os.path.exists('/content/init_upload.pt') and not os.path.exists('$init') else None"
   fi
   setargs=""; for s in "${SETS[@]}"; do setargs="$setargs, \"--set\", \"$s\""; done
   cat > "$SCRATCH/run_$exp.py" <<PY
-import os, sys, subprocess, time
+import os, sys, subprocess, time, shutil
 os.chdir("/content/thaichar"); t0 = time.time()
+$INIT_LINE
 cmd = [sys.executable, "scripts/train.py", "--config", "$cfgpath", "--exp-id", "$exp"$setargs]
 r = subprocess.run(cmd, capture_output=True, text=True)
 print(r.stdout[-2500:]); print("STDERR tail:", r.stderr[-800:]); print("elapsed", round(time.time()-t0,1), "s")
