@@ -77,8 +77,8 @@ expected 100,985 external glyphs):
    `uv run python scripts/run_local_queue.py configs/final_candidates/<top3>.yaml --suffix _doc --set split_kind=doc --set device=cuda --stop-on-error`
    Winner rule: (a) doc top-1, (b) doc balanced, (c) strat top-1; and robustness not worse than F2:
    `uv run python scripts/robustness.py --ckpt runs/<cand>/best.pt --binarize --out reports/robustness/<cand>_full_bin`
-   criterion = mean top-1 over all non-clean rows of results.csv ≥ F2's (`reports/robustness/F2_r18_randaug_20_full_bin/`,
-   committed from the laptop) − 0.5 pt.
+   criterion = mean top-1 over all non-clean rows of results.csv ≥ F2's **0.9038** (full val, Otsu on; clean 0.9837;
+   `reports/robustness/F2_r18_randaug_20_full_bin/results.csv`, committed from the laptop) − 0.005.
 4. **3 seeds of the winner, SAME split** (so they can be ensembled): `--suffix _s0 --set seed=0` and `--suffix _s1 --set seed=1`
    (keep `split_file=data/splits/split_seed42.csv`). Report mean ± std (top-1, balanced) in FINAL-REPORT §9.
    Optional variance-across-splits study: `--suffix _sp0 --set split_file=data/splits/split_seed0.csv` (report only, not ensembled).
