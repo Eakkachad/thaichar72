@@ -77,3 +77,29 @@ re-scoring า/ๅ ด้วยความสูง, และเช็คว�
 4. RandAugment/TrivialAugment (แบบ 1–2 op ต่อภาพ) เป็นจุดสมดุลที่ดี: เสีย top-1 เล็กน้อยแต่ balanced acc สูงสุด
 5. **คำเตือน**: ตารางนี้วัด in-distribution เท่านั้น — การตัดสินใจเรื่อง aug สำหรับ hidden test ที่ "เน้น generalize" ต้องดู
    doc-disjoint split (คิวถัดไป) และ robustness curve: โมเดล base-aug พังบนภาพเทา/เส้นบางใน TASK-11 (Otsu ที่ inference แก้เรื่องเทาได้)
+
+## D. Class imbalance — resnet18 full @64, aug=full (ฐานเดียวกับ B_full/D0), 6 epochs, stratified val
+
+| exp | วิธี | top-1 | balanced | macro-F1 | minority | τ ดีสุด (bal) |
+|---|---|---:|---:|---:|---:|---:|
+| D0 | CE + LS 0.1 (ERM) | **0.9780** | 0.9644 | 0.9617 | 0.9583 | τ=0.75 → 0.9806 |
+| D1 | weighted CE, w ∝ n^-0.5 | 0.9727 | **0.9840** | 0.9713 | **0.9750** | τ=0 |
+| D1 | weighted CE, w ∝ n^-1 | **0.1160** | 0.6041 | 0.6010 | 0.9583 | – |
+| D2 | focal γ=2 | 0.9778 | 0.9695 | 0.9645 | 0.9667 | τ=0.5 → 0.9832 |
+| D2 | class-balanced focal β=0.999 | 0.9672 | 0.9751 | 0.9538 | 0.9750 | τ=0 |
+| D3 | WeightedRandomSampler sqrt-inv, cap 5 | 0.9721 | 0.9837 | **0.9768** | 0.9750 | τ=0 |
+| D3 | WeightedRandomSampler inv, cap 10 | 0.9694 | 0.9841 | 0.9721 | 0.9750 | τ=0 |
+| D4 | post-hoc logit adjustment บน D0 | (τ=0.75) 0.9718* | 0.9806 | – | – | ฟรี |
+
+ข้อสรุป D:
+1. **การชดเชย imbalance ทุกแบบแลก top-1 กับ balanced acc**: +2 จุด balanced ↔ −0.5 ถึง −0.9 จุด top-1
+   เพราะคลาสหาง (เลขไทย, ฃ ฑ ฬ) ถูกทายบ่อยขึ้นและกินคลาสใหญ่ (า/ๅ/ว) ไปบ้าง
+2. **inverse-frequency เต็ม ๆ พังทั้งระบบ** (top-1 11.6%) — น้ำหนักต่างกัน 5,025 เท่า → โมเดลทายคลาสหายากทุกภาพ
+   ต้องใช้ sqrt หรือ cap เสมอ (ยืนยันข้อค้นพบของโปรเจกต์เก่า)
+3. sqrt-inverse **weighted loss ≈ sqrt-inverse sampler** (98.40 vs 98.37 balanced) → เลือกวิธีไหนก็ได้ sampler ให้ macro-F1 ดีกว่าเล็กน้อย
+4. **logit adjustment หลังบ้านบน ERM ให้ผลใกล้กัน (98.06) โดยไม่ต้องเทรนใหม่** และปรับ τ ได้ตาม metric ที่อาจารย์ใช้
+   (ถ้าคะแนนคือ plain accuracy บน test → ใช้ ERM/τ=0; ถ้าเป็น balanced → τ≈0.5–0.75)
+5. **synthetic data (B6) ให้ balanced 98.04 โดยไม่เสีย top-1** (97.69) → เป็นวิธีจัดการ imbalance ที่ "ฟรี" ที่สุด
+   และเป็นทางเดียวที่ทำให้ ฃ/ฑ เรียนได้จริง
+
+*ค่า top-1 ที่ τ=0.75 ประมาณจาก tau sweep ของ D0 (`runs/D0_ce_ls_resnet18_64_T4/metrics.json`)
