@@ -1,0 +1,20 @@
+# smallest model: mobilenetv3_small_100 (1.6 M) distilled from the 3 F19_v2 teachers.
+exp_id: X5_mnv3s_kd_v2
+model: mobilenetv3_small_100
+img_size: 64
+epochs: 20
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+warmup_epochs: 1.0
+subset_frac: 1.0
+tta: true
+val_subset_frac: 0.5
+aug: randaug
+split_file: data/splits/split_seed42_v2.csv
+kd_teachers: [runs/F19_r18_b6ainit_randaug_20_v2/best.pt, runs/F19_r18_b6ainit_randaug_20_v2_s0/best.pt, runs/F19_r18_b6ainit_randaug_20_v2_s1/best.pt]
+kd_alpha: 0.7
+kd_T: 4.0

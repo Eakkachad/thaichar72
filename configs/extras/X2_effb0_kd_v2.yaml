@@ -1,0 +1,20 @@
+# effb0 + KD from the 3 F19_v2 resnet18 teachers (cross-architecture KD; same 64-px gray3 input).
+exp_id: X2_effb0_kd_v2
+model: efficientnet_b0
+img_size: 64
+epochs: 20
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+warmup_epochs: 1.0
+subset_frac: 1.0
+tta: true
+val_subset_frac: 0.5
+aug: randaug
+split_file: data/splits/split_seed42_v2.csv
+kd_teachers: [runs/F19_r18_b6ainit_randaug_20_v2/best.pt, runs/F19_r18_b6ainit_randaug_20_v2_s0/best.pt, runs/F19_r18_b6ainit_randaug_20_v2_s1/best.pt]
+kd_alpha: 0.7
+kd_T: 4.0
