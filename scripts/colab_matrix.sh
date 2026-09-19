@@ -17,7 +17,9 @@ r = subprocess.run(cmd, capture_output=True, text=True)
 print(r.stdout[-2500:]); print("STDERR tail:", r.stderr[-800:]); print("elapsed", round(time.time()-t0,1), "s")
 PY
   echo "=== $(date +%H:%M:%S) START $exp ==="
-  timeout 1700 colab --auth=oauth2 exec -s "$SESSION" -f "$SCRATCH/run_$exp.py" --timeout 1600 2>&1 | grep -v -i "warn" | tail -14
+  out=$(timeout 1700 colab --auth=oauth2 exec -s "$SESSION" -f "$SCRATCH/run_$exp.py" --timeout 1600 2>&1 | grep -v -i "warn")
+  echo "$out" | tail -14
+  if echo "$out" | grep -q "not found\|appears to be lost"; then echo "!!! SESSION LOST at $exp — aborting loop"; exit 2; fi
   mkdir -p "runs/$exp"
   for f in metrics.json log.csv best.pt; do
     timeout 300 colab --auth=oauth2 download -s "$SESSION" "/content/thaichar/runs/$exp/$f" "runs/$exp/$f" 2>&1 | tail -1

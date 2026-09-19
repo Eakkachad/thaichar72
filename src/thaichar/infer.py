@@ -143,8 +143,10 @@ def preprocess_image(
     # 2. Otsu threshold (cv2)
     _, thresh = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-    # 3. Make ink dark on white (invert if mean says otherwise)
-    if thresh.mean() < 127.5:
+    # 3. Make ink dark on white. Decide polarity from the 1-px border ring (background), not the global
+    #    mean: tight-cropped glyphs can be >50 % ink, so the mean would wrongly invert them.
+    border = np.concatenate([thresh[0, :], thresh[-1, :], thresh[:, 0], thresh[:, -1]])
+    if border.mean() < 127.5:
         thresh = 255 - thresh
 
     # 4. Crop to ink bounding box (reject empty)
