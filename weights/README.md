@@ -3,3 +3,4 @@
 | name | model | img | aug | init | top-1 | balanced | MB | md5 |
 |---|---|---:|---|---|---:|---:|---:|---|
 | thaichar72_resnet18_64_v1labels | resnet18 | 64 | randaug | runs/B6a_synth_pretrain_resnet18_64/best.pt | 0.9839 | 0.9827 | 44.9 | 9605c6f6 |
+| thaichar72_r18_synth_pretrain_init | resnet18 | 64 | full | ImageNet | 0.9369 | 0.9188 | 44.9 | 3d667ccd |

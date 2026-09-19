@@ -360,6 +360,15 @@ if not split_file.exists():
 else:
     print(f"✓ Split file already present: {split_file}. Skipping EDA and prep_data.")
 
+# 3b. Label-corrected split (v2, see reports/02-EXPERIMENTS.md section H): rebuilt from the tracked change list
+split_file_v2 = DATA_DIR / "splits" / "split_seed42_v2.csv"
+changes_csv = PROJECT_DIR / "reports" / "analysis" / "datav2_label_changes.csv"
+if not split_file_v2.exists() and split_file.exists() and changes_csv.exists():
+    print("Building label-corrected split (v2) by replaying reports/analysis/datav2_label_changes.csv ...")
+    subprocess.run([sys.executable, str(PROJECT_DIR / "scripts" / "make_split_v2.py"), "--src", str(split_file),
+                    "--out", str(split_file_v2), "--changes", str(changes_csv)], cwd=str(PROJECT_DIR), check=True)
+print(f"v2 split present: {split_file_v2.exists()} ({split_file_v2})")
+
 # 4. Show class-distribution + montage images if present
 for img_file in ["class_distribution.png", "class_montage.png"]:
     img_path = PROJECT_DIR / "reports" / "eda" / img_file
@@ -397,7 +406,24 @@ if MODE == "train":
     if EPOCHS_OVERRIDE is not None:
         cfg["epochs"] = int(EPOCHS_OVERRIDE)
     cfg["device"] = "cuda" if torch.cuda.is_available() else "cpu"
-    cfg["split_file"] = str(DATA_DIR / "splits" / "split_seed42.csv")
+    # keep the split the recipe was selected on (final.yaml -> label-corrected v2); fall back to v1 if it is missing
+    _split = Path(cfg.get("split_file", "data/splits/split_seed42.csv"))
+    _split = _split if _split.is_absolute() else PROJECT_DIR / _split
+    if not _split.exists():
+        print(f"WARNING: {_split} missing -> falling back to split_seed42.csv (v1 labels)")
+        _split = DATA_DIR / "splits" / "split_seed42.csv"
+    cfg["split_file"] = str(_split)
+    # stage-1 synthetic-font pretrain checkpoint (init_from): use the packaged copy in weights/ if runs/ is absent
+    if cfg.get("init_from"):
+        _init = Path(cfg["init_from"]); _init = _init if _init.is_absolute() else PROJECT_DIR / _init
+        _packaged = PROJECT_DIR / "weights" / "thaichar72_r18_synth_pretrain_init.pt"
+        if not _init.exists() and _packaged.exists():
+            _init = _packaged
+        if _init.exists():
+            cfg["init_from"] = str(_init)
+        else:
+            print(f"WARNING: init_from checkpoint {cfg['init_from']} not found -> training from ImageNet init only")
+            cfg["init_from"] = None
     cfg["cache"] = str(DATA_DIR / "cache" / "glyphs.npz")
     cfg["out_root"] = str(PROJECT_DIR / "runs")
     

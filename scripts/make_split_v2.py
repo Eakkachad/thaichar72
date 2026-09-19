@@ -28,14 +28,34 @@ from thaichar.classes import CLASS_CODES  # noqa: E402
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--zip", required=True, help="DataV2 datav2.zip")
+    ap.add_argument("--zip", default=None, help="DataV2 datav2.zip (source of truth; omit to replay --changes instead)")
     ap.add_argument("--src", default="data/splits/split_seed42.csv")
     ap.add_argument("--out", default="data/splits/split_seed42_v2.csv")
     ap.add_argument("--changes", default="reports/analysis/datav2_label_changes.csv",
-                    help="audit CSV of every applied move/drop (tracked in git)")
+                    help="audit CSV of every applied move/drop (tracked in git); without --zip it is REPLAYED onto --src, "
+                         "so the v2 split can be rebuilt on any machine (Colab included) from the repo alone")
     args = ap.parse_args()
 
     code2idx = {c: i for i, c in enumerate(CLASS_CODES)}
+    df = pd.read_csv(args.src)
+
+    if args.zip is None:  # replay mode: apply the tracked change list, no DataV2 zip needed
+        ch = pd.read_csv(args.changes)
+        ref = df.drop_duplicates("code").set_index("code")[["char", "category"]]
+        mv = ch[ch.action == "move"].set_index("path").new_code.astype(int)
+        drop = set(ch[ch.action == "drop"].path)
+        out = df[~df.path.isin(drop)].copy()
+        hit = out.path.isin(mv.index)
+        out.loc[hit, "code"] = out.loc[hit, "path"].map(mv).astype(int)
+        out["label"] = out.code.map(code2idx)
+        out["char"] = out.code.map(ref["char"])
+        out["category"] = out.code.map(ref["category"])
+        assert out.label.notna().all()
+        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+        out.reset_index(drop=True).to_csv(args.out, index=False)
+        print(f"replayed {int(hit.sum())} moves + {len(df) - len(out)} drops from {args.changes}: {len(df)} -> {len(out)} rows -> {args.out}")
+        return
+
     new: dict[str, list[int]] = collections.defaultdict(list)
     for n in zipfile.ZipFile(args.zip).namelist():
         if n.endswith("/"):
@@ -45,7 +65,6 @@ def main() -> None:
             continue
         new[fn].append(int(re.match(r"\d+", cls).group()))
 
-    df = pd.read_csv(args.src)
     fn = df.path.str.rsplit("/", n=1).str[-1]
     unique = fn.map(fn.value_counts()) == 1
     # per-class reference row for char / category of the destination class
