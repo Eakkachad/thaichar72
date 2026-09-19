@@ -1,8 +1,10 @@
-# Knowledge distillation template: fill kd_teachers with the winner (+ other 64-px gray3 models) after they exist.
+# Knowledge distillation of the 3-seed F19 ensemble (label-corrected v2 split) into a single F19-recipe student.
+# Teachers = the three F19_v2 seeds (same split file, same 64-px gray3 input); student = F19 recipe (B6a init, randaug).
+# Edited 2026-09-19 after the winner was chosen; the earlier template pointed at F14 + F2.
 exp_id: K1_r18_kd_20
 model: resnet18
 img_size: 64
-aug: trivial
+aug: randaug
 epochs: 20
 batch_size: 128
 loss: ce
@@ -12,7 +14,8 @@ lr: 0.001
 warmup_epochs: 1.0
 tta: true
 val_subset_frac: 0.5
+split_file: data/splits/split_seed42_v2.csv
 init_from: runs/B6a_synth_pretrain_resnet18_64/best.pt
-kd_teachers: [runs/F14_r18_b6ainit_trivial_20/best.pt, runs/F2_r18_randaug_20/best.pt]   # EDIT: winner + 1-2 diverse teachers
+kd_teachers: [runs/F19_r18_b6ainit_randaug_20_v2/best.pt, runs/F19_r18_b6ainit_randaug_20_v2_s0/best.pt, runs/F19_r18_b6ainit_randaug_20_v2_s1/best.pt]
 kd_alpha: 0.7
 kd_T: 4.0
