@@ -887,16 +887,10 @@ summary = {
         "macro_f1": strat_m["macro_f1"],
         "minority_acc": strat_m["minority_acc"],
     },
-    "doc_disjoint_val": {
-        "top1": eval_results["doc"]["metrics"]["top1"],
-        "top5": eval_results["doc"]["metrics"]["top5"],
-        "balanced_acc": eval_results["doc"]["metrics"]["balanced_acc"],
-        "macro_f1": eval_results["doc"]["metrics"]["macro_f1"],
-        "minority_acc": eval_results["doc"]["metrics"]["minority_acc"],
-    },
+    "evaluated_split": _trained_split,
     "tau_sweep": {
         str(k): {m_k: float(m_v) for m_k, m_v in v.items()}
-        for k, v in eval_results["strat"]["sweep"].items()
+        for k, v in eval_results[_trained_split]["sweep"].items()
     },
 }
 
