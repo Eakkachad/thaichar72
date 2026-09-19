@@ -116,3 +116,13 @@ inference demo (top-k + confidence, ipywidgets/Gradio ใน notebook), robustne
 2. ทราบไหมว่า hidden test set ของอาจารย์มาจาก **เอกสารชุดเดิม** หรือ **เอกสารใหม่/ฟอนต์ใหม่**? (มีผลต่อการเลือกโมเดล: ถ้าใหม่ จะถ่วงน้ำหนัก doc-disjoint และ synthetic มากขึ้น)
 3. ยืนยันนโยบายทำความสะอาด: ลบ duplicates, ลบทั้ง 11 กลุ่มที่ label ชน, ลบ `Copy of` 6 ไฟล์ (รวม ~2,6xx ภาพ) — ถ้าไม่บอก จะใช้นโยบายนี้
 4. อนุญาตดาวน์โหลด dataset จาก HuggingFace (ALICE-THI, Burapha-TH, KVIS) — ตามที่อาจารย์อนุญาต
+
+---
+## 8. การตัดสินใจหลังรีวิวรอบ 1 (2026-09-19, เจ้าของงาน)
+| คำถาม | คำตอบ | ผลต่อแผน |
+|---|---|---|
+| Colab tier | **ฟรี** | GPU = T4 เท่านั้น, เซสชันสั้น → งาน GPU ต้องจบใน ≤ 2–3 ชม./job, checkpoint ทุก epoch, 224 px เฉพาะผู้ชนะ; ViT/Swin ใช้ 96–128 px |
+| hidden test set | อาจารย์ **เน้น generalize**, น่าจะมีข้อมูลเพิ่ม/แปลก ๆ | **model selection ใช้ doc-disjoint val เป็นเกณฑ์ร่วม** (ไม่ใช่แค่ stratified); ถ่วงน้ำหนัก synthetic fonts, external data, augmentation แรง, robustness test (F) และ TTA; หลีกเลี่ยงการจูน τ/threshold แน่นเกินกับ val เดิม |
+| นโยบายลบ duplicates / label ชน / Copy of | ลบได้ | ใช้ตาม TASK-02 (เหลือ 60,117 ภาพ) |
+| ดาวน์โหลด HF datasets | ok | เดิน TASK-07 ได้ |
+**สถานะแผน: อนุมัติ — เริ่ม P0/P1**
