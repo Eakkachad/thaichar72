@@ -13,7 +13,7 @@ agy --dangerously-skip-permissions --print "$(cat tasks/TASK-XX-name.md)"
 - `--dangerously-skip-permissions`: auto-approve every tool call (user-authorised for this project)
 - Working directory = shell cwd. There is **no** explicit `--cwd` flag; use `--add-dir <path>`
   to expose extra directories (repeatable). Always `cd Deep_CNN` first.
-- `--model <id>`                  : optional; `agy models` lists ids. Useful ones:
+- `--model <id>`                  : **project owner prefers `gemini-3.8-flash-high` — use it by default.** `agy models` lists ids; others:
   `claude-opus-4-6-thinking`, `claude-sonnet-4-6`, `gemini-3.1-pro-high`, `gemini-3.8-flash-high`
 - `--effort low|medium|high`      : reasoning effort
 - `--print-timeout 0s`            : wait until the turn completes (default)
@@ -25,7 +25,7 @@ agy --dangerously-skip-permissions --print "$(cat tasks/TASK-XX-name.md)"
 ```bash
 cd /home/eggchad/eakject/research/Deep_Man/Deep_CNN
 git add -A && git commit -qm "pre-delegation snapshot: TASK-XX"     # rollback point
-agy --dangerously-skip-permissions --model claude-opus-4-6-thinking --print \
+agy --dangerously-skip-permissions --model gemini-3.8-flash-high --print \
   "Read the file tasks/TASK-XX-name.md in the current directory and carry out that task exactly. \
    Respect every scope restriction in it. When done, print a short report: files changed, \
    commands run, results, and whether each acceptance criterion passed." \
