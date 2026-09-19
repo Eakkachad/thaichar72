@@ -343,3 +343,19 @@ F18/F19 (B6a init + full / randaug) ที่ออกแบบจากสา�
    มาจากแหล่งเดียวกันและ label ด้วยกระบวนการเดิม โมเดล v2 จะเสีย ~0.9 จุดเทียบโมเดล v1 (และเทียบกลุ่มอื่นที่เทรน label เดิม); ถ้า test set label ถูก
    หรือมาจากแหล่งใหม่ โมเดล v2 ได้เปรียบ ~0.8 จุด → **ส่งมอบทั้งสองชุด**: `weights/thaichar72_resnet18_64.pt` (v2, ค่าเริ่มต้น) และ
    `weights/thaichar72_resnet18_64_v1labels.pt` (v1) เลือกตอนส่งได้
+
+## I. Ensemble / Knowledge distillation และ deliverable (v2 split, stratified val 11,991 ภาพ)
+
+| โมเดล | top-1 | balanced | macro-F1 | robust mean | inference cost |
+|---|---:|---:|---:|---:|---|
+| F19_v2 seed 42 | 0.9879 | 0.9868 | 0.9848 | 0.9052 | 1× |
+| F19_v2 seed 0 / seed 1 | 0.9898 / 0.9893 | 0.9886 / 0.9851 | 0.9855 / 0.9856 | – | 1× |
+| Ensemble soft-vote 3 seeds | 0.9899 | 0.9876 | 0.9867 | – | 3× |
+| **K1 = KD student** (F19 recipe, teachers = 3 seeds, α 0.7, T 4, 20 ep) | **0.9903** | 0.9875 | **0.9869** | **0.9104** | 1× |
+| K1 + TTA | 0.9893 | 0.9869 | – | – | 8× |
+
+ข้อสรุป I: (1) ensemble ของ seeds ให้กำไรน้อย (+0.01–0.2 จุด) เพราะ error ที่เหลือ (า↔ๅ) เป็น systematic ไม่ใช่ variance; (2) **KD ถ่ายผล ensemble
+ลงโมเดลเดียวได้ครบ** และยังทน corruption ดีขึ้น (+0.5 จุด mean) — soft target จาก 3 ครูทำหน้าที่เป็น regulariser; (3) TTA ยังลด top-1 แม้กับ K1 → ปิด
+→ **ส่งมอบ K1** เป็น `weights/thaichar72_resnet18_64.pt` (fp32 44.9 MB) + `_fp16.pt` (22.5 MB, ผลเท่ากันทุกหลัก) + `_v1labels.pt` (F19 v1, สำรอง) +
+`thaichar72_r18_synth_pretrain_init.pt` (stage-1 init สำหรับเทรนซ้ำ); `configs/final.yaml` = recipe F19 บน v2; notebook รันจบ 0 error ในโหมด inference
+(K1 บน v2 val และ doc val ตาม split ที่ระบุใน checkpoint) — รายละเอียดใน `reports/FINAL-REPORT.md` §9, §12
