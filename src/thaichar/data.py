@@ -18,7 +18,13 @@ from PIL import Image
 from torch.utils.data import DataLoader, Dataset, Sampler
 
 from thaichar.classes import CLASS_CODES, code_to_index, code_to_char, category
-from thaichar.transforms import fit_to_square, geometry_features
+from thaichar.transforms import (
+    encode_channels,
+    fit_to_square,
+    geometry_features,
+    pad_to_square_canvas,
+    resize_square,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -327,83 +333,152 @@ def load_cache(path: str = "data/cache/glyphs.npz") -> GlyphCache:
     )
 
 
+@dataclass
+class MultiCache:
+    """Multi-source glyph cache mapping paths across multiple GlyphCache instances."""
+
+    caches: list[GlyphCache]
+    path_to_entry: dict[str, tuple[int, int]]  # path -> (cache_idx, item_idx)
+    paths: list[str]
+
+    def __len__(self) -> int:
+        return len(self.paths)
+
+    def __getitem__(self, i: int) -> np.ndarray:
+        p = self.paths[i]
+        c_idx, item_idx = self.path_to_entry[p]
+        return self.caches[c_idx][item_idx]
+
+    def get_by_path(self, path: str) -> np.ndarray:
+        c_idx, item_idx = self.path_to_entry[path]
+        return self.caches[c_idx][item_idx]
+
+
+def merge_sources(
+    sources: Sequence[tuple[pd.DataFrame, GlyphCache]],
+) -> tuple[pd.DataFrame, MultiCache]:
+    """Merge multiple (df, cache) sources into a unified DataFrame and MultiCache.
+
+    Enables real train split + synthetic glyphs in a single DataLoader without
+    re-concatenating cache arrays on disk.
+
+    Parameters
+    ----------
+    sources : Sequence[tuple[pd.DataFrame, GlyphCache]]
+        List of (split_df, cache) pairs.
+
+    Returns
+    -------
+    tuple[pd.DataFrame, MultiCache]
+        Merged DataFrame and unified MultiCache.
+    """
+    dfs: list[pd.DataFrame] = []
+    caches: list[GlyphCache] = []
+    paths: list[str] = []
+    path_to_entry: dict[str, tuple[int, int]] = {}
+
+    for cache_idx, (df, cache) in enumerate(sources):
+        dfs.append(df)
+        caches.append(cache)
+        for item_idx, path in enumerate(cache.paths):
+            paths.append(path)
+            path_to_entry[path] = (cache_idx, item_idx)
+
+    merged_df = pd.concat(dfs, ignore_index=True)
+    multi_cache = MultiCache(caches=caches, path_to_entry=path_to_entry, paths=paths)
+    return merged_df, multi_cache
+
+
 # ---------------------------------------------------------------------------
 # Deliverable 4: Torch Dataset
 # ---------------------------------------------------------------------------
 
 class ThaiGlyphDataset(Dataset):
-    """PyTorch dataset backed by split DataFrame + GlyphCache.
+    """PyTorch dataset backed by split DataFrame + GlyphCache (or MultiCache).
 
     Parameters
     ----------
-    split_df : pd.DataFrame
-        Subset of the clean index (e.g. train rows only).
-    cache : GlyphCache
-        Pre-loaded glyph cache.
+    split_df : pd.DataFrame | Sequence[tuple[pd.DataFrame, GlyphCache]]
+        Subset of the clean index (e.g. train rows only), or list of (df, cache) pairs.
+    cache : GlyphCache | MultiCache | None
+        Pre-loaded glyph cache (optional if split_df is a list of sources).
     size : int
         Square output size.
-    channels : int
-        1 (greyscale [0,1]) or 3 (ImageNet-normalised).
+    channel_mode : str
+        'gray3' (replicate grey x3 + ImageNet norm), 'gray1' (1-channel [0, 1]),
+        or 'onoff' (3 channels: ink mask, distance transform, Sobel edges).
     transform : callable | None
-        Optional augmentation applied to the uint8 HxW numpy image
-        *before* tensor conversion.
+        Optional augmentation applied to the square uint8 canvas *before* resizing.
     return_geometry : bool
         Whether to return geometry features.
+    margin : float
+        Fractional padding margin around the glyph canvas.
+    channels : int | None
+        Deprecated alias for channel_mode (3 -> 'gray3', 1 -> 'gray1').
     """
 
     def __init__(
         self,
-        split_df: pd.DataFrame,
-        cache: GlyphCache,
+        split_df: pd.DataFrame | Sequence[tuple[pd.DataFrame, GlyphCache]],
+        cache: GlyphCache | MultiCache | None = None,
         size: int = 64,
-        channels: int = 3,
+        channel_mode: str = "gray3",
         transform: Callable | None = None,
         return_geometry: bool = True,
+        margin: float = 0.1,
+        channels: int | None = None,
     ) -> None:
+        if cache is None and isinstance(split_df, (list, tuple)):
+            split_df, cache = merge_sources(split_df)
+
+        if channels is not None:
+            channel_mode = "gray3" if channels == 3 else "gray1"
+
         self.df = split_df.reset_index(drop=True)
         self.cache = cache
         self.size = size
-        self.channels = channels
+        self.channel_mode = channel_mode
+        self.channels = 3 if channel_mode in ("gray3", "onoff") else 1
         self.transform = transform
         self.return_geometry = return_geometry
+        self.margin = margin
 
-        # Build path → cache-index map
+        # Build path -> cache-index map
         self._cache_idx = {p: i for i, p in enumerate(cache.paths)}
 
     def __len__(self) -> int:
         return len(self.df)
 
-    def __getitem__(self, idx: int) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    def __getitem__(
+        self, idx: int
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor] | tuple[torch.Tensor, torch.Tensor]:
         row = self.df.iloc[idx]
         cache_i = self._cache_idx[row["path"]]
-        img_u8 = self.cache[cache_i]  # H×W uint8
+        img_u8 = self.cache[cache_i]  # HxW uint8
 
-        # Deterministic resize
-        square = fit_to_square(img_u8, self.size)  # size×size uint8
+        # 1. Pad to square canvas
+        canvas = pad_to_square_canvas(img_u8, margin=self.margin)
 
-        # Optional augmentation
+        # 2. Transform canvas if given
         if self.transform is not None:
-            square = self.transform(square)
+            canvas = self.transform(canvas)
 
-        # To float tensor
-        img_f = square.astype(np.float32) / 255.0  # [0, 1]
+        # 3. Resize to square
+        square = resize_square(canvas, self.size)
 
-        if self.channels == 3:
-            # Replicate grey → 3 channels, then ImageNet-normalise
-            img_3ch = np.stack([img_f, img_f, img_f], axis=0)  # [3, H, W]
-            for c in range(3):
-                img_3ch[c] = (img_3ch[c] - IMAGENET_MEAN[c]) / IMAGENET_STD[c]
-            x = torch.from_numpy(img_3ch)
-        else:
-            x = torch.from_numpy(img_f[np.newaxis, :, :])  # [1, H, W]
+        # 4. Multi-channel encoding
+        img_encoded = encode_channels(square, self.channel_mode)
+        x = torch.from_numpy(img_encoded)
 
-        y = torch.tensor(row["label"], dtype=torch.int64)
+        y = torch.tensor(int(row["label"]), dtype=torch.int64)
 
-        g = torch.from_numpy(
-            geometry_features(int(row["height"]), int(row["width"]), float(row["ink_frac"]))
-        )
+        if self.return_geometry:
+            g = torch.from_numpy(
+                geometry_features(int(row["height"]), int(row["width"]), float(row["ink_frac"]))
+            )
+            return x, y, g
 
-        return x, y, g
+        return x, y
 
 
 def make_loader(
