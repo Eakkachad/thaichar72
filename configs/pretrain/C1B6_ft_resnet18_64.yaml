@@ -1,0 +1,15 @@
+# Stage 2 variant: external-pretrained init + synthetic fill during fine-tune
+exp_id: C1B6_ft_resnet18_64
+model: resnet18
+img_size: 64
+init_from: runs/C1_ext_pretrain_resnet18_64/best.pt
+aug: full
+extra_train_index: data/synth/index.csv
+extra_train_cache: data/synth/glyphs_synth.npz
+extra_mode: fill
+extra_fill_to: 300
+epochs: 6
+batch_size: 128
+lr: 0.001
+label_smoothing: 0.1
+ema: true

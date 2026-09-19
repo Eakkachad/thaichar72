@@ -1,0 +1,11 @@
+# Stage 2 after B6a: ImageNet → synthetic fonts → our printed data (full fine-tune)
+exp_id: B6a_ft_resnet18_64
+model: resnet18
+img_size: 64
+init_from: runs/B6a_synth_pretrain_resnet18_64/best.pt
+aug: full
+epochs: 6
+batch_size: 128
+lr: 0.001
+label_smoothing: 0.1
+ema: true
