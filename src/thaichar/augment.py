@@ -384,9 +384,11 @@ def get_transform(preset: str, seed: int | None = None) -> Callable[[np.ndarray]
             op = _build_scaled_op(chosen_op, mag)
             out = op(out, rng)
 
-        # Guarantee >= 1% ink pixels; otherwise return input unchanged
+        # Guarantee the glyph survived: >= 1% ink and >= 35% of the input's ink mass
+        # (thin 1-px strokes can be erased entirely by erosion/resolution jitter)
         ink_frac = float(np.mean(out < 128))
-        if ink_frac < 0.01:
+        ink_in = float(np.mean(img < 128))
+        if ink_frac < 0.01 or ink_frac < 0.35 * ink_in:
             return img.copy()
 
         return out

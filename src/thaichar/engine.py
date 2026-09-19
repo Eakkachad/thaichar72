@@ -387,12 +387,14 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
     scheduler = torch.optim.lr_scheduler.LambdaLR(
         optimizer, cosine_warmup_lambda(total_steps, warmup_steps, float(cfg["min_lr_ratio"])))
     scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
-    ema = timm.utils.ModelEmaV3(model, decay=float(cfg["ema_decay"])) if cfg["ema"] else None
+    # use_warmup: effective decay ramps up with step count, so short runs are not stuck at the init weights
+    ema = timm.utils.ModelEmaV3(model, decay=float(cfg["ema_decay"]), use_warmup=True) if cfg["ema"] else None
 
     # ---- loop
     log_rows: list[dict] = []
     best = {"metric": -1.0, "epoch": -1, "which": "raw"}
     sel = cfg["select_metric"]
+    global_step = 0
     for epoch in range(int(cfg["epochs"])):
         model.train()
         t0 = time.time()
@@ -418,7 +420,8 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
             scaler.update()
             scheduler.step()
             if ema is not None:
-                ema.update(model)
+                ema.update(model, step=global_step)
+            global_step += 1
             loss_sum += loss.item() * x.size(0)
             correct += (out.argmax(1) == y).sum().item()
             seen += x.size(0)
