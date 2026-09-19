@@ -1,0 +1,2697 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="603.700625pt" height="367.395609pt" viewBox="0 0 603.700625 367.395609" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-19T14:58:11.982159</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 367.395609 
+L 603.700625 367.395609 
+L 603.700625 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 50.220313 323.65 
+L 555.900313 323.65 
+L 555.900313 32.016 
+L 50.220313 32.016 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 73.205767 323.65 
+L 99.64921 323.65 
+L 99.64921 268.948344 
+L 73.205767 268.948344 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #a6bddb; opacity: 0.55"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 174.911318 323.65 
+L 201.354761 323.65 
+L 201.354761 260.233165 
+L 174.911318 260.233165 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #a6bddb; opacity: 0.55"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 276.616869 323.65 
+L 303.060313 323.65 
+L 303.060313 246.696822 
+L 276.616869 246.696822 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #a6bddb; opacity: 0.55"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 378.32242 323.65 
+L 404.765864 323.65 
+L 404.765864 227.041312 
+L 378.32242 227.041312 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #a6bddb; opacity: 0.55"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 480.027971 323.65 
+L 506.471415 323.65 
+L 506.471415 107.624815 
+L 480.027971 107.624815 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #a6bddb; opacity: 0.55"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 99.64921 323.65 
+L 126.092654 323.65 
+L 126.092654 306.90573 
+L 99.64921 306.90573 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #bcbddc; opacity: 0.55"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 201.354761 323.65 
+L 227.798205 323.65 
+L 227.798205 294.111106 
+L 201.354761 294.111106 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #bcbddc; opacity: 0.55"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 303.060313 323.65 
+L 329.503756 323.65 
+L 329.503756 292.164097 
+L 303.060313 292.164097 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #bcbddc; opacity: 0.55"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 404.765864 323.65 
+L 431.209307 323.65 
+L 431.209307 281.093966 
+L 404.765864 281.093966 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #bcbddc; opacity: 0.55"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 506.471415 323.65 
+L 532.914858 323.65 
+L 532.914858 191.679936 
+L 506.471415 191.679936 
+z
+" clip-path="url(#pdb6414ac45)" style="fill: #bcbddc; opacity: 0.55"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="ytick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m1e46a207fc" d="M 0 0 
+L 3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="323.65" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- 0 -->
+      <g style="fill: #555555" transform="translate(562.900313 328.99) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f1" d="M 1760 -64 
+Q 1024 -64 633 521 
+Q 243 1107 243 2240 
+Q 243 3373 633 3958 
+Q 1024 4544 1760 4544 
+Q 2496 4544 2886 3958 
+Q 3277 3373 3277 2240 
+Q 3277 1107 2886 521 
+Q 2496 -64 1760 -64 
+z
+M 1760 384 
+Q 2214 384 2451 851 
+Q 2688 1318 2688 2240 
+Q 2688 3162 2451 3629 
+Q 2214 4096 1760 4096 
+Q 1306 4096 1069 3629 
+Q 832 3162 832 2240 
+Q 832 1318 1069 851 
+Q 1306 384 1760 384 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="286.564131" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- 20 -->
+      <g style="fill: #555555" transform="translate(562.900313 291.904131) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f3" d="M 410 506 
+Q 870 838 1328 1302 
+Q 1786 1766 2106 2291 
+Q 2426 2816 2426 3283 
+Q 2426 3642 2221 3850 
+Q 2016 4058 1664 4058 
+Q 1344 4058 1059 3904 
+Q 774 3750 608 3494 
+L 294 3846 
+Q 493 4173 861 4358 
+Q 1229 4544 1670 4544 
+Q 2298 4544 2662 4208 
+Q 3027 3872 3027 3302 
+Q 3027 2624 2492 1888 
+Q 1958 1152 1184 467 
+L 3226 467 
+L 3226 0 
+L 410 0 
+L 410 506 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f3"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(55 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="249.478263" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- 40 -->
+      <g style="fill: #555555" transform="translate(562.900313 254.818263) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f5" d="M 2240 768 
+L 186 768 
+L 186 1267 
+L 2112 4480 
+L 2829 4480 
+L 2829 1254 
+L 3334 1254 
+L 3334 768 
+L 2829 768 
+L 2829 0 
+L 2240 0 
+L 2240 768 
+z
+M 2240 1254 
+L 2240 3795 
+L 723 1254 
+L 2240 1254 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f5"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(55 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="212.392394" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- 60 -->
+      <g style="fill: #555555" transform="translate(562.900313 217.732394) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f7" d="M 1798 -64 
+Q 1338 -64 998 147 
+Q 659 358 473 742 
+Q 288 1126 288 1632 
+Q 288 2336 627 2969 
+Q 966 3603 1555 4028 
+Q 2144 4454 2848 4557 
+L 2906 4102 
+Q 2285 3962 1785 3549 
+Q 1286 3136 1088 2573 
+Q 1184 2701 1389 2787 
+Q 1594 2874 1843 2874 
+Q 2278 2874 2595 2682 
+Q 2912 2490 3075 2157 
+Q 3238 1824 3238 1402 
+Q 3238 979 3062 646 
+Q 2886 314 2563 125 
+Q 2240 -64 1798 -64 
+z
+M 1786 422 
+Q 2189 422 2425 688 
+Q 2662 954 2662 1408 
+Q 2662 1856 2425 2121 
+Q 2189 2387 1786 2387 
+Q 1389 2387 1149 2121 
+Q 909 1856 909 1408 
+Q 909 960 1149 691 
+Q 1389 422 1786 422 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f7"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(55 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="175.306525" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 80 -->
+      <g style="fill: #555555" transform="translate(562.900313 180.646525) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f9" d="M 1760 -64 
+Q 1056 -64 656 278 
+Q 256 621 256 1222 
+Q 256 1619 448 1926 
+Q 640 2234 998 2387 
+Q 730 2502 570 2780 
+Q 410 3059 410 3392 
+Q 410 3917 778 4230 
+Q 1146 4544 1760 4544 
+Q 2374 4544 2742 4230 
+Q 3110 3917 3110 3392 
+Q 3110 3059 2950 2780 
+Q 2790 2502 2522 2387 
+Q 2880 2234 3072 1926 
+Q 3264 1619 3264 1222 
+Q 3264 621 2864 278 
+Q 2464 -64 1760 -64 
+z
+M 1760 2605 
+Q 2112 2605 2317 2803 
+Q 2522 3002 2522 3334 
+Q 2522 3661 2317 3859 
+Q 2112 4058 1760 4058 
+Q 1408 4058 1203 3859 
+Q 998 3661 998 3334 
+Q 998 3002 1203 2803 
+Q 1408 2605 1760 2605 
+z
+M 1760 422 
+Q 2189 422 2432 656 
+Q 2675 890 2675 1299 
+Q 2675 1709 2432 1936 
+Q 2189 2163 1760 2163 
+Q 1331 2163 1088 1936 
+Q 845 1709 845 1299 
+Q 845 890 1088 656 
+Q 1331 422 1760 422 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f9"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(55 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="138.220656" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- 100 -->
+      <g style="fill: #555555" transform="translate(562.900313 143.560656) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f2" d="M 826 467 
+L 1594 467 
+L 1594 3789 
+L 710 3270 
+L 710 3808 
+L 1805 4480 
+L 2182 4480 
+L 2182 467 
+L 2944 467 
+L 2944 0 
+L 826 0 
+L 826 467 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f2"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(110 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="101.134788" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- 120 -->
+      <g style="fill: #555555" transform="translate(562.900313 106.474788) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f2"/>
+       <use xlink:href="#Sarabun-Regular-1f3" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(110 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m1e46a207fc" x="555.900313" y="64.048919" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- 140 -->
+      <g style="fill: #555555" transform="translate(562.900313 69.388919) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f2"/>
+       <use xlink:href="#Sarabun-Regular-1f5" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(110 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_9">
+     <!-- Speed / Latency Cost -->
+     <g style="fill: #555555" transform="translate(594.080312 225.737687) rotate(-90) scale(0.1 -0.1)">
+      <defs>
+       <path id="Sarabun-Bold-94" d="M 1754 -64 
+Q 1248 -64 841 141 
+Q 435 346 179 730 
+L 710 1242 
+Q 922 992 1222 832 
+Q 1523 672 1786 672 
+Q 2080 672 2259 806 
+Q 2438 941 2438 1158 
+Q 2438 1318 2380 1420 
+Q 2323 1523 2163 1628 
+Q 2003 1734 1638 1914 
+Q 1158 2150 883 2355 
+Q 608 2560 477 2800 
+Q 346 3040 346 3360 
+Q 346 3712 531 3981 
+Q 717 4250 1056 4397 
+Q 1395 4544 1837 4544 
+Q 2323 4544 2697 4358 
+Q 3072 4173 3245 3846 
+L 2662 3411 
+Q 2342 3808 1875 3808 
+Q 1581 3808 1421 3693 
+Q 1261 3578 1261 3366 
+Q 1261 3238 1341 3136 
+Q 1421 3034 1632 2912 
+Q 1843 2790 2266 2592 
+Q 2675 2400 2908 2208 
+Q 3142 2016 3244 1779 
+Q 3347 1542 3347 1216 
+Q 3347 832 3152 541 
+Q 2957 250 2595 93 
+Q 2234 -64 1754 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-15e" d="M 339 2349 
+Q 339 2867 314 3200 
+L 1082 3200 
+Q 1101 3008 1101 2778 
+L 1114 2778 
+Q 1274 3008 1530 3136 
+Q 1786 3264 2099 3264 
+Q 2707 3264 3059 2816 
+Q 3411 2368 3411 1594 
+Q 3411 819 3056 377 
+Q 2701 -64 2074 -64 
+Q 1766 -64 1529 38 
+Q 1293 141 1178 326 
+L 1158 326 
+L 1158 -1549 
+L 339 -1549 
+L 339 2349 
+z
+M 1894 544 
+Q 2234 544 2413 822 
+Q 2592 1101 2592 1619 
+Q 2592 2637 1907 2637 
+Q 1574 2637 1366 2441 
+Q 1158 2246 1158 1926 
+L 1158 1267 
+Q 1158 960 1369 752 
+Q 1581 544 1894 544 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-fb" d="M 3270 1299 
+L 1043 1299 
+Q 1146 621 1830 621 
+Q 2112 621 2320 717 
+Q 2528 813 2726 1037 
+L 3168 614 
+Q 2982 307 2608 121 
+Q 2234 -64 1786 -64 
+Q 1037 -64 621 374 
+Q 205 813 205 1587 
+Q 205 2368 624 2816 
+Q 1043 3264 1779 3264 
+Q 2483 3264 2876 2822 
+Q 3270 2381 3270 1594 
+L 3270 1299 
+z
+M 2470 1894 
+Q 2470 2221 2281 2409 
+Q 2093 2598 1760 2598 
+Q 1459 2598 1273 2403 
+Q 1088 2208 1037 1856 
+L 2470 1856 
+L 2470 1894 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-f5" d="M 1523 -64 
+Q 896 -64 534 393 
+Q 173 851 173 1651 
+Q 173 2138 339 2502 
+Q 506 2867 816 3065 
+Q 1126 3264 1542 3264 
+Q 1824 3264 2038 3168 
+Q 2253 3072 2413 2874 
+L 2426 2874 
+L 2426 4749 
+L 3238 4749 
+L 3238 851 
+Q 3238 186 3258 0 
+L 2490 0 
+Q 2483 109 2483 422 
+L 2470 422 
+Q 2323 205 2064 70 
+Q 1805 -64 1523 -64 
+z
+M 1683 563 
+Q 2022 563 2224 758 
+Q 2426 954 2426 1274 
+L 2426 1933 
+Q 2426 2246 2214 2451 
+Q 2003 2656 1683 2656 
+Q 1344 2656 1165 2393 
+Q 986 2131 986 1638 
+Q 986 1120 1165 841 
+Q 1344 563 1683 563 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-3" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-230" d="M 2298 4640 
+L 3130 4640 
+L 698 -275 
+L -134 -275 
+L 2298 4640 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-5c" d="M 435 4480 
+L 1357 4480 
+L 1357 736 
+L 3469 736 
+L 3469 0 
+L 435 0 
+L 435 4480 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-d3" d="M 1286 -64 
+Q 973 -64 723 67 
+Q 474 198 333 432 
+Q 192 666 192 954 
+Q 192 1446 582 1708 
+Q 973 1971 1696 1971 
+L 2195 1971 
+L 2195 2106 
+Q 2195 2362 2044 2499 
+Q 1894 2637 1619 2637 
+Q 1331 2637 1068 2534 
+Q 806 2432 640 2253 
+L 282 2726 
+Q 544 2976 902 3120 
+Q 1261 3264 1645 3264 
+Q 2285 3264 2649 2963 
+Q 3014 2662 3014 2131 
+L 3014 672 
+Q 3014 525 3036 326 
+Q 3059 128 3091 0 
+L 2368 0 
+Q 2330 83 2310 163 
+Q 2291 243 2278 384 
+L 2266 384 
+Q 1901 -64 1286 -64 
+z
+M 1485 550 
+Q 1792 550 1993 707 
+Q 2195 864 2195 1107 
+L 2195 1427 
+L 1670 1427 
+Q 1344 1427 1168 1305 
+Q 992 1184 992 954 
+Q 992 762 1123 656 
+Q 1254 550 1485 550 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-171" d="M 1702 -64 
+Q 1210 -64 934 205 
+Q 659 474 659 960 
+L 659 2592 
+L 77 2592 
+L 77 3200 
+L 659 3200 
+L 659 4026 
+L 1453 4256 
+L 1478 4256 
+L 1478 3200 
+L 2406 3200 
+L 2406 2592 
+L 1478 2592 
+L 1478 1082 
+Q 1478 806 1606 678 
+Q 1734 550 1997 550 
+Q 2246 550 2464 627 
+L 2502 70 
+Q 2214 -64 1702 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-13a" d="M 301 2355 
+Q 301 2938 275 3200 
+L 1043 3200 
+Q 1075 2931 1075 2643 
+L 1094 2643 
+Q 1210 2925 1501 3094 
+Q 1792 3264 2150 3264 
+Q 2701 3264 2982 2893 
+Q 3264 2522 3264 1798 
+L 3264 0 
+L 2451 0 
+L 2451 1805 
+Q 2451 2221 2316 2413 
+Q 2182 2605 1888 2605 
+Q 1549 2605 1334 2365 
+Q 1120 2125 1120 1747 
+L 1120 0 
+L 301 0 
+L 301 2355 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-ef" d="M 1766 -64 
+Q 1024 -64 598 381 
+Q 173 826 173 1600 
+Q 173 2381 598 2822 
+Q 1024 3264 1766 3264 
+Q 2214 3264 2547 3097 
+Q 2880 2931 3059 2624 
+L 2566 2195 
+Q 2445 2406 2243 2521 
+Q 2042 2637 1805 2637 
+Q 1421 2637 1203 2361 
+Q 986 2086 986 1600 
+Q 986 1114 1203 838 
+Q 1421 563 1805 563 
+Q 2042 563 2240 681 
+Q 2438 800 2566 1005 
+L 3059 576 
+Q 2880 269 2547 102 
+Q 2214 -64 1766 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-198" d="M 3149 3200 
+L 1926 -147 
+Q 1728 -685 1379 -957 
+Q 1030 -1229 544 -1229 
+Q 288 -1229 19 -1158 
+L 19 -512 
+Q 96 -538 211 -557 
+Q 326 -576 416 -576 
+Q 698 -576 899 -381 
+Q 1101 -186 1261 237 
+L 70 3200 
+L 941 3200 
+L 1645 1152 
+L 2278 3200 
+L 3149 3200 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-1f" d="M 2272 -64 
+Q 1645 -64 1174 217 
+Q 704 499 451 1020 
+Q 198 1542 198 2240 
+Q 198 2938 451 3459 
+Q 704 3981 1174 4262 
+Q 1645 4544 2278 4544 
+Q 2816 4544 3216 4339 
+Q 3616 4134 3808 3757 
+L 3283 3296 
+Q 2944 3808 2291 3808 
+Q 1722 3808 1421 3408 
+Q 1120 3008 1120 2240 
+Q 1120 1478 1414 1075 
+Q 1709 672 2266 672 
+Q 2957 672 3283 1184 
+L 3808 723 
+Q 3616 346 3216 141 
+Q 2816 -64 2272 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-144" d="M 1850 -64 
+Q 1075 -64 640 377 
+Q 205 819 205 1600 
+Q 205 2381 640 2822 
+Q 1075 3264 1850 3264 
+Q 2624 3264 3062 2822 
+Q 3501 2381 3501 1600 
+Q 3501 819 3062 377 
+Q 2624 -64 1850 -64 
+z
+M 1850 544 
+Q 2240 544 2464 825 
+Q 2688 1107 2688 1600 
+Q 2688 2093 2464 2374 
+Q 2240 2656 1850 2656 
+Q 1459 2656 1238 2374 
+Q 1018 2093 1018 1600 
+Q 1018 1107 1238 825 
+Q 1459 544 1850 544 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-168" d="M 1350 -64 
+Q 934 -64 617 102 
+Q 301 269 173 544 
+L 678 896 
+Q 794 736 973 640 
+Q 1152 544 1338 544 
+Q 1555 544 1696 656 
+Q 1837 768 1837 934 
+Q 1837 1069 1734 1149 
+Q 1632 1229 1299 1357 
+Q 717 1581 480 1811 
+Q 243 2042 243 2381 
+Q 243 2778 566 3021 
+Q 890 3264 1427 3264 
+Q 1786 3264 2074 3126 
+Q 2362 2989 2541 2733 
+L 2067 2381 
+Q 1843 2656 1459 2656 
+Q 1267 2656 1161 2589 
+Q 1056 2522 1056 2394 
+Q 1056 2304 1101 2246 
+Q 1146 2189 1274 2125 
+Q 1402 2061 1683 1952 
+Q 2061 1805 2269 1667 
+Q 2477 1530 2563 1366 
+Q 2650 1203 2650 973 
+Q 2650 666 2486 432 
+Q 2323 198 2028 67 
+Q 1734 -64 1350 -64 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Bold-94"/>
+      <use xlink:href="#Sarabun-Bold-15e" transform="translate(55.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-fb" transform="translate(111.59375 0)"/>
+      <use xlink:href="#Sarabun-Bold-fb" transform="translate(165.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-f5" transform="translate(220 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(275.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-230" transform="translate(299.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(345.890625 0)"/>
+      <use xlink:href="#Sarabun-Bold-5c" transform="translate(369.1875 0)"/>
+      <use xlink:href="#Sarabun-Bold-d3" transform="translate(423.6875 0)"/>
+      <use xlink:href="#Sarabun-Bold-171" transform="translate(476.59375 0)"/>
+      <use xlink:href="#Sarabun-Bold-fb" transform="translate(518.59375 0)"/>
+      <use xlink:href="#Sarabun-Bold-13a" transform="translate(572.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-ef" transform="translate(629.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-198" transform="translate(678.296875 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(728.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-1f" transform="translate(752.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-144" transform="translate(814.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-168" transform="translate(872 0)"/>
+      <use xlink:href="#Sarabun-Bold-171" transform="translate(916.09375 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="patch_13">
+    <path d="M 50.220313 323.65 
+L 50.220313 32.016 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 555.900313 323.65 
+L 555.900313 32.016 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 50.220313 323.65 
+L 555.900313 323.65 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 50.220313 32.016 
+L 555.900313 32.016 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="matplotlib.axis_2">
+    <g id="xtick_1">
+     <g id="line2d_9">
+      <defs>
+       <path id="m6ed912a00e" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6ed912a00e" x="99.64921" y="323.65" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- 32 px -->
+      <g transform="translate(88.021359 340.796) scale(0.095 -0.095)">
+       <defs>
+        <path id="Sarabun-Bold-1f4" d="M 1766 -58 
+Q 1261 -58 870 124 
+Q 480 307 282 640 
+L 730 1139 
+Q 909 928 1184 800 
+Q 1459 672 1728 672 
+Q 2048 672 2243 854 
+Q 2438 1037 2438 1338 
+Q 2438 1658 2201 1837 
+Q 1965 2016 1549 2016 
+L 1165 2016 
+L 1165 2669 
+L 1542 2669 
+Q 1875 2669 2080 2851 
+Q 2285 3034 2285 3315 
+Q 2285 3552 2131 3680 
+Q 1978 3808 1683 3808 
+Q 1395 3808 1145 3686 
+Q 896 3565 704 3341 
+L 275 3846 
+Q 506 4166 915 4352 
+Q 1325 4538 1798 4538 
+Q 2214 4538 2534 4397 
+Q 2854 4256 3027 4003 
+Q 3200 3750 3200 3418 
+Q 3200 3078 3021 2809 
+Q 2842 2541 2496 2381 
+Q 2931 2227 3145 1952 
+Q 3360 1677 3360 1274 
+Q 3360 877 3161 576 
+Q 2963 275 2601 108 
+Q 2240 -58 1766 -58 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-1f3" d="M 358 666 
+Q 787 966 1228 1385 
+Q 1670 1805 1984 2291 
+Q 2298 2778 2298 3219 
+Q 2298 3494 2144 3654 
+Q 1990 3814 1722 3814 
+Q 1427 3814 1161 3657 
+Q 896 3501 730 3238 
+L 237 3750 
+Q 461 4128 854 4336 
+Q 1248 4544 1728 4544 
+Q 2426 4544 2826 4201 
+Q 3226 3859 3226 3251 
+Q 3226 2688 2784 2041 
+Q 2342 1395 1581 685 
+L 3379 685 
+L 3379 0 
+L 358 0 
+L 358 666 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-197" d="M 1242 1626 
+L 173 3200 
+L 1075 3200 
+L 1664 2253 
+L 2253 3200 
+L 3155 3200 
+L 2093 1626 
+L 3245 0 
+L 2330 0 
+L 1664 1043 
+L 998 0 
+L 83 0 
+L 1242 1626 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-1f4"/>
+       <use xlink:href="#Sarabun-Bold-1f3" transform="translate(56.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-3" transform="translate(113 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(136.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-197" transform="translate(192.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m6ed912a00e" x="201.354761" y="323.65" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- 64 px -->
+      <g transform="translate(189.72691 340.796) scale(0.095 -0.095)">
+       <defs>
+        <path id="Sarabun-Bold-1f7" d="M 1843 -64 
+Q 1363 -64 998 150 
+Q 634 365 435 758 
+Q 237 1152 237 1664 
+Q 237 2394 605 3040 
+Q 973 3686 1603 4099 
+Q 2234 4512 2995 4576 
+L 3085 3885 
+Q 2579 3802 2160 3542 
+Q 1741 3283 1504 2874 
+Q 1683 2963 1888 2963 
+Q 2586 2963 2986 2553 
+Q 3386 2144 3386 1446 
+Q 3386 998 3194 656 
+Q 3002 314 2653 125 
+Q 2304 -64 1843 -64 
+z
+M 1837 672 
+Q 2131 672 2307 886 
+Q 2483 1101 2483 1453 
+Q 2483 1805 2307 2016 
+Q 2131 2227 1837 2227 
+Q 1542 2227 1363 2016 
+Q 1184 1805 1184 1453 
+Q 1184 1094 1363 883 
+Q 1542 672 1837 672 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-1f5" d="M 2099 698 
+L 122 698 
+L 122 1338 
+L 2042 4480 
+L 3021 4480 
+L 3021 1427 
+L 3494 1427 
+L 3494 698 
+L 3021 698 
+L 3021 0 
+L 2099 0 
+L 2099 698 
+z
+M 2099 1427 
+L 2099 3232 
+L 986 1427 
+L 2099 1427 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-1f7"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(56.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-3" transform="translate(113 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(136.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-197" transform="translate(192.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m6ed912a00e" x="303.060313" y="323.65" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- 96 px -->
+      <g transform="translate(291.432461 340.796) scale(0.095 -0.095)">
+       <defs>
+        <path id="Sarabun-Bold-1fa" d="M 538 602 
+Q 1075 704 1523 969 
+Q 1971 1235 2170 1613 
+Q 1952 1523 1734 1523 
+Q 1286 1523 947 1715 
+Q 608 1907 422 2249 
+Q 237 2592 237 3034 
+Q 237 3475 429 3817 
+Q 621 4160 969 4349 
+Q 1318 4538 1779 4538 
+Q 2259 4538 2624 4320 
+Q 2989 4102 3187 3708 
+Q 3386 3315 3386 2790 
+Q 3386 2003 3046 1379 
+Q 2707 755 2092 371 
+Q 1478 -13 678 -96 
+L 538 602 
+z
+M 1779 2195 
+Q 2080 2195 2259 2422 
+Q 2438 2650 2438 3027 
+Q 2438 3386 2259 3597 
+Q 2080 3808 1786 3808 
+Q 1491 3808 1315 3593 
+Q 1139 3379 1139 3027 
+Q 1139 2656 1315 2425 
+Q 1491 2195 1779 2195 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-1fa"/>
+       <use xlink:href="#Sarabun-Bold-1f7" transform="translate(56.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-3" transform="translate(113 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(136.296875 0)"/>
+       <use xlink:href="#Sarabun-Bold-197" transform="translate(192.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m6ed912a00e" x="404.765864" y="323.65" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- 128 px -->
+      <g transform="translate(390.454262 340.796) scale(0.095 -0.095)">
+       <defs>
+        <path id="Sarabun-Bold-1f2" d="M 749 685 
+L 1472 685 
+L 1472 3450 
+L 640 2957 
+L 640 3776 
+L 1792 4480 
+L 2394 4480 
+L 2394 685 
+L 3110 685 
+L 3110 0 
+L 749 0 
+L 749 685 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Bold-1f9" d="M 1811 -64 
+Q 1325 -64 963 102 
+Q 602 269 403 569 
+Q 205 870 205 1274 
+Q 205 1632 403 1936 
+Q 602 2240 934 2374 
+Q 678 2477 515 2755 
+Q 352 3034 352 3328 
+Q 352 3693 534 3968 
+Q 717 4243 1046 4393 
+Q 1376 4544 1811 4544 
+Q 2246 4544 2576 4393 
+Q 2906 4243 3085 3968 
+Q 3264 3693 3264 3328 
+Q 3264 3034 3101 2755 
+Q 2938 2477 2688 2374 
+Q 3021 2240 3216 1936 
+Q 3411 1632 3411 1274 
+Q 3411 877 3212 573 
+Q 3014 269 2652 102 
+Q 2291 -64 1811 -64 
+z
+M 1811 2694 
+Q 2054 2694 2204 2848 
+Q 2355 3002 2355 3251 
+Q 2355 3507 2204 3660 
+Q 2054 3814 1811 3814 
+Q 1562 3814 1411 3660 
+Q 1261 3507 1261 3251 
+Q 1261 3002 1411 2848 
+Q 1562 2694 1811 2694 
+z
+M 1811 666 
+Q 2125 666 2310 858 
+Q 2496 1050 2496 1370 
+Q 2496 1683 2310 1872 
+Q 2125 2061 1811 2061 
+Q 1498 2061 1309 1875 
+Q 1120 1690 1120 1370 
+Q 1120 1050 1309 858 
+Q 1498 666 1811 666 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Bold-1f2"/>
+       <use xlink:href="#Sarabun-Bold-1f3" transform="translate(56.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f9" transform="translate(113 0)"/>
+       <use xlink:href="#Sarabun-Bold-3" transform="translate(169.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(192.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-197" transform="translate(249.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m6ed912a00e" x="506.471415" y="323.65" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- 224 px -->
+      <g transform="translate(492.159813 340.796) scale(0.095 -0.095)">
+       <use xlink:href="#Sarabun-Bold-1f3"/>
+       <use xlink:href="#Sarabun-Bold-1f3" transform="translate(56.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-1f5" transform="translate(113 0)"/>
+       <use xlink:href="#Sarabun-Bold-3" transform="translate(169.5 0)"/>
+       <use xlink:href="#Sarabun-Bold-15e" transform="translate(192.796875 0)"/>
+       <use xlink:href="#Sarabun-Bold-197" transform="translate(249.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_15">
+     <!-- Input Image Size (Square) -->
+     <g transform="translate(244.956406 357.775297) scale(0.1 -0.1)">
+      <defs>
+       <path id="Sarabun-Bold-4a" d="M 576 4480 
+L 1491 4480 
+L 1491 0 
+L 576 0 
+L 576 4480 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-179" d="M 1427 -64 
+Q 877 -64 592 307 
+Q 307 678 307 1395 
+L 307 3200 
+L 1126 3200 
+L 1126 1389 
+Q 1126 979 1260 787 
+Q 1395 595 1677 595 
+Q 2016 595 2233 854 
+Q 2451 1114 2451 1498 
+L 2451 3200 
+L 3270 3200 
+L 3270 813 
+Q 3270 486 3322 0 
+L 2547 0 
+Q 2496 288 2490 563 
+L 2477 563 
+Q 2362 275 2077 105 
+Q 1792 -64 1427 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-138" d="M 307 2349 
+Q 307 2989 282 3200 
+L 998 3200 
+Q 1030 2944 1030 2643 
+L 1043 2643 
+Q 1146 2931 1414 3097 
+Q 1683 3264 2042 3264 
+Q 2387 3264 2630 3113 
+Q 2874 2963 2957 2701 
+Q 3085 2963 3347 3113 
+Q 3610 3264 3936 3264 
+Q 4467 3264 4771 2921 
+Q 5075 2579 5075 1978 
+L 5075 0 
+L 4262 0 
+L 4262 1888 
+Q 4262 2227 4115 2416 
+Q 3968 2605 3712 2605 
+Q 3430 2605 3260 2409 
+Q 3091 2214 3091 1882 
+L 3091 0 
+L 2285 0 
+L 2285 1862 
+Q 2285 2214 2144 2409 
+Q 2003 2605 1747 2605 
+Q 1472 2605 1296 2397 
+Q 1120 2189 1120 1862 
+L 1120 0 
+L 307 0 
+L 307 2349 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-10f" d="M 3238 3200 
+L 3238 128 
+Q 3238 -685 2835 -1097 
+Q 2432 -1510 1638 -1510 
+Q 1267 -1510 937 -1420 
+Q 608 -1331 352 -1165 
+L 627 -608 
+Q 858 -723 1114 -790 
+Q 1370 -858 1600 -858 
+Q 2035 -858 2246 -586 
+Q 2458 -314 2458 237 
+L 2458 339 
+Q 2330 166 2106 73 
+Q 1882 -19 1574 -19 
+Q 909 -19 541 416 
+Q 173 851 173 1645 
+Q 173 2413 525 2838 
+Q 877 3264 1517 3264 
+Q 2182 3264 2483 2797 
+L 2496 2797 
+L 2560 3200 
+L 3238 3200 
+z
+M 2426 1798 
+Q 2426 2214 2246 2435 
+Q 2067 2656 1728 2656 
+Q 1370 2656 1178 2390 
+Q 986 2125 986 1626 
+Q 986 1126 1174 870 
+Q 1363 614 1728 614 
+Q 2067 614 2246 816 
+Q 2426 1018 2426 1389 
+L 2426 1798 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-11b" d="M 870 3571 
+Q 634 3571 493 3702 
+Q 352 3834 352 4051 
+Q 352 4269 493 4400 
+Q 634 4531 870 4531 
+Q 1107 4531 1251 4400 
+Q 1395 4269 1395 4051 
+Q 1395 3834 1254 3702 
+Q 1114 3571 870 3571 
+z
+M 467 3200 
+L 1280 3200 
+L 1280 0 
+L 467 0 
+L 467 3200 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-1a1" d="M 134 435 
+L 1850 2586 
+L 224 2586 
+L 224 3200 
+L 2842 3200 
+L 2842 2803 
+L 1152 614 
+L 2912 614 
+L 2912 0 
+L 134 0 
+L 134 435 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-234" d="M 1280 -390 
+Q 774 38 515 700 
+Q 256 1363 256 2202 
+Q 256 3046 515 3705 
+Q 774 4365 1280 4800 
+L 2118 4800 
+Q 1670 4422 1414 3724 
+Q 1158 3027 1158 2202 
+Q 1158 1376 1417 681 
+Q 1677 -13 2118 -390 
+L 1280 -390 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-160" d="M 2458 358 
+L 2438 358 
+Q 2310 160 2067 48 
+Q 1824 -64 1523 -64 
+Q 909 -64 557 381 
+Q 205 826 205 1600 
+Q 205 2381 557 2822 
+Q 909 3264 1536 3264 
+Q 1856 3264 2105 3142 
+Q 2355 3021 2496 2803 
+L 2509 2803 
+Q 2509 3046 2528 3200 
+L 3302 3200 
+Q 3270 2739 3270 2349 
+L 3270 -1549 
+L 2458 -1549 
+L 2458 358 
+z
+M 1722 544 
+Q 2035 544 2246 752 
+Q 2458 960 2458 1267 
+L 2458 1926 
+Q 2458 2240 2250 2438 
+Q 2042 2637 1709 2637 
+Q 1370 2637 1194 2381 
+Q 1018 2125 1018 1619 
+Q 1018 1101 1200 822 
+Q 1382 544 1722 544 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-161" d="M 346 2419 
+Q 346 2963 326 3200 
+L 1101 3200 
+Q 1126 2950 1126 2637 
+L 1126 2573 
+L 1152 2573 
+Q 1274 2886 1581 3075 
+Q 1888 3264 2285 3264 
+Q 2362 3264 2477 3245 
+L 2477 2598 
+Q 2451 2611 2323 2611 
+Q 2016 2611 1750 2444 
+Q 1485 2278 1325 2000 
+Q 1165 1722 1165 1402 
+L 1165 0 
+L 346 0 
+L 346 2419 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-235" d="M 147 -390 
+Q 589 -13 848 681 
+Q 1107 1376 1107 2202 
+Q 1107 3027 851 3724 
+Q 595 4422 147 4800 
+L 986 4800 
+Q 1491 4365 1750 3705 
+Q 2010 3046 2010 2202 
+Q 2010 1363 1750 700 
+Q 1491 38 986 -390 
+L 147 -390 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Bold-4a"/>
+      <use xlink:href="#Sarabun-Bold-13a" transform="translate(32.296875 0)"/>
+      <use xlink:href="#Sarabun-Bold-15e" transform="translate(88.59375 0)"/>
+      <use xlink:href="#Sarabun-Bold-179" transform="translate(145.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-171" transform="translate(201.1875 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(243.1875 0)"/>
+      <use xlink:href="#Sarabun-Bold-4a" transform="translate(266.484375 0)"/>
+      <use xlink:href="#Sarabun-Bold-138" transform="translate(298.78125 0)"/>
+      <use xlink:href="#Sarabun-Bold-d3" transform="translate(383.375 0)"/>
+      <use xlink:href="#Sarabun-Bold-10f" transform="translate(436.28125 0)"/>
+      <use xlink:href="#Sarabun-Bold-fb" transform="translate(491.78125 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(545.984375 0)"/>
+      <use xlink:href="#Sarabun-Bold-94" transform="translate(569.28125 0)"/>
+      <use xlink:href="#Sarabun-Bold-11b" transform="translate(624.375 0)"/>
+      <use xlink:href="#Sarabun-Bold-1a1" transform="translate(651.671875 0)"/>
+      <use xlink:href="#Sarabun-Bold-fb" transform="translate(699.265625 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(753.46875 0)"/>
+      <use xlink:href="#Sarabun-Bold-234" transform="translate(776.765625 0)"/>
+      <use xlink:href="#Sarabun-Bold-94" transform="translate(812.171875 0)"/>
+      <use xlink:href="#Sarabun-Bold-160" transform="translate(867.265625 0)"/>
+      <use xlink:href="#Sarabun-Bold-179" transform="translate(923.765625 0)"/>
+      <use xlink:href="#Sarabun-Bold-d3" transform="translate(979.859375 0)"/>
+      <use xlink:href="#Sarabun-Bold-161" transform="translate(1032.765625 0)"/>
+      <use xlink:href="#Sarabun-Bold-fb" transform="translate(1072.46875 0)"/>
+      <use xlink:href="#Sarabun-Bold-235" transform="translate(1126.671875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="ytick_9">
+     <g id="line2d_14">
+      <path d="M 50.220313 310.906309 
+L 555.900313 310.906309 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_15">
+      <defs>
+       <path id="md82d9fafec" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="310.906309" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <!-- 0.94 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 316.246309) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-223" d="M 806 -64 
+Q 627 -64 518 54 
+Q 410 173 410 358 
+Q 410 544 518 659 
+Q 627 774 806 774 
+Q 986 774 1094 659 
+Q 1203 544 1203 358 
+Q 1203 173 1094 54 
+Q 986 -64 806 -64 
+z
+" transform="scale(0.015625)"/>
+        <path id="Sarabun-Regular-1fa" d="M 621 378 
+Q 1280 525 1795 944 
+Q 2310 1363 2464 1907 
+Q 2355 1779 2144 1692 
+Q 1933 1606 1683 1606 
+Q 1254 1606 937 1798 
+Q 621 1990 454 2326 
+Q 288 2662 288 3078 
+Q 288 3501 464 3833 
+Q 640 4166 963 4355 
+Q 1286 4544 1728 4544 
+Q 2189 4544 2528 4333 
+Q 2867 4122 3052 3731 
+Q 3238 3341 3238 2822 
+Q 3238 2080 2912 1459 
+Q 2586 838 2010 435 
+Q 1434 32 704 -77 
+L 621 378 
+z
+M 1728 2067 
+Q 2131 2067 2374 2342 
+Q 2618 2618 2618 3072 
+Q 2618 3520 2378 3789 
+Q 2138 4058 1734 4058 
+Q 1338 4058 1101 3789 
+Q 864 3520 864 3072 
+Q 864 2611 1097 2339 
+Q 1331 2067 1728 2067 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f5" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_16">
+      <path d="M 50.220313 271.064836 
+L 555.900313 271.064836 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="271.064836" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <!-- 0.95 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 276.404836) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f6" d="M 1677 -64 
+Q 1229 -64 854 115 
+Q 480 294 288 595 
+L 570 973 
+Q 755 710 1040 566 
+Q 1325 422 1658 422 
+Q 2106 422 2365 707 
+Q 2624 992 2624 1478 
+Q 2624 1946 2387 2218 
+Q 2150 2490 1747 2490 
+Q 1498 2490 1277 2371 
+Q 1056 2253 934 2054 
+L 442 2054 
+L 653 4480 
+L 3078 4480 
+L 3078 3994 
+L 1184 3994 
+L 1069 2688 
+Q 1197 2810 1424 2880 
+Q 1651 2950 1894 2950 
+Q 2502 2950 2867 2553 
+Q 3232 2157 3232 1491 
+Q 3232 1024 3040 672 
+Q 2848 320 2496 128 
+Q 2144 -64 1677 -64 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f6" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_18">
+      <path d="M 50.220313 231.223363 
+L 555.900313 231.223363 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="231.223363" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <!-- 0.96 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 236.563363) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f7" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_20">
+      <path d="M 50.220313 191.381891 
+L 555.900313 191.381891 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="191.381891" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <!-- 0.97 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 196.721891) scale(0.1 -0.1)">
+       <defs>
+        <path id="Sarabun-Regular-1f8" d="M 1190 0 
+Q 1210 774 1322 1417 
+Q 1434 2061 1715 2713 
+Q 1997 3366 2509 3994 
+L 339 3994 
+L 339 4480 
+L 3187 4480 
+L 3187 4006 
+Q 2502 3258 2144 2246 
+Q 1786 1235 1786 0 
+L 1190 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f8" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_22">
+      <path d="M 50.220313 151.540418 
+L 555.900313 151.540418 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="151.540418" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <!-- 0.98 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 156.880418) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f9" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_24">
+      <path d="M 50.220313 111.698945 
+L 555.900313 111.698945 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="111.698945" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <!-- 0.99 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 117.038945) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f1"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1fa" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_26">
+      <path d="M 50.220313 71.857473 
+L 555.900313 71.857473 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="71.857473" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <!-- 1.00 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 77.197473) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f2"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_28">
+      <path d="M 50.220313 32.016 
+L 555.900313 32.016 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-opacity: 0.4; stroke-width: 0.8"/>
+     </g>
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#md82d9fafec" x="50.220313" y="32.016" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <!-- 1.01 -->
+      <g style="fill: #2b5c8f" transform="translate(24.2 37.356) scale(0.1 -0.1)">
+       <use xlink:href="#Sarabun-Regular-1f2"/>
+       <use xlink:href="#Sarabun-Regular-223" transform="translate(55 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f1" transform="translate(80.203125 0)"/>
+       <use xlink:href="#Sarabun-Regular-1f2" transform="translate(135.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_24">
+     <!-- Validation Accuracy -->
+     <g style="fill: #2b5c8f" transform="translate(17.88 222.353312) rotate(-90) scale(0.1 -0.1)">
+      <defs>
+       <path id="Sarabun-Bold-bd" d="M 4045 4480 
+L 2490 0 
+L 1651 0 
+L 96 4480 
+L 1056 4480 
+L 2074 1171 
+L 3085 4480 
+L 4045 4480 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-12f" d="M 1203 -64 
+Q 794 -64 579 157 
+Q 365 378 365 794 
+L 365 4749 
+L 1178 4749 
+L 1178 781 
+Q 1178 640 1251 573 
+Q 1325 506 1472 506 
+Q 1619 506 1837 589 
+L 1958 154 
+Q 1670 -64 1203 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Bold-4" d="M 2822 742 
+L 1280 742 
+L 1056 0 
+L 96 0 
+L 1645 4480 
+L 2458 4480 
+L 4006 0 
+L 3046 0 
+L 2822 742 
+z
+M 2598 1478 
+L 2054 3270 
+L 1504 1478 
+L 2598 1478 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Bold-bd"/>
+      <use xlink:href="#Sarabun-Bold-d3" transform="translate(56.703125 0)"/>
+      <use xlink:href="#Sarabun-Bold-12f" transform="translate(109.609375 0)"/>
+      <use xlink:href="#Sarabun-Bold-11b" transform="translate(139.703125 0)"/>
+      <use xlink:href="#Sarabun-Bold-f5" transform="translate(167 0)"/>
+      <use xlink:href="#Sarabun-Bold-d3" transform="translate(222.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-171" transform="translate(275.703125 0)"/>
+      <use xlink:href="#Sarabun-Bold-11b" transform="translate(317.703125 0)"/>
+      <use xlink:href="#Sarabun-Bold-144" transform="translate(345 0)"/>
+      <use xlink:href="#Sarabun-Bold-13a" transform="translate(402.90625 0)"/>
+      <use xlink:href="#Sarabun-Bold-3" transform="translate(459.203125 0)"/>
+      <use xlink:href="#Sarabun-Bold-4" transform="translate(482.5 0)"/>
+      <use xlink:href="#Sarabun-Bold-ef" transform="translate(543.59375 0)"/>
+      <use xlink:href="#Sarabun-Bold-ef" transform="translate(592.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-179" transform="translate(642 0)"/>
+      <use xlink:href="#Sarabun-Bold-161" transform="translate(698.09375 0)"/>
+      <use xlink:href="#Sarabun-Bold-d3" transform="translate(737.796875 0)"/>
+      <use xlink:href="#Sarabun-Bold-ef" transform="translate(790.703125 0)"/>
+      <use xlink:href="#Sarabun-Bold-198" transform="translate(839.90625 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_30">
+    <path d="M 99.64921 235.892819 
+L 201.354761 213.760189 
+L 303.060313 236.29629 
+L 404.765864 243.967055 
+L 506.471415 202.090152 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke: #e66101; stroke-width: 2.4; stroke-linecap: square"/>
+    <defs>
+     <path id="m4e92221ecf" d="M -4 4 
+L 4 4 
+L 4 -4 
+L -4 -4 
+z
+" style="stroke: #e66101; stroke-linejoin: miter"/>
+    </defs>
+    <g clip-path="url(#pdb6414ac45)">
+     <use xlink:href="#m4e92221ecf" x="99.64921" y="235.892819" style="fill: #e66101; stroke: #e66101; stroke-linejoin: miter"/>
+     <use xlink:href="#m4e92221ecf" x="201.354761" y="213.760189" style="fill: #e66101; stroke: #e66101; stroke-linejoin: miter"/>
+     <use xlink:href="#m4e92221ecf" x="303.060313" y="236.29629" style="fill: #e66101; stroke: #e66101; stroke-linejoin: miter"/>
+     <use xlink:href="#m4e92221ecf" x="404.765864" y="243.967055" style="fill: #e66101; stroke: #e66101; stroke-linejoin: miter"/>
+     <use xlink:href="#m4e92221ecf" x="506.471415" y="202.090152" style="fill: #e66101; stroke: #e66101; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="line2d_31">
+    <path d="M 99.64921 170.575015 
+L 201.354761 159.643207 
+L 303.060313 164.280944 
+L 404.765864 157.655605 
+L 506.471415 161.299542 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke: #2b5c8f; stroke-width: 2.4; stroke-linecap: square"/>
+    <defs>
+     <path id="mc7d4144857" d="M 0 4 
+C 1.060812 4 2.078319 3.578535 2.828427 2.828427 
+C 3.578535 2.078319 4 1.060812 4 0 
+C 4 -1.060812 3.578535 -2.078319 2.828427 -2.828427 
+C 2.078319 -3.578535 1.060812 -4 0 -4 
+C -1.060812 -4 -2.078319 -3.578535 -2.828427 -2.828427 
+C -3.578535 -2.078319 -4 -1.060812 -4 0 
+C -4 1.060812 -3.578535 2.078319 -2.828427 2.828427 
+C -2.078319 3.578535 -1.060812 4 0 4 
+z
+" style="stroke: #2b5c8f"/>
+    </defs>
+    <g clip-path="url(#pdb6414ac45)">
+     <use xlink:href="#mc7d4144857" x="99.64921" y="170.575015" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+     <use xlink:href="#mc7d4144857" x="201.354761" y="159.643207" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+     <use xlink:href="#mc7d4144857" x="303.060313" y="164.280944" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+     <use xlink:href="#mc7d4144857" x="404.765864" y="157.655605" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+     <use xlink:href="#mc7d4144857" x="506.471415" y="161.299542" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+    </g>
+   </g>
+   <g id="line2d_32">
+    <path d="M 140.331431 323.65 
+L 140.331431 32.016 
+" clip-path="url(#pdb6414ac45)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #d73027; stroke-opacity: 0.85; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 50.220313 323.65 
+L 50.220313 32.016 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 555.900313 323.65 
+L 555.900313 32.016 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 50.220313 323.65 
+L 555.900313 323.65 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 50.220313 32.016 
+L 555.900313 32.016 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_25">
+    <g id="patch_21">
+     <path d="M 142.365542 166.725479 
+L 243.105151 166.725479 
+Q 244.805151 166.725479 244.805151 165.025479 
+L 244.805151 131.619682 
+Q 244.805151 129.919682 243.105151 129.919682 
+L 142.365542 129.919682 
+Q 140.665542 129.919682 140.665542 131.619682 
+L 140.665542 165.025479 
+Q 140.665542 166.725479 142.365542 166.725479 
+z
+" style="fill: #fff5f5; stroke: #d73027; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <!-- Real glyphs ≤ 44 px -->
+    <g style="fill: #d73027" transform="translate(142.365542 140.697682) scale(0.085 -0.085)">
+     <defs>
+      <path id="Sarabun-Bold-8d" d="M 435 4480 
+L 2016 4480 
+Q 2778 4480 3155 4169 
+Q 3533 3859 3533 3232 
+Q 3533 2790 3347 2476 
+Q 3162 2163 2810 2022 
+L 2810 2010 
+Q 2931 1920 2998 1840 
+Q 3066 1760 3110 1658 
+L 3770 0 
+L 2790 0 
+L 2278 1363 
+Q 2202 1568 2080 1635 
+Q 1958 1702 1658 1702 
+L 1357 1702 
+L 1357 0 
+L 435 0 
+L 435 4480 
+z
+M 1920 2432 
+Q 2272 2432 2454 2608 
+Q 2637 2784 2637 3123 
+Q 2637 3744 1907 3744 
+L 1357 3744 
+L 1357 2432 
+L 1920 2432 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-116" d="M 307 4749 
+L 1126 4749 
+L 1126 2822 
+Q 1274 3027 1539 3145 
+Q 1805 3264 2118 3264 
+Q 2662 3264 2992 2905 
+Q 3322 2547 3322 1920 
+L 3322 0 
+L 2502 0 
+L 2502 1862 
+Q 2502 2234 2342 2445 
+Q 2182 2656 1901 2656 
+Q 1549 2656 1337 2409 
+Q 1126 2163 1126 1741 
+L 1126 0 
+L 307 0 
+L 307 4749 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-275" d="M 346 1971 
+L 346 2323 
+L 3597 3629 
+L 3597 2963 
+L 1395 2144 
+L 3597 1331 
+L 3597 666 
+L 346 1971 
+z
+M 352 570 
+L 3603 570 
+L 3603 0 
+L 352 0 
+L 352 570 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Sarabun-Bold-8d"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(59.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(113.796875 0)"/>
+     <use xlink:href="#Sarabun-Bold-12f" transform="translate(166.703125 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(196.796875 0)"/>
+     <use xlink:href="#Sarabun-Bold-10f" transform="translate(220.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-12f" transform="translate(275.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-198" transform="translate(302.6875 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(353.1875 0)"/>
+     <use xlink:href="#Sarabun-Bold-116" transform="translate(409.6875 0)"/>
+     <use xlink:href="#Sarabun-Bold-168" transform="translate(466.390625 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(510.484375 0)"/>
+     <use xlink:href="#Sarabun-Bold-275" transform="translate(533.78125 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(595.484375 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(618.78125 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(675.28125 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(731.78125 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(755.078125 0)"/>
+     <use xlink:href="#Sarabun-Bold-197" transform="translate(811.578125 0)"/>
+    </g>
+    <!-- (median 16×19 px) -->
+    <g style="fill: #d73027" transform="translate(142.365542 151.832947) scale(0.085 -0.085)">
+     <defs>
+      <path id="Sarabun-Bold-26e" d="M 1965 1184 
+L 858 13 
+L 346 474 
+L 1478 1683 
+L 346 2880 
+L 851 3347 
+L 1965 2182 
+L 3085 3347 
+L 3603 2880 
+L 2464 1683 
+L 3603 474 
+L 3085 13 
+L 1965 1184 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Sarabun-Bold-234"/>
+     <use xlink:href="#Sarabun-Bold-138" transform="translate(35.40625 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(120 0)"/>
+     <use xlink:href="#Sarabun-Bold-f5" transform="translate(174.203125 0)"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(230 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(257.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(310.203125 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(366.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(389.796875 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(446.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-26e" transform="translate(502.796875 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f2" transform="translate(564.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-1fa" transform="translate(621 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(677.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(700.796875 0)"/>
+     <use xlink:href="#Sarabun-Bold-197" transform="translate(757.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-235" transform="translate(809.296875 0)"/>
+    </g>
+    <!-- Scaling &gt;64px gives 0 gain -->
+    <g style="fill: #d73027" transform="translate(142.365542 162.968213) scale(0.085 -0.085)">
+     <defs>
+      <path id="Sarabun-Bold-272" d="M 352 691 
+L 2611 1862 
+L 352 3034 
+L 352 3725 
+L 3597 2035 
+L 3597 1696 
+L 352 0 
+L 352 691 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-191" d="M 3296 3200 
+L 2042 0 
+L 1338 0 
+L 83 3200 
+L 928 3200 
+L 1690 998 
+L 2451 3200 
+L 3296 3200 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-1f1" d="M 1811 -64 
+Q 1011 -64 588 525 
+Q 166 1114 166 2240 
+Q 166 3366 588 3955 
+Q 1011 4544 1811 4544 
+Q 2611 4544 3030 3955 
+Q 3450 3366 3450 2240 
+Q 3450 1114 3030 525 
+Q 2611 -64 1811 -64 
+z
+M 1811 602 
+Q 2170 602 2349 1005 
+Q 2528 1408 2528 2240 
+Q 2528 3078 2352 3478 
+Q 2176 3878 1811 3878 
+Q 1446 3878 1267 3478 
+Q 1088 3078 1088 2240 
+Q 1088 1408 1267 1005 
+Q 1446 602 1811 602 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Sarabun-Bold-94"/>
+     <use xlink:href="#Sarabun-Bold-ef" transform="translate(55.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(104.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-12f" transform="translate(157.203125 0)"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(187.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(214.59375 0)"/>
+     <use xlink:href="#Sarabun-Bold-10f" transform="translate(270.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(326.390625 0)"/>
+     <use xlink:href="#Sarabun-Bold-272" transform="translate(349.6875 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f7" transform="translate(411.390625 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f5" transform="translate(467.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(524.390625 0)"/>
+     <use xlink:href="#Sarabun-Bold-197" transform="translate(580.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(632.890625 0)"/>
+     <use xlink:href="#Sarabun-Bold-10f" transform="translate(656.1875 0)"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(711.6875 0)"/>
+     <use xlink:href="#Sarabun-Bold-191" transform="translate(738.984375 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(789.78125 0)"/>
+     <use xlink:href="#Sarabun-Bold-168" transform="translate(845.984375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(890.078125 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f1" transform="translate(913.375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(969.875 0)"/>
+     <use xlink:href="#Sarabun-Bold-10f" transform="translate(993.171875 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(1048.671875 0)"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(1101.578125 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(1128.875 0)"/>
+    </g>
+   </g>
+   <g id="text_26">
+    <!-- Figure 5: Input Resolution Sweep — Accuracy vs Computational Latency -->
+    <g transform="translate(109.059688 20.016) scale(0.12 -0.12)">
+     <defs>
+      <path id="Sarabun-Bold-3d" d="M 435 4480 
+L 3443 4480 
+L 3443 3744 
+L 1357 3744 
+L 1357 2547 
+L 3302 2547 
+L 3302 1811 
+L 1357 1811 
+L 1357 0 
+L 435 0 
+L 435 4480 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-1f6" d="M 1709 -64 
+Q 1254 -64 851 128 
+Q 448 320 237 634 
+L 634 1216 
+Q 864 947 1133 806 
+Q 1402 666 1683 666 
+Q 2042 666 2250 899 
+Q 2458 1133 2458 1542 
+Q 2458 1920 2275 2137 
+Q 2093 2355 1773 2355 
+Q 1581 2355 1405 2243 
+Q 1229 2131 1139 1946 
+L 378 1946 
+L 595 4480 
+L 3238 4480 
+L 3238 3750 
+L 1408 3750 
+L 1325 2778 
+Q 1414 2886 1616 2960 
+Q 1818 3034 2016 3034 
+Q 2419 3034 2729 2851 
+Q 3040 2669 3209 2333 
+Q 3379 1997 3379 1555 
+Q 3379 1069 3171 704 
+Q 2963 339 2585 137 
+Q 2208 -64 1709 -64 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-225" d="M 934 2074 
+Q 698 2074 544 2227 
+Q 390 2381 390 2618 
+Q 390 2861 544 3014 
+Q 698 3168 934 3168 
+Q 1171 3168 1321 3014 
+Q 1472 2861 1472 2618 
+Q 1472 2381 1321 2227 
+Q 1171 2074 934 2074 
+z
+M 934 -64 
+Q 698 -64 544 89 
+Q 390 243 390 486 
+Q 390 730 544 880 
+Q 698 1030 934 1030 
+Q 1171 1030 1321 876 
+Q 1472 723 1472 486 
+Q 1472 243 1321 89 
+Q 1171 -64 934 -64 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-192" d="M 4442 3200 
+L 3622 0 
+L 2906 0 
+L 2266 2317 
+L 1626 0 
+L 902 0 
+L 83 3200 
+L 934 3200 
+L 1338 1210 
+L 1901 3200 
+L 2624 3200 
+L 3187 1210 
+L 3590 3200 
+L 4442 3200 
+z
+" transform="scale(0.015625)"/>
+      <path id="Sarabun-Bold-23f" d="M 147 1984 
+L 5203 1984 
+L 5203 1421 
+L 147 1421 
+L 147 1984 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Sarabun-Bold-3d"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(57.40625 0)"/>
+     <use xlink:href="#Sarabun-Bold-10f" transform="translate(84.703125 0)"/>
+     <use xlink:href="#Sarabun-Bold-179" transform="translate(140.203125 0)"/>
+     <use xlink:href="#Sarabun-Bold-161" transform="translate(196.296875 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(236 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(290.203125 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f6" transform="translate(313.5 0)"/>
+     <use xlink:href="#Sarabun-Bold-225" transform="translate(370 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(399.09375 0)"/>
+     <use xlink:href="#Sarabun-Bold-4a" transform="translate(422.390625 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(454.6875 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(510.984375 0)"/>
+     <use xlink:href="#Sarabun-Bold-179" transform="translate(567.484375 0)"/>
+     <use xlink:href="#Sarabun-Bold-171" transform="translate(623.578125 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(665.578125 0)"/>
+     <use xlink:href="#Sarabun-Bold-8d" transform="translate(688.875 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(748.46875 0)"/>
+     <use xlink:href="#Sarabun-Bold-168" transform="translate(804.671875 0)"/>
+     <use xlink:href="#Sarabun-Bold-144" transform="translate(848.765625 0)"/>
+     <use xlink:href="#Sarabun-Bold-12f" transform="translate(906.671875 0)"/>
+     <use xlink:href="#Sarabun-Bold-179" transform="translate(936.765625 0)"/>
+     <use xlink:href="#Sarabun-Bold-171" transform="translate(992.859375 0)"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(1034.859375 0)"/>
+     <use xlink:href="#Sarabun-Bold-144" transform="translate(1062.15625 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(1120.0625 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(1176.359375 0)"/>
+     <use xlink:href="#Sarabun-Bold-94" transform="translate(1199.65625 0)"/>
+     <use xlink:href="#Sarabun-Bold-192" transform="translate(1254.75 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(1325.453125 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(1379.65625 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(1433.859375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(1490.359375 0)"/>
+     <use xlink:href="#Sarabun-Bold-23f" transform="translate(1513.65625 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(1597.25 0)"/>
+     <use xlink:href="#Sarabun-Bold-4" transform="translate(1620.546875 0)"/>
+     <use xlink:href="#Sarabun-Bold-ef" transform="translate(1681.640625 0)"/>
+     <use xlink:href="#Sarabun-Bold-ef" transform="translate(1730.84375 0)"/>
+     <use xlink:href="#Sarabun-Bold-179" transform="translate(1780.046875 0)"/>
+     <use xlink:href="#Sarabun-Bold-161" transform="translate(1836.140625 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(1875.84375 0)"/>
+     <use xlink:href="#Sarabun-Bold-ef" transform="translate(1928.75 0)"/>
+     <use xlink:href="#Sarabun-Bold-198" transform="translate(1977.953125 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(2028.453125 0)"/>
+     <use xlink:href="#Sarabun-Bold-191" transform="translate(2051.75 0)"/>
+     <use xlink:href="#Sarabun-Bold-168" transform="translate(2104.546875 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(2148.640625 0)"/>
+     <use xlink:href="#Sarabun-Bold-1f" transform="translate(2171.9375 0)"/>
+     <use xlink:href="#Sarabun-Bold-144" transform="translate(2233.9375 0)"/>
+     <use xlink:href="#Sarabun-Bold-138" transform="translate(2291.84375 0)"/>
+     <use xlink:href="#Sarabun-Bold-15e" transform="translate(2376.4375 0)"/>
+     <use xlink:href="#Sarabun-Bold-179" transform="translate(2432.9375 0)"/>
+     <use xlink:href="#Sarabun-Bold-171" transform="translate(2489.03125 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(2531.03125 0)"/>
+     <use xlink:href="#Sarabun-Bold-171" transform="translate(2583.9375 0)"/>
+     <use xlink:href="#Sarabun-Bold-11b" transform="translate(2625.9375 0)"/>
+     <use xlink:href="#Sarabun-Bold-144" transform="translate(2653.234375 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(2711.140625 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(2767.4375 0)"/>
+     <use xlink:href="#Sarabun-Bold-12f" transform="translate(2820.34375 0)"/>
+     <use xlink:href="#Sarabun-Bold-3" transform="translate(2850.4375 0)"/>
+     <use xlink:href="#Sarabun-Bold-5c" transform="translate(2873.734375 0)"/>
+     <use xlink:href="#Sarabun-Bold-d3" transform="translate(2928.234375 0)"/>
+     <use xlink:href="#Sarabun-Bold-171" transform="translate(2981.140625 0)"/>
+     <use xlink:href="#Sarabun-Bold-fb" transform="translate(3023.140625 0)"/>
+     <use xlink:href="#Sarabun-Bold-13a" transform="translate(3077.34375 0)"/>
+     <use xlink:href="#Sarabun-Bold-ef" transform="translate(3133.640625 0)"/>
+     <use xlink:href="#Sarabun-Bold-198" transform="translate(3182.84375 0)"/>
+    </g>
+   </g>
+   <g id="legend_1">
+    <g id="patch_22">
+     <path d="M 445.715078 319.4 
+L 549.950312 319.4 
+Q 551.650313 319.4 551.650313 317.7 
+L 551.650313 257.094203 
+Q 551.650313 255.394203 549.950312 255.394203 
+L 445.715078 255.394203 
+Q 444.015078 255.394203 444.015078 257.094203 
+L 444.015078 317.7 
+Q 444.015078 319.4 445.715078 319.4 
+z
+" style="fill: #ffffff; opacity: 0.9; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="line2d_33">
+     <path d="M 447.415078 264.897203 
+L 455.915078 264.897203 
+L 464.415078 264.897203 
+" style="fill: none; stroke: #e66101; stroke-width: 2.4; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m4e92221ecf" x="455.915078" y="264.897203" style="fill: #e66101; stroke: #e66101; stroke-linejoin: miter"/>
+     </g>
+    </g>
+    <g id="text_27">
+     <!-- Balanced Acc -->
+     <g transform="translate(471.215078 267.872203) scale(0.085 -0.085)">
+      <defs>
+       <path id="Sarabun-Regular-1e" d="M 518 4480 
+L 1702 4480 
+Q 2496 4480 2883 4214 
+Q 3270 3949 3270 3405 
+Q 3270 3027 3104 2784 
+Q 2938 2541 2586 2406 
+L 2586 2387 
+Q 3034 2266 3242 2000 
+Q 3450 1734 3450 1280 
+Q 3450 634 3078 317 
+Q 2707 0 1952 0 
+L 518 0 
+L 518 4480 
+z
+M 1850 2592 
+Q 2259 2592 2470 2787 
+Q 2682 2982 2682 3360 
+Q 2682 3699 2451 3852 
+Q 2221 4006 1722 4006 
+L 1107 4006 
+L 1107 2592 
+L 1850 2592 
+z
+M 1971 474 
+Q 2867 474 2867 1293 
+Q 2867 1734 2588 1939 
+Q 2310 2144 1709 2144 
+L 1107 2144 
+L 1107 474 
+L 1971 474 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-d3" d="M 1331 -64 
+Q 858 -64 557 211 
+Q 256 486 256 922 
+Q 256 1402 617 1664 
+Q 979 1926 1645 1926 
+L 2304 1926 
+L 2304 2093 
+Q 2304 2451 2115 2640 
+Q 1926 2829 1568 2829 
+Q 1280 2829 1040 2710 
+Q 800 2592 640 2368 
+L 365 2701 
+Q 582 2976 896 3120 
+Q 1210 3264 1594 3264 
+Q 2195 3264 2521 2969 
+Q 2848 2675 2848 2125 
+L 2848 621 
+Q 2848 371 2925 0 
+L 2451 0 
+Q 2394 147 2368 448 
+L 2355 448 
+Q 2176 198 1913 67 
+Q 1651 -64 1331 -64 
+z
+M 1414 365 
+Q 1658 365 1862 457 
+Q 2067 550 2185 710 
+Q 2304 870 2304 1062 
+L 2304 1536 
+L 1626 1536 
+Q 1222 1536 1004 1376 
+Q 787 1216 787 922 
+Q 787 666 956 515 
+Q 1126 365 1414 365 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-12f" d="M 1139 -64 
+Q 448 -64 448 749 
+L 448 4749 
+L 992 4749 
+L 992 755 
+Q 992 531 1065 438 
+Q 1139 346 1318 346 
+Q 1459 346 1638 422 
+L 1722 96 
+Q 1478 -64 1139 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-13a" d="M 384 2394 
+Q 384 3002 358 3200 
+L 864 3200 
+Q 890 2989 890 2630 
+L 909 2630 
+Q 1050 2925 1341 3094 
+Q 1632 3264 1990 3264 
+Q 2554 3264 2835 2899 
+Q 3117 2534 3117 1811 
+L 3117 0 
+L 2573 0 
+L 2573 1818 
+Q 2573 2330 2400 2579 
+Q 2227 2829 1875 2829 
+Q 1606 2829 1388 2691 
+Q 1171 2554 1049 2307 
+Q 928 2061 928 1754 
+L 928 0 
+L 384 0 
+L 384 2394 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-ef" d="M 1715 -64 
+Q 1005 -64 611 374 
+Q 218 813 218 1600 
+Q 218 2387 611 2825 
+Q 1005 3264 1715 3264 
+Q 2118 3264 2428 3107 
+Q 2739 2950 2918 2656 
+L 2592 2362 
+Q 2451 2579 2224 2704 
+Q 1997 2829 1734 2829 
+Q 1280 2829 1021 2505 
+Q 762 2182 762 1600 
+Q 762 1024 1021 697 
+Q 1280 371 1734 371 
+Q 1997 371 2224 496 
+Q 2451 621 2592 838 
+L 2918 544 
+Q 2739 250 2428 93 
+Q 2118 -64 1715 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-fb" d="M 3085 1389 
+L 781 1389 
+Q 826 902 1069 649 
+Q 1312 397 1741 397 
+Q 2317 397 2656 851 
+L 2963 557 
+Q 2778 262 2448 99 
+Q 2118 -64 1722 -64 
+Q 1011 -64 620 371 
+Q 230 806 230 1594 
+Q 230 2374 624 2819 
+Q 1018 3264 1709 3264 
+Q 2355 3264 2720 2825 
+Q 3085 2387 3085 1600 
+L 3085 1389 
+z
+M 2586 1837 
+Q 2586 2298 2346 2560 
+Q 2106 2822 1683 2822 
+Q 1286 2822 1052 2553 
+Q 819 2285 781 1792 
+L 2586 1792 
+L 2586 1837 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-f5" d="M 1562 -64 
+Q 941 -64 579 397 
+Q 218 858 218 1658 
+Q 218 2144 384 2505 
+Q 550 2867 857 3065 
+Q 1165 3264 1574 3264 
+Q 2163 3264 2522 2771 
+L 2534 2771 
+L 2534 4749 
+L 3072 4749 
+L 3072 806 
+Q 3072 211 3091 0 
+L 2592 0 
+Q 2579 154 2579 506 
+L 2566 506 
+Q 2419 250 2144 93 
+Q 1869 -64 1562 -64 
+z
+M 1638 371 
+Q 2048 371 2288 617 
+Q 2528 864 2528 1280 
+L 2528 1862 
+Q 2528 2310 2285 2579 
+Q 2042 2848 1638 2848 
+Q 1229 2848 995 2531 
+Q 762 2214 762 1645 
+Q 762 1050 995 710 
+Q 1229 371 1638 371 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-3" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-4" d="M 2778 966 
+L 1037 966 
+L 736 0 
+L 109 0 
+L 1632 4480 
+L 2182 4480 
+L 3706 0 
+L 3078 0 
+L 2778 966 
+z
+M 2624 1446 
+L 1907 3744 
+L 1190 1446 
+L 2624 1446 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Regular-1e"/>
+      <use xlink:href="#Sarabun-Regular-d3" transform="translate(58.90625 0)"/>
+      <use xlink:href="#Sarabun-Regular-12f" transform="translate(110.3125 0)"/>
+      <use xlink:href="#Sarabun-Regular-d3" transform="translate(139.40625 0)"/>
+      <use xlink:href="#Sarabun-Regular-13a" transform="translate(190.8125 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(245.71875 0)"/>
+      <use xlink:href="#Sarabun-Regular-fb" transform="translate(293.015625 0)"/>
+      <use xlink:href="#Sarabun-Regular-f5" transform="translate(344.8125 0)"/>
+      <use xlink:href="#Sarabun-Regular-3" transform="translate(399.015625 0)"/>
+      <use xlink:href="#Sarabun-Regular-4" transform="translate(423.3125 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(479.90625 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(527.203125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_34">
+     <path d="M 447.415078 280.197203 
+L 455.915078 280.197203 
+L 464.415078 280.197203 
+" style="fill: none; stroke: #2b5c8f; stroke-width: 2.4; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#mc7d4144857" x="455.915078" y="280.197203" style="fill: #2b5c8f; stroke: #2b5c8f"/>
+     </g>
+    </g>
+    <g id="text_28">
+     <!-- Top-1 Acc -->
+     <g transform="translate(471.215078 283.172203) scale(0.085 -0.085)">
+      <defs>
+       <path id="Sarabun-Regular-9e" d="M 1491 4019 
+L 109 4019 
+L 109 4480 
+L 3456 4480 
+L 3456 4019 
+L 2080 4019 
+L 2080 0 
+L 1491 0 
+L 1491 4019 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-144" d="M 1779 -64 
+Q 1306 -64 957 137 
+Q 608 339 419 716 
+Q 230 1094 230 1600 
+Q 230 2106 419 2483 
+Q 608 2861 957 3062 
+Q 1306 3264 1779 3264 
+Q 2496 3264 2915 2816 
+Q 3334 2368 3334 1600 
+Q 3334 832 2915 384 
+Q 2496 -64 1779 -64 
+z
+M 1779 352 
+Q 2253 352 2521 685 
+Q 2790 1018 2790 1600 
+Q 2790 2182 2521 2515 
+Q 2253 2848 1779 2848 
+Q 1312 2848 1043 2515 
+Q 774 2182 774 1600 
+Q 774 1018 1043 685 
+Q 1312 352 1779 352 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-15e" d="M 403 2394 
+Q 403 2803 378 3200 
+L 877 3200 
+Q 896 2963 896 2694 
+L 909 2694 
+Q 1043 2950 1324 3107 
+Q 1606 3264 1933 3264 
+Q 2554 3264 2906 2822 
+Q 3258 2381 3258 1600 
+Q 3258 1094 3091 720 
+Q 2925 346 2621 141 
+Q 2317 -64 1914 -64 
+Q 1581 -64 1331 64 
+Q 1082 192 966 422 
+L 947 422 
+L 947 -1549 
+L 403 -1549 
+L 403 2394 
+z
+M 1830 352 
+Q 2240 352 2477 694 
+Q 2714 1037 2714 1619 
+Q 2714 2202 2483 2515 
+Q 2253 2829 1837 2829 
+Q 1446 2829 1196 2573 
+Q 947 2317 947 1920 
+L 947 1338 
+Q 947 896 1190 624 
+Q 1434 352 1830 352 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-23c" d="M 211 1901 
+L 1965 1901 
+L 1965 1504 
+L 211 1504 
+L 211 1901 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Regular-9e"/>
+      <use xlink:href="#Sarabun-Regular-144" transform="translate(47.796875 0)"/>
+      <use xlink:href="#Sarabun-Regular-15e" transform="translate(103.5 0)"/>
+      <use xlink:href="#Sarabun-Regular-23c" transform="translate(158 0)"/>
+      <use xlink:href="#Sarabun-Regular-1f2" transform="translate(192 0)"/>
+      <use xlink:href="#Sarabun-Regular-3" transform="translate(247 0)"/>
+      <use xlink:href="#Sarabun-Regular-4" transform="translate(271.296875 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(327.890625 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(375.1875 0)"/>
+     </g>
+    </g>
+    <g id="patch_23">
+     <path d="M 447.415078 298.557469 
+L 464.415078 298.557469 
+L 464.415078 292.607469 
+L 447.415078 292.607469 
+z
+" style="fill: #a6bddb; opacity: 0.55"/>
+    </g>
+    <g id="text_29">
+     <!-- Sec / Epoch (s) -->
+     <g transform="translate(471.215078 298.557469) scale(0.085 -0.085)">
+      <defs>
+       <path id="Sarabun-Regular-94" d="M 1670 -64 
+Q 1235 -64 854 121 
+Q 474 307 243 634 
+L 602 992 
+Q 800 736 1101 579 
+Q 1402 422 1696 422 
+Q 2074 422 2307 614 
+Q 2541 806 2541 1120 
+Q 2541 1325 2461 1478 
+Q 2381 1632 2185 1776 
+Q 1990 1920 1632 2093 
+Q 947 2426 668 2723 
+Q 390 3021 390 3418 
+Q 390 3930 761 4237 
+Q 1133 4544 1747 4544 
+Q 2176 4544 2531 4358 
+Q 2886 4173 3046 3859 
+L 2662 3578 
+Q 2509 3802 2265 3930 
+Q 2022 4058 1754 4058 
+Q 1395 4058 1187 3888 
+Q 979 3718 979 3430 
+Q 979 3258 1056 3136 
+Q 1133 3014 1341 2883 
+Q 1549 2752 1997 2528 
+Q 2605 2227 2867 1910 
+Q 3130 1594 3130 1165 
+Q 3130 800 2947 521 
+Q 2765 243 2435 89 
+Q 2106 -64 1670 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-230" d="M 2278 4640 
+L 2810 4640 
+L 378 -275 
+L -154 -275 
+L 2278 4640 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-2b" d="M 518 4480 
+L 3206 4480 
+L 3206 3994 
+L 1107 3994 
+L 1107 2598 
+L 2982 2598 
+L 2982 2112 
+L 1107 2112 
+L 1107 486 
+L 3206 486 
+L 3206 0 
+L 518 0 
+L 518 4480 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-116" d="M 390 4749 
+L 934 4749 
+L 934 2701 
+Q 1082 2963 1366 3113 
+Q 1651 3264 2003 3264 
+Q 2566 3264 2873 2889 
+Q 3181 2515 3181 1830 
+L 3181 0 
+L 2637 0 
+L 2637 1837 
+Q 2637 2330 2448 2589 
+Q 2259 2848 1907 2848 
+Q 1632 2848 1408 2707 
+Q 1184 2566 1059 2313 
+Q 934 2061 934 1747 
+L 934 0 
+L 390 0 
+L 390 4749 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-234" d="M 1235 -397 
+Q 762 32 509 701 
+Q 256 1370 256 2202 
+Q 256 3034 509 3702 
+Q 762 4371 1235 4800 
+L 1824 4800 
+Q 1350 4416 1091 3734 
+Q 832 3053 832 2202 
+Q 832 1350 1091 668 
+Q 1350 -13 1824 -397 
+L 1235 -397 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-168" d="M 1280 -64 
+Q 922 -64 630 83 
+Q 339 230 218 474 
+L 570 717 
+Q 678 544 870 448 
+Q 1062 352 1286 352 
+Q 1555 352 1731 509 
+Q 1907 666 1907 902 
+Q 1907 1094 1766 1222 
+Q 1626 1350 1267 1485 
+Q 723 1683 502 1900 
+Q 282 2118 282 2438 
+Q 282 2810 576 3037 
+Q 870 3264 1357 3264 
+Q 1670 3264 1929 3129 
+Q 2189 2995 2330 2758 
+L 1997 2515 
+Q 1773 2848 1357 2848 
+Q 1120 2848 969 2739 
+Q 819 2630 819 2458 
+Q 819 2285 972 2166 
+Q 1126 2048 1542 1888 
+Q 2035 1702 2240 1481 
+Q 2445 1261 2445 922 
+Q 2445 474 2125 205 
+Q 1805 -64 1280 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-235" d="M 211 -397 
+Q 685 -13 944 668 
+Q 1203 1350 1203 2202 
+Q 1203 3053 944 3734 
+Q 685 4416 211 4800 
+L 800 4800 
+Q 1274 4371 1526 3702 
+Q 1779 3034 1779 2202 
+Q 1779 1370 1526 701 
+Q 1274 32 800 -397 
+L 211 -397 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Regular-94"/>
+      <use xlink:href="#Sarabun-Regular-fb" transform="translate(52.90625 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(104.703125 0)"/>
+      <use xlink:href="#Sarabun-Regular-3" transform="translate(152 0)"/>
+      <use xlink:href="#Sarabun-Regular-230" transform="translate(176.296875 0)"/>
+      <use xlink:href="#Sarabun-Regular-3" transform="translate(217.796875 0)"/>
+      <use xlink:href="#Sarabun-Regular-2b" transform="translate(242.09375 0)"/>
+      <use xlink:href="#Sarabun-Regular-15e" transform="translate(297.296875 0)"/>
+      <use xlink:href="#Sarabun-Regular-144" transform="translate(351.796875 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(407.5 0)"/>
+      <use xlink:href="#Sarabun-Regular-116" transform="translate(454.796875 0)"/>
+      <use xlink:href="#Sarabun-Regular-3" transform="translate(510.59375 0)"/>
+      <use xlink:href="#Sarabun-Regular-234" transform="translate(534.890625 0)"/>
+      <use xlink:href="#Sarabun-Regular-168" transform="translate(566.6875 0)"/>
+      <use xlink:href="#Sarabun-Regular-235" transform="translate(608.28125 0)"/>
+     </g>
+    </g>
+    <g id="patch_24">
+     <path d="M 447.415078 313.942734 
+L 464.415078 313.942734 
+L 464.415078 307.992734 
+L 447.415078 307.992734 
+z
+" style="fill: #bcbddc; opacity: 0.55"/>
+    </g>
+    <g id="text_30">
+     <!-- Latency (ms/sample) -->
+     <g transform="translate(471.215078 313.942734) scale(0.085 -0.085)">
+      <defs>
+       <path id="Sarabun-Regular-5c" d="M 512 4480 
+L 1101 4480 
+L 1101 486 
+L 3264 486 
+L 3264 0 
+L 512 0 
+L 512 4480 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-171" d="M 1549 -64 
+Q 1126 -64 883 208 
+Q 640 480 640 960 
+L 640 2778 
+L 64 2778 
+L 64 3200 
+L 640 3200 
+L 640 4051 
+L 1158 4211 
+L 1184 4211 
+L 1184 3200 
+L 2093 3200 
+L 2093 2778 
+L 1184 2778 
+L 1184 1011 
+Q 1184 685 1305 528 
+Q 1427 371 1683 371 
+Q 1958 371 2131 442 
+L 2170 38 
+Q 1958 -64 1549 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-198" d="M 2886 3200 
+L 1728 -58 
+Q 1286 -1293 365 -1293 
+Q 198 -1293 6 -1248 
+L 6 -832 
+Q 122 -870 288 -870 
+Q 614 -870 844 -633 
+Q 1075 -397 1286 166 
+L 96 3200 
+L 678 3200 
+L 1536 749 
+L 2298 3200 
+L 2886 3200 
+z
+" transform="scale(0.015625)"/>
+       <path id="Sarabun-Regular-138" d="M 390 2394 
+Q 390 2880 358 3200 
+L 845 3200 
+Q 870 2944 870 2630 
+L 890 2630 
+Q 1018 2925 1293 3094 
+Q 1568 3264 1907 3264 
+Q 2246 3264 2489 3091 
+Q 2733 2918 2816 2611 
+Q 2950 2912 3225 3088 
+Q 3501 3264 3846 3264 
+Q 4371 3264 4668 2925 
+Q 4966 2586 4966 1978 
+L 4966 0 
+L 4429 0 
+L 4429 1933 
+Q 4429 2368 4246 2598 
+Q 4064 2829 3718 2829 
+Q 3379 2829 3161 2576 
+Q 2944 2323 2944 1926 
+L 2944 0 
+L 2406 0 
+L 2406 1907 
+Q 2406 2374 2240 2601 
+Q 2074 2829 1734 2829 
+Q 1523 2829 1337 2701 
+Q 1152 2573 1040 2361 
+Q 928 2150 928 1907 
+L 928 0 
+L 390 0 
+L 390 2394 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#Sarabun-Regular-5c"/>
+      <use xlink:href="#Sarabun-Regular-d3" transform="translate(52.796875 0)"/>
+      <use xlink:href="#Sarabun-Regular-171" transform="translate(104.203125 0)"/>
+      <use xlink:href="#Sarabun-Regular-fb" transform="translate(141.90625 0)"/>
+      <use xlink:href="#Sarabun-Regular-13a" transform="translate(193.703125 0)"/>
+      <use xlink:href="#Sarabun-Regular-ef" transform="translate(248.609375 0)"/>
+      <use xlink:href="#Sarabun-Regular-198" transform="translate(295.90625 0)"/>
+      <use xlink:href="#Sarabun-Regular-3" transform="translate(342.109375 0)"/>
+      <use xlink:href="#Sarabun-Regular-234" transform="translate(366.40625 0)"/>
+      <use xlink:href="#Sarabun-Regular-138" transform="translate(398.203125 0)"/>
+      <use xlink:href="#Sarabun-Regular-168" transform="translate(482.109375 0)"/>
+      <use xlink:href="#Sarabun-Regular-230" transform="translate(523.703125 0)"/>
+      <use xlink:href="#Sarabun-Regular-168" transform="translate(565.203125 0)"/>
+      <use xlink:href="#Sarabun-Regular-d3" transform="translate(606.796875 0)"/>
+      <use xlink:href="#Sarabun-Regular-138" transform="translate(658.203125 0)"/>
+      <use xlink:href="#Sarabun-Regular-15e" transform="translate(742.109375 0)"/>
+      <use xlink:href="#Sarabun-Regular-12f" transform="translate(796.609375 0)"/>
+      <use xlink:href="#Sarabun-Regular-fb" transform="translate(822.703125 0)"/>
+      <use xlink:href="#Sarabun-Regular-235" transform="translate(874.5 0)"/>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdb6414ac45">
+   <rect x="50.220313" y="32.016" width="505.68" height="291.634"/>
+  </clipPath>
+ </defs>
+</svg>
