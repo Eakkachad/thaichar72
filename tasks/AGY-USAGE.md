@@ -42,3 +42,9 @@ agy --dangerously-skip-permissions -c --print "Feedback on TASK-XX: <what failed
 
 ## Failure handling
 If `agy` reports login/quota problems, stop and tell the project owner (they will log in).
+
+## Known issue (2026-09-19)
+`gemini-3.8-flash-high` in `--print` mode launches long commands (pytest, training, downloads) as background
+tasks, then idles and the CLI exits, killing them → deliverables incomplete, no final report (3/3 attempts).
+`claude-opus-4-6-thinking` completed the same kind of task twice. Use opus (or sonnet) for anything that runs
+commands longer than a few seconds; gemini-3.1-pro-high under evaluation.
