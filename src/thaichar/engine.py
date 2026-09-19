@@ -197,7 +197,8 @@ def build_datasets(cfg: dict[str, Any]) -> tuple[ThaiGlyphDataset, ThaiGlyphData
     val_ds = ThaiGlyphDataset(val_df, cache, size=cfg["img_size"], channel_mode=cfg["channel_mode"],
                               transform=None, margin=cfg["margin"])
     info = {"n_train_real": int(n_real), "n_train_extra": int(n_extra), "n_train": len(train_ds),
-            "n_val": len(val_ds), "val_classes_present": int(val_df.label.nunique())}
+            "n_val": len(val_ds), "val_classes_present": int(val_df.label.nunique()),
+            "class_counts_real": counts_real.tolist()}
     return train_ds, val_ds, class_counts, info
 
 
@@ -363,6 +364,7 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
 
     # ---- data
     train_ds, val_ds, class_counts, info = build_datasets(cfg)
+    counts_real = np.array(info["class_counts_real"])  # minority_acc is defined on REAL train counts (n<50)
     train_loader, val_loader = make_loaders(train_ds, val_ds, cfg)
     log_prior = np.log(np.clip(class_counts, 1, None) / class_counts.sum()).astype(np.float32)
 
@@ -446,14 +448,14 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
         # ---- validate raw (+ EMA)
         last_epoch = epoch + 1 == int(cfg["epochs"])
         logits, y_val = predict(model, val_monitor, device)
-        m_raw = compute_metrics(y_val, logits, class_counts)
+        m_raw = compute_metrics(y_val, logits, counts_real)
         row = {"epoch": epoch + 1, "lr": optimizer.param_groups[0]["lr"], "train_loss": loss_sum / max(1, seen),
                "train_acc": correct / max(1, seen), "val_top1": m_raw["top1"], "val_bal_acc": m_raw["balanced_acc"],
                "val_macro_f1": m_raw["macro_f1"], "val_minority_acc": m_raw["minority_acc"]}
         cand = [("raw", m_raw, model)]
         if ema is not None and (cfg["ema_eval"] == "every" or last_epoch):
             logits_e, _ = predict(ema.module, val_monitor, device)
-            m_ema = compute_metrics(y_val, logits_e, class_counts)
+            m_ema = compute_metrics(y_val, logits_e, counts_real)
             row.update({"ema_val_top1": m_ema["top1"], "ema_val_bal_acc": m_ema["balanced_acc"]})
             cand.append(("ema", m_ema, ema.module))
         row["epoch_seconds"] = time.time() - t0
@@ -478,14 +480,14 @@ def train_one(cfg_in: dict[str, Any]) -> dict[str, Any]:
     ckpt = torch.load(out_dir / "best.pt", map_location=device, weights_only=False)
     model.load_state_dict(ckpt["state_dict"])
     logits, y_val = predict(model, val_loader, device)
-    final = compute_metrics(y_val, logits, class_counts)
-    sweep = tau_sweep(logits, y_val, log_prior, class_counts, taus=tuple(float(t) for t in cfg["taus"]))
+    final = compute_metrics(y_val, logits, counts_real)
+    sweep = tau_sweep(logits, y_val, log_prior, counts_real, taus=tuple(float(t) for t in cfg["taus"]))
     tta_metrics = None
     if cfg["tta"]:
         logits_tta = predict_tta(model, val_ds, cfg, device)
-        mt = compute_metrics(y_val, logits_tta, class_counts)
+        mt = compute_metrics(y_val, logits_tta, counts_real)
         tta_metrics = {k: mt[k] for k in ("top1", "top5", "balanced_acc", "macro_f1", "minority_acc")}
-        tta_metrics["tau_sweep"] = tau_sweep(logits_tta, y_val, log_prior, class_counts,
+        tta_metrics["tau_sweep"] = tau_sweep(logits_tta, y_val, log_prior, counts_real,
                                              taus=tuple(float(t) for t in cfg["taus"]))
     latency = measure_latency_ms(model, cfg, iters=int(cfg["latency_iters"]))
     np.save(out_dir / "val_logits.npy", logits.astype(np.float16))
