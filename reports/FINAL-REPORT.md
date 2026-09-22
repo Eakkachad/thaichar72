@@ -82,6 +82,20 @@ robustness**: recipe ที่มี noise op ตอนเทรน (randaug/ful
    ไปเป็น recipe ที่ทน noise; KD กลั่น 3 seeds ลงโมเดลเดียวได้ผลเท่า ensemble (ดูส่วนที่ 9)
 7. **Label audit ด้วยโมเดล + ตา** (ส่วนที่ 12): พบว่า ~11 % ของคลาส า เป็น ว/ใ ที่ label ผิด (กระจุกในแหล่ง `be`) ซึ่งเป็นเพดานที่ทุก recipe ชน
    (top-1 ≈ 98.4–98.6) การแก้ label ให้ผลมากกว่าการเปลี่ยน architecture/aug ใด ๆ (+0.8 จุด → 98.9–99.0) และเราส่งมอบ weight ทั้ง 2 แบบ
+8. **จับได้ว่าชุด validation ที่ได้มา "ไม่ได้ถูกกันไว้จริง"** (§13, §M): `dataUpdate` แบ่ง train/val ราย*ภาพ*บน render ที่มาจาก
+   ต้นฉบับเดียวกัน ทำให้ **99.2 % ของฝั่ง val ซ้ำกับต้นฉบับในฝั่ง train** เราแบ่งใหม่แบบ group-disjoint (กันทั้งตระกูลฟอนต์
+   และทั้งลายมือ) ได้ probe ที่กันไว้จริง 13,957 ภาพ จากเดิมที่สะอาดจริงแค่ 87 ภาพ — **ถ้าไม่จับตรงนี้ได้ ตัวเลขทุกอย่าง
+   ที่รายงานเรื่องคลาสหางจะเป็นเท็จทั้งหมด**
+9. **Out-of-fold label audit ครอบคลุม 100 %** (§M): แบ่ง 5 folds เทรน 5 โมเดล ทุกภาพใน 59,942 ภาพได้คำทำนายจากโมเดล
+   ที่ไม่เคยเห็นมัน แล้วเรนเดอร์แผ่นเทียบสามแถว (ตัวอย่าง A ที่ไม่มีข้อสงสัย / ภาพที่สงสัย / ตัวอย่าง B) ให้คนตัดสิน
+   ยืนยันได้ 146 ภาพใน 10 คู่ที่ DataV2 จับได้แค่ 2 ภาพ — และ**วัดแล้วพบว่าการแก้ไม่ทำให้โมเดลดีขึ้น (p=0.24–0.89)**
+   ซึ่งเป็นผลลบที่มีค่า เพราะมันบอกว่าอย่าลงแรงกับเรื่องนี้ต่อ
+10. **พบว่า accuracy แกว่ง 0.99 → 0.49 ตามการจัดกรอบภาพ input** (§14) การตัดสินขั้วสีจากวงขอบ 1 พิกเซลพังเมื่อภาพถูก
+    crop ชิดหรือถูก pad ด้วยศูนย์ แก้ด้วย `_reframe()` (ลอกวงขอบค่าคงที่ แล้วเติมขอบใหม่จากสีพื้นหลังที่มุมภาพบอก)
+    ทำให้ทุกรูปแบบ input ให้ผลเท่ากัน — เป็นความแตกต่างระหว่าง 97 % กับ 49 % หน้างานที่ไม่รู้รูปแบบข้อมูลล่วงหน้า
+11. **ตรวจฟอนต์ก่อน render** (`scripts/audit_fonts.py`): `FontLibrary` ตัดสินว่าฟอนต์รองรับ glyph จาก mask ที่ไม่ว่าง
+    แต่กล่อง `.notdef` ก็ไม่ว่าง เราเช็คสองชั้น (cmap ของ fontTools + เทียบ bitmap กับ U+FFFF) ก่อนใช้ 203 ฟอนต์ —
+    ผ่านครบ ไม่ต้องตัดตัวไหน แต่ตอนนี้เป็นสิ่งที่**ทดสอบได้ ไม่ใช่สมมติเอา**
 
 ## 7. ขั้นตอนการฝึกสอน
 
@@ -98,7 +112,12 @@ AdamW (lr 1e-3, wd 0.05) · cosine schedule + warmup 1 epoch · batch 128 · lab
 ## 9. ตารางเทียบผลทั้งหมด
 ตารางอัตโนมัติ: `reports/experiments.md` · รายละเอียดรายหมวด A–G: `reports/02-EXPERIMENTS.md` · รูป: `reports/figures/results/`
 
-### โมเดลสุดท้าย — `weights/thaichar72_resnet18_64.pt` (เลือกเสร็จ 2026-09-19 บน RTX 4060)
+### โมเดลสุดท้าย (รอบ 2026-09-19) — `weights/thaichar72_resnet18_64.pt`
+
+> **ถูกแทนที่แล้วในรอบ 2026-09-22** โมเดลที่ส่งมอบตอนนี้คือ `weights/thaichar72_r18_64_gen.pt`
+> (recipe เดียวกันแต่ stage-1 pretrain บน 203 ฟอนต์ + dataUpdate) ดู **§13** สำหรับเหตุผลและตัวเลข
+> หัวข้อนี้เก็บไว้เพราะเป็นบันทึกว่าตัดสินใจอย่างไรในรอบแรก ตัวเลขข้างล่างอยู่บน split ก่อนการกู้คืนคลังภาพ
+> จึงเทียบกับ §13 โดยตรงไม่ได้ (ดู `tasks/HANDOFF-2026-09-22.md` §2.2)
 
 **Recipe (F19 → กลั่นเป็น K1)**: ResNet-18 @ 64 px, transfer 2 ชั้น **ImageNet → synthetic Thai fonts (stage-1, 8 ep) → ข้อมูลจริง**,
 RandAugment N=2 (ไม่ flip; ops: affine/margin/stroke-width/res-jitter/elastic/speckle/blur/erase/rebinarize), CE + label smoothing 0.1,
@@ -158,7 +177,7 @@ CLI: `uv run python scripts/predict.py --ckpt weights/thaichar72_resnet18_64.pt 
 
 ## 11. Application test
 - `scripts/predict.py` (top-k + confidence), `scripts/robustness.py` (เอียง/หนา-บาง/noise/blur/contrast/occlusion/downscale curves,
-  `reports/robustness/K1_r18_kd_20_full_bin/curves.png` — ทน rotate ≤ 15°, blur, contrast, background noise, translate ≤ 10 % ที่ ≥ 0.95;
+  `reports/robustness/G4_r18_g2init_randaug_20_full_bin/curves.png` สำหรับโมเดลที่ส่งมอบตอนนี้ (mean non-clean 0.9153) และ `reports/robustness/K1_r18_kd_20_full_bin/curves.png` สำหรับรุ่นก่อน — ทน rotate ≤ 15°, blur, contrast, background noise, translate ≤ 10 % ที่ ≥ 0.95;
   จุดอ่อน: เส้นบางลง 2–3 px (erosion) และ occlusion 40 %), latency 6.8 ms/ภาพ CPU bs=1 บนเครื่องนี้ (10–12 ms บน Colab CPU; resnet18@64), weight 44.9 MB (fp16 22.5 MB)
 - Notebook Colab `notebooks/ThaiChar72_Colab.ipynb` (สร้างจาก `scripts/build_notebook.py`): Train (`configs/final.yaml`, สร้าง split v2 เอง
   จาก change list, ใช้ stage-1 init ที่แพ็กมา) / Inference / Gradio-หรือ-ipywidgets upload / robustness quick check — ทดสอบรันจบบน CPU
