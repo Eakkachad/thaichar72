@@ -1,3 +1,7 @@
+> **SUPERSEDED for the current machine (2026-09-22).** The corpus was missing and has been rebuilt, the
+> environment needs a manual install, and the split is 175 rows smaller than the numbers below.
+> Read `tasks/HANDOFF-2026-09-22.md` first; treat everything here as history.
+
 # HANDOFF — state at 2026-09-19 late evening (RTX 4060 / WSL2, `/home/CNN/Deep_CNN`) — §3 below is DONE except the Colab test
 
 Read `CLAUDE.md` first. This file says exactly where things stand and what to run next, in order.

@@ -1,0 +1,19 @@
+# Stage 2: F19 recipe (randaug, CE+LS, EMA, 20 ep, v2 labels) but initialised from G1_synth203_pretrain_r18_64.
+# Direct comparison against F19 (same recipe, 26-font B6a init) isolates the effect of font diversity.
+exp_id: G3_r18_g1init_randaug_20
+img_size: 64
+epochs: 20
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+warmup_epochs: 1.0
+subset_frac: 1.0
+tta: false
+val_subset_frac: 0.5
+init_from: runs/G1_synth203_pretrain_r18_64/best.pt
+model: resnet18
+aug: randaug
+split_file: data/splits/split_seed42_v2.csv

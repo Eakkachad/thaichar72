@@ -2,7 +2,8 @@
 
 Project: **72-class Thai character/digit recognition (CNN + Transfer Learning + Data Augmentation)** — a graded
 course project (KMITL). Owner: eggchad (67070309@kmitl.ac.th). Language with the owner: **Thai** (code/docs in English
-are fine). Read this file first, then `tasks/HANDOFF.md` (exact state + what to do next), then
+are fine). Read this file first, then **`tasks/HANDOFF-2026-09-22.md`** (current machine + data state; supersedes
+`tasks/HANDOFF.md` §-1) and `reports/03-DATA-AUDIT-2026-09-22.md`, then `tasks/HANDOFF.md`, then
 `reports/02-EXPERIMENTS.md` (all results with interpretation). `tasks/HANDOFF-OWNER-TH.md` is the owner's machine-setup guide.
 
 ## 1. Role split (owner's rule — follow it)
