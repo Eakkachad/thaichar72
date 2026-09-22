@@ -1,7 +1,18 @@
-# Final recipe (winner of HANDOFF 3.3 on 2026-09-19): F19 = ImageNet -> synthetic-font pretrain (B6a) -> real data,
-# RandAugment N=2 (no flips), CE+LS 0.1, AdamW cosine, EMA, 20 epochs, 64 px, trained on the label-corrected split
-# (data/splits/split_seed42_v2.csv, see reports/02-EXPERIMENTS.md section H). TTA off for the deliverable.
-exp_id: final_r18_b6ainit_randaug_20_v2
+# Final recipe (winner of the generalisation study, 2026-09-22 — reports/02-EXPERIMENTS.md section K).
+# = G4: ImageNet -> stage-1 pretrain on 203 typefaces + dataUpdate (126,114 synthetic glyphs, all 72 classes)
+#   -> fine-tune on real data with RandAugment N=2 (no flips), CE+LS 0.1, AdamW cosine, EMA, 20 epochs, 64 px,
+#   label-corrected split (data/splits/split_seed42_v2.csv). TTA off for the deliverable.
+#
+# Chosen over the previous F19 recipe (kept as configs/final_f19_v2.yaml) on the project's own selection
+# criteria — document-disjoint split and the robustness gate, never stratified val:
+#   doc top-1   0.9872 vs 0.9856   (+0.16 pt; seed-to-seed std is only +-0.04 pt)
+#   robust gate 0.9153 vs 0.9124   (threshold 0.8988)
+#   tail probe  0.4292 vs 0.2258   (held-out writers, 35 starved classes)
+#   strat val   0.9902 vs 0.9902   (saturated — it separates nothing)
+#
+# init_from points at the PACKAGED stage-1 weight, not runs/*/best.pt, because runs/ is git-ignored and the
+# path in the old final.yaml does not exist on a fresh clone (HANDOFF-2026-09-22 section 7).
+exp_id: final_r18_g2init_randaug_20_v2
 img_size: 64
 epochs: 20
 batch_size: 128
@@ -14,7 +25,7 @@ warmup_epochs: 1.0
 subset_frac: 1.0
 tta: false
 val_subset_frac: 0.5
-init_from: runs/B6a_synth_pretrain_resnet18_64/best.pt
+init_from: weights/thaichar72_r18_synth203du_pretrain_init.pt
 model: resnet18
 aug: randaug
 split_file: data/splits/split_seed42_v2.csv

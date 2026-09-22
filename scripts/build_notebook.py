@@ -54,6 +54,32 @@ This notebook provides a self-contained, reproducible pipeline for 72-class Thai
 
 ---
 
+## Running this in JupyterLab (local)
+
+The notebook is Colab-shaped but has no hard Colab dependency -- the Drive mount, `files.upload()` and
+Gradio calls all fall back when they are unavailable. To run it locally:
+
+```bash
+cd ~/work/thaichar72            # or  cd D:\\Eak_Deeplearn\\thaichar72  on Windows
+uv pip install jupyterlab ipykernel          # NOT in the locked deps -- install them first
+uv run --no-sync python -m ipykernel install --user --name thaichar --display-name "thaichar"
+uv run --no-sync jupyter lab notebooks/ThaiChar72_Colab.ipynb
+```
+
+Use `uv pip install`, never `uv sync` or a bare `uv run` (see `tasks/HANDOFF-2026-09-22.md` section 1.1:
+the venv here is a manual install and a re-sync would undo it).
+
+Section 5 and 5B need `data/cache/glyphs.npz` and `data/splits/split_seed42_v2.csv` to be present -- they are
+what the model is evaluated against. Without them the notebook still loads the weight but cannot score it.
+
+Then pick the **thaichar** kernel and Run All. In the config cell set `USE_DRIVE = False` (the default off
+Colab) and leave `MODE = "inference"` to evaluate the shipped weight without touching the raw dataset.
+
+On this machine the whole notebook runs top-to-bottom in about 15 s; `scripts/run_notebook_local.py`
+executes it headlessly and fails on any error output, which is how it is checked before hand-off.
+
+---
+
 ### Group Information Placeholder
 - **Course / Project**: Thai Character Recognition (72 Classes)
 - **Team**: Deep_CNN Research Team
@@ -220,7 +246,7 @@ if not FINAL_CONFIG.exists():
     FINAL_CONFIG = PROJECT_DIR / "configs" / "matrix" / "A1_resnet18_full_64.yaml"
 
 # 6. Weights path: checks pre-trained checkpoints in runs/ or weights/
-WEIGHTS_PATH = next((p for p in [PROJECT_DIR / "weights" / "thaichar72_resnet18_64.pt", PROJECT_DIR / "runs" / "A1_resnet18_full_64_T4" / "best.pt"] if p.exists()), PROJECT_DIR / "weights" / "thaichar72_resnet18_64.pt")
+WEIGHTS_PATH = next((p for p in [PROJECT_DIR / "weights" / "thaichar72_r18_64_gen.pt", PROJECT_DIR / "weights" / "thaichar72_resnet18_64.pt", PROJECT_DIR / "runs" / "A1_resnet18_full_64_T4" / "best.pt"] if p.exists()), PROJECT_DIR / "weights" / "thaichar72_r18_64_gen.pt")
 if not WEIGHTS_PATH.exists():
     for candidate in [
         PROJECT_DIR / "weights" / "best.pt",
@@ -673,6 +699,259 @@ print("\\n--- Top-20 Confused Pairs ---")
 print(tabulate(top20_df, headers="keys", tablefmt="github", showindex=range(1, min(21, len(top20_df) + 1))))
 """
     cells.append(nbf.v4.new_code_cell(sec5_code))
+
+    # -----------------------------------------------------------------------
+    # Section 5B: Error Explorer
+    # -----------------------------------------------------------------------
+    sec5b_md = """## 5B. Error Explorer — what it got right, what it got wrong, and what it confused it with
+
+Everything here is built from the same forward pass as section 5, so the numbers always agree with it.
+
+1. **`preds_df`** — one row per validation image: true char, predicted char, correct?, confidence, margin
+   (top-1 minus top-2 probability) and how many real training images the true class has. Written to
+   `outputs/predictions.csv` so it can be sorted and filtered outside the notebook.
+2. **Most-confident mistakes** — the errors worth looking at first: the model was sure and still wrong.
+   These are usually label noise or a genuinely ambiguous glyph.
+3. **Least-confident correct predictions** — what it is barely getting right; the first thing to degrade
+   on unseen data.
+4. **Per-class recall and precision** sorted by how much real training data the class has — this is the
+   picture of the long tail.
+5. **Zoomed confusion sub-matrix** over the most-confused classes. The full 72x72 matrix in section 5 is
+   there for completeness, but it is too dense to read; this one is the usable version.
+6. **Confidence histograms** split by correct/incorrect — the monitoring view: a healthy model puts its
+   errors at low confidence.
+7. **`show_class("<char>")`** — call it on any Thai character to see that class's own errors as images.
+"""
+    cells.append(nbf.v4.new_markdown_cell(sec5b_md))
+
+    sec5b_code = """import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# ---------------------------------------------------------------------------
+# 1. Per-sample prediction table
+# ---------------------------------------------------------------------------
+_res    = eval_results[_trained_split]
+_logits = np.asarray(_res["logits"], dtype=np.float64)
+_y_true = np.asarray(_res["y_true"], dtype=int)
+
+_e     = np.exp(_logits - _logits.max(axis=1, keepdims=True))
+_probs = _e / _e.sum(axis=1, keepdims=True)
+_order = np.argsort(-_probs, axis=1)
+_pred  = _order[:, 0]
+_p1    = _probs[np.arange(len(_pred)), _order[:, 0]]
+_p2    = _probs[np.arange(len(_pred)), _order[:, 1]]
+
+preds_df = pd.DataFrame({
+    "path":         val_subset["path"].values,
+    "true_label":   _y_true,
+    "pred_label":   _pred,
+    "true_char":    [CLASS_CHARS[i] for i in _y_true],
+    "pred_char":    [CLASS_CHARS[i] for i in _pred],
+    "correct":      _pred == _y_true,
+    "confidence":   _p1,
+    "margin":       _p1 - _p2,
+    "runner_up":    [CLASS_CHARS[i] for i in _order[:, 1]],
+    "n_train_true": class_counts_train[_y_true],
+})
+
+_n_ok  = int(preds_df.correct.sum())
+_n_bad = int((~preds_df.correct).sum())
+print(f"validation images : {len(preds_df):,}")
+print(f"  correct         : {_n_ok:,}  ({100*_n_ok/len(preds_df):.2f}%)")
+print(f"  wrong           : {_n_bad:,}  ({100*_n_bad/len(preds_df):.2f}%)")
+print(f"  mean confidence : correct {preds_df.loc[preds_df.correct,'confidence'].mean():.3f}"
+      f" | wrong {preds_df.loc[~preds_df.correct,'confidence'].mean():.3f}")
+
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+_csv = OUTPUT_DIR / "predictions.csv"
+preds_df.to_csv(_csv, index=False)
+print("wrote", _csv, " (one row per validation image)")
+
+print()
+print("--- every confusion the model actually made, most frequent first ---")
+_pairs = (preds_df[~preds_df.correct]
+          .groupby(["true_char", "pred_char"]).size().reset_index(name="n")
+          .sort_values("n", ascending=False))
+_pairs["n_train_true"] = _pairs.true_char.map(
+    {CLASS_CHARS[i]: int(class_counts_train[i]) for i in range(72)})
+print(_pairs.head(25).to_string(index=False))
+print(f"({len(_pairs)} distinct confused pairs in total)")
+
+# ---------------------------------------------------------------------------
+# 2-3. Image galleries
+# ---------------------------------------------------------------------------
+_pi = {p: i for i, p in enumerate(cache_dict.paths)}
+
+def _glyph(path_str):
+    # fetch a validation glyph from the cache, padded square for display
+    i = _pi.get(path_str)
+    if i is None:
+        return None
+    im = cache_dict[i]
+    h, w = im.shape[:2]
+    c = max(h, w) + 4
+    out = np.full((c, c), 255, dtype=np.uint8)
+    out[(c - h) // 2:(c - h) // 2 + h, (c - w) // 2:(c - w) // 2 + w] = im
+    return out
+
+def _gallery(rows, title, ncol=8, nrow=3, fname=None):
+    # grid of glyphs captioned 'true -> pred (confidence)'
+    rows = rows.head(ncol * nrow)
+    if rows.empty:
+        print("(" + title + ": nothing to show)")
+        return
+    fig, axes = plt.subplots(nrow, ncol, figsize=(1.55 * ncol, 1.95 * nrow))
+    for ax in np.ravel(np.atleast_1d(axes)):
+        ax.axis("off")
+    for ax, (_, r) in zip(np.ravel(np.atleast_1d(axes)), rows.iterrows()):
+        g = _glyph(r.path)
+        if g is not None:
+            ax.imshow(g, cmap="gray", vmin=0, vmax=255)
+        ax.set_title(f"{r.true_char} → {r.pred_char}" + chr(10) + f"{r.confidence:.2f}",
+                     fontsize=9, color=("#1a7f37" if r.correct else "#c0392b"))
+    fig.suptitle(title, fontsize=12, fontweight="bold")
+    fig.tight_layout()
+    if fname:
+        fig.savefig(OUTPUT_DIR / fname, dpi=140, bbox_inches="tight")
+    plt.show()
+    plt.close(fig)
+
+_wrong = preds_df[~preds_df.correct].sort_values("confidence", ascending=False)
+_gallery(_wrong, "Most-confident MISTAKES (true → predicted) — check these for label noise",
+         fname="errors_confident.png")
+
+_lowconf_ok = preds_df[preds_df.correct].sort_values("confidence")
+_gallery(_lowconf_ok, "Correct but LEAST confident — the first thing to break on new data",
+         fname="correct_lowconf.png")
+
+# ---------------------------------------------------------------------------
+# 4. Per-class recall / precision against data availability
+# ---------------------------------------------------------------------------
+_rows = []
+for i in range(72):
+    t = preds_df.true_label == i
+    p = preds_df.pred_label == i
+    _rows.append(dict(
+        char=CLASS_CHARS[i], n_train=int(class_counts_train[i]), n_val=int(t.sum()),
+        recall=float(preds_df.correct[t].mean()) if t.any() else np.nan,
+        precision=float(preds_df.correct[p].mean()) if p.any() else np.nan))
+class_df = pd.DataFrame(_rows).sort_values("n_train")
+
+fig, ax = plt.subplots(figsize=(15, 4.2))
+x = np.arange(len(class_df))
+ax.bar(x - 0.2, class_df.recall.fillna(0), 0.4, label="recall", color="#2b6cb0")
+ax.bar(x + 0.2, class_df.precision.fillna(0), 0.4, label="precision", color="#dd8a3c")
+ax.set_xticks(x)
+ax.set_xticklabels([str(c) + chr(10) + str(n) for c, n in zip(class_df.char, class_df.n_train)],
+                   fontsize=7)
+ax.set_ylim(0, 1.02)
+ax.set_ylabel("score")
+ax.set_xlabel("class (second row = number of REAL training images), scarcest first")
+ax.set_title("Per-class recall and precision vs how much real training data the class has",
+             fontsize=12, fontweight="bold")
+ax.legend(loc="lower right")
+ax.grid(axis="y", alpha=0.3)
+fig.tight_layout()
+fig.savefig(OUTPUT_DIR / "per_class_recall_precision.png", dpi=140, bbox_inches="tight")
+plt.show()
+plt.close(fig)
+
+_blind = class_df[class_df.n_val == 0]
+if len(_blind):
+    print("WARNING:", len(_blind), "class(es) have NO validation images at all -",
+          "their accuracy is unknown, not perfect:", ", ".join(_blind.char))
+print()
+print("--- 12 weakest classes by recall ---")
+print(class_df.dropna(subset=["recall"]).sort_values("recall").head(12).to_string(index=False))
+
+# ---------------------------------------------------------------------------
+# 5. Zoomed confusion sub-matrix (the 72x72 one is unreadable)
+# ---------------------------------------------------------------------------
+_cm = np.zeros((72, 72), dtype=int)
+for t_, p_ in zip(preds_df.true_label, preds_df.pred_label):
+    _cm[t_, p_] += 1
+_err = (_cm.sum(axis=1) - np.diag(_cm)) + (_cm.sum(axis=0) - np.diag(_cm))
+_sel = np.sort(np.argsort(-_err)[:18])
+_sub = _cm[np.ix_(_sel, _sel)].astype(float)
+_rs  = _sub.sum(axis=1, keepdims=True)
+_subn = np.divide(_sub, _rs, out=np.zeros_like(_sub), where=_rs > 0)
+
+fig, ax = plt.subplots(figsize=(8.5, 7))
+_offdiag = _subn - np.diag(np.diag(_subn))
+im = ax.imshow(_subn, cmap="Reds", vmin=0, vmax=max(0.3, float(_offdiag.max())))
+ax.set_xticks(range(len(_sel)))
+ax.set_yticks(range(len(_sel)))
+ax.set_xticklabels([CLASS_CHARS[i] for i in _sel], fontsize=11)
+ax.set_yticklabels([CLASS_CHARS[i] for i in _sel], fontsize=11)
+ax.set_xlabel("predicted")
+ax.set_ylabel("true")
+ax.set_title("Confusion among the 18 most error-prone classes (row-normalised)",
+             fontsize=12, fontweight="bold")
+for a_ in range(len(_sel)):
+    for b_ in range(len(_sel)):
+        if _sub[a_, b_] > 0 and a_ != b_:
+            ax.text(b_, a_, int(_sub[a_, b_]), ha="center", va="center", fontsize=8)
+fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+fig.tight_layout()
+fig.savefig(OUTPUT_DIR / "confusion_zoom.png", dpi=140, bbox_inches="tight")
+plt.show()
+plt.close(fig)
+
+# ---------------------------------------------------------------------------
+# 6. Confidence histograms - the monitoring view
+# ---------------------------------------------------------------------------
+fig, axes = plt.subplots(1, 2, figsize=(12, 3.6))
+bins = np.linspace(0, 1, 41)
+axes[0].hist(preds_df.loc[preds_df.correct, "confidence"], bins=bins, color="#2b6cb0", label="correct")
+axes[0].hist(preds_df.loc[~preds_df.correct, "confidence"], bins=bins, color="#c0392b", label="wrong")
+axes[0].set_yscale("log")
+axes[0].set_xlabel("confidence")
+axes[0].set_ylabel("images (log scale)")
+axes[0].set_title("Confidence: correct vs wrong")
+axes[0].legend()
+
+_th  = np.linspace(0, 1, 51)
+_cov = [float((preds_df.confidence >= t).mean()) for t in _th]
+_acc = [float(preds_df.correct[preds_df.confidence >= t].mean())
+        if (preds_df.confidence >= t).any() else np.nan for t in _th]
+axes[1].plot(_cov, _acc, marker=".", color="#1a7f37")
+axes[1].set_xlabel("coverage (fraction of images kept)")
+axes[1].set_ylabel("accuracy on the kept images")
+axes[1].set_title("Accuracy vs coverage - where to set a reject threshold")
+axes[1].grid(alpha=0.3)
+fig.tight_layout()
+fig.savefig(OUTPUT_DIR / "confidence_monitor.png", dpi=140, bbox_inches="tight")
+plt.show()
+plt.close(fig)
+
+# ---------------------------------------------------------------------------
+# 7. Inspect any single class
+# ---------------------------------------------------------------------------
+def show_class(ch, max_imgs=24):
+    # show_class('ก') -- every mistake made on that class, as images
+    if ch not in CLASS_CHARS:
+        print(repr(ch), "is not one of the 72 classes")
+        return
+    i = CLASS_CHARS.index(ch)
+    sub = preds_df[preds_df.true_label == i]
+    if sub.empty:
+        print("class", ch, "has no validation images")
+        return
+    bad = sub[~sub.correct].sort_values("confidence", ascending=False)
+    print(f"class {ch}: {len(sub)} val images, {len(bad)} wrong "
+          f"(recall {sub.correct.mean():.3f}, n_train {int(class_counts_train[i])})")
+    if len(bad):
+        print("mistaken for:", bad.pred_char.value_counts().to_dict())
+        _gallery(bad, "errors on class " + ch, ncol=8, nrow=max(1, min(3, -(-len(bad) // 8))))
+    else:
+        print("no errors on this class")
+
+print()
+print("tip: call  show_class('ก')  on any of the 72 characters to inspect it.")
+"""
+
+    cells.append(nbf.v4.new_code_cell(sec5b_code))
 
     # -----------------------------------------------------------------------
     # Section 6: Inference Demo
