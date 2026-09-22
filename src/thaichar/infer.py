@@ -100,7 +100,17 @@ def _reframe(arr: np.ndarray, tol: int = 8) -> np.ndarray:
     # someone padded on says nothing about the paper) and not from the whole ring (on a tight crop
     # the ring is full of edge-touching strokes -- using it costs 7 pt on well-framed input).
     # Corners are the pixels a glyph is least likely to occupy.
-    bg = int(np.median([a[0, 0], a[0, -1], a[-1, 0], a[-1, -1]]))
+    #
+    # Take the LIGHTEST corner, not their median. On a tight crop two or more corners are often ink,
+    # and a median then pads the glyph with an ink-coloured border; Otsu reads that border as the
+    # background and inverts the whole image, which destroys it. Measured on 493 held-out glyphs
+    # (shipped model): median -> 0.9695, max -> 0.9898, which is exactly what the training-time
+    # dataset transform scores on the same images. The median rule also broke `--polarity both`,
+    # because inverting the input merely moved the bad guess rather than fixing it, so BOTH members
+    # of the pair came out mangled (0.9715). With the lightest-corner rule one member of the pair is
+    # always framed correctly, so `--polarity both` covers genuinely inverted input (0.9858 across
+    # tight / white-padded / black-padded / inverted alike) as it was meant to.
+    bg = int(np.max([a[0, 0], a[0, -1], a[-1, 0], a[-1, -1]]))
     pad_px = max(4, min(a.shape[:2]) // 8)
     return np.pad(a, pad_px, mode="constant", constant_values=bg)
 

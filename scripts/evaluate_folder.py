@@ -57,7 +57,9 @@ def _load_gray(path: str) -> np.ndarray:
 
 def _bordered(a: np.ndarray) -> np.ndarray:
     """Surround the glyph with its own background so the border-ring polarity test is valid."""
-    v = int(np.median([a[0, 0], a[0, -1], a[-1, 0], a[-1, -1]]))
+    # lightest corner, not the median -- see thaichar.infer._reframe for why the median inverts
+    # tight crops and why that also defeated --polarity both
+    v = int(np.max([a[0, 0], a[0, -1], a[-1, 0], a[-1, -1]]))
     pad = max(4, min(a.shape[:2]) // 8)
     return np.pad(a, pad, constant_values=v)
 CHAR_TO_IDX = {code_to_char(c): i for i, c in enumerate(CLASS_CODES)}
