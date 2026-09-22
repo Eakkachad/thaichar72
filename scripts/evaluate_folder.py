@@ -122,8 +122,47 @@ def _softmax_max(logits: np.ndarray) -> np.ndarray:
     return (e / e.sum(1, keepdims=True)).max(1)
 
 
+def _rotation_pass(model, cfg, paths, la: np.ndarray, device, tau: float, margin: float,
+                   batch: int) -> tuple[np.ndarray, int]:
+    """Re-read only the images the model is unsure about, from a set of rotated copies.
+
+    Rotation is the sharpest fragility the stress suite found (retention 0.52 at 30 deg, 0.10 at
+    45 deg -- reports/02-EXPERIMENTS.md section N). Searching rotations recovers 38-75 pt of it.
+    The tau/margin guards are what keep it from costing anything on upright input; see
+    thaichar.infer.predict_with_rotation_search for the measurements behind both numbers.
+    """
+    from thaichar.infer import ROTATION_SEARCH_ANGLES, rotate_canvas
+
+    up = _softmax_max(la)
+    need = [i for i in range(len(la)) if up[i] < tau]
+    if not need:
+        return la, 0
+    best = up.copy()
+    changed = 0
+    for deg in ROTATION_SEARCH_ANGLES:
+        xs, gs, idx = [], [], []
+        for i in need:
+            try:
+                a = _bordered(rotate_canvas(_load_gray(paths[i]), deg))
+                x, g = preprocess_image(a, cfg)
+            except Exception:  # noqa: BLE001
+                continue
+            xs.append(x); gs.append(g); idx.append(i)
+        if not xs:
+            continue
+        lr = _forward(model, torch.cat(xs), torch.cat(gs), device, batch)
+        cr = _softmax_max(lr)
+        for k, i in enumerate(idx):
+            if cr[k] > max(best[i], up[i] + margin):
+                la[i] = lr[k]
+                best[i] = cr[k]
+                changed += 1
+    return la, changed
+
+
 def run_one(ckpt: str, df: pd.DataFrame, device, polarity: str = "both",
-            batch: int = 256) -> tuple[np.ndarray, np.ndarray, dict]:
+            batch: int = 256, rotation_tta: bool = False,
+            rot_tau: float = 0.85, rot_margin: float = 0.30) -> tuple[np.ndarray, np.ndarray, dict]:
     model, cfg = load_checkpoint(ckpt, device=device)
     model.eval()
     xs_a, gs_a, xs_b, gs_b, ok_idx, failed = [], [], [], [], [], []
@@ -150,7 +189,12 @@ def run_one(ckpt: str, df: pd.DataFrame, device, polarity: str = "both",
         take_b = _softmax_max(lb) > _softmax_max(la)
         n_flip = int(take_b.sum())
         la[take_b] = lb[take_b]
-    return la, np.asarray(ok_idx), {"cfg": cfg, "failed": failed, "n_flipped": n_flip}
+    n_rot = 0
+    if rotation_tta:
+        ok_paths = [df["path"].iloc[i] for i in ok_idx]
+        la, n_rot = _rotation_pass(model, cfg, ok_paths, la, device, rot_tau, rot_margin, batch)
+    return la, np.asarray(ok_idx), {"cfg": cfg, "failed": failed, "n_flipped": n_flip,
+                                    "n_rotation_rereads": n_rot}
 
 
 def main() -> None:
@@ -162,6 +206,15 @@ def main() -> None:
     ap.add_argument("--out-dir", default="outputs/onsite")
     ap.add_argument("--polarity", choices=["both", "asis"], default="both",
                     help="both (default): try the image and its inverse, keep the more confident")
+    ap.add_argument("--rotation-tta", action="store_true",
+                    help="re-read low-confidence images from rotated copies; buys back 38-75 pt "
+                         "when the input is rotated and costs ~0 on upright input "
+                         "(reports/02-EXPERIMENTS.md section N). scripts/triage_input.py says "
+                         "whether this batch needs it")
+    ap.add_argument("--rot-tau", type=float, default=0.85,
+                    help="only search rotations below this confidence (default 0.85)")
+    ap.add_argument("--rot-margin", type=float, default=0.30,
+                    help="only accept a rotated reading if it beats upright by this (default 0.30)")
     ap.add_argument("--device", default="auto")
     args = ap.parse_args()
 
@@ -218,7 +271,9 @@ def main() -> None:
             print(f"\n{ck}: MISSING, skipped")
             continue
         t = time.time()
-        logits, ok, info = run_one(ck, df, device, polarity=args.polarity)
+        logits, ok, info = run_one(ck, df, device, polarity=args.polarity,
+                                   rotation_tta=args.rotation_tta,
+                                   rot_tau=args.rot_tau, rot_margin=args.rot_margin)
         pred = logits.argmax(1)
         name = Path(ck).stem
         sub = df.iloc[ok].copy()

@@ -16,7 +16,9 @@ from thaichar.infer import (
     apply_corruption,
     load_checkpoint,
     predict_topk,
+    predict_with_rotation_search,
     preprocess_image,
+    rotate_canvas,
 )
 from thaichar.models import build_model
 from thaichar.transforms import pad_to_square_canvas
@@ -172,3 +174,37 @@ def test_corruptions_preserve_ink():
         output_ink = int((corrupted < 128).sum())
         ratio = output_ink / float(input_ink)
         assert ratio >= 0.30, f"{name} (sev={smallest_sev}) failed ink preservation: ratio {ratio:.3f} < 0.30"
+
+
+def test_rotate_canvas_keeps_the_glyph_and_the_background():
+    a = np.full((20, 14), 255, np.uint8)
+    a[4:16, 5:9] = 0
+    for deg in (10, 45, 90, -30):
+        r = rotate_canvas(a, deg)
+        assert r.dtype == np.uint8
+        assert (r < 128).sum() > 0, f"ink disappeared at {deg} deg"
+        # padding must be background, not ink -- preprocess_image reads polarity off the border
+        assert r[0, 0] > 200 and r[-1, -1] > 200
+
+
+def test_rotation_search_leaves_confident_images_alone(model_and_cfg):
+    """The guard that matters: an upright glyph the model is already sure about must not be
+    re-read from a rotated copy, or the feature costs accuracy on clean input."""
+    model, cfg = model_and_cfg
+    a = np.full((28, 20), 255, np.uint8)
+    a[6:22, 7:13] = 0
+    canvases = [a] * 4
+    p_plain, c_plain, _ = predict_with_rotation_search(
+        model, cfg, canvases, tau=0.0, margin=0.0)          # tau=0 -> never search
+    p_srch, c_srch, n = predict_with_rotation_search(
+        model, cfg, canvases, tau=0.0, margin=0.0)
+    assert n == 0
+    assert np.array_equal(p_plain, p_srch)
+    assert len(p_srch) == len(canvases)
+
+
+def test_rotation_search_reports_rejected_images(model_and_cfg):
+    model, cfg = model_and_cfg
+    blank = np.full((16, 16), 255, np.uint8)               # no ink -> preprocess rejects it
+    preds, confs, _ = predict_with_rotation_search(model, cfg, [blank], tau=1.0)
+    assert preds[0] == -1 and confs[0] == -1.0

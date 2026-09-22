@@ -480,3 +480,109 @@ def apply_corruption(canvas_u8: np.ndarray, name: str, severity: Any) -> np.ndar
     if name not in CORRUPTION_FNS:
         raise ValueError(f"Unknown corruption {name!r}. Available: {list(CORRUPTION_FNS.keys())}")
     return CORRUPTION_FNS[name](canvas_u8, severity)
+
+
+# ---------------------------------------------------------------------------
+# Rotation search (opt-in)
+# ---------------------------------------------------------------------------
+ROTATION_SEARCH_ANGLES: tuple[int, ...] = (-45, -30, -20, -10, 10, 20, 30, 45)
+
+
+def rotate_canvas(canvas_u8: np.ndarray, degrees: float) -> np.ndarray:
+    """Rotate about the centre on a white background, padded so nothing is clipped."""
+    pad = max(canvas_u8.shape[:2]) // 2 + 4
+    p = np.pad(canvas_u8, pad, mode="constant", constant_values=255)
+    h, w = p.shape[:2]
+    mat = cv2.getRotationMatrix2D((w / 2, h / 2), float(degrees), 1.0)
+    return cv2.warpAffine(p, mat, (w, h), flags=cv2.INTER_LINEAR,
+                          borderMode=cv2.BORDER_CONSTANT, borderValue=255)
+
+
+def predict_with_rotation_search(
+    model: nn.Module,
+    cfg: dict[str, Any],
+    canvases: list[np.ndarray],
+    device: torch.device | str = "cpu",
+    tau: float = 0.85,
+    margin: float = 0.30,
+    angles: tuple[int, ...] = ROTATION_SEARCH_ANGLES,
+    batch_size: int = 256,
+) -> tuple[np.ndarray, np.ndarray, int]:
+    """Read each glyph upright; for the ones the model is unsure about, try rotating it back.
+
+    The model is trained on upright glyphs and `scripts/robustness.py` only ever rotates by 20 deg,
+    so real rotation is the sharpest fragility the stress suite found: on 493 held-out glyphs the
+    shipped model retains 0.52 at 30 deg and 0.10 at 45 deg. Rotating a glyph through a set of
+    angles and keeping whichever reading the model is most confident about recovers almost all of
+    it, because an upright glyph is what the model was trained to be confident about.
+
+    Applied to every image it also COSTS accuracy (clean 0.9858 -> 0.9716, motion blur -6.7 pt):
+    on a degraded glyph some rotation usually looks better to the model than the true one. Two
+    guards fix that, and both were measured rather than guessed:
+
+      tau     only search when the upright reading is below this confidence. At 0.85 just 3 % of
+              clean images trigger a search at all.
+      margin  only accept a rotated reading if it beats the upright one by this much.
+
+    With tau=0.85, margin=0.30 on the base sample (baseline -> with search):
+
+        clean        0.9858 -> 0.9817     rotate 30   0.5193 -> 0.8966
+        rotate 15    0.9331 -> 0.9493     rotate 45   0.0974 -> 0.8479
+        motion blur 7  0.8195 -> 0.7931   erode 4     0.2500 -> 0.2439
+
+    So it buys back 38-75 pt on rotation for 0.4 pt on clean input and ~2.6 pt on heavy blur.
+    Worth enabling when the input may be rotated, which `scripts/triage_input.py` decides; not
+    worth it when the input is known to be upright.
+
+    Returns (predictions, confidences, n_searched); entries are -1 where preprocessing rejected
+    the image.
+    """
+    n = len(canvases)
+    preds = np.full(n, -1, dtype=int)
+    confs = np.full(n, -1.0, dtype=float)
+
+    def _run(items: list[tuple[int, np.ndarray]]) -> None:
+        xs, gs, idx = [], [], []
+        for i, a in items:
+            try:
+                x, g = preprocess_image(a, cfg)
+            except Exception:  # noqa: BLE001
+                continue
+            xs.append(x)
+            gs.append(g)
+            idx.append(i)
+        for s in range(0, len(xs), batch_size):
+            x = torch.cat(xs[s:s + batch_size]).to(device)
+            g = torch.cat(gs[s:s + batch_size]).to(device)
+            with torch.no_grad():
+                pr = torch.softmax(model(x, g).float(), dim=1).cpu().numpy()
+            for k, i in enumerate(idx[s:s + batch_size]):
+                c, p = float(pr[k].max()), int(pr[k].argmax())
+                if c > confs[i]:
+                    confs[i], preds[i] = c, p
+
+    _run(list(enumerate(canvases)))
+    upright = confs.copy()
+    need = [i for i in range(n) if 0 <= confs[i] < tau]
+    for deg in angles:
+        if not need:
+            break
+        xs, gs, idx = [], [], []
+        for i in need:
+            try:
+                x, g = preprocess_image(rotate_canvas(canvases[i], deg), cfg)
+            except Exception:  # noqa: BLE001
+                continue
+            xs.append(x)
+            gs.append(g)
+            idx.append(i)
+        for s in range(0, len(xs), batch_size):
+            x = torch.cat(xs[s:s + batch_size]).to(device)
+            g = torch.cat(gs[s:s + batch_size]).to(device)
+            with torch.no_grad():
+                pr = torch.softmax(model(x, g).float(), dim=1).cpu().numpy()
+            for k, i in enumerate(idx[s:s + batch_size]):
+                c, p = float(pr[k].max()), int(pr[k].argmax())
+                if c > max(confs[i], upright[i] + margin):
+                    confs[i], preds[i] = c, p
+    return preds, confs, len(need)
