@@ -1,0 +1,751 @@
+{
+  "manifest_rows": 62707,
+  "restored": 62522,
+  "md5_verified": 62522,
+  "md5_mismatch": 0,
+  "md5_mismatch_examples": [],
+  "missing": 185,
+  "missing_files": [
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_008sg_1_169.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_012sg_2_255.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_015tg_3_147.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_015tg_3_201.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_015tg_4_19.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_018sg_4_440.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020sg_3_444.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_131.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_138.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_150.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_324.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_438.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_447.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_3_84.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_4_158.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_4_24.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bc_020tg_4_414.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_109.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_131.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_141.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_182.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_199.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_261.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_343.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_59.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_2_83.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_4_20.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_5_150.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_5_183.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_5_199.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_5_262.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001sg_5_66.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_109.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_141.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_182.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_199.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_259.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_341.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_59.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_72.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_2_83.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_4_2.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_4_20.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_132.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_150.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_186.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_203.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_269.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_56.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_67.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_001tg_5_72.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002sg_5_89.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_10_176.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_4_34.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_6_0.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_6_163.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_7_105.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_7_113.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_7_170.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_7_200.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_7_353.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_9_225.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_9_44.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_002tg_9_465.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_006tg_4_70.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_007sg_4_249.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_007sg_7_288.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_007tg_4_250.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008sg_4_175.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_4_176.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_122.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_15.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_20.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_307.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_31.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_4.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_42.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_459.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_471.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_58.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_69.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_72.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_76.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_82.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_85.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_008tg_6_90.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_009sg_4_156.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_009sg_4_323.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_009sg_4_404.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_009tg_2_157.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011sg_2_329.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_1_323.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_108.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_128.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_139.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_153.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_25.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_3.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_45.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_67.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_2_78.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_011tg_3_80.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_012sg_4_424.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_013sg_1_3.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_013sg_1_433.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_013sg_6_291.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_013tg_1_437.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_014sg_2_305.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_014sg_2_420.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_014sg_4_240.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_014tg_2_304.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_014tg_3_46.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_016sg_8_140.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_016sg_8_234.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_016tg_8_235.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_017sg_7_485.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_3_382.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_5_40.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_6_270.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_6_279.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_6_281.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_7_107.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_7_146.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_7_278.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_7_301.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_7_313.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_7_91.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_9_160.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_9_23.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_9_239.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018sg_9_46.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018tg_6_282.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_018tg_6_395.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_3_7.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_3_87.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_5_182.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_5_212.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_5_24.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_5_62.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_6_0.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_6_167.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_6_67.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_7_3.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_8_160.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019sg_8_59.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_019tg_8_59.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_2_306.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_2_360.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_2_377.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_2_429.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_2_467.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_4_186.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_5_136.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_5_213.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_6_112.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_6_241.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_6_349.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_6_47.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/be_020sg_6_49.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_001sg_8_212.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_001sg_8_274.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_001sg_8_473.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_001sg_9_10.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_001tg_8_478.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_002sg_10_241.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_002sg_10_319.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_002tg_7_29.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_003sg_5_103.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_003sg_7_144.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_003sg_7_450.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_003tg_7_229.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_005sg_9_338.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_006sg_3_146.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_006sg_3_147.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_007sg_3_158.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_007sg_8_390.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_007sg_8_438.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_007sg_8_66.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_007tg_8_292.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_007tg_8_63.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_008sg_3_317.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_011sg_4_413.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/210/bl_011tg_4_319.jpg",
+      "code": "210"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/229/be_011tg_2_13.jpg",
+      "code": "229"
+    },
+    {
+      "path": "ThaiCharacter Dataset/round2/240/Copy of bc_008tg_5_44.jpg",
+      "code": "240"
+    }
+  ],
+  "classes_restored": 72
+}

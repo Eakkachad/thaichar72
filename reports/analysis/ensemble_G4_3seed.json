@@ -1,0 +1,44 @@
+{
+ "members": {
+  "G4_r18_g2init_randaug_20": {
+   "top1": 0.9902,
+   "balanced_acc": 0.9934,
+   "macro_f1": 0.9912,
+   "minority_acc": 1.0
+  },
+  "G4_r18_g2init_randaug_20_s0": {
+   "top1": 0.9898,
+   "balanced_acc": 0.9935,
+   "macro_f1": 0.9912,
+   "minority_acc": 1.0
+  },
+  "G4_r18_g2init_randaug_20_s1": {
+   "top1": 0.9895,
+   "balanced_acc": 0.9933,
+   "macro_f1": 0.9907,
+   "minority_acc": 1.0
+  }
+ },
+ "ensembles": {
+  "G4_r18_g2init_randaug_20 + G4_r18_g2init_randaug_20_s0 + G4_r18_g2init_randaug_20_s1": {
+   "soft_vote": {
+    "top1": 0.9905,
+    "balanced_acc": 0.9936,
+    "macro_f1": 0.9913,
+    "minority_acc": 1.0
+   },
+   "logit_avg": {
+    "top1": 0.9905,
+    "balanced_acc": 0.9936,
+    "macro_f1": 0.9913,
+    "minority_acc": 1.0
+   },
+   "tau_sweep_soft": {
+    "0": 0.9936,
+    "0.25": 0.9939,
+    "0.5": 0.994,
+    "0.75": 0.9934
+   }
+  }
+ }
+}

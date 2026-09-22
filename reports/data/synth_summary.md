@@ -1,6 +1,6 @@
 # Synthetic Thai Glyph Dataset Summary
 
-Generated: 2026-09-19 11:08:41
+Generated: 2026-09-22 16:32:30
 Total synthetic glyphs: **21,600** (72 classes)
 
 ## 1. Fonts Used
