@@ -95,8 +95,14 @@ def discover(root: Path, use_labels: bool) -> pd.DataFrame:
 
 def default_ckpts(root: Path) -> list[str]:
     """Every packaged weight, best first, so the strongest is tried while time remains."""
-    order = ["thaichar72_r18_64_gen.pt", "thaichar72_resnet18_64.pt",
-             "thaichar72_mnv3small_64_small.pt", "thaichar72_resnet18_64_v1labels.pt"]
+    # Order matters: the hour is finite, so the strongest candidate is scored first and the
+    # label-convention hedges follow. gen = the current recipe on v2 labels; gen_v3labels = the
+    # same recipe after 146 human-confirmed label fixes; v1labels = before the DataV2 corrections.
+    # Which convention the hidden key follows is unknowable in advance -- so all three go, and the
+    # data decides.
+    order = ["thaichar72_r18_64_gen.pt", "thaichar72_r18_64_gen_v3labels.pt",
+             "thaichar72_resnet18_64.pt", "thaichar72_mnv3small_64_small.pt",
+             "thaichar72_resnet18_64_v1labels.pt"]
     out = [str(root / "weights" / n) for n in order if (root / "weights" / n).exists()]
     return out or [str(root / "weights" / "thaichar72_r18_64_gen.pt")]
 
