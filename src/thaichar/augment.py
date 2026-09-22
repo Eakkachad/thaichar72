@@ -13,7 +13,7 @@ from typing import Callable, Sequence
 import cv2
 import numpy as np
 
-PRESETS: list[str] = ["none", "base", "morph", "full", "randaug", "trivial"]
+PRESETS: list[str] = ["none", "base", "morph", "full", "randaug", "trivial", "randaug_hard"]
 
 
 class RandomAffine:
@@ -274,13 +274,23 @@ class Rebinarize:
         return np.where(img > self.threshold, np.uint8(255), np.uint8(0))
 
 
-def _build_scaled_op(op_name: str, magnitude: float) -> Callable[[np.ndarray, np.random.Generator], np.ndarray]:
-    """Create an operation scaled by magnitude in [0, 1]."""
+def _build_scaled_op(op_name: str, magnitude: float,
+                     hard: bool = False) -> Callable[[np.ndarray, np.random.Generator], np.ndarray]:
+    """Create an operation scaled by magnitude in [0, 1].
+
+    `hard` widens ROTATION only. The stress suite found three fragilities the default ranges never
+    reach -- rotation 30 deg, downscale 0.25, erosion 4 px against ranges of 8 deg, 0.5 and ~1 px
+    (reports/02-EXPERIMENTS.md section N) -- and widening all three was tried first. Only rotation
+    paid: a 5x5 stroke kernel made erosion robustness WORSE (0.25 -> 0.16 at erode 4, because the
+    wider kernel destroys thin glyphs and the ink guard then discards the sample), and a 0.75
+    downscale range moved pixelate retention by -1.2 pt. So this widens what worked and leaves the
+    other two at their defaults.
+    """
     mag = max(0.0, min(1.0, magnitude))
     if op_name == "affine":
         return RandomAffine(
-            rot=8.0 * mag,
-            shear=10.0 * mag,
+            rot=(30.0 if hard else 8.0) * mag,
+            shear=(16.0 if hard else 10.0) * mag,
             scale=(1.0 - 0.15 * mag, 1.0 + 0.15 * mag),
             translate=0.08 * mag,
             p=1.0,
@@ -358,11 +368,12 @@ class PresetTransform:
         if self.preset in ("base", "morph", "full"):
             for op in self.ops:
                 out = op(out, rng)
-        elif self.preset == "randaug":
+        elif self.preset in ("randaug", "randaug_hard"):
+            hard = self.preset == "randaug_hard"
             chosen_ops = rng.choice(CANDIDATE_OPS, size=2, replace=True)
             mag = float(rng.uniform(0.0, 1.0))
             for op_name in chosen_ops:
-                out = _build_scaled_op(op_name, mag)(out, rng)
+                out = _build_scaled_op(op_name, mag, hard=hard)(out, rng)
         elif self.preset == "trivial":
             chosen_op = str(rng.choice(CANDIDATE_OPS))
             mag = float(rng.uniform(0.0, 1.0))

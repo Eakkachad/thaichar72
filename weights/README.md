@@ -11,3 +11,4 @@
 | thaichar72_r18_64_gen_fp16 | resnet18 | 64 | randaug | runs/G2_synth203du_pretrain_r18_64/best.pt | 0.9902 | 0.9934 | 22.5 | 96f9c8d4 |
 | thaichar72_r18_synth203du_pretrain_init | resnet18 | 64 | full | ImageNet | 0.9396 | 0.9354 | 44.9 | 30aa5ef0 |
 | thaichar72_r18_64_gen_v3labels | resnet18 | 64 | randaug | weights/thaichar72_r18_synth203du_pretrain_init.pt | 0.9910 | 0.9909 | 44.9 | 7ef256dd |
+| thaichar72_r18_64_gen_rotaug | resnet18 | 64 | randaug_hard | runs/G2_synth203du_pretrain_r18_64/best.pt | 0.9900 | 0.9935 | 44.9 | 46e8d65c |

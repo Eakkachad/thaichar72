@@ -1,0 +1,58 @@
+{
+ "name": "thaichar72_r18_64_gen_rotaug",
+ "file": "weights/thaichar72_r18_64_gen_rotaug.pt",
+ "bytes": 44940363,
+ "md5": "46e8d65c6e7ab36423b53f4815f4ffdf",
+ "dtype": "fp32",
+ "model": "resnet18",
+ "img_size": 64,
+ "channel_mode": "gray3",
+ "geometry": false,
+ "aug": "randaug_hard",
+ "init_from": "runs/G2_synth203du_pretrain_r18_64/best.pt",
+ "epochs": 20,
+ "seed": 42,
+ "split_kind": "strat",
+ "val_metrics": {
+  "top1": 0.9899941632619028,
+  "top5": 0.9989994163261903,
+  "balanced_acc": 0.9934728610065194,
+  "macro_f1": 0.9910960320575986,
+  "minority_acc": 1.0
+ },
+ "tta": null,
+ "tau_sweep": {
+  "0.0": {
+   "top1": 0.9899941632619028,
+   "balanced_acc": 0.9934728610065194,
+   "macro_f1": 0.9910960320575986,
+   "minority_acc": 1.0
+  },
+  "0.25": {
+   "top1": 0.9900775452347202,
+   "balanced_acc": 0.9936000526554503,
+   "macro_f1": 0.9911433921861422,
+   "minority_acc": 1.0
+  },
+  "0.5": {
+   "top1": 0.9893271074793629,
+   "balanced_acc": 0.9933804083469661,
+   "macro_f1": 0.9905266670688476,
+   "minority_acc": 1.0
+  },
+  "0.75": {
+   "top1": 0.9876594680230134,
+   "balanced_acc": 0.9928512464958476,
+   "macro_f1": 0.9872464904712146,
+   "minority_acc": 1.0
+  }
+ },
+ "params_total": 11213448,
+ "latency_ms_bs1_cpu": 4.852191486861557,
+ "device_trained": "cuda",
+ "load": "from thaichar.infer import load_checkpoint, predict_topk; model, cfg = load_checkpoint('weights/thaichar72_r18_64_gen_rotaug.pt'); predict_topk(model, cfg, image_path, k=5)",
+ "caveats": [
+  "checkpoint selected by balanced_acc on the same validation split that is reported",
+  "tau_sweep is evaluated on the reported validation split (mildly optimistic)"
+ ]
+}

@@ -1,0 +1,23 @@
+# G4's recipe with the WIDER augmentation ranges (aug: randaug_hard). The stress suite showed the
+# model breaks at rotation 30 deg, downscale 0.25 and 4 px erosion, none of which the default
+# randaug ranges ever reach (8 deg, 0.5 scale, ~1 px). This tests whether training on the failure
+# modes we measured is better than patching them at inference time with rotation search.
+# Stage 2: F19 recipe (randaug, CE+LS, EMA, 20 ep, v2 labels) but initialised from G2_synth203du_pretrain_r18_64.
+# Direct comparison against F19 (same recipe, 26-font B6a init) isolates the effect of font diversity.
+exp_id: G9_r18_g2init_randaughard_rotonly_20
+img_size: 64
+epochs: 20
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+sampler: none
+ema: true
+lr: 0.001
+warmup_epochs: 1.0
+subset_frac: 1.0
+tta: false
+val_subset_frac: 0.5
+init_from: runs/G2_synth203du_pretrain_r18_64/best.pt
+model: resnet18
+aug: randaug_hard
+split_file: data/splits/split_seed42_v2.csv
