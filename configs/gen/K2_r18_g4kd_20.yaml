@@ -1,0 +1,23 @@
+# KD of the 3-seed G4 ensemble into one student (2026-09-22 generalisation study).
+# Same shape as K1 (which distilled the 3-seed F19 ensemble), but every component moves to
+# the G-line: teachers are the three G4 seeds, and the student starts from the same
+# 203-font + dataUpdate stage-1 init G4 itself used, so the student keeps the tail
+# behaviour the init is responsible for (probe hw 0.4292 vs 0.2258 for the 26-font init).
+exp_id: K2_r18_g4kd_20
+model: resnet18
+img_size: 64
+aug: randaug
+epochs: 20
+batch_size: 128
+loss: ce
+label_smoothing: 0.1
+ema: true
+lr: 0.001
+warmup_epochs: 1.0
+tta: false
+val_subset_frac: 0.5
+split_file: data/splits/split_seed42_v2.csv
+init_from: runs/G2_synth203du_pretrain_r18_64/best.pt
+kd_teachers: [runs/G4_r18_g2init_randaug_20/best.pt, runs/G4_r18_g2init_randaug_20_s0/best.pt, runs/G4_r18_g2init_randaug_20_s1/best.pt]
+kd_alpha: 0.7
+kd_T: 4.0

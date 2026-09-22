@@ -1,0 +1,16 @@
+# Stage 1 (generalisation study): ImageNet -> 203-font synthetic render, all 72 classes.
+# 203 typefaces = repo assets/fonts (26) + dataUpdate Google Fonts (142 new) + Windows Thai print faces (35),
+# vs 26 fonts for the incumbent B6a init. See reports/03-DATA-AUDIT-2026-09-22.md section 5.
+exp_id: G1_synth203_pretrain_r18_64
+model: resnet18
+img_size: 64
+use_real_train: false
+extra_train_index: data/synth_big/index.csv
+extra_train_cache: data/synth_big/glyphs.npz
+extra_mode: all
+aug: full
+epochs: 8
+batch_size: 256
+lr: 0.001
+label_smoothing: 0.1
+ema: true

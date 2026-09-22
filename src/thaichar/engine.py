@@ -60,6 +60,11 @@ DEFAULTS: dict[str, Any] = {
     "extra_train_cache": None,  # e.g. data/synth/glyphs_synth.npz
     "extra_mode": "all",  # all | fill
     "extra_fill_to": 200,
+    # fill ONLY classes whose real train count is <= this (None = every class the extra set covers).
+    # Filling a class that already has real data swamps it: extra_fill_to=500 with no cap made all 35
+    # dataUpdate classes 75-99 % synthetic (median 93.8 %) and cost 1.1 pt of robustness -- see
+    # reports/02-EXPERIMENTS.md section K/L. Use this to top up only the genuinely starved classes.
+    "extra_fill_max_real": None,
     "extra_max_per_class": None,
     "use_real_train": True,  # False → train ONLY on extra_train_index (intermediate pretraining stage)
     "init_from": None,  # path to a previous run's best.pt; loads all shape-compatible tensors (backbone transfer)
@@ -147,6 +152,9 @@ def _select_extra(extra_df: pd.DataFrame, train_counts: np.ndarray, cfg: dict, s
     for label, grp in extra_df.groupby("label", sort=True):
         label = int(label)
         if cfg["extra_mode"] == "fill":
+            if (cfg["extra_fill_max_real"] is not None
+                    and int(train_counts[label]) > int(cfg["extra_fill_max_real"])):
+                continue  # class has enough real data; leave its real distribution alone
             need = max(0, int(cfg["extra_fill_to"]) - int(train_counts[label]))
         else:
             need = len(grp)

@@ -18,6 +18,11 @@ extra_train_index: null
 extra_train_cache: null
 extra_mode: all    # all | fill
 extra_fill_to: 200
+# fill ONLY classes whose REAL train count is <= this (null = every class the extra set covers).
+# Topping up a class that already has real data swamps it: extra_fill_to=500 with no cap turned all 35
+# dataUpdate classes 75-99 % synthetic (median 93.8 %) and cost 1.1 pt of robustness (G5, section L of
+# reports/02-EXPERIMENTS.md). Set this to top up only the genuinely starved classes.
+extra_fill_max_real: null
 extra_max_per_class: null
 use_real_train: true
 init_from: null    # runs/<exp>/best.pt: loads all shape-compatible tensors

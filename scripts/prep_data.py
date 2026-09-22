@@ -45,6 +45,22 @@ def main() -> None:
     df = build_clean_index()
     print(f"  Clean index rows: {len(df)}")
     print(f"  Unique labels:    {df['label'].nunique()}")
+
+    # The corpus on this machine was reconstructed from the DataV2 export
+    # (scripts/restore_round2_from_datav2.py). DataV2 had itself deleted 185 files,
+    # so a few manifest rows have no image on disk. Drop them explicitly and loudly
+    # rather than letting build_cache die on a missing path.
+    exists = df["path"].map(os.path.exists)
+    n_absent = int((~exists).sum())
+    if n_absent:
+        absent = df.loc[~exists, ["path", "code"]]
+        os.makedirs("reports/analysis", exist_ok=True)
+        absent.to_csv("reports/analysis/absent_from_restore.csv", index=False)
+        print(f"  WARNING: {n_absent} indexed files are absent on disk "
+              f"(listed in reports/analysis/absent_from_restore.csv)")
+        print(f"  affected classes: {sorted(absent['code'].unique().tolist())}")
+        df = df[exists].reset_index(drop=True)
+        print(f"  Clean index rows after existence filter: {len(df)}")
     print()
 
     # ----- 2. Splits -----
