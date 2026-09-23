@@ -6,22 +6,44 @@ AdamW + cosine + EMA, 20 epochs, then knowledge-distilled from 3 seeds into one 
 
 ---
 
-## Results (2026-09-19, RTX 4060)
+## Results (2026-09-22, RTX 4070)
 
-All numbers are raw (no TTA) from [`reports/experiments.csv`](reports/experiments.csv); full story in
+Raw numbers (no TTA) from [`reports/experiments.csv`](reports/experiments.csv); full story in
 [`reports/FINAL-REPORT.md`](reports/FINAL-REPORT.md) and [`reports/02-EXPERIMENTS.md`](reports/02-EXPERIMENTS.md).
 
-| Model | Val split | Top-1 | Balanced Acc | Macro-F1 | Robustness* |
-|---|---|---:|---:|---:|---:|
-| **`thaichar72_resnet18_64.pt`** (K1, KD student, label-corrected v2 labels) | stratified v2 | **99.03 %** | **98.75 %** | **98.69 %** | **0.910** |
-| F19 recipe, 3 seeds on v2 (mean ± std) | stratified v2 | 98.90 ± 0.08 % | 98.68 ± 0.14 % | 98.53 % | – |
-| F19 recipe on v2 | doc-disjoint v2 | 98.59 % | 97.90 % | 97.33 % | – |
-| F19 recipe on the original labels (`_v1labels.pt`) | stratified v1 / doc v1 | 98.39 % / 98.22 % | 98.27 % / 98.07 % | – | 0.905 |
-| `thaichar72_mnv3small_64_small.pt` (MobileNetV3-small KD, 1.6 M params, 6.5 MB) | stratified v2 | 99.00 % | 98.72 % | 98.58 % | 0.905 |
+**Shipped model: `weights/thaichar72_r18_64_gen.pt`** — ImageNet → stage-1 pretrain on 203 typefaces
++ the `dataUpdate` corpus (126,114 synthetic glyphs) → fine-tune on real data with RandAugment.
+Recipe: [`configs/final.yaml`](configs/final.yaml).
 
-\*mean Top-1 over 33 corruption settings with Otsu binarisation at inference (`scripts/robustness.py --binarize`).
-The "v2" labels apply 629 verified relabels + 175 drops from the teammates' DataV2 audit to the same split
-(`data/splits/split_seed42_v2.csv`, rebuilt by `scripts/make_split_v2.py`); see FINAL-REPORT §12 for why both weight files are shipped.
+| Model | stratified | doc-disjoint | robustness* | unseen fonts** |
+|---|---:|---:|---:|---:|
+| **`thaichar72_r18_64_gen.pt`** (shipped) | **99.02 %** | **98.72 %** | **0.915** | **0.868** |
+| `thaichar72_r18_64_gen_rotaug.pt` (wider rotation aug) | 99.00 % | – | – | – |
+| `thaichar72_resnet18_64.pt` (K1, the previous shipped model) | 99.03 %† | 98.59 %† | 0.910† | 0.834 |
+| `thaichar72_mnv3small_64_small.pt` (1.6 M params, 6.5 MB) | 99.00 %† | – | 0.905† | 0.774 |
+| `thaichar72_resnet18_64_v1labels.pt` (original label convention) | 98.39 %† | 98.22 %† | 0.905† | 0.827 |
+
+\*mean Top-1 over 33 corruption settings with Otsu binarisation (`scripts/robustness.py --binarize`).
+\**retention on 62 typefaces the training render never used ([§N](reports/02-EXPERIMENTS.md)).
+†measured on the earlier split; not directly comparable with the rows above (see FINAL-REPORT §13).
+
+Selection was on the **document-disjoint split and the robustness gate**, never the stratified split,
+which is saturated at ~99 % and separates nothing. 3 seeds of the shipped recipe: 98.99 ± 0.04 %.
+
+### How it behaves on input it was not trained for
+
+[`reports/stress/summary.md`](reports/stress/summary.md) measures all five weights on degraded,
+invalid and flipped input. Headlines:
+
+- **Low resolution is fine.** 0.974 on real glyphs under 9 px tall — the corpus already contains them.
+- **JPEG, high resolution and aspect distortion cost nothing**; Otsu absorbs them.
+- **Rotation was the real gap** (0.52 at 30°). `--rotation-tta` buys it back to 0.90 at zero cost on
+  upright input.
+- **Erosion is far more damaging than dilation** — never add a stroke-thinning step.
+- **Invalid input (two glyphs touching, half a glyph, scribbles) is filterable by confidence alone**
+  at AUROC ≥ 0.84, so no glyph splitter is needed.
+- **Never flip.** 127 class/transform pairs become a *different real Thai character* confidently
+  (บ↔ภ and ย↔ถ are exact reciprocals under vertical mirroring).
 
 ---
 
@@ -106,15 +128,45 @@ uv run python scripts/train.py --config configs/matrix/A1_resnet18_full_64.yaml
 uv run python scripts/collect_results.py
 
 # 6. Single-image prediction with the shipped model
-uv run python scripts/predict.py --ckpt weights/thaichar72_resnet18_64.pt path/to/glyph.png --topk 5
+uv run python scripts/predict.py --ckpt weights/thaichar72_r18_64_gen.pt path/to/glyph.png --topk 5
 
 # 7. Corruption robustness sweep (full val, Otsu on)
-uv run python scripts/robustness.py --ckpt weights/thaichar72_resnet18_64.pt --binarize --out reports/robustness/my_sweep
+uv run python scripts/robustness.py --ckpt weights/thaichar72_r18_64_gen.pt --binarize --out reports/robustness/my_sweep
 
 # 8. Retrain the final recipe (needs data/ caches + weights/thaichar72_r18_synth_pretrain_init.pt or runs/B6a_*/best.pt)
 uv run python scripts/make_split_v2.py                       # builds data/splits/split_seed42_v2.csv from the tracked change list
 uv run python scripts/train.py --config configs/final.yaml --set device=cuda
 ```
+
+### Scoring a folder of test images
+
+Run the triage first: it reads the images with no labels and says how to run the classifier.
+
+```bash
+uv run python scripts/triage_input.py  --dir path/to/test_images
+uv run python scripts/evaluate_folder.py --dir path/to/test_images [--rotation-tta]
+```
+
+`triage_input.py` reports resolution, ink weight, polarity and whether the batch is rotated, and
+prints the `evaluate_folder.py` command to use. It detects rotation from *agreement on the winning
+angle*, not from a confidence lift — a lift alone also appears on blurred or low-resolution batches
+that are not rotated at all.
+
+`evaluate_folder.py` accepts any folder layout, scores it when the filenames carry a class, and
+tries both ink polarities by default.
+
+### Inspecting the model
+
+```bash
+uv pip install jupyterlab ipykernel
+uv run python -m ipykernel install --user --name thaichar --display-name "thaichar"
+uv run jupyter lab notebooks/ThaiChar72_StressEval.ipynb
+```
+
+Two notebooks: `ThaiChar72_Colab.ipynb` is the deliverable (training + evaluation + an error
+explorer showing every mistake as an image), and `ThaiChar72_StressEval.ipynb` is for checking the
+robustness claims above rather than taking them — each table has a drill-down that shows the actual
+images and what the model said about them. Both are generated; edit the builders in `scripts/`.
 
 ---
 
