@@ -47,6 +47,17 @@ invalid and flipped input. Headlines:
 
 ---
 
+## Documentation
+
+| เอกสาร | สำหรับใคร |
+|---|---|
+| [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) | **อ่านก่อน** — แนวคิดและวิธีการทุกขั้นตอน พร้อมลิงก์ไปไฟล์จริงใน repo |
+| [`docs/PITCH-DECK-GUIDE.md`](docs/PITCH-DECK-GUIDE.md) | ไกด์ไลน์ทำสไลด์นำเสนอ 12 แผ่น / 10 นาที ผูกกับเกณฑ์คะแนน |
+| [`reports/FINAL-REPORT.md`](reports/FINAL-REPORT.md) | รายงานสรุปฉบับเต็ม |
+| [`reports/02-EXPERIMENTS.md`](reports/02-EXPERIMENTS.md) | การทดลองทั้งหมด §A–§N |
+
+---
+
 ## Repository Layout
 
 ```
